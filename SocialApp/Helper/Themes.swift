@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 
+protocol SetThemeColorProtocol {
+    func setColor()
+}
 
 
 
@@ -24,7 +27,7 @@ extension UIColor {
 }
 
 extension UIColor {
-    static let themeColor = UIColor.createColor(lightMode: .systemMint, darkMode: .systemPink)
+    static let themeColor = UIColor.createColor(lightMode: .systemYellow, darkMode: .systemGreen)
     static let buttonColor = UIColor.createColor(lightMode: .systemBlue, darkMode: .blue)
     static let textColor = UIColor.createColor(lightMode: .black, darkMode: .white)
     static let labelColor = UIColor.createColor(lightMode: .clear, darkMode: .gray)
