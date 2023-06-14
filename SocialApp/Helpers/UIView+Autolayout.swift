@@ -84,8 +84,14 @@ extension UIView {
 
     func pinWidth(constant: CGFloat) {
         widthAnchor.constraint(equalToConstant: constant).activated()
-    }
 
+    }
+    @discardableResult
+    func cornerRadius(cornerRadius: CGFloat = 15) -> Self {
+        layer.cornerRadius = cornerRadius
+        return self
+}
+    
     @discardableResult
     func forAutolayout() -> Self {
         translatesAutoresizingMaskIntoConstraints = false

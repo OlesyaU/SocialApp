@@ -16,6 +16,7 @@
 		76EFE9F72A39BB5C0083DE09 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F62A39BB5C0083DE09 /* Colors.swift */; };
 		76EFE9F92A39BB7E0083DE09 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F82A39BB7E0083DE09 /* Fonts.swift */; };
 		76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */; };
+		76EFE9FD2A3A06190083DE09 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FC2A3A06190083DE09 /* ConfirmViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		76EFE9F62A39BB5C0083DE09 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		76EFE9F82A39BB7E0083DE09 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
+		76EFE9FC2A3A06190083DE09 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		76EFE9F12A39B9F10083DE09 /* ConfirmView */ = {
 			isa = PBXGroup;
 			children = (
+				76EFE9FC2A3A06190083DE09 /* ConfirmViewController.swift */,
 			);
 			path = ConfirmView;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */,
 				76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */,
 				76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */,
+				76EFE9FD2A3A06190083DE09 /* ConfirmViewController.swift in Sources */,
 				7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */,
 				76EFE9F72A39BB5C0083DE09 /* Colors.swift in Sources */,
 				76EFE9F92A39BB7E0083DE09 /* Fonts.swift in Sources */,
