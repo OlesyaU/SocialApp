@@ -17,6 +17,7 @@
 		76EFE9F92A39BB7E0083DE09 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F82A39BB7E0083DE09 /* Fonts.swift */; };
 		76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */; };
 		76EFE9FD2A3A06190083DE09 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FC2A3A06190083DE09 /* ConfirmViewController.swift */; };
+		76EFE9FF2A3B15F80083DE09 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FE2A3B15F80083DE09 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		76EFE9F82A39BB7E0083DE09 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		76EFE9FC2A3A06190083DE09 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		76EFE9FE2A3B15F80083DE09 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +81,6 @@
 		76EFE9EA2A39B9860083DE09 /* Confirm */ = {
 			isa = PBXGroup;
 			children = (
-				76EFE9F22A39B9F90083DE09 /* ConfirmModel */,
 				76EFE9F12A39B9F10083DE09 /* ConfirmView */,
 				76EFE9F02A39B9E70083DE09 /* ConfirmViewModel */,
 			);
@@ -114,6 +115,7 @@
 		76EFE9EF2A39B9DD0083DE09 /* RegistrationModel */ = {
 			isa = PBXGroup;
 			children = (
+				76EFE9FE2A3B15F80083DE09 /* User.swift */,
 			);
 			path = RegistrationModel;
 			sourceTree = "<group>";
@@ -131,13 +133,6 @@
 				76EFE9FC2A3A06190083DE09 /* ConfirmViewController.swift */,
 			);
 			path = ConfirmView;
-			sourceTree = "<group>";
-		};
-		76EFE9F22A39B9F90083DE09 /* ConfirmModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ConfirmModel;
 			sourceTree = "<group>";
 		};
 		76EFE9F32A39BA060083DE09 /* Helpers */ = {
@@ -226,6 +221,7 @@
 				76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */,
 				76EFE9FD2A3A06190083DE09 /* ConfirmViewController.swift in Sources */,
 				7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */,
+				76EFE9FF2A3B15F80083DE09 /* User.swift in Sources */,
 				76EFE9F72A39BB5C0083DE09 /* Colors.swift in Sources */,
 				76EFE9F92A39BB7E0083DE09 /* Fonts.swift in Sources */,
 				767074112A39955A007FC469 /* SceneDelegate.swift in Sources */,

@@ -13,18 +13,15 @@ protocol SetThemeColorProtocol {
 }
 
 extension UIColor {
-    private static func createColor(lightMode: UIColor, darkMode: UIColor) -> UIColor {
-        
-        return UIColor { (traitCollection) -> UIColor in
-            return traitCollection.userInterfaceStyle == .light ? lightMode : darkMode
-        }
-    }
+    static let textFieldColor = UIColor(named: "textSecondary")!
+    static let backgroundPrimary = UIColor(named: "backgroundPrimary")!
+    static let textPrimary = UIColor(named: "textPrimary")!
+    static let contentColor = UIColor(named: "contentColor")!
+    static let buttonColor = UIColor(named: "buttonColor")
+
 }
 
-extension UIColor {
-    static let themeColor = UIColor.createColor(lightMode: .systemYellow, darkMode: .systemGreen)
-    static let buttonColor = UIColor.createColor(lightMode: .systemRed, darkMode: .blue)
-    static let textColor = UIColor.createColor(lightMode: .black, darkMode: .white)
-    static let labelColor = UIColor.createColor(lightMode: .clear, darkMode: .gray)
-
+extension UIImage {
+    static let buttonBackgroundImageNormal = UIImage(named: "buttonNormal")
+    static let buttonBackgroundImageSelected = UIImage(named: "buttonSelected")
 }

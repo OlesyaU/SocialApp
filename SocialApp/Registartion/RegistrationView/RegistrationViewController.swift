@@ -8,75 +8,75 @@
 import UIKit
 
 class RegistrationViewController: UIViewController {
-
     private enum Constants {
         static let registerButtonTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
         static let alreadyButtonTitle = "Уже есть аккаунт"
-        static let constraint: CGFloat = 16
+        static let sideInset: CGFloat = 16
     }
-
+    
     private lazy var startScreenImage: UIImageView = {
         let image = UIImageView().forAutolayout()
-        image.image = UIImage(named: "Welcome-PNG")
         image.placed(on: view)
-        image.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 100)
-        image.pinHeight(constant: 300)
-        image.pinLeading(to: view, inset: Constants.constraint)
-        image.pinTrailing(to: view, inset: Constants.constraint)
+        image.image = UIImage(named: "WelcomeLogo")
         image.contentMode = .scaleAspectFit
         return image
     }()
-
+    
     private lazy var registerButton: UIButton = {
         let button = UIButton().forAutolayout()
         button.setTitle(Constants.registerButtonTitle, for: .normal)
+        button.setBackgroundImage(.buttonBackgroundImageNormal, for: .normal)
+        button.setBackgroundImage(.buttonBackgroundImageSelected, for: .highlighted)
+        button.setBackgroundImage(.buttonBackgroundImageSelected, for: .disabled)
         button.placed(on: view)
-        button.pinHeight(constant: 50)
-        button.pinTop(to: startScreenImage.bottomAnchor, inset: 100)
-        button.pinLeading(to: view, inset: Constants.constraint)
-        button.pinTrailing(to: view, inset: Constants.constraint)
         button.cornerRadius()
         return button
     }()
-
+    
     private lazy var alreadyButton: UIButton = {
-        let button = UIButton().forAutolayout()
+        let button = UIButton(
+            primaryAction: UIAction { [unowned self] _ in
+                self.buttonTapped()
+            }
+        ).forAutolayout()
         button.setTitle(Constants.alreadyButtonTitle, for: .normal)
         button.placed(on: view)
-        button.pinHeight(constant: 50)
-        button.pinTop(to: registerButton.bottomAnchor, inset: 20)
-        button.pinLeading(to: view, inset: Constants.constraint)
-        button.pinTrailing(to: view, inset: Constants.constraint)
         button.cornerRadius()
-        button.addTarget(self, action: #selector(butTap(_ : )), for: .touchUpInside)
         return button
     }()
-
- override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-//        setUp()
+        setUpLayout()
         setColor()
-
     }
-
-    @objc private func butTap(_ sender: UIButton) {
+    
+    private func buttonTapped() {
         let confirmViewController = ConfirmViewController()
-//        present(confirmViewController, animated: true)
         navigationController?.pushViewController(confirmViewController, animated: true)
-        
+        navigationController?.setViewControllers([confirmViewController], animated: false)
     }
-
-//    private func setUp(){
-//
-//    }
-
-
 }
 
 extension RegistrationViewController: SetThemeColorProtocol {
     func setColor() {
-        view.backgroundColor = .themeColor
-        registerButton.backgroundColor = .buttonColor
-        alreadyButton.backgroundColor = .clear
+        view.backgroundColor = .backgroundPrimary
+        registerButton.setTitleColor(.contentColor, for: .normal)
+        alreadyButton.tintColor = .textPrimary
+    }
+    
+    private func setUpLayout() {
+        startScreenImage.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 100)
+        startScreenImage.pinHeight(constant: 300)
+        startScreenImage.pinLeading(to: view, inset: Constants.sideInset)
+        startScreenImage.pinTrailing(to: view, inset: Constants.sideInset)
+        registerButton.pinHeight(constant: 50)
+        registerButton.pinTop(to: startScreenImage.bottomAnchor, inset: 100)
+        registerButton.pinLeading(to: view, inset: Constants.sideInset)
+        registerButton.pinTrailing(to: view, inset: Constants.sideInset)
+        alreadyButton.pinHeight(constant: 50)
+        alreadyButton.pinTop(to: registerButton.bottomAnchor, inset: 20)
+        alreadyButton.pinLeading(to: view, inset: Constants.sideInset)
+        alreadyButton.pinTrailing(to: view, inset: Constants.sideInset)
     }
 }

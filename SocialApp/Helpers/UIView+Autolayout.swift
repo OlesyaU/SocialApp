@@ -12,16 +12,16 @@ extension UIView {
         case right
         case top
         case bottom
-        case none
+        case all
     }
 
     func placed(on view: UIView) {
         view.addSubview(self)
     }
 
-    func pinEdges(to view: UIView, insets: UIEdgeInsets = .zero, excluding side: Side = .none) {
+    func pinEdges(to view: UIView, insets: UIEdgeInsets = .zero, excluding side: Side = .all) {
         switch side {
-            case .none:
+            case .all:
                 pinTop(to: view, inset: insets.top)
                 pinBottom(to: view, inset: insets.bottom)
                 pinLeading(to: view, inset: insets.left)
@@ -86,11 +86,13 @@ extension UIView {
         widthAnchor.constraint(equalToConstant: constant).activated()
 
     }
+    
     @discardableResult
-    func cornerRadius(cornerRadius: CGFloat = 15) -> Self {
+    func cornerRadius(cornerRadius: CGFloat = 16) -> Self {
         layer.cornerRadius = cornerRadius
+        layer.masksToBounds = true
         return self
-}
+    }
     
     @discardableResult
     func forAutolayout() -> Self {

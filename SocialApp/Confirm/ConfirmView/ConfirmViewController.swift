@@ -8,13 +8,13 @@
 import UIKit
 
 class ConfirmViewController: UIViewController {
-
     private enum Constants {
         static let welcomeLabelTitle = "С возвращением"
+        static let welcomeNewUserTitle = "Добро пожаловать !"
         static let secondLabelTitle = "Введите номер телефона \n для входа в приложение"
-        static let constraint: CGFloat = 16
         static let placeholderString = " + 38 _ _ _ + _ _ _ + _ _ "
-        static let buttonTitle = " ПОДТВЕРДИТЬ"
+        static let buttonTitle = "ПОДТВЕРДИТЬ"
+        static let constraint: CGFloat = 16
     }
 
     private lazy var welcomeLabel: UILabel = {
@@ -23,10 +23,6 @@ class ConfirmViewController: UIViewController {
         label.font = UIFont(name: "AvenirNextCondensed-Bold", size: 18)
         label.textAlignment = .center
         label.placed(on: view)
-        label.pinHeight(constant: 50)
-        label.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 120)
-        label.pinLeading(to: view, inset: Constants.constraint * 4)
-        label.pinTrailing(to: view, inset: Constants.constraint * 4)
         label.cornerRadius()
         return label
     }()
@@ -47,11 +43,7 @@ class ConfirmViewController: UIViewController {
         label.attributedText = attributedText
         label.textAlignment = .center
         label.placed(on: view)
-        label.pinHeight(constant: 50)
-        label.pinTop(to: welcomeLabel.bottomAnchor, inset: 8)
         label.numberOfLines = 2
-        label.pinLeading(to: view, inset: Constants.constraint * 4)
-        label.pinTrailing(to: view, inset: Constants.constraint * 4)
         label.cornerRadius()
         return label
     }()
@@ -77,32 +69,51 @@ class ConfirmViewController: UIViewController {
     }()
 
     private lazy var confirmButton: UIButton = {
-        let button = UIButton().forAutolayout()
+        let button = UIButton(
+            primaryAction: UIAction { [unowned self] _ in
+
+            }
+        ).forAutolayout()
         button.setTitle(Constants .buttonTitle, for: .normal)
         button.placed(on: view)
-        button.pinHeight(constant: 50)
-        button.pinTop(to: phoneNumberField.bottomAnchor, inset: 100)
-        button.pinLeading(to: view, inset: Constants.constraint * 6)
-        button.pinTrailing(to: view, inset: Constants.constraint * 6)
         button.cornerRadius()
+        button.setBackgroundImage(.buttonBackgroundImageSelected, for: .normal)
+        button.setBackgroundImage(.buttonBackgroundImageNormal, for: .highlighted)
+        button.setBackgroundImage(.buttonBackgroundImageNormal, for: .disabled)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpLayout()
         setColor()
-        navigationController?.navigationBar.isHidden = true
+    }
 
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        navigationItem.setHidesBackButton(true, animated: false)
     }
 }
 
 extension ConfirmViewController: SetThemeColorProtocol {
     func setColor() {
-        view.backgroundColor = .themeColor
-        welcomeLabel.backgroundColor = .labelColor
-        welcomeLabel.textColor = .buttonColor
-        secondLabel.backgroundColor = .labelColor
-        phoneNumberField.backgroundColor = .white
-        confirmButton.backgroundColor = .buttonColor
+        view.backgroundColor = .backgroundPrimary
+        phoneNumberField.backgroundColor = .textFieldColor
+        confirmButton.tintColor = .contentColor
+    }
+
+    private func setUpLayout(){
+        welcomeLabel.pinHeight(constant: 50)
+        welcomeLabel.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 120)
+        welcomeLabel.pinLeading(to: view, inset: Constants.constraint * 4)
+        welcomeLabel.pinTrailing(to: view, inset: Constants.constraint * 4)
+        secondLabel.pinHeight(constant: 50)
+        secondLabel.pinTop(to: welcomeLabel.bottomAnchor, inset: 8)
+        secondLabel.pinLeading(to: view, inset: Constants.constraint * 4)
+        secondLabel.pinTrailing(to: view, inset: Constants.constraint * 4)
+        confirmButton.pinHeight(constant: 50)
+        confirmButton.pinTop(to: phoneNumberField.bottomAnchor, inset: 100)
+        confirmButton.pinLeading(to: view, inset: Constants.constraint * 6)
+        confirmButton.pinTrailing(to: view, inset: Constants.constraint * 6)
     }
 }
