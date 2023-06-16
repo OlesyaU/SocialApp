@@ -20,7 +20,6 @@ class RegistrationViewController: UIViewController {
         let image = UIImageView().forAutolayout()
         image.image = UIImage(named: "WelcomeLogo")
         image.contentMode = .scaleAspectFit
-        image.backgroundColor = .red
         return image
     }()
     
@@ -53,7 +52,6 @@ class RegistrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         addSubviews()
         setupConstraints()
         setColor()
@@ -105,12 +103,12 @@ extension RegistrationViewController {
         portraitConstraints.append(
             contentsOf: [
                 startScreenImage.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 100),
-                registerButton.pinTop(to: startScreenImage.bottomAnchor, inset: 100),
-                alreadyButton.pinTop(to: registerButton.bottomAnchor, inset: 50)
+                registerButton.pinTop(to: startScreenImage.bottomAnchor, inset: 56),
+                alreadyButton.pinTop(to: registerButton.bottomAnchor, inset: 56)
             ]
         )
 
-        if UIDevice.current.orientation.isLandscape {
+        if Orientation.isLandscape {
             NSLayoutConstraint.activate(landscapeConstraints)
         } else {
             NSLayoutConstraint.activate(portraitConstraints)
