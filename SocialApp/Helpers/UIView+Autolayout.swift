@@ -45,24 +45,44 @@ extension UIView {
         }
     }
 
-    func pinTop(to view: UIView, inset: CGFloat = .zero) {
-        topAnchor.constraint(equalTo: view.topAnchor, constant: inset).activated()
+    @discardableResult
+    func pinTop(to view: UIView, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        topAnchor.constraint(equalTo: view.topAnchor, constant: inset)
     }
 
-    func pinTop(to anchor: NSLayoutYAxisAnchor, inset: CGFloat = .zero) {
-        topAnchor.constraint(equalTo: anchor, constant: inset).activated()
+    @discardableResult
+    func pinTop(to anchor: NSLayoutYAxisAnchor, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        topAnchor.constraint(equalTo: anchor, constant: inset)
     }
 
-    func pinBottom(to view: UIView, inset: CGFloat = .zero) {
-        bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -inset).activated()
+    @discardableResult
+    func pinBottom(to view: UIView, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -inset)
     }
 
-    func pinLeading(to view: UIView, inset: CGFloat = .zero) {
-        leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: inset).activated()
+    @discardableResult
+    func pinBottom(to anchor: NSLayoutYAxisAnchor, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        bottomAnchor.constraint(equalTo: anchor, constant: -inset)
     }
 
-    func pinTrailing(to view: UIView, inset: CGFloat = .zero) {
-        trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -inset).activated()
+    @discardableResult
+    func pinLeading(to view: UIView, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: inset)
+    }
+
+    @discardableResult
+    func pinLeading(to anchor: NSLayoutXAxisAnchor, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        leadingAnchor.constraint(equalTo: anchor, constant: inset)
+    }
+
+    @discardableResult
+    func pinTrailing(to view: UIView, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -inset)
+    }
+
+    @discardableResult
+    func pinTrailing(to anchor: NSLayoutXAxisAnchor, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        trailingAnchor.constraint(equalTo: anchor, constant: -inset)
     }
 
     func pinCenter(to view: UIView, insetX: CGFloat = .zero, insetY: CGFloat = .zero) {
@@ -70,21 +90,38 @@ extension UIView {
         pinCenterY(to: view, inset: insetY)
     }
 
-    func pinCenterX(to view: UIView, inset: CGFloat = .zero) {
-        centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: inset).activated()
+    @discardableResult
+    func pinCenterX(to view: UIView, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: inset)
     }
 
-    func pinCenterY(to view: UIView, inset: CGFloat = .zero) {
-        centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: inset).activated()
+    @discardableResult
+    func pinCenterY(to view: UIView, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: inset)
     }
 
-    func pinHeight(constant: CGFloat) {
-        heightAnchor.constraint(equalToConstant: constant).activated()
+    @discardableResult
+    func pinHeight(equalTo: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
+        heightAnchor.constraint(equalTo: equalTo, multiplier: multiplier, constant: constant)
     }
 
-    func pinWidth(constant: CGFloat) {
-        widthAnchor.constraint(equalToConstant: constant).activated()
+    @discardableResult
+    func pinHeight(equalTo view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0) -> NSLayoutConstraint {
+        heightAnchor.constraint(
+            equalTo: view.heightAnchor,
+            multiplier: multiplier,
+            constant: constant
+        )
+    }
 
+    @discardableResult
+    func pinHeight(equalTo constant: CGFloat) -> NSLayoutConstraint {
+        heightAnchor.constraint(equalToConstant: constant)
+    }
+
+    @discardableResult
+    func pinWidth(constant: CGFloat, multiplier: CGFloat) -> NSLayoutConstraint {
+        widthAnchor.constraint(equalToConstant: constant)
     }
     
     @discardableResult

@@ -13,12 +13,14 @@ class RegistrationViewController: UIViewController {
         static let alreadyButtonTitle = "Уже есть аккаунт"
         static let sideInset: CGFloat = 16
     }
+
+    // MARK: - Properties
     
-    private lazy var startScreenImage: UIImageView = {
+    private let startScreenImage: UIImageView = {
         let image = UIImageView().forAutolayout()
-        image.placed(on: view)
         image.image = UIImage(named: "WelcomeLogo")
         image.contentMode = .scaleAspectFit
+        image.backgroundColor = .red
         return image
     }()
     
@@ -28,7 +30,6 @@ class RegistrationViewController: UIViewController {
         button.setBackgroundImage(.buttonBackgroundImageNormal, for: .normal)
         button.setBackgroundImage(.buttonBackgroundImageSelected, for: .highlighted)
         button.setBackgroundImage(.buttonBackgroundImageSelected, for: .disabled)
-        button.placed(on: view)
         button.cornerRadius()
         return button
     }()
@@ -40,17 +41,32 @@ class RegistrationViewController: UIViewController {
             }
         ).forAutolayout()
         button.setTitle(Constants.alreadyButtonTitle, for: .normal)
-        button.placed(on: view)
         button.cornerRadius()
         return button
     }()
-    
+
+    private var landscapeConstraints: [NSLayoutConstraint] = []
+    private var portraitConstraints: [NSLayoutConstraint] = []
+    private var commonConstraints: [NSLayoutConstraint] = []
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpLayout()
+
+        addSubviews()
+        setupConstraints()
         setColor()
     }
-    
+
+    // MARK: - Helpers
+
+    private func addSubviews() {
+        startScreenImage.placed(on: view)
+        registerButton.placed(on: view)
+        alreadyButton.placed(on: view)
+    }
+
     private func buttonTapped() {
         let confirmViewController = ConfirmViewController()
         navigationController?.pushViewController(confirmViewController, animated: true)
@@ -58,25 +74,76 @@ class RegistrationViewController: UIViewController {
     }
 }
 
+// MARK: - Constraints
+
+extension RegistrationViewController {
+    private func setupConstraints() {
+        commonConstraints.append(
+            contentsOf: [
+                startScreenImage.pinHeight(equalTo: view, multiplier: 0.3),
+                startScreenImage.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
+                startScreenImage.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
+
+                registerButton.pinHeight(equalTo: 56),
+                registerButton.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
+                registerButton.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
+
+                alreadyButton.pinHeight(equalTo: 44),
+                alreadyButton.pinLeading(to: registerButton.leadingAnchor, inset: Constants.sideInset),
+                alreadyButton.pinTrailing(to: registerButton.trailingAnchor, inset: Constants.sideInset)
+            ]
+        )
+
+        landscapeConstraints.append(
+            contentsOf: [
+                startScreenImage.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 32),
+                registerButton.pinTop(to: startScreenImage.bottomAnchor, inset: 24),
+                alreadyButton.pinTop(to: registerButton.bottomAnchor, inset: 20)
+            ]
+        )
+
+        portraitConstraints.append(
+            contentsOf: [
+                startScreenImage.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 100),
+                registerButton.pinTop(to: startScreenImage.bottomAnchor, inset: 100),
+                alreadyButton.pinTop(to: registerButton.bottomAnchor, inset: 50)
+            ]
+        )
+
+        if UIDevice.current.orientation.isLandscape {
+            NSLayoutConstraint.activate(landscapeConstraints)
+        } else {
+            NSLayoutConstraint.activate(portraitConstraints)
+        }
+
+        NSLayoutConstraint.activate(commonConstraints)
+    }
+}
+
+// MARK: - View Will Transition
+
+extension RegistrationViewController {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        coordinator.animate { _ in
+            if UIDevice.current.orientation.isLandscape {
+                NSLayoutConstraint.deactivate(self.portraitConstraints)
+                NSLayoutConstraint.activate(self.landscapeConstraints)
+            } else {
+                NSLayoutConstraint.deactivate(self.landscapeConstraints)
+                NSLayoutConstraint.activate(self.portraitConstraints)
+            }
+        }
+    }
+}
+
+// MARK: - SetThemeColorProtocol
+
 extension RegistrationViewController: SetThemeColorProtocol {
     func setColor() {
         view.backgroundColor = .backgroundPrimary
         registerButton.setTitleColor(.contentColor, for: .normal)
         alreadyButton.tintColor = .textPrimary
-    }
-    
-    private func setUpLayout() {
-        startScreenImage.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 100)
-        startScreenImage.pinHeight(constant: 300)
-        startScreenImage.pinLeading(to: view, inset: Constants.sideInset)
-        startScreenImage.pinTrailing(to: view, inset: Constants.sideInset)
-        registerButton.pinHeight(constant: 50)
-        registerButton.pinTop(to: startScreenImage.bottomAnchor, inset: 100)
-        registerButton.pinLeading(to: view, inset: Constants.sideInset)
-        registerButton.pinTrailing(to: view, inset: Constants.sideInset)
-        alreadyButton.pinHeight(constant: 50)
-        alreadyButton.pinTop(to: registerButton.bottomAnchor, inset: 20)
-        alreadyButton.pinLeading(to: view, inset: Constants.sideInset)
-        alreadyButton.pinTrailing(to: view, inset: Constants.sideInset)
     }
 }
