@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegistrationViewController: UIViewController {
     private enum Constants {
@@ -15,7 +16,10 @@ class RegistrationViewController: UIViewController {
     }
 
     // MARK: - Properties
-    
+
+    let phoneNumber = "+11112223333"
+    let testVerificationCode = "000000"
+
     private let startScreenImage: UIImageView = {
         let image = UIImageView().forAutolayout()
         image.image = UIImage(named: "WelcomeLogo")
@@ -24,7 +28,11 @@ class RegistrationViewController: UIViewController {
     }()
     
     private lazy var registerButton: UIButton = {
-        let button = UIButton().forAutolayout()
+        let button = UIButton(
+            primaryAction: UIAction { [unowned self] _ in
+                self.createUser()
+            }
+        ).forAutolayout()
         button.setTitle(Constants.registerButtonTitle, for: .normal)
         button.setBackgroundImage(.buttonBackgroundImageNormal, for: .normal)
         button.setBackgroundImage(.buttonBackgroundImageSelected, for: .highlighted)
@@ -69,6 +77,33 @@ class RegistrationViewController: UIViewController {
         let confirmViewController = ConfirmViewController()
         navigationController?.pushViewController(confirmViewController, animated: true)
         navigationController?.setViewControllers([confirmViewController], animated: false)
+    }
+
+
+    func createUser(){
+let enterNunberViewController = EnterNumberViewController()
+        navigationController?.pushViewController(enterNunberViewController, animated: true)
+//        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+//        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate:nil) {
+//                                                                    verificationID, error in
+//            if ((error) != nil) {
+//              // Handles error
+////              self.handleError(error)
+//              return
+//            }
+//            let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID ?? "",
+//                                                                       verificationCode: testVerificationCode)
+//            Auth.auth().signInAndRetrieveData(with: credential) { authData, error in
+//              if (error) {
+//                // Handles error
+////                self.handleError(error)
+//                return
+//              }
+////              _user = authData.user
+//
+//        }
+//        }
+
     }
 }
 
