@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7614A3932A3F0DF3004D7466 /* EnterNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3922A3F0DF3004D7466 /* EnterNumberViewController.swift */; };
+		7614A3952A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3942A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift */; };
 		7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670740E2A39955A007FC469 /* AppDelegate.swift */; };
 		767074112A39955A007FC469 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074102A39955A007FC469 /* SceneDelegate.swift */; };
 		767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074122A39955A007FC469 /* RegistrationViewController.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		7614A3922A3F0DF3004D7466 /* EnterNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNumberViewController.swift; sourceTree = "<group>"; };
+		7614A3942A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		7670740B2A39955A007FC469 /* SocialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7670740E2A39955A007FC469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767074102A39955A007FC469 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,34 +57,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7614A38E2A3F0D59004D7466 /* EnterNumber */ = {
+		7614A38E2A3F0D59004D7466 /* EnterPhoneNumber */ = {
 			isa = PBXGroup;
 			children = (
-				7614A38F2A3F0D79004D7466 /* EnterNumberModel */,
-				7614A3902A3F0D8C004D7466 /* EnterNumberView */,
+				7614A38F2A3F0D79004D7466 /* EnterPhoneNumberModel */,
+				7614A3902A3F0D8C004D7466 /* EnterPhoneNumberView */,
 				7614A3912A3F0DAC004D7466 /* EnterNumberViewModel */,
 			);
-			path = EnterNumber;
+			path = EnterPhoneNumber;
 			sourceTree = "<group>";
 		};
-		7614A38F2A3F0D79004D7466 /* EnterNumberModel */ = {
+		7614A38F2A3F0D79004D7466 /* EnterPhoneNumberModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = EnterNumberModel;
+			name = EnterPhoneNumberModel;
 			sourceTree = "<group>";
 		};
-		7614A3902A3F0D8C004D7466 /* EnterNumberView */ = {
+		7614A3902A3F0D8C004D7466 /* EnterPhoneNumberView */ = {
 			isa = PBXGroup;
 			children = (
 				7614A3922A3F0DF3004D7466 /* EnterNumberViewController.swift */,
 			);
-			path = EnterNumberView;
+			path = EnterPhoneNumberView;
 			sourceTree = "<group>";
 		};
 		7614A3912A3F0DAC004D7466 /* EnterNumberViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7614A3942A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift */,
 			);
 			name = EnterNumberViewModel;
 			sourceTree = "<group>";
@@ -109,7 +112,7 @@
 				7670740E2A39955A007FC469 /* AppDelegate.swift */,
 				767074102A39955A007FC469 /* SceneDelegate.swift */,
 				76EFE9EB2A39B9970083DE09 /* Registartion */,
-				7614A38E2A3F0D59004D7466 /* EnterNumber */,
+				7614A38E2A3F0D59004D7466 /* EnterPhoneNumber */,
 				76EFE9EA2A39B9860083DE09 /* Confirm */,
 				76EFE9F32A39BA060083DE09 /* Helpers */,
 				767074172A39955D007FC469 /* Assets.xcassets */,
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */,
+				7614A3952A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift in Sources */,
 				76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */,
 				76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */,
 				76EFE9FD2A3A06190083DE09 /* ConfirmViewController.swift in Sources */,

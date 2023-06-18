@@ -81,7 +81,7 @@ class RegistrationViewController: UIViewController {
 
 
     func createUser(){
-let enterNunberViewController = EnterNumberViewController()
+let enterNunberViewController = EnterPhoneNumberViewController()
         navigationController?.pushViewController(enterNunberViewController, animated: true)
 //        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
 //        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate:nil) {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EnterNumberViewController: UIViewController {
+class EnterPhoneNumberViewController: UIViewController {
     private enum Constants {
         static let welcomeLabelTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
         static let pushNumberUserTitle = "Введите номер"
@@ -126,7 +126,7 @@ class EnterNumberViewController: UIViewController {
 
 // MARK: - Constraints
 
-extension EnterNumberViewController {
+extension EnterPhoneNumberViewController {
     private func setupConstraints() {
         commonConstraints.append(
             contentsOf: [
@@ -191,7 +191,7 @@ extension EnterNumberViewController {
 
 // MARK: - View Will Transition
 
-extension EnterNumberViewController {
+extension EnterPhoneNumberViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
@@ -207,7 +207,7 @@ extension EnterNumberViewController {
     }
 }
 
-extension EnterNumberViewController: SetThemeColorProtocol {
+extension EnterPhoneNumberViewController: SetThemeColorProtocol {
     func setColor() {
         view.backgroundColor = .backgroundPrimary
         phoneNumberField.backgroundColor = .textFieldColor
