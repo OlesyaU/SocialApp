@@ -74,7 +74,7 @@ class RegistrationViewController: UIViewController {
     }
 
     private func buttonTapped() {
-        let confirmViewController = ConfirmViewController()
+        let confirmViewController = CombackViewController()
         navigationController?.pushViewController(confirmViewController, animated: true)
         navigationController?.setViewControllers([confirmViewController], animated: false)
     }

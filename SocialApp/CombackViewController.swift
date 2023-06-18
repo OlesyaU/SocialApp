@@ -1,20 +1,19 @@
 //
-//  EnterNumberViewController.swift
+//  ConfirmViewController.swift
 //  SocialApp
 //
-//  Created by Олеся on 18.06.2023.
+//  Created by Олеся on 14.06.2023.
 //
 
 import UIKit
 
-class EnterPhoneNumberViewController: UIViewController {
+class CombackViewController: UIViewController {
     private enum Constants {
-        static let welcomeLabelTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
-        static let pushNumberUserTitle = "Введите номер"
-        static let secondLabelTitle = "Ваш номер телефона  будет использоваться \n для входа в приложение"
+        static let welcomeLabelTitle = "С возвращением"
+        static let welcomeNewUserTitle = "Добро пожаловать !"
+        static let secondLabelTitle = "Введите номер телефона \n для входа в приложение"
         static let placeholderString = " + 38 _ _ _ + _ _ _ + _ _ "
-        static let buttonTitle = "ДАЛЕЕ"
-        static let privacyLabelTitle = "Нажимая кнопку \"Далее\"  Вы принимаете \n пользовательское Соглашение и политику конфиденциальности"
+        static let buttonTitle = "ПОДТВЕРДИТЬ"
         static let sideInset: CGFloat = 16
     }
 
@@ -27,20 +26,20 @@ class EnterPhoneNumberViewController: UIViewController {
         return label
     }()
 
-    private let pushNumberLabel: UILabel = {
-        let label = UILabel().forAutolayout()
-        label.text = Constants.pushNumberUserTitle
-        label.font = UIFont(name: "AvenirNextCondensed-Regular", size: 16)
-        label.textColor = .lightGray
-        label.textAlignment = .center
-        return label
-    }()
-
     private let secondLabel: UILabel = {
         let label = UILabel().forAutolayout()
-        label.text = Constants.secondLabelTitle
-        label.font = UIFont(name: "AvenirNextCondensed-Regular", size: 14)
-        label.textColor = .gray
+        let text = Constants.secondLabelTitle
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.gray
+        shadow.shadowBlurRadius = 5
+        shadow.shadowOffset = CGSize(width: 3, height: 3)
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 16),
+            .foregroundColor: UIColor.gray,
+            .shadow: shadow
+        ]
+        let attributedText = NSAttributedString(string: text, attributes: attrs)
+        label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 2
         label.cornerRadius()
@@ -79,73 +78,54 @@ class EnterPhoneNumberViewController: UIViewController {
         return button
     }()
 
-    private let privacyLabel: UILabel = {
-        let label = UILabel().forAutolayout()
-        label.text = Constants.privacyLabelTitle
-        label.font = UIFont(name: "AvenirNextCondensed-Regular", size: 12)
-        label.textColor = .lightGray
-        label.textAlignment = .center
-        label.numberOfLines = 3
-        return label
-    }()
-
     private var landscapeConstraints: [NSLayoutConstraint] = []
     private var portraitConstraints: [NSLayoutConstraint] = []
     private var commonConstraints: [NSLayoutConstraint] = []
 
-    override func viewDidLoad() {
+ override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
         setupConstraints()
         setColor()
+
+
     }
 
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-        navigationItem.leftBarButtonItem?.image = UIImage(systemName: "arrow.left")
-        navigationItem.setLeftBarButton(UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backItemAction)), animated: true)
-        navigationController?.navigationBar.tintColor = .black
+        navigationItem.setHidesBackButton(true, animated: false)
     }
 
     // MARK: - Helpers
 
     private func addSubviews() {
         welcomeLabel.placed(on: view)
-        pushNumberLabel.placed(on: view)
         secondLabel.placed(on: view)
         phoneNumberField.placed(on: view)
         confirmButton.placed(on: view)
-        privacyLabel.placed(on: view)
     }
 
     private func buttonTapped() {
-        let confirmViewController = ConfirmViewController()
+        let confirmViewController = CombackViewController()
         navigationController?.pushViewController(confirmViewController, animated: true)
         navigationController?.setViewControllers([confirmViewController], animated: false)
     }
-@objc private func backItemAction(){
-            navigationController?.popViewController(animated: true)
-        }
 
 }
 
 // MARK: - Constraints
 
-extension EnterPhoneNumberViewController {
+extension CombackViewController {
     private func setupConstraints() {
         commonConstraints.append(
             contentsOf: [
                 welcomeLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
                 welcomeLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
-                pushNumberLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
-                pushNumberLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
+
                 secondLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
                 secondLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
 
                 confirmButton.pinHeight(equalTo: 44),
-                privacyLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
-                privacyLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset)
-
 
             ]
         )
@@ -153,32 +133,28 @@ extension EnterPhoneNumberViewController {
         landscapeConstraints.append(
             contentsOf: [
                 welcomeLabel.pinTop(to: view, inset: 32),
-                pushNumberLabel.pinTop(to: welcomeLabel.bottomAnchor, inset: 32),
-                secondLabel.pinTop(to: pushNumberLabel.bottomAnchor, inset: 8),
+                secondLabel.pinTop(to: welcomeLabel.bottomAnchor, inset: 8),
                 phoneNumberField.pinHeight(equalTo: 44),
                 phoneNumberField.pinTop(to: secondLabel.bottomAnchor, inset: 16),
                 phoneNumberField.pinCenterX(to: view),
                 phoneNumberField.pinWidth(constant: view.frame.width / 2, multiplier: 1),
-                confirmButton.pinTop(to: phoneNumberField.bottomAnchor, inset: 72),
+                confirmButton.pinTop(to: phoneNumberField.bottomAnchor, inset: 80),
                 confirmButton.pinWidth(constant: view.frame.width / 2, multiplier: 1),
-                confirmButton.pinCenterX(to: view),
-                privacyLabel.pinTop(to: confirmButton.bottomAnchor,inset: 8)
+                confirmButton.pinCenterX(to: view)
             ]
         )
 
         portraitConstraints.append(
             contentsOf: [
-                welcomeLabel.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 80),
-                pushNumberLabel.pinTop(to: welcomeLabel.bottomAnchor, inset: 80),
-                secondLabel.pinTop(to: pushNumberLabel.bottomAnchor, inset: 8),
+                welcomeLabel.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 100),
+                secondLabel.pinTop(to: welcomeLabel.bottomAnchor, inset: 8),
                 phoneNumberField.pinHeight(equalTo: 56),
                 phoneNumberField.pinTop(to: secondLabel.bottomAnchor, inset: 24),
                 phoneNumberField.pinLeading(to: secondLabel.leadingAnchor, inset: Constants.sideInset),
                 phoneNumberField.pinTrailing(to: secondLabel.trailingAnchor, inset: Constants.sideInset),
                 confirmButton.pinTop(to: phoneNumberField.bottomAnchor, inset: 100),
                 confirmButton.pinLeading(to: phoneNumberField.leadingAnchor, inset: Constants.sideInset),
-                confirmButton.pinTrailing(to: phoneNumberField.trailingAnchor, inset: Constants.sideInset),
-                privacyLabel.pinTop(to: confirmButton.bottomAnchor,inset: 8)
+                confirmButton.pinTrailing(to: phoneNumberField.trailingAnchor, inset: Constants.sideInset)
             ]
         )
 
@@ -196,7 +172,7 @@ extension EnterPhoneNumberViewController {
 
 // MARK: - View Will Transition
 
-extension EnterPhoneNumberViewController {
+extension CombackViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
@@ -212,13 +188,10 @@ extension EnterPhoneNumberViewController {
     }
 }
 
-extension EnterPhoneNumberViewController: SetThemeColorProtocol {
+extension CombackViewController: SetThemeColorProtocol {
     func setColor() {
         view.backgroundColor = .backgroundPrimary
         phoneNumberField.backgroundColor = .textFieldColor
         confirmButton.tintColor = .contentColor
     }
 }
-
-
-

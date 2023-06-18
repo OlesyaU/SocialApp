@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7614A3932A3F0DF3004D7466 /* EnterNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3922A3F0DF3004D7466 /* EnterNumberViewController.swift */; };
 		7614A3952A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3942A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift */; };
+		7614A39C2A3F426D004D7466 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A39B2A3F426D004D7466 /* ConfirmViewController.swift */; };
 		7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670740E2A39955A007FC469 /* AppDelegate.swift */; };
 		767074112A39955A007FC469 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074102A39955A007FC469 /* SceneDelegate.swift */; };
 		767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074122A39955A007FC469 /* RegistrationViewController.swift */; };
@@ -21,13 +22,14 @@
 		76EFE9F72A39BB5C0083DE09 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F62A39BB5C0083DE09 /* Colors.swift */; };
 		76EFE9F92A39BB7E0083DE09 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F82A39BB7E0083DE09 /* Fonts.swift */; };
 		76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */; };
-		76EFE9FD2A3A06190083DE09 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FC2A3A06190083DE09 /* ConfirmViewController.swift */; };
+		76EFE9FD2A3A06190083DE09 /* CombackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FC2A3A06190083DE09 /* CombackViewController.swift */; };
 		76EFE9FF2A3B15F80083DE09 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FE2A3B15F80083DE09 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7614A3922A3F0DF3004D7466 /* EnterNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNumberViewController.swift; sourceTree = "<group>"; };
 		7614A3942A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNumberViewModel.swift; sourceTree = "<group>"; };
+		7614A39B2A3F426D004D7466 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		7670740B2A39955A007FC469 /* SocialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7670740E2A39955A007FC469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767074102A39955A007FC469 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +43,7 @@
 		76EFE9F62A39BB5C0083DE09 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		76EFE9F82A39BB7E0083DE09 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
-		76EFE9FC2A3A06190083DE09 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		76EFE9FC2A3A06190083DE09 /* CombackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombackViewController.swift; sourceTree = "<group>"; };
 		76EFE9FE2A3B15F80083DE09 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,45 @@
 			name = EnterNumberViewModel;
 			sourceTree = "<group>";
 		};
+		7614A3962A3F41A4004D7466 /* Comeback */ = {
+			isa = PBXGroup;
+			children = (
+				7614A3992A3F41E7004D7466 /* ComebackModel */,
+				7614A3982A3F41DA004D7466 /* ComebackView */,
+				7614A3972A3F41BC004D7466 /* ComebackViewModel */,
+			);
+			name = Comeback;
+			sourceTree = "<group>";
+		};
+		7614A3972A3F41BC004D7466 /* ComebackViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ComebackViewModel;
+			sourceTree = "<group>";
+		};
+		7614A3982A3F41DA004D7466 /* ComebackView */ = {
+			isa = PBXGroup;
+			children = (
+				76EFE9FC2A3A06190083DE09 /* CombackViewController.swift */,
+			);
+			name = ComebackView;
+			sourceTree = "<group>";
+		};
+		7614A3992A3F41E7004D7466 /* ComebackModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ComebackModel;
+			sourceTree = "<group>";
+		};
+		7614A39A2A3F4233004D7466 /* ConfirmModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ConfirmModel;
+			sourceTree = "<group>";
+		};
 		767074022A39955A007FC469 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +154,7 @@
 				767074102A39955A007FC469 /* SceneDelegate.swift */,
 				76EFE9EB2A39B9970083DE09 /* Registartion */,
 				7614A38E2A3F0D59004D7466 /* EnterPhoneNumber */,
+				7614A3962A3F41A4004D7466 /* Comeback */,
 				76EFE9EA2A39B9860083DE09 /* Confirm */,
 				76EFE9F32A39BA060083DE09 /* Helpers */,
 				767074172A39955D007FC469 /* Assets.xcassets */,
@@ -126,6 +168,7 @@
 		76EFE9EA2A39B9860083DE09 /* Confirm */ = {
 			isa = PBXGroup;
 			children = (
+				7614A39A2A3F4233004D7466 /* ConfirmModel */,
 				76EFE9F12A39B9F10083DE09 /* ConfirmView */,
 				76EFE9F02A39B9E70083DE09 /* ConfirmViewModel */,
 			);
@@ -175,7 +218,7 @@
 		76EFE9F12A39B9F10083DE09 /* ConfirmView */ = {
 			isa = PBXGroup;
 			children = (
-				76EFE9FC2A3A06190083DE09 /* ConfirmViewController.swift */,
+				7614A39B2A3F426D004D7466 /* ConfirmViewController.swift */,
 			);
 			path = ConfirmView;
 			sourceTree = "<group>";
@@ -272,8 +315,9 @@
 				767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */,
 				7614A3952A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift in Sources */,
 				76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */,
+				7614A39C2A3F426D004D7466 /* ConfirmViewController.swift in Sources */,
 				76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */,
-				76EFE9FD2A3A06190083DE09 /* ConfirmViewController.swift in Sources */,
+				76EFE9FD2A3A06190083DE09 /* CombackViewController.swift in Sources */,
 				7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */,
 				76EFE9FF2A3B15F80083DE09 /* User.swift in Sources */,
 				76EFE9F72A39BB5C0083DE09 /* Colors.swift in Sources */,
