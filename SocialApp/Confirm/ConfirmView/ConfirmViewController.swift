@@ -127,8 +127,8 @@ class ConfirmViewController: UIViewController {
     }
 
     private func buttonTapped() {
-        let confirmViewController = CombackViewController()
-        navigationController?.pushViewController(confirmViewController, animated: true)
+        let confirmViewController = MainTabBarController()
+
         navigationController?.setViewControllers([confirmViewController], animated: false)
     }
     @objc private func backItemAction(){
