@@ -8,8 +8,6 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
-
-    private let saved = SavedViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().backgroundColor = .backgroundPrimary
@@ -34,9 +32,9 @@ class MainTabBarController: UITabBarController {
         return UINavigationController(rootViewController: profile)
     }
     func createSavedViewController() -> UINavigationController {
-        let profile = SavedViewController()
-        profile.title = "Coxpaнённые"
-        profile.tabBarItem = UITabBarItem(title: "Coxpaнённые", image: UIImage(systemName: "square.and.arrow.down"), tag: 2)
-        return UINavigationController(rootViewController: profile)
+        let saved = SavedViewController()
+        saved.title = "Coxpaнённые"
+        saved.tabBarItem = UITabBarItem(title: "Coxpaнённые", image: UIImage(systemName: "square.and.arrow.down"), tag: 2)
+        return UINavigationController(rootViewController: saved)
     }
 }
