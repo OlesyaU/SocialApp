@@ -102,9 +102,9 @@ class EnterPhoneNumberViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.tintColor = .black
         navigationItem.leftBarButtonItem?.image = UIImage(systemName: "arrow.left")
         navigationItem.setLeftBarButton(UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backItemAction)), animated: true)
-        navigationController?.navigationBar.tintColor = .black
     }
 
     // MARK: - Helpers
@@ -121,12 +121,11 @@ class EnterPhoneNumberViewController: UIViewController {
     private func buttonTapped() {
         let confirmViewController = ConfirmViewController()
         navigationController?.pushViewController(confirmViewController, animated: true)
-        navigationController?.setViewControllers([confirmViewController], animated: false)
     }
-@objc private func backItemAction(){
-            navigationController?.popViewController(animated: true)
-        }
 
+    @objc private func backItemAction(){
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - Constraints
@@ -145,8 +144,6 @@ extension EnterPhoneNumberViewController {
                 confirmButton.pinHeight(equalTo: 44),
                 privacyLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
                 privacyLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset)
-
-
             ]
         )
 

@@ -95,7 +95,6 @@ class ConfirmViewController: UIViewController {
         return image
     }()
 
-
     private var landscapeConstraints: [NSLayoutConstraint] = []
     private var portraitConstraints: [NSLayoutConstraint] = []
     private var commonConstraints: [NSLayoutConstraint] = []
@@ -109,9 +108,9 @@ class ConfirmViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.tintColor = .black
         navigationItem.leftBarButtonItem?.image = UIImage(systemName: "arrow.left")
         navigationItem.setLeftBarButton(UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backItemAction)), animated: true)
-        navigationController?.navigationBar.tintColor = .black
     }
 
     // MARK: - Helpers
@@ -132,10 +131,9 @@ class ConfirmViewController: UIViewController {
         navigationController?.pushViewController(confirmViewController, animated: true)
         navigationController?.setViewControllers([confirmViewController], animated: false)
     }
-@objc private func backItemAction(){
-            navigationController?.popViewController(animated: true)
-        }
-
+    @objc private func backItemAction(){
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - Constraints
@@ -144,56 +142,65 @@ extension ConfirmViewController {
     private func setupConstraints() {
         commonConstraints.append(
             contentsOf: [
-                confirmLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
-                confirmLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
-                pushVerificationCodeLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
-                pushVerificationCodeLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
-                putNumberLabel.pinLeading(to: phoneNumberField.leadingAnchor,inset: 0),
-                putNumberLabel.pinLeading(to: phoneNumberField.trailingAnchor,inset: 0),
-                numberLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
-                numberLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
-                phoneNumberField.pinLeading(to: registrationButton.leadingAnchor,inset: Constants.sideInset),
-                phoneNumberField.pinTrailing(to: registrationButton.trailingAnchor,inset: Constants.sideInset),
-
+                numberLabel.pinTop(to: pushVerificationCodeLabel.bottomAnchor, inset: 0),
+                phoneNumberField.pinLeading(to: registrationButton.leadingAnchor, inset: Constants.sideInset),
+                phoneNumberField.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
                 registrationButton.pinHeight(equalTo: 44),
-                registrationButton.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
-                registrationButton.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
-                readyImage.pinTop(to: registrationButton.topAnchor,inset: 24),
-                readyImage.pinLeading(to: view.leadingAnchor,inset: Constants.sideInset),
-                readyImage.pinTrailing(to: view.trailingAnchor, inset: Constants.sideInset)
             ]
         )
 
         landscapeConstraints.append(
             contentsOf: [
                 confirmLabel.pinTop(to: view, inset: 32),
+                confirmLabel.pinLeading(to: readyImage.trailingAnchor, inset: Constants.sideInset),
+                confirmLabel.pinTrailing(to: view.trailingAnchor, inset: Constants.sideInset),
                 pushVerificationCodeLabel.pinTop(to: confirmLabel.bottomAnchor, inset: 32),
-                numberLabel.pinTop(to: pushVerificationCodeLabel.bottomAnchor, inset: 0),
+                pushVerificationCodeLabel.pinLeading(to: phoneNumberField.leadingAnchor, inset: 0),
+                pushVerificationCodeLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
+
                 putNumberLabel.pinBottom(to: phoneNumberField.topAnchor, inset: 0),
+                putNumberLabel.pinLeading(to: phoneNumberField.leadingAnchor, inset: Constants.sideInset),
                 phoneNumberField.pinHeight(equalTo: 44),
                 phoneNumberField.pinTop(to: numberLabel.bottomAnchor, inset: 24),
-                phoneNumberField.pinCenterX(to: view),
+                numberLabel.pinLeading(to: readyImage.trailingAnchor, inset: Constants.sideInset),
+                numberLabel.pinTrailing(to: phoneNumberField.trailingAnchor, inset: Constants.sideInset),
                 phoneNumberField.pinWidth(constant: view.frame.width / 2, multiplier: 1),
                 registrationButton.pinTop(to: phoneNumberField.bottomAnchor, inset: 56),
                 registrationButton.pinWidth(constant: view.frame.width / 2, multiplier: 1),
-                registrationButton.pinCenterX(to: view),
-
+                registrationButton.pinLeading(to: phoneNumberField.leadingAnchor, inset: 0),
+                registrationButton.pinTrailing(to: phoneNumberField.trailingAnchor, inset: 0),
+                readyImage.pinTop(to: view.topAnchor,inset: 32),
+                readyImage.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor,inset: Constants.sideInset),
+                readyImage.pinTop(to: confirmLabel.topAnchor),
+                readyImage.pinBottom(to: view.bottomAnchor, inset: Constants.sideInset),
+                readyImage.pinWidth(constant: 200, multiplier: 1)
             ]
         )
 
         portraitConstraints.append(
             contentsOf: [
                 confirmLabel.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 80),
-                pushVerificationCodeLabel.pinTop(to: confirmLabel.bottomAnchor, inset: 16),
+                confirmLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
+                confirmLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
+                pushVerificationCodeLabel.pinTop(to: confirmLabel.bottomAnchor, inset: Constants.sideInset),
+                pushVerificationCodeLabel.pinLeading(to: confirmLabel.leadingAnchor, inset: 0),
+                pushVerificationCodeLabel.pinTrailing(to: confirmLabel.trailingAnchor, inset: 0),
                 numberLabel.pinTop(to: pushVerificationCodeLabel.bottomAnchor, inset: 0),
+                numberLabel.pinLeading(to: pushVerificationCodeLabel.leadingAnchor),
                 putNumberLabel.pinBottom(to: phoneNumberField.topAnchor, inset: 0),
+                putNumberLabel.pinLeading(to: phoneNumberField.leadingAnchor, inset: 0),
+                putNumberLabel.pinLeading(to: phoneNumberField.trailingAnchor, inset: 0),
                 phoneNumberField.pinHeight(equalTo: 56),
                 phoneNumberField.pinTop(to: numberLabel.bottomAnchor, inset: 56),
                 phoneNumberField.pinLeading(to: numberLabel.leadingAnchor, inset: Constants.sideInset),
                 phoneNumberField.pinTrailing(to: numberLabel.trailingAnchor, inset: Constants.sideInset),
                 registrationButton.pinTop(to: phoneNumberField.bottomAnchor, inset: 100),
-
-//                registrationButton.pinTop(to: phoneNumberField.bottomAnchor,inset: 72)
+                registrationButton.pinLeading(to: phoneNumberField.leadingAnchor),
+                registrationButton.pinTrailing(to: phoneNumberField.trailingAnchor),
+                readyImage.pinTop(to: registrationButton.bottomAnchor, inset: 32),
+                readyImage.pinLeading(to: registrationButton.leadingAnchor, inset: 0),
+                readyImage.pinTrailing(to: registrationButton.trailingAnchor, inset: 0),
+                readyImage.pinHeight(equalTo: 200)
             ]
         )
 
@@ -204,7 +211,6 @@ extension ConfirmViewController {
             NSLayoutConstraint.deactivate(landscapeConstraints)
             NSLayoutConstraint.activate(portraitConstraints)
         }
-
         NSLayoutConstraint.activate(commonConstraints)
     }
 }
@@ -233,5 +239,4 @@ extension ConfirmViewController: SetThemeColorProtocol {
         phoneNumberField.backgroundColor = .textFieldColor
         registrationButton.tintColor = .contentColor
     }
-
 }
