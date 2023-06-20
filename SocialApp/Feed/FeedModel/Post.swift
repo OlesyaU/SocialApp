@@ -22,12 +22,12 @@ extension Post {
     static func mock(count: Int) -> [Post] {
         var result: [Post] = []
         for i in 0...count {
-            let post = Post(author: String.random(length: i),
-                            profession: String.random(length: i),
-                            image: UIImage(),
-                            description: String.random(length: i),
-                            likes: i,
-                            comments: i,
+            let post = Post(author: getAuthorNames().randomElement()!,
+                            profession: getProfession().randomElement()!,
+                            image: avatars().randomElement()!,
+                            description: lorem,
+                            likes: (0...290).randomElement()!,
+                            comments: (0...290).randomElement()!,
                             isSaved: Bool.random())
             result.append(post)
         }

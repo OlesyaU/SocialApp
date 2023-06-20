@@ -40,3 +40,15 @@ class EnterPhoneNumberViewModel {
         }
     }
 }
+
+class DataBase {
+    var profiles: [Profile] = []
+    var posts = Post.mock(count: 7)
+//    func fetchUser(by phone: String) -> Profile {
+//
+//
+//        profiles.first { profile in
+//profile.contacts.contains(where: phone == Contact.mobilePhone(phone))
+//        }
+//    }
+}

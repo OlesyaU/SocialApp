@@ -7,6 +7,12 @@
 import UIKit
 
 extension UIView {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
+extension UIView {
     enum Side {
         case left
         case right
@@ -54,11 +60,6 @@ extension UIView {
     func pinTop(to anchor: NSLayoutYAxisAnchor, inset: CGFloat = .zero) -> NSLayoutConstraint {
         topAnchor.constraint(equalTo: anchor, constant: inset)
     }
-
-//    @discardableResult
-//    func pinTopToLandscape(to anchor: NSLayoutXAxisAnchor, inset: CGFloat = .zero) -> NSLayoutConstraint {
-//        topAnchor.constraint(equalTo: anchor, constant: inset)
-//    }
 
     @discardableResult
     func pinBottom(to view: UIView, inset: CGFloat = .zero) -> NSLayoutConstraint {
@@ -125,6 +126,11 @@ extension UIView {
     }
 
     @discardableResult
+    func pinWeight(equalTo constant: CGFloat) -> NSLayoutConstraint {
+       widthAnchor.constraint(equalToConstant: constant)
+    }
+
+    @discardableResult
     func pinWidth(constant: CGFloat, multiplier: CGFloat) -> NSLayoutConstraint {
         widthAnchor.constraint(equalToConstant: constant)
     }
@@ -135,6 +141,7 @@ extension UIView {
         layer.masksToBounds = true
         return self
     }
+   
     
     @discardableResult
     func forAutolayout() -> Self {
