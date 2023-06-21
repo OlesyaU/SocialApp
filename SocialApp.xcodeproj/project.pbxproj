@@ -21,6 +21,8 @@
 		7614A3B92A40C4A7004D7466 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3B82A40C4A7004D7466 /* Contact.swift */; };
 		7614A3BB2A41A6D4004D7466 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3BA2A41A6D4004D7466 /* FeedViewModel.swift */; };
 		7614A3BD2A4207A2004D7466 /* DataForPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3BC2A4207A2004D7466 /* DataForPost.swift */; };
+		7614A3BF2A42CDD3004D7466 /* FirstFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3BE2A42CDD3004D7466 /* FirstFeedCell.swift */; };
+		7614A3FE2A432E4D004D7466 /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3FD2A432E4D004D7466 /* StoryCollectionViewCell.swift */; };
 		7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670740E2A39955A007FC469 /* AppDelegate.swift */; };
 		767074112A39955A007FC469 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074102A39955A007FC469 /* SceneDelegate.swift */; };
 		767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074122A39955A007FC469 /* RegistrationViewController.swift */; };
@@ -30,8 +32,6 @@
 		76CD09992A3C971F001A1B31 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76CD09982A3C971F001A1B31 /* FirebaseAuth */; };
 		76CD099B2A3C97AA001A1B31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */; };
 		76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F42A39BB3A0083DE09 /* Themes.swift */; };
-		76EFE9F72A39BB5C0083DE09 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F62A39BB5C0083DE09 /* Colors.swift */; };
-		76EFE9F92A39BB7E0083DE09 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F82A39BB7E0083DE09 /* Fonts.swift */; };
 		76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */; };
 		76EFE9FD2A3A06190083DE09 /* CombackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FC2A3A06190083DE09 /* CombackViewController.swift */; };
 		76EFE9FF2A3B15F80083DE09 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FE2A3B15F80083DE09 /* User.swift */; };
@@ -52,6 +52,8 @@
 		7614A3B82A40C4A7004D7466 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		7614A3BA2A41A6D4004D7466 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		7614A3BC2A4207A2004D7466 /* DataForPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataForPost.swift; sourceTree = "<group>"; };
+		7614A3BE2A42CDD3004D7466 /* FirstFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFeedCell.swift; sourceTree = "<group>"; };
+		7614A3FD2A432E4D004D7466 /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		7670740B2A39955A007FC469 /* SocialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7670740E2A39955A007FC469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767074102A39955A007FC469 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,8 +64,6 @@
 		76CD09902A3C7453001A1B31 /* OrientationDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationDevice.swift; sourceTree = "<group>"; };
 		76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76EFE9F42A39BB3A0083DE09 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
-		76EFE9F62A39BB5C0083DE09 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		76EFE9F82A39BB7E0083DE09 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		76EFE9FC2A3A06190083DE09 /* CombackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombackViewController.swift; sourceTree = "<group>"; };
 		76EFE9FE2A3B15F80083DE09 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -176,6 +176,8 @@
 			children = (
 				7614A39D2A407B9C004D7466 /* FeedTableViewController.swift */,
 				7614A3B02A408D6F004D7466 /* FeedCell.swift */,
+				7614A3BE2A42CDD3004D7466 /* FirstFeedCell.swift */,
+				7614A3FD2A432E4D004D7466 /* StoryCollectionViewCell.swift */,
 			);
 			path = FeedView;
 			sourceTree = "<group>";
@@ -339,8 +341,6 @@
 			isa = PBXGroup;
 			children = (
 				76EFE9F42A39BB3A0083DE09 /* Themes.swift */,
-				76EFE9F62A39BB5C0083DE09 /* Colors.swift */,
-				76EFE9F82A39BB7E0083DE09 /* Fonts.swift */,
 				76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */,
 				76CD09902A3C7453001A1B31 /* OrientationDevice.swift */,
 				7614A3BC2A4207A2004D7466 /* DataForPost.swift */,
@@ -433,6 +433,7 @@
 				7614A39E2A407B9C004D7466 /* FeedTableViewController.swift in Sources */,
 				7614A3BB2A41A6D4004D7466 /* FeedViewModel.swift in Sources */,
 				7614A3B92A40C4A7004D7466 /* Contact.swift in Sources */,
+				7614A3FE2A432E4D004D7466 /* StoryCollectionViewCell.swift in Sources */,
 				7614A39C2A3F426D004D7466 /* ConfirmViewController.swift in Sources */,
 				7614A3A92A4080CC004D7466 /* ProfileViewController.swift in Sources */,
 				76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */,
@@ -441,14 +442,13 @@
 				7614A3BD2A4207A2004D7466 /* DataForPost.swift in Sources */,
 				7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */,
 				76EFE9FF2A3B15F80083DE09 /* User.swift in Sources */,
-				76EFE9F72A39BB5C0083DE09 /* Colors.swift in Sources */,
-				76EFE9F92A39BB7E0083DE09 /* Fonts.swift in Sources */,
 				7614A3AF2A4081B6004D7466 /* SavedViewController.swift in Sources */,
 				76CD09912A3C7453001A1B31 /* OrientationDevice.swift in Sources */,
 				7614A3932A3F0DF3004D7466 /* EnterNumberViewController.swift in Sources */,
 				767074112A39955A007FC469 /* SceneDelegate.swift in Sources */,
 				7614A3B12A408D6F004D7466 /* FeedCell.swift in Sources */,
 				7614A3B52A408E8B004D7466 /* Post.swift in Sources */,
+				7614A3BF2A42CDD3004D7466 /* FirstFeedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,13 +9,13 @@ import UIKit
 
 class FeedCell: UITableViewCell {
     private enum Constants {
-     static let sideInset: CGFloat = 16
-     static let heightAvatar: CGFloat = 56
+        static let sideInset: CGFloat = 16
+        static let heightAvatar: CGFloat = 56
     }
 
     private lazy var image: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.backgroundColor = .backgroundPrimary
         image.isUserInteractionEnabled = false
         return image
@@ -30,7 +30,7 @@ class FeedCell: UITableViewCell {
         return image
     }()
 
-    private let authorLabel: UILabel = {
+    private let authorNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -45,7 +45,6 @@ class FeedCell: UITableViewCell {
         label.textColor = .gray
         return label
     }()
-
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
@@ -79,6 +78,7 @@ class FeedCell: UITableViewCell {
         label.textAlignment = .left
         return label
     }()
+
     private lazy var commentsIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -98,19 +98,16 @@ class FeedCell: UITableViewCell {
 
     private lazy var bookmarkIcon: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.image = UIImage(systemName: "bookmark")
         image.tintColor = .darkGray
         return image
     }()
 
-    private var landscapeConstraints: [NSLayoutConstraint] = []
-    private var portraitConstraints: [NSLayoutConstraint] = []
     private var commonConstraints: [NSLayoutConstraint] = []
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .white
         layout()
     }
 
@@ -119,111 +116,89 @@ class FeedCell: UITableViewCell {
     }
 
     private func layout() {
-        [image,descriptionLabel,commentsLabel,likesLabel,authorLabel, professionLabel, authorPhoto, likesIcon,commentsIcon, dotsImage, bookmarkIcon].forEach {$0.forAutolayout()}
-        [image,descriptionLabel,commentsLabel,likesLabel,authorLabel, professionLabel, authorPhoto, likesIcon, commentsIcon, dotsImage, bookmarkIcon].forEach {contentView.addSubview($0)}
+        [image,descriptionLabel,commentsLabel,likesLabel,authorNameLabel, professionLabel, authorPhoto, likesIcon,commentsIcon, dotsImage, bookmarkIcon].forEach {$0.forAutolayout()}
+        [image,descriptionLabel,commentsLabel,likesLabel,authorNameLabel, professionLabel, authorPhoto, likesIcon, commentsIcon, dotsImage, bookmarkIcon].forEach {contentView.addSubview($0)}
 
-            commonConstraints.append(
-                contentsOf: [
-                    authorPhoto.pinHeight(equalTo: Constants.heightAvatar),
-                    authorPhoto.pinWeight(equalTo: Constants.heightAvatar),
-                    authorPhoto.pinTop(to: contentView.topAnchor,inset: Constants.sideInset),
-                    authorPhoto.pinLeading(to: contentView.leadingAnchor, inset:  Constants.sideInset),
+        commonConstraints.append(
+            contentsOf: [
+                authorPhoto.pinHeight(equalTo: Constants.heightAvatar),
+                authorPhoto.pinWeight(equalTo: Constants.heightAvatar),
+                authorPhoto.pinTop(to: contentView.topAnchor,inset: Constants.sideInset),
+                authorPhoto.pinLeading(to: contentView.leadingAnchor, inset:  Constants.sideInset),
+                authorPhoto.pinBottom(to: descriptionLabel.topAnchor, inset: Constants.sideInset),
 
-                    authorLabel.pinTop(to: contentView.topAnchor, inset: Constants.sideInset),
-                    authorLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
-                    authorLabel.pinLeading(to: authorPhoto.trailingAnchor, inset: Constants.sideInset),
-                    authorLabel.pinTrailing(to: contentView.trailingAnchor),
+                authorNameLabel.pinTop(to: contentView.topAnchor, inset: Constants.sideInset),
+                authorNameLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
+                authorNameLabel.pinLeading(to: authorPhoto.trailingAnchor, inset: Constants.sideInset),
+                authorNameLabel.pinTrailing(to: contentView.trailingAnchor),
+                authorNameLabel.pinBottom(to: professionLabel.topAnchor),
 
-                    professionLabel.pinTop(to: authorLabel.bottomAnchor, inset: 0),
-                    professionLabel.pinLeading(to: authorLabel.leadingAnchor),
-                    professionLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
-                    professionLabel.pinTrailing(to: dotsImage.leadingAnchor, inset: Constants.sideInset),
+                professionLabel.pinTop(to: authorNameLabel.bottomAnchor),
+                professionLabel.pinLeading(to: authorNameLabel.leadingAnchor),
+                professionLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
+                professionLabel.pinTrailing(to: dotsImage.leadingAnchor, inset: Constants.sideInset),
+                professionLabel.pinBottom(to: authorPhoto.bottomAnchor),
 
-                    dotsImage.pinTop(to: authorPhoto.topAnchor),
-                    dotsImage.pinBottom(to: authorPhoto.bottomAnchor),
-                    dotsImage.pinWeight(equalTo: 20),
-                    dotsImage.pinTrailing(to: contentView.trailingAnchor, inset: Constants.sideInset),
-
-                    image.pinTop(to: descriptionLabel.bottomAnchor, inset: Constants.sideInset),
-                    image.pinLeading(to: contentView.leadingAnchor),
-                    image.pinTrailing(to: contentView.trailingAnchor),
-                    image.pinHeight(equalTo: contentView.frame.width),
-
-                    likesIcon.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
-                    likesIcon.pinLeading(to: contentView.leadingAnchor, inset: Constants.sideInset),
-                    likesIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
-                    likesIcon.pinWeight(equalTo: Constants.heightAvatar / 2),
-                    likesIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
+                dotsImage.pinTop(to:contentView.topAnchor,inset: Constants.sideInset),
+                dotsImage.pinBottom(to: authorPhoto.bottomAnchor),
+                dotsImage.pinWeight(equalTo: 20),
+                dotsImage.pinTrailing(to: contentView.trailingAnchor, inset: Constants.sideInset),
+                dotsImage.pinLeading(to: professionLabel.trailingAnchor),
 
 
-                    likesLabel.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
-                    likesLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
-                    likesLabel.pinWeight(equalTo: Constants.heightAvatar / 2),
-                    likesLabel.pinLeading(to: likesIcon.trailingAnchor, inset: Constants.sideInset / 2),
-                    likesLabel.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
-
-                    commentsIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
-                    commentsIcon.pinWeight(equalTo: Constants.heightAvatar / 2),
-                    commentsIcon.pinLeading(to: likesLabel.trailingAnchor, inset: Constants.sideInset),
-                    commentsIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
-
-                    commentsLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
-                    commentsLabel.pinWeight(equalTo: Constants.heightAvatar / 2),
-                    commentsLabel.pinLeading(to: commentsIcon.trailingAnchor, inset: Constants.sideInset / 2),
-                    commentsLabel.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
-
-                    descriptionLabel.pinTop(to: authorPhoto.bottomAnchor, inset: Constants.sideInset),
-                    descriptionLabel.pinLeading(to: contentView.leadingAnchor),
-                    descriptionLabel.pinTrailing(to: contentView.trailingAnchor),
-
-                    bookmarkIcon.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
-                    bookmarkIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
-                    bookmarkIcon.pinWeight(equalTo: Constants.heightAvatar / 2),
-                    bookmarkIcon.pinTrailing(to: contentView.trailingAnchor, inset: Constants.sideInset),
-                    bookmarkIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset)
+                descriptionLabel.pinTop(to: authorPhoto.bottomAnchor, inset: Constants.sideInset),
+                descriptionLabel.pinLeading(to: contentView.leadingAnchor),
+                descriptionLabel.pinTrailing(to: contentView.trailingAnchor),
+                descriptionLabel.pinHeight(equalTo: 100),
+                descriptionLabel.pinBottom(to: image.topAnchor),
 
 
+                image.pinTop(to: descriptionLabel.bottomAnchor, inset: Constants.sideInset),
+                image.pinLeading(to: contentView.leadingAnchor),
+                image.pinTrailing(to: contentView.trailingAnchor),
+                image.pinHeight(equalTo: UIScreen.main.bounds.width),
 
-//                    возможно правильней сделать разные ячейки для шапки поста , содержания и для футера поста
+
+                likesIcon.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
+                likesIcon.pinLeading(to: contentView.leadingAnchor, inset: Constants.sideInset),
+                likesIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
+                likesIcon.pinWeight(equalTo: Constants.heightAvatar / 2),
+                likesIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
 
 
+                likesLabel.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
+                likesLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
+                likesLabel.pinWeight(equalTo: Constants.heightAvatar),
+                likesLabel.pinLeading(to: likesIcon.trailingAnchor, inset: Constants.sideInset / 2),
+                likesLabel.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
+
+                commentsIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
+                commentsIcon.pinWeight(equalTo: Constants.heightAvatar / 2),
+                commentsIcon.pinLeading(to: likesLabel.trailingAnchor, inset: Constants.sideInset),
+                commentsIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
+
+                commentsLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
+                commentsLabel.pinWeight(equalTo: Constants.heightAvatar),
+                commentsLabel.pinLeading(to: commentsIcon.trailingAnchor, inset: Constants.sideInset / 2),
+                commentsLabel.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
 
 
+                bookmarkIcon.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
+                bookmarkIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
+                bookmarkIcon.pinWeight(equalTo: Constants.heightAvatar / 2),
+                bookmarkIcon.pinTrailing(to: contentView.trailingAnchor, inset: Constants.sideInset),
+                bookmarkIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset)
+            ]
+        )
+        NSLayoutConstraint.activate(commonConstraints)
+    }
 
-                ]
-            )
-
-            landscapeConstraints.append(
-                contentsOf: [
-
-                ]
-            )
-
-            portraitConstraints.append(
-                contentsOf: [
-
-                ]
-            )
-
-            if Orientation.isLandscape {
-                NSLayoutConstraint.activate(landscapeConstraints)
-            } else {
-                NSLayoutConstraint.activate(portraitConstraints)
-            }
-
-            NSLayoutConstraint.activate(commonConstraints)
- }
     func configureCell(post: Post) {
-        image.image = post.image
-        authorLabel.text = post.author
+        image.image = UIImage(named: post.image)
+        authorNameLabel.text = post.author
         professionLabel.text = post.profession
         descriptionLabel.text = post.description
         likesLabel.text = String(post.likes)
         commentsLabel.text = String(post.comments)
-
     }
-
-
-
-
 }

@@ -10,6 +10,6 @@ import UIKit
 
 final class FeedViewModel {
     let posts = Post.mock(count: 7)
-
+    let profiles = Profile.mock(count: 7)
 }
 

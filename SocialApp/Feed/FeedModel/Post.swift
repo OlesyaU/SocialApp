@@ -11,7 +11,7 @@ import UIKit
 struct Post {
     let author: String
     let profession: String
-    let image: UIImage
+    let image: String
     let description: String
     let likes: Int
     let comments: Int
@@ -21,7 +21,7 @@ struct Post {
 extension Post {
     static func mock(count: Int) -> [Post] {
         var result: [Post] = []
-        for i in 0...count {
+        for _ in 0...count {
             let post = Post(author: getAuthorNames().randomElement()!,
                             profession: getProfession().randomElement()!,
                             image: avatars().randomElement()!,

@@ -15,7 +15,6 @@ class ConfirmViewController: UIViewController {
         static let putNumberLabelTitle = "Введите код из SMS"
         static let placeholderString = "  _ _ _ - _ _ _ - _ _ "
         static let buttonTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
-
         static let sideInset: CGFloat = 16
     }
 
@@ -46,6 +45,7 @@ class ConfirmViewController: UIViewController {
         label.numberOfLines = 1
         return label
     }()
+
     private let putNumberLabel: UILabel = {
         let label = UILabel().forAutolayout()
         label.text = Constants.putNumberLabelTitle
@@ -123,14 +123,13 @@ class ConfirmViewController: UIViewController {
         phoneNumberField.placed(on: view)
         registrationButton.placed(on: view)
         readyImage.placed(on: view)
-
     }
 
     private func buttonTapped() {
         let confirmViewController = MainTabBarController()
-
         navigationController?.setViewControllers([confirmViewController], animated: false)
     }
+
     @objc private func backItemAction(){
         navigationController?.popViewController(animated: true)
     }

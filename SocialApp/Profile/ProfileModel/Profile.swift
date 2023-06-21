@@ -8,6 +8,7 @@
 import Foundation
 
 struct Profile {
+    let avatar: String
     let name: String
     let surname: String
     let profession: String
@@ -29,25 +30,26 @@ struct Profile {
         var profiles: [Profile] = []
         for i in 0...count {
             let profile = Profile(
-                name: String.random(length: i),
+                avatar: avatars().randomElement()!.description,
+                name: getAuthorNames().randomElement()!,
                 surname: String.random(length: i),
-                profession: String.random(length: i),
+                profession: getProfession().randomElement()!,
                 posts: Post.mock(count: i),
-                subscribers: Profile.mock(count: i),
-                subscriptions: Profile.mock(count: i),
-                city: String.random(length: i),
+                subscribers: [],
+                subscriptions: [],
+                city: getCity().randomElement()!,
                 dateOfBirth: Date(),
-                education: String.random(length: i),
-                career: String.random(length: i),
+                education: getProfession().randomElement()!,
+                career: getProfession().randomElement()!,
                 contacts: Contact.random(3)
             )
+            profiles.append(profile)
         }
         return profiles
     }
 }
 
 extension String {
-
     static func random(length: Int = 20) -> String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString: String = ""

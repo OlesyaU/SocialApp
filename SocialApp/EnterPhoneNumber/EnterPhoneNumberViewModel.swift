@@ -31,24 +31,16 @@ class EnterPhoneNumberViewModel {
                 print(error.localizedDescription)
                 return
             }
-            
             guard let phoneNumber = authData?.user.phoneNumber else {
                 return
             }
-
             self?.user = User(phone: phoneNumber)
         }
     }
 }
 
+// TODO: - Replace all mocks for DataBase
 class DataBase {
     var profiles: [Profile] = []
     var posts = Post.mock(count: 7)
-//    func fetchUser(by phone: String) -> Profile {
-//
-//
-//        profiles.first { profile in
-//profile.contacts.contains(where: phone == Contact.mobilePhone(phone))
-//        }
-//    }
 }

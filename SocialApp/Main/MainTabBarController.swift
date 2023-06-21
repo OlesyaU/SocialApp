@@ -31,6 +31,7 @@ class MainTabBarController: UITabBarController {
         profile.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
         return UINavigationController(rootViewController: profile)
     }
+    
     func createSavedViewController() -> UINavigationController {
         let saved = SavedViewController()
         saved.title = "Coxpaнённые"

@@ -82,13 +82,11 @@ class CombackViewController: UIViewController {
     private var portraitConstraints: [NSLayoutConstraint] = []
     private var commonConstraints: [NSLayoutConstraint] = []
 
- override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
         setupConstraints()
         setColor()
-
-
     }
 
     override func viewWillAppear(_ animated: Bool){
@@ -165,7 +163,6 @@ extension CombackViewController {
             NSLayoutConstraint.deactivate(landscapeConstraints)
             NSLayoutConstraint.activate(portraitConstraints)
         }
-
         NSLayoutConstraint.activate(commonConstraints)
     }
 }

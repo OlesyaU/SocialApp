@@ -79,31 +79,9 @@ class RegistrationViewController: UIViewController {
         navigationController?.setViewControllers([confirmViewController], animated: false)
     }
 
-
     func createUser(){
-let enterNunberViewController = EnterPhoneNumberViewController()
+        let enterNunberViewController = EnterPhoneNumberViewController()
         navigationController?.pushViewController(enterNunberViewController, animated: true)
-//        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
-//        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate:nil) {
-//                                                                    verificationID, error in
-//            if ((error) != nil) {
-//              // Handles error
-////              self.handleError(error)
-//              return
-//            }
-//            let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID ?? "",
-//                                                                       verificationCode: testVerificationCode)
-//            Auth.auth().signInAndRetrieveData(with: credential) { authData, error in
-//              if (error) {
-//                // Handles error
-////                self.handleError(error)
-//                return
-//              }
-////              _user = authData.user
-//
-//        }
-//        }
-
     }
 }
 
@@ -148,7 +126,6 @@ extension RegistrationViewController {
         } else {
             NSLayoutConstraint.activate(portraitConstraints)
         }
-
         NSLayoutConstraint.activate(commonConstraints)
     }
 }
