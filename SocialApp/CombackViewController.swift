@@ -12,7 +12,7 @@ class CombackViewController: UIViewController {
         static let welcomeLabelTitle = "С возвращением"
         static let welcomeNewUserTitle = "Добро пожаловать !"
         static let secondLabelTitle = "Введите номер телефона \n для входа в приложение"
-        static let placeholderString = " + 38 _ _ _ + _ _ _ + _ _ "
+        static let placeholderString = " +7 _ _ _  _ _ _  _ _  _ _"
         static let buttonTitle = "ПОДТВЕРДИТЬ"
         static let sideInset: CGFloat = 16
     }
@@ -55,12 +55,15 @@ class CombackViewController: UIViewController {
         field.pinLeading(to: view, inset: Constants.sideInset * 4)
         field.pinTrailing(to: view, inset: Constants.sideInset * 4)
         field.keyboardType = .phonePad
+        field.textAlignment = .center
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
         field.attributedPlaceholder = NSAttributedString(
             string: Constants.placeholderString,
             attributes: [.paragraphStyle: centeredParagraphStyle]
         )
+        field.delegate = self
+        field.clearButtonMode = .whileEditing
         return field
     }()
 
@@ -192,3 +195,13 @@ extension CombackViewController: SetThemeColorProtocol {
         confirmButton.tintColor = .contentColor
     }
 }
+
+extension CombackViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return  false}
+        textField.text = text.applyPatternOnNumbers(pattern: "+# ### ### ## ##", replacementCharacter: "#")
+        let newLength = text.count - 3
+        return newLength <= 12
+    }
+}
+

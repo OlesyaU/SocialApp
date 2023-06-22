@@ -12,7 +12,7 @@ class EnterPhoneNumberViewController: UIViewController {
         static let welcomeLabelTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
         static let pushNumberUserTitle = "Введите номер"
         static let secondLabelTitle = "Ваш номер телефона  будет использоваться \n для входа в приложение"
-        static let placeholderString = "+ 7 _ _ _  _ _ _  _ _  _ _"
+        static let placeholderString = "+7 _ _ _  _ _ _  _ _  _ _"
         static let buttonTitle = "ДАЛЕЕ"
         static let privacyLabelTitle = "Нажимая кнопку \"Далее\"  Вы принимаете \n пользовательское Соглашение и политику конфиденциальности"
         static let sideInset: CGFloat = 16
@@ -101,7 +101,6 @@ class EnterPhoneNumberViewController: UIViewController {
         addSubviews()
         setupConstraints()
         setColor()
-        //        mask()
     }
 
     override func viewWillAppear(_ animated: Bool){
