@@ -12,6 +12,7 @@ class FeedCell: UITableViewCell {
         static let sideInset: CGFloat = 16
         static let heightAvatar: CGFloat = 56
     }
+   var delegate: FeedCellProtocol?
 
     private lazy var image: UIImageView = {
         let image = UIImageView()
@@ -93,6 +94,8 @@ class FeedCell: UITableViewCell {
         image.tintColor = .systemOrange
         image.image = UIImage(named: "DotsVertical")
         image.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(dotsGestureAction))
+        image.addGestureRecognizer(gesture)
         return image
     }()
 
@@ -200,5 +203,10 @@ class FeedCell: UITableViewCell {
         descriptionLabel.text = post.description
         likesLabel.text = String(post.likes)
         commentsLabel.text = String(post.comments)
+    }
+
+    @objc private func dotsGestureAction() {
+        dotsImage.tintColor = .systemOrange
+        delegate?.showMenuViewController()
     }
 }

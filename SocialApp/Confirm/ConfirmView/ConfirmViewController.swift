@@ -65,12 +65,15 @@ class ConfirmViewController: UIViewController {
         field.pinLeading(to: view, inset: Constants.sideInset * 4)
         field.pinTrailing(to: view, inset: Constants.sideInset * 4)
         field.keyboardType = .phonePad
+        field.textAlignment = .center
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
         field.attributedPlaceholder = NSAttributedString(
             string: Constants.placeholderString,
             attributes: [.paragraphStyle: centeredParagraphStyle]
         )
+        field.delegate = self
+        field.clearButtonMode = .whileEditing
         return field
     }()
 
@@ -237,5 +240,14 @@ extension ConfirmViewController: SetThemeColorProtocol {
         view.backgroundColor = .backgroundPrimary
         phoneNumberField.backgroundColor = .textFieldColor
         registrationButton.tintColor = .contentColor
+    }
+}
+
+extension ConfirmViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return  false}
+        textField.text = text.applyPatternOnNumbers(pattern: "###-##-##", replacementCharacter: "#")
+        let newLength = text.count
+        return newLength <= 8
     }
 }

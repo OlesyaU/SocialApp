@@ -23,6 +23,10 @@
 		7614A3BD2A4207A2004D7466 /* DataForPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3BC2A4207A2004D7466 /* DataForPost.swift */; };
 		7614A3BF2A42CDD3004D7466 /* FirstFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3BE2A42CDD3004D7466 /* FirstFeedCell.swift */; };
 		7614A3FE2A432E4D004D7466 /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A3FD2A432E4D004D7466 /* StoryCollectionViewCell.swift */; };
+		7614A4012A44273D004D7466 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A4002A44273D004D7466 /* MenuViewController.swift */; };
+		7614A4032A442857004D7466 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A4022A442857004D7466 /* MenuCell.swift */; };
+		7614A4062A4435BA004D7466 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 7614A4052A4435BA004D7466 /* FloatingPanel */; };
+		7614A4082A44362A004D7466 /* FloatingPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A4072A44362A004D7466 /* FloatingPanelViewController.swift */; };
 		7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670740E2A39955A007FC469 /* AppDelegate.swift */; };
 		767074112A39955A007FC469 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074102A39955A007FC469 /* SceneDelegate.swift */; };
 		767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074122A39955A007FC469 /* RegistrationViewController.swift */; };
@@ -54,6 +58,9 @@
 		7614A3BC2A4207A2004D7466 /* DataForPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataForPost.swift; sourceTree = "<group>"; };
 		7614A3BE2A42CDD3004D7466 /* FirstFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFeedCell.swift; sourceTree = "<group>"; };
 		7614A3FD2A432E4D004D7466 /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		7614A4002A44273D004D7466 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7614A4022A442857004D7466 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		7614A4072A44362A004D7466 /* FloatingPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelViewController.swift; sourceTree = "<group>"; };
 		7670740B2A39955A007FC469 /* SocialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7670740E2A39955A007FC469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767074102A39955A007FC469 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76CD09992A3C971F001A1B31 /* FirebaseAuth in Frameworks */,
+				7614A4062A4435BA004D7466 /* FloatingPanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +186,9 @@
 				7614A3B02A408D6F004D7466 /* FeedCell.swift */,
 				7614A3BE2A42CDD3004D7466 /* FirstFeedCell.swift */,
 				7614A3FD2A432E4D004D7466 /* StoryCollectionViewCell.swift */,
+				7614A4002A44273D004D7466 /* MenuViewController.swift */,
+				7614A4022A442857004D7466 /* MenuCell.swift */,
+				7614A4072A44362A004D7466 /* FloatingPanelViewController.swift */,
 			);
 			path = FeedView;
 			sourceTree = "<group>";
@@ -366,6 +377,7 @@
 			name = SocialApp;
 			packageProductDependencies = (
 				76CD09982A3C971F001A1B31 /* FirebaseAuth */,
+				7614A4052A4435BA004D7466 /* FloatingPanel */,
 			);
 			productName = SocialApp;
 			productReference = 7670740B2A39955A007FC469 /* SocialApp.app */;
@@ -397,6 +409,7 @@
 			mainGroup = 767074022A39955A007FC469;
 			packageReferences = (
 				76CD09972A3C971F001A1B31 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7614A4042A4435BA004D7466 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 7670740C2A39955A007FC469 /* Products */;
 			projectDirPath = "";
@@ -441,13 +454,16 @@
 				7614A3B72A409039004D7466 /* Profile.swift in Sources */,
 				7614A3BD2A4207A2004D7466 /* DataForPost.swift in Sources */,
 				7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */,
+				7614A4012A44273D004D7466 /* MenuViewController.swift in Sources */,
 				76EFE9FF2A3B15F80083DE09 /* User.swift in Sources */,
+				7614A4082A44362A004D7466 /* FloatingPanelViewController.swift in Sources */,
 				7614A3AF2A4081B6004D7466 /* SavedViewController.swift in Sources */,
 				76CD09912A3C7453001A1B31 /* OrientationDevice.swift in Sources */,
 				7614A3932A3F0DF3004D7466 /* EnterNumberViewController.swift in Sources */,
 				767074112A39955A007FC469 /* SceneDelegate.swift in Sources */,
 				7614A3B12A408D6F004D7466 /* FeedCell.swift in Sources */,
 				7614A3B52A408E8B004D7466 /* Post.swift in Sources */,
+				7614A4032A442857004D7466 /* MenuCell.swift in Sources */,
 				7614A3BF2A42CDD3004D7466 /* FirstFeedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,6 +672,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7614A4042A4435BA004D7466 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		76CD09972A3C971F001A1B31 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -667,6 +691,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7614A4052A4435BA004D7466 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7614A4042A4435BA004D7466 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
 		76CD09982A3C971F001A1B31 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 76CD09972A3C971F001A1B31 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

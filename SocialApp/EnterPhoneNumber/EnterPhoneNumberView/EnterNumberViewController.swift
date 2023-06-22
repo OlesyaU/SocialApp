@@ -56,12 +56,15 @@ class EnterPhoneNumberViewController: UIViewController {
         field.pinLeading(to: view, inset: Constants.sideInset * 4)
         field.pinTrailing(to: view, inset: Constants.sideInset * 4)
         field.keyboardType = .phonePad
+        field.textAlignment = .center
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
         field.attributedPlaceholder = NSAttributedString(
             string: Constants.placeholderString,
             attributes: [.paragraphStyle: centeredParagraphStyle]
         )
+        field.delegate = self
+        field.clearButtonMode = .whileEditing
         return field
     }()
 
@@ -98,6 +101,7 @@ class EnterPhoneNumberViewController: UIViewController {
         addSubviews()
         setupConstraints()
         setColor()
+        //        mask()
     }
 
     override func viewWillAppear(_ animated: Bool){
@@ -108,6 +112,11 @@ class EnterPhoneNumberViewController: UIViewController {
     }
 
     // MARK: - Helpers
+    private func mask(){
+        guard let text = phoneNumberField.text else { return }
+        phoneNumberField.text = text.applyPatternOnNumbers(pattern: "+# (###) ###-####", replacementCharacter: "#")
+    }
+
 
     private func addSubviews() {
         welcomeLabel.placed(on: view)
@@ -217,5 +226,12 @@ extension EnterPhoneNumberViewController: SetThemeColorProtocol {
     }
 }
 
-
+extension EnterPhoneNumberViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return  false}
+        textField.text = text.applyPatternOnNumbers(pattern: "+## (###) ###-##-##", replacementCharacter: "#")
+        let newLength = text.count - 5
+        return newLength <= 13
+    }
+}
 
