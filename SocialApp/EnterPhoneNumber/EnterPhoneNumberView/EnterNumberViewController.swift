@@ -229,9 +229,9 @@ extension EnterPhoneNumberViewController: SetThemeColorProtocol {
 extension EnterPhoneNumberViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return  false}
-        textField.text = text.applyPatternOnNumbers(pattern: "+## (###) ###-##-##", replacementCharacter: "#")
-        let newLength = text.count - 5
-        return newLength <= 13
+        textField.text = text.applyPatternOnNumbers(pattern: "+## ###-###-##", replacementCharacter: "#")
+        let newLength = text.count - 3
+        return newLength <= 10
     }
 }
 
