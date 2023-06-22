@@ -12,7 +12,7 @@ class EnterPhoneNumberViewController: UIViewController {
         static let welcomeLabelTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
         static let pushNumberUserTitle = "Введите номер"
         static let secondLabelTitle = "Ваш номер телефона  будет использоваться \n для входа в приложение"
-        static let placeholderString = " + 38 _ _ _ + _ _ _ + _ _ "
+        static let placeholderString = "+ 7 _ _ _  _ _ _  _ _  _ _"
         static let buttonTitle = "ДАЛЕЕ"
         static let privacyLabelTitle = "Нажимая кнопку \"Далее\"  Вы принимаете \n пользовательское Соглашение и политику конфиденциальности"
         static let sideInset: CGFloat = 16
@@ -229,9 +229,9 @@ extension EnterPhoneNumberViewController: SetThemeColorProtocol {
 extension EnterPhoneNumberViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return  false}
-        textField.text = text.applyPatternOnNumbers(pattern: "+## ###-###-##", replacementCharacter: "#")
+        textField.text = text.applyPatternOnNumbers(pattern: "+# ### ### ## ##", replacementCharacter: "#")
         let newLength = text.count - 3
-        return newLength <= 10
+        return newLength <= 12
     }
 }
 
