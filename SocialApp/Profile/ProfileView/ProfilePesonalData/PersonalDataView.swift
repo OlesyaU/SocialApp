@@ -19,13 +19,11 @@ final class PersonalDataView: UIView {
         label.numberOfLines = 1
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .black
-//        label.text = "Nick name here"
         return label
     }()
 
     private lazy var avatarImage: UIImageView = {
         let image = UIImageView()
-//        image.image = UIImage(named: "Avatar1")
         image.contentMode = .scaleAspectFill
         image.isUserInteractionEnabled = true
         image.cornerRadius(cornerRadius: 15)

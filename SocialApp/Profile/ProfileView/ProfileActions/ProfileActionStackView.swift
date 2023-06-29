@@ -15,15 +15,18 @@ class ProfileActionStackView: UIStackView {
         distribution = .fillEqually
     }
 
+   
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     func configure(buttonViewModels: [ProfileActionViewModel]) {
-        arrangedSubviews.forEach { removeArrangedSubview($0) }
-        buttonViewModels.forEach { model in
+
+        buttonViewModels.forEach {[weak self] model in
             let button = ProfileActionView(viewModel: model)
-            addArrangedSubview(button)
+            self?.addArrangedSubview(button)
+            
+
         }
     }
 }

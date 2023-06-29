@@ -7,15 +7,21 @@
 
 import Foundation
 
+func getPhoto() -> [String] {
+    var photo: [String] = []
+    photo.append(contentsOf: ["Пейзаж2", "Пейзаж3", "Пейзаж4", "Пейзаж5", "Пейзаж6", "Пейзаж7", "Пейзаж8", "Пейзаж9", "Пейзаж10", "Пейзаж11", "Пейзаж12"])
+    return photo
+}
+
 func getAuthorNames() -> [String] {
     var authorNames: [String] = []
     authorNames.append(contentsOf: ["Billy", "Anna", "Tom", "Monica", "Van", "Vladimir"])
     return authorNames
 }
 func getAuthorSurnames() -> [String] {
-    var authorNames: [String] = []
-    authorNames.append(contentsOf: ["Kim", "Morty", "Ford", "Beluchi", "Gog", "Putin"])
-    return authorNames
+    var authorSurnames: [String] = []
+    authorSurnames.append(contentsOf: ["Kim", "Morty", "Ford", "Beluchi", "Gog", "Putin"])
+    return authorSurnames
 }
 func getProfession() -> [String] {
     var profession: [String] = []
@@ -26,9 +32,9 @@ func getProfession() -> [String] {
 //     Profile.mock(count: 6)
 //}
 func getCity() -> [String] {
-    var profession: [String] = []
-    profession.append(contentsOf: ["Лондон", "Пекин", "Амстердам", "Берлин", "Нью-Йорк"])
-    return profession
+    var cities: [String] = []
+    cities.append(contentsOf: ["Лондон", "Пекин", "Амстердам", "Берлин", "Нью-Йорк"])
+    return cities
 }
 
 func avatars() -> [String] {

@@ -36,6 +36,7 @@ class PhotosCell: UITableViewCell {
     private lazy var arrowImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .center
+        image.tintColor = .black
         return image
     }()
 
@@ -81,7 +82,7 @@ class PhotosCell: UITableViewCell {
             collection.pinTop(to: photoLabel.bottomAnchor, inset: Constants.sideInset),
             collection.pinLeading(to: contentView.leadingAnchor, inset: Constants.sideInset),
             collection.pinTrailing(to: contentView.trailingAnchor),
-            collection.pinHeight(equalTo: 80),
+            collection.pinHeight(equalTo: Constants.sidePhoto),
             collection.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset)
         ])
         NSLayoutConstraint.activate(cellConstraints)
@@ -106,11 +107,10 @@ extension PhotosCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("CHECK1 - entered in cell for item ")
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else {
             return UICollectionViewCell()
         }
-        guard (viewModel?.photoNameString.count ?? 1) - 1 >= indexPath.item else { return UICollectionViewCell() }
+
         guard let photo = viewModel?.photoNameString[indexPath.row] else { return UICollectionViewCell()}
         cell.configure(photo: photo)
         return cell

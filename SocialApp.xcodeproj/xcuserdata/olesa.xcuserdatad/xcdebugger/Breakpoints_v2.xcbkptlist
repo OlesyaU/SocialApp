@@ -17,7 +17,7 @@
             startingLineNumber = "225"
             endingLineNumber = "225"
             landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
-            landmarkType = "9">
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "4B11D645-A665-4248-AE89-93C23E3AB6B7 - 702133034570ec74"
@@ -110,7 +110,7 @@
             startingLineNumber = "230"
             endingLineNumber = "230"
             landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
-            landmarkType = "9">
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "A2BEF700-D495-4D7F-B5BF-2CC17285F286 - 702133034570d397"
@@ -335,182 +335,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9C7A1913-BFAD-4B98-9058-F3A82EB478A1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotosCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "arrowImage"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2033CB9D-EE55-4C5F-A88B-AE7B57888F1D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotoCollectionViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "layout()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2033CB9D-EE55-4C5F-A88B-AE7B57888F1D - b1386ebf1dc6f220"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SocialApp.PhotoCollectionViewCell.layout() -&gt; ()"
-                  moduleName = "SocialApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotoCollectionViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "594">
-               </Location>
-               <Location
-                  uuid = "2033CB9D-EE55-4C5F-A88B-AE7B57888F1D - b1386ebf1dc6f220"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SocialApp.PhotoCollectionViewCell.layout() -&gt; ()"
-                  moduleName = "SocialApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotoCollectionViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "418">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "90E6CBA2-E7D4-43C1-A186-D184F1DEAD0E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotoCollectionViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "configure(photo:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "90E6CBA2-E7D4-43C1-A186-D184F1DEAD0E - b182f4b728ccf398"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SocialApp.PhotoCollectionViewCell.configure(photo: Swift.String) -&gt; ()"
-                  moduleName = "SocialApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotoCollectionViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "115">
-               </Location>
-               <Location
-                  uuid = "90E6CBA2-E7D4-43C1-A186-D184F1DEAD0E - b182f4b728ccf398"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SocialApp.PhotoCollectionViewCell.configure(photo: Swift.String) -&gt; ()"
-                  moduleName = "SocialApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotoCollectionViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "45">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C37ECD7B-999D-4814-A3F0-4AF306AA7365"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotosCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C37ECD7B-999D-4814-A3F0-4AF306AA7365 - 57e8cbac530e3fe9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SocialApp.PhotosCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "SocialApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotosCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "1431">
-               </Location>
-               <Location
-                  uuid = "C37ECD7B-999D-4814-A3F0-4AF306AA7365 - 57e8cbac530e3fe9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SocialApp.PhotosCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "SocialApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotosCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "1404">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2D0F9E36-6837-400F-AB22-8B9B7C94D04E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotosCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "6C440387-B66E-4E8D-B5E8-14CF59F0824C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -520,8 +344,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "prepareForReuse()"
-            landmarkType = "7">
+            landmarkName = "ProfileActionsCell"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "6C440387-B66E-4E8D-B5E8-14CF59F0824C - 5c3e14392eb15dda"
@@ -566,10 +390,10 @@
             filePath = "SocialApp/Profile/ProfileView/ProfileActions/ProfileActionStackView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "configure(buttonViewModels:)"
-            landmarkType = "7">
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "ProfileActionStackView"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "45966D09-40C4-4021-A327-8BCA06F73C50 - 399a122965614bad"
@@ -631,6 +455,96 @@
                   endingLineNumber = "23"
                   offsetFromSymbolStart = "50">
                </Location>
+               <Location
+                  uuid = "45966D09-40C4-4021-A327-8BCA06F73C50 - 399a122965614bad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileActionStackView.configure(buttonViewModels: Swift.Array&lt;SocialApp.ProfileActionViewModel&gt;) -&gt; ()"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileActions/ProfileActionStackView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "45">
+               </Location>
+               <Location
+                  uuid = "45966D09-40C4-4021-A327-8BCA06F73C50 - 4144180fe4cae3a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SocialApp.ProfileActionViewModel) -&gt; () in SocialApp.ProfileActionStackView.configure(buttonViewModels: Swift.Array&lt;SocialApp.ProfileActionViewModel&gt;) -&gt; ()"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileActions/ProfileActionStackView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "61">
+               </Location>
+               <Location
+                  uuid = "45966D09-40C4-4021-A327-8BCA06F73C50 - 399a122965614bad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileActionStackView.configure(buttonViewModels: Swift.Array&lt;SocialApp.ProfileActionViewModel&gt;) -&gt; ()"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileActions/ProfileActionStackView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "45966D09-40C4-4021-A327-8BCA06F73C50 - d1e55fec82a83c42"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileActionStackView.configure(buttonViewModels: SocialApp.ProfileActionViewModel) -&gt; ()"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileActions/ProfileActionStackView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  uuid = "45966D09-40C4-4021-A327-8BCA06F73C50 - 399a122965614a4e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileActionStackView.configure(buttonViewModels: Swift.Array&lt;SocialApp.ProfileActionViewModel&gt;) -&gt; ()"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileActions/ProfileActionStackView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "45">
+               </Location>
+               <Location
+                  uuid = "45966D09-40C4-4021-A327-8BCA06F73C50 - 4144180fe4cae246"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SocialApp.ProfileActionViewModel) -&gt; () in SocialApp.ProfileActionStackView.configure(buttonViewModels: Swift.Array&lt;SocialApp.ProfileActionViewModel&gt;) -&gt; ()"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileActions/ProfileActionStackView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "94">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -644,10 +558,42 @@
             filePath = "SocialApp/Profile/ProfileView/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "11222BC8-6658-4F8F-A066-0AC8FCF4C6FE - ef956a32627c3dd9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "1320">
+               </Location>
+               <Location
+                  uuid = "11222BC8-6658-4F8F-A066-0AC8FCF4C6FE - ef956a32627c3dd9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "1219">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -664,6 +610,197 @@
             endingLineNumber = "30"
             landmarkName = "configure(viewModels:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F326F542-1E20-4039-8F7E-A99B582C0F2C - 7a4319fdbf187aa4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileActionsCell.configure(viewModels: Swift.Array&lt;SocialApp.ProfileActionViewModel&gt;) -&gt; ()"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileActions/ProfileActionsCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "287">
+               </Location>
+               <Location
+                  uuid = "F326F542-1E20-4039-8F7E-A99B582C0F2C - 7a4319fdbf187aa4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileActionsCell.configure(viewModels: Swift.Array&lt;SocialApp.ProfileActionViewModel&gt;) -&gt; ()"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileActions/ProfileActionsCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "38">
+               </Location>
+               <Location
+                  uuid = "F326F542-1E20-4039-8F7E-A99B582C0F2C - 9459d44be1f362ab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileActionsCell.configure(viewModels: SocialApp.ProfileActionViewModel) -&gt; ()"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileActions/ProfileActionsCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "38">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ADB63F2D-0C9C-45F5-BB0B-0ACCECCA236F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialApp/Profile/ProfileView/ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "ADB63F2D-0C9C-45F5-BB0B-0ACCECCA236F - ef956a32627c3a55"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "1813">
+               </Location>
+               <Location
+                  uuid = "ADB63F2D-0C9C-45F5-BB0B-0ACCECCA236F - ef956a32627c3a55"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "1710">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59820DA7-85DF-416D-A019-20935DFF80A2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialApp/Profile/ProfileView/ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "59820DA7-85DF-416D-A019-20935DFF80A2 - ef956a32627c3af0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "2346">
+               </Location>
+               <Location
+                  uuid = "59820DA7-85DF-416D-A019-20935DFF80A2 - ef956a32627c3af0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "2246">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F71D725E-F5E2-43AD-9679-56CE2A1B503E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SocialApp/Profile/ProfileView/ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F71D725E-F5E2-43AD-9679-56CE2A1B503E - ef956a32627c3d3e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "786">
+               </Location>
+               <Location
+                  uuid = "F71D725E-F5E2-43AD-9679-56CE2A1B503E - ef956a32627c3d3e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.ProfileViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Profile/ProfileView/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "690">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

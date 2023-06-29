@@ -11,7 +11,7 @@ protocol ComebackViewModelProtocol {
     func checkUser(by phone: String) -> Profile?
 }
 
-class CombackViewController: UIViewController {
+final class CombackViewController: UIViewController {
     private var viewModel = CombackViewModel()
     private enum Constants {
         static let welcomeLabelTitle = "С возвращением"
@@ -56,9 +56,6 @@ class CombackViewController: UIViewController {
         field.cornerRadius()
         field.layer.borderWidth = 0.8
         field.layer.borderColor = UIColor.black.cgColor
-        field.pinTop(to: secondLabel.bottomAnchor, inset: 8)
-        field.pinLeading(to: view, inset: Constants.sideInset * 4)
-        field.pinTrailing(to: view, inset: Constants.sideInset * 4)
         field.keyboardType = .phonePad
         field.textAlignment = .center
         let centeredParagraphStyle = NSMutableParagraphStyle()
@@ -114,8 +111,8 @@ class CombackViewController: UIViewController {
     private func buttonTapped() {
         guard let numberFromTextField = phoneNumberField.text else { return }
         if viewModel.checkUser(by: numberFromTextField) != nil {
-            let confirmViewController = FeedTableViewController()
-            navigationController?.pushViewController(confirmViewController, animated: true)
+            let feedViewController = FeedTableViewController()
+            navigationController?.pushViewController(feedViewController, animated: true)
         } else {
             showAleart()
         }
@@ -131,11 +128,13 @@ extension CombackViewController {
                 welcomeLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
                 welcomeLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
 
+                phoneNumberField.pinWeight(equalTo: view.frame.width / 2),
+
                 secondLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
                 secondLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
 
                 confirmButton.pinHeight(equalTo: 44),
-
+                confirmButton.pinWeight(equalTo: view.frame.width / 2)
             ]
         )
 
@@ -206,10 +205,15 @@ extension CombackViewController: SetThemeColorProtocol {
 
 extension CombackViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return  false}
-        textField.text = text.applyPatternOnNumbers(pattern: "+# ### ### ## ##", replacementCharacter: "#")
+        guard let text = textField.text?.replacingOccurrences(of: "+7", with: "") else {
+            return false
+        }
+        let newText = text.applyPatternOnNumbers(pattern: "### ### ## ##", replacementCharacter: "#")
+
+        textField.text = "+7 \(newText)"
+
         let newLength = text.count - 3
-        return newLength <= 12 || string.isEmpty
+        return newLength <= 10 || string.isEmpty
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ProfileActionViewModel {
+struct ProfileActionViewModel {
     enum ProfileActionsType {
         case publications(count: Int)
         case subscriptions(count: Int)

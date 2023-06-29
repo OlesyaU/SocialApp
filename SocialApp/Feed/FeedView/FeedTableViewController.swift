@@ -45,9 +45,9 @@ class FeedTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        UITableView.automaticDimension
+//    }
 }
 
 extension FeedTableViewController: FeedCellProtocol {
@@ -70,3 +70,4 @@ extension FeedTableViewController: FeedCellProtocol {
 }
 
 extension FeedTableViewController: FloatingPanelControllerDelegate {}
+

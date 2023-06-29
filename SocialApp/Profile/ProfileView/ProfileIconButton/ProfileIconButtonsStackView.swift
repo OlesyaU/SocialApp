@@ -20,9 +20,9 @@ class ProfileIconButtonsStackView: UIStackView {
     }
 
     func configure(buttonViewModels: [ProfileIconButtonViewModel]) {
-        buttonViewModels.forEach { model in
+        buttonViewModels.forEach { [weak self] model in
             let button = ProfileIconButton(viewModel: model)
-            addArrangedSubview(button)
+            self?.addArrangedSubview(button)
         }
     }
 }

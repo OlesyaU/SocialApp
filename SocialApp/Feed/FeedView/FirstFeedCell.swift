@@ -7,8 +7,8 @@
 
 import UIKit
 
-class FirstFeedCell: UITableViewCell {
-    private lazy var collection: UICollectionView = {
+final class FirstFeedCell: UITableViewCell {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
@@ -33,14 +33,14 @@ class FirstFeedCell: UITableViewCell {
     }
 
     private func layout() {
-        contentView.addSubview(collection)
-        collection.forAutolayout()
+        contentView.addSubview(collectionView)
+        collectionView.forAutolayout()
         constaintsForCell.append(contentsOf:[
-            collection.pinTop(to: contentView.topAnchor),
-            collection.pinBottom(to: contentView.bottomAnchor),
-            collection.pinLeading(to: contentView.leadingAnchor),
-            collection.pinTrailing(to: contentView.trailingAnchor),
-            collection.pinHeight(equalTo: 100)
+            collectionView.pinTop(to: contentView.topAnchor),
+            collectionView.pinBottom(to: contentView.bottomAnchor),
+            collectionView.pinLeading(to: contentView.leadingAnchor),
+            collectionView.pinTrailing(to: contentView.trailingAnchor),
+            collectionView.pinHeight(equalTo: 100)
         ]
         )
         NSLayoutConstraint.activate(constaintsForCell)
@@ -48,7 +48,7 @@ class FirstFeedCell: UITableViewCell {
 
     func configure(profiles: [Profile]) {
         self.profiles = profiles
-        collection.reloadData()
+        collectionView.reloadData()
     }
 }
 
@@ -63,7 +63,6 @@ extension FirstFeedCell: UICollectionViewDataSource, UICollectionViewDelegateFlo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.identifier, for: indexPath) as? StoryCollectionViewCell else { return UICollectionViewCell() }
-        guard profiles.count - 1 >= indexPath.item else { return UICollectionViewCell() }
         let profile = profiles[indexPath.item]
         cell.configure(profile: profile)
         return cell

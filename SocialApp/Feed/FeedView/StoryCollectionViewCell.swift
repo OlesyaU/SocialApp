@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StoryCollectionViewCell: UICollectionViewCell {
+final class StoryCollectionViewCell: UICollectionViewCell {
     private lazy var friendAvatar: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill

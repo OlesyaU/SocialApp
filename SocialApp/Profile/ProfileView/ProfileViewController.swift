@@ -39,13 +39,14 @@ class ProfileViewController: UITableViewController {
         tableView.register(ProfileActionsCell.self, forCellReuseIdentifier: ProfileActionsCell.identifier)
         tableView.register(ProfileIconButtonsCell.self, forCellReuseIdentifier: ProfileIconButtonsCell.identifier)
         tableView.register(PhotosCell.self, forCellReuseIdentifier: PhotosCell.identifier)
+        tableView.register(FindMyPostsCell.self, forCellReuseIdentifier: FindMyPostsCell.identifier)
         tableView.register(ProfilePostsCell.self, forCellReuseIdentifier: ProfilePostsCell.identifier)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,8 +59,10 @@ class ProfileViewController: UITableViewController {
                 return 1
             case 3:
                 return 1
+            case 4:
+                return 1
             default:
-                return 10
+                return 20
         }
     }
 
@@ -88,6 +91,12 @@ class ProfileViewController: UITableViewController {
                 photosCell.configure(viewModel: photosCellViewModel)
                 
                 return photosCell
+            case 4:
+                guard let findCell = tableView.dequeueReusableCell(withIdentifier: FindMyPostsCell.identifier, for: indexPath) as? FindMyPostsCell else {return UITableViewCell()}
+                let findViewModel = FindMyPostsViewModel()
+                findCell.configure(viewModel: findViewModel)
+
+                return findCell
             default:
                 guard let postDataCell = tableView.dequeueReusableCell(withIdentifier: ProfilePostsCell.identifier, for: indexPath) as? ProfilePostsCell else { return UITableViewCell() }
                 return postDataCell

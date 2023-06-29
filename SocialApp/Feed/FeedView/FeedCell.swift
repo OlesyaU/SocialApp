@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FeedCell: UITableViewCell {
+final class FeedCell: UITableViewCell {
     private enum Constants {
         static let sideInset: CGFloat = 16
         static let heightAvatar: CGFloat = 56
