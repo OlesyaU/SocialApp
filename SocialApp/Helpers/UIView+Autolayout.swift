@@ -7,6 +7,12 @@
 import UIKit
 
 extension UIView {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
+extension UIView {
     enum Side {
         case left
         case right
@@ -54,11 +60,6 @@ extension UIView {
     func pinTop(to anchor: NSLayoutYAxisAnchor, inset: CGFloat = .zero) -> NSLayoutConstraint {
         topAnchor.constraint(equalTo: anchor, constant: inset)
     }
-
-//    @discardableResult
-//    func pinTopToLandscape(to anchor: NSLayoutXAxisAnchor, inset: CGFloat = .zero) -> NSLayoutConstraint {
-//        topAnchor.constraint(equalTo: anchor, constant: inset)
-//    }
 
     @discardableResult
     func pinBottom(to view: UIView, inset: CGFloat = .zero) -> NSLayoutConstraint {
@@ -125,6 +126,11 @@ extension UIView {
     }
 
     @discardableResult
+    func pinWeight(equalTo constant: CGFloat) -> NSLayoutConstraint {
+       widthAnchor.constraint(equalToConstant: constant)
+    }
+
+    @discardableResult
     func pinWidth(constant: CGFloat, multiplier: CGFloat) -> NSLayoutConstraint {
         widthAnchor.constraint(equalToConstant: constant)
     }
@@ -135,7 +141,7 @@ extension UIView {
         layer.masksToBounds = true
         return self
     }
-    
+   
     @discardableResult
     func forAutolayout() -> Self {
         translatesAutoresizingMaskIntoConstraints = false
@@ -148,5 +154,51 @@ extension NSLayoutConstraint {
     func activated() -> Self {
         isActive = true
         return self
+    }
+}
+
+extension UIView {
+    func setShadow(color: UIColor, radius: CGFloat, offset: CGSize, opacity: Float) {
+            layer.shadowColor = color.cgColor
+            layer.shadowRadius = radius
+            layer.shadowOffset = offset
+            layer.shadowOpacity = opacity
+        }
+}
+
+extension String {
+    func applyPatternOnNumbers(pattern: String, replacementCharacter: Character) -> String {
+        var pureNumber = self.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
+
+        for index in 0 ..< pattern.count {
+            guard index < pureNumber.count else { return pureNumber }
+            let stringIndex = String.Index(utf16Offset: index, in: pattern)
+            let patternCharacter = pattern[stringIndex]
+            guard patternCharacter != replacementCharacter else { continue }
+            pureNumber.insert(patternCharacter, at: stringIndex)
+        }
+        return pureNumber
+    }
+}
+extension UIButton {
+    func applyIcon(name: String, tintColor: UIColor?, imageEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)) {
+        var image = UIImage(named: name)
+        if let tintColor = tintColor {
+            image = image?.withRenderingMode(.alwaysTemplate)
+            self.tintColor = tintColor
+        }
+        setImage(image, for: .normal)
+//        self.imageEdgeInsets = imageEdgeInsets
+
+    }
+    func applyIcon(systemName: String, tintColor: UIColor?, imageEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)) {
+        var image = UIImage(systemName: systemName)
+        if let tintColor = tintColor {
+            image = image?.withRenderingMode(.alwaysTemplate)
+            self.tintColor = tintColor
+        }
+        setImage(image, for: .normal)
+//        self.imageEdgeInsets = imageEdgeInsets
+
     }
 }

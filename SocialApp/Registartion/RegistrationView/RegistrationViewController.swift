@@ -15,7 +15,7 @@ class RegistrationViewController: UIViewController {
     }
 
     // MARK: - Properties
-    
+
     private let startScreenImage: UIImageView = {
         let image = UIImageView().forAutolayout()
         image.image = UIImage(named: "WelcomeLogo")
@@ -24,7 +24,11 @@ class RegistrationViewController: UIViewController {
     }()
     
     private lazy var registerButton: UIButton = {
-        let button = UIButton().forAutolayout()
+        let button = UIButton(
+            primaryAction: UIAction { [unowned self] _ in
+                self.createUser()
+            }
+        ).forAutolayout()
         button.setTitle(Constants.registerButtonTitle, for: .normal)
         button.setBackgroundImage(.buttonBackgroundImageNormal, for: .normal)
         button.setBackgroundImage(.buttonBackgroundImageSelected, for: .highlighted)
@@ -66,9 +70,14 @@ class RegistrationViewController: UIViewController {
     }
 
     private func buttonTapped() {
-        let confirmViewController = ConfirmViewController()
+        let confirmViewController = CombackViewController()
         navigationController?.pushViewController(confirmViewController, animated: true)
-        navigationController?.setViewControllers([confirmViewController], animated: false)
+//        navigationController?.setViewControllers([confirmViewController], animated: false)
+    }
+
+    func createUser(){
+        let enterNunberViewController = EnterPhoneNumberViewController()
+        navigationController?.pushViewController(enterNunberViewController, animated: true)
     }
 }
 
@@ -113,7 +122,6 @@ extension RegistrationViewController {
         } else {
             NSLayoutConstraint.activate(portraitConstraints)
         }
-
         NSLayoutConstraint.activate(commonConstraints)
     }
 }

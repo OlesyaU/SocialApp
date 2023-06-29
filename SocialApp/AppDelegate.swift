@@ -6,14 +6,21 @@
 //
 
 import UIKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+// TODO: - Add DataBase storing
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+
+//        print("CHECK1 - \(DataBase.shared.profiles)")
+
+        print("DATA BASE CONTAINS OUR USER \(DataBase.shared.profiles.contains(DataBase.shared.myProfile))")
+
         return true
     }
 
@@ -34,3 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+//extension DataBase {
+//
+//    private func getSubscribers() {
+//      let bnb =  DataBase().profiles
+//    }
+//}
