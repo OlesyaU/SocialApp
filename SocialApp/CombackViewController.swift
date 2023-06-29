@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol ComebackViewModelProtocol {
+    func checkUser(by phone: String) -> Profile?
+}
+
 class CombackViewController: UIViewController {
+    private var viewModel = CombackViewModel()
     private enum Constants {
         static let welcomeLabelTitle = "С возвращением"
         static let welcomeNewUserTitle = "Добро пожаловать !"
@@ -63,7 +68,7 @@ class CombackViewController: UIViewController {
             attributes: [.paragraphStyle: centeredParagraphStyle]
         )
         field.delegate = self
-        field.clearButtonMode = .whileEditing
+        field.clearButtonMode = .always
         return field
     }()
 
@@ -107,11 +112,14 @@ class CombackViewController: UIViewController {
     }
 
     private func buttonTapped() {
-        let confirmViewController = CombackViewController()
-        navigationController?.pushViewController(confirmViewController, animated: true)
-        navigationController?.setViewControllers([confirmViewController], animated: false)
+        guard let numberFromTextField = phoneNumberField.text else { return }
+        if viewModel.checkUser(by: numberFromTextField) != nil {
+            let confirmViewController = FeedTableViewController()
+            navigationController?.pushViewController(confirmViewController, animated: true)
+        } else {
+            showAleart()
+        }
     }
-
 }
 
 // MARK: - Constraints
@@ -201,7 +209,17 @@ extension CombackViewController: UITextFieldDelegate {
         guard let text = textField.text else { return  false}
         textField.text = text.applyPatternOnNumbers(pattern: "+# ### ### ## ##", replacementCharacter: "#")
         let newLength = text.count - 3
-        return newLength <= 12
+        return newLength <= 12 || string.isEmpty
     }
 }
 
+extension CombackViewController {
+    private func showAleart () {
+        let aleart = UIAlertController(title: "OOPPPSS", message: "The pass is wrong", preferredStyle: .alert)
+        let action = UIAlertAction(title:  "OMG", style: .destructive, handler: { [weak self ] _ in
+            self?.navigationController?.popViewController(animated: true)
+        })
+        aleart.addAction(action)
+        present(aleart, animated: true)
+    }
+}

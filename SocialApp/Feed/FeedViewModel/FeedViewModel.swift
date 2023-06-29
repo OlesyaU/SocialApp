@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+//import UIKit
 
 final class FeedViewModel {
     let posts = Post.mock(count: 7)

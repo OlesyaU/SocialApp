@@ -64,7 +64,7 @@ class EnterPhoneNumberViewController: UIViewController {
             attributes: [.paragraphStyle: centeredParagraphStyle]
         )
         field.delegate = self
-        field.clearButtonMode = .whileEditing
+        field.clearButtonMode = .always
         return field
     }()
 
@@ -111,11 +111,6 @@ class EnterPhoneNumberViewController: UIViewController {
     }
 
     // MARK: - Helpers
-    private func mask(){
-        guard let text = phoneNumberField.text else { return }
-        phoneNumberField.text = text.applyPatternOnNumbers(pattern: "+# (###) ###-####", replacementCharacter: "#")
-    }
-
 
     private func addSubviews() {
         welcomeLabel.placed(on: view)
@@ -227,10 +222,20 @@ extension EnterPhoneNumberViewController: SetThemeColorProtocol {
 
 extension EnterPhoneNumberViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return  false}
-        textField.text = text.applyPatternOnNumbers(pattern: "+# ### ### ## ##", replacementCharacter: "#")
+        guard let text = textField.text?.replacingOccurrences(of: "+7", with: "") else {
+            return false
+        }
+        let newText = text.applyPatternOnNumbers(pattern: "### ### ## ##", replacementCharacter: "#")
+
+        textField.text = "+7 \(newText)"
+
         let newLength = text.count - 3
-        return newLength <= 12
+        return newLength <= 10 || string.isEmpty
+    }
+
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        print("Text field text \(textField.text)")
+        return true
     }
 }
 

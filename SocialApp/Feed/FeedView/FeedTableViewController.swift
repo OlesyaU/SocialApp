@@ -12,7 +12,6 @@ protocol FeedCellProtocol {
     func showMenuViewController()
 }
 
-
 class FeedTableViewController: UITableViewController {
     private var viewModel = FeedViewModel()
 
@@ -50,6 +49,7 @@ class FeedTableViewController: UITableViewController {
         UITableView.automaticDimension
     }
 }
+
 extension FeedTableViewController: FeedCellProtocol {
     
     func showMenuViewController() {

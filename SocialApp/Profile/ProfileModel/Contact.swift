@@ -5,7 +5,7 @@
 //  Created by Олеся on 19.06.2023.
 //
 
-enum Contact {
+enum Contact: Codable, Equatable {
     case mail(String)
     case phone(String)
     case mobilePhone(String)
@@ -21,6 +21,17 @@ enum Contact {
                 return "мобильный телефон"
             case .phone(_):
                 return "телефон"
+        }
+    }
+
+    static func ==(lhs: Contact, rhs: Contact) -> Bool {
+        switch (lhs, rhs) {
+            case (.fax(let lhsFax), .fax(let rhsFax)):
+                return lhsFax == rhsFax
+            case (.mobilePhone(let rhsMobile), .mobilePhone(let lhsMobile)):
+                return rhsMobile == lhsMobile
+            default:
+                return false
         }
     }
 }

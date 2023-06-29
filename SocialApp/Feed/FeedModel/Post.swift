@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Post {
+struct Post: Codable, Equatable {
     let author: String
     let profession: String
     let image: String
@@ -22,7 +22,7 @@ extension Post {
     static func mock(count: Int) -> [Post] {
         var result: [Post] = []
         for _ in 0...count {
-            let post = Post(author: getAuthorNames().randomElement()!,
+            let post = Post(author: getAuthorNames().randomElement()! + "" + getAuthorSurnames().randomElement()!,
                             profession: getProfession().randomElement()!,
                             image: avatars().randomElement()!,
                             description: lorem,

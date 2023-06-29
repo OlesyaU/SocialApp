@@ -9,15 +9,22 @@ import Foundation
 
 func getAuthorNames() -> [String] {
     var authorNames: [String] = []
-    authorNames.append(contentsOf: ["Billy Kim", "Anna Morty", "Tom Ford", "Monica Beluchi", "Van Gog", "Putin Vladimir"])
+    authorNames.append(contentsOf: ["Billy", "Anna", "Tom", "Monica", "Van", "Vladimir"])
     return authorNames
 }
-
+func getAuthorSurnames() -> [String] {
+    var authorNames: [String] = []
+    authorNames.append(contentsOf: ["Kim", "Morty", "Ford", "Beluchi", "Gog", "Putin"])
+    return authorNames
+}
 func getProfession() -> [String] {
     var profession: [String] = []
     profession.append(contentsOf: ["Дизайнер", "Учитель", "Художник", "Директор", "Стоматолог"])
     return profession
 }
+//func getSubscribersToProfile() -> [Profile] {
+//     Profile.mock(count: 6)
+//}
 func getCity() -> [String] {
     var profession: [String] = []
     profession.append(contentsOf: ["Лондон", "Пекин", "Амстердам", "Берлин", "Нью-Йорк"])

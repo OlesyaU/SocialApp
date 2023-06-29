@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class RegistrationViewController: UIViewController {
     private enum Constants {
@@ -16,9 +15,6 @@ class RegistrationViewController: UIViewController {
     }
 
     // MARK: - Properties
-
-    let phoneNumber = "+11112223333"
-    let testVerificationCode = "000000"
 
     private let startScreenImage: UIImageView = {
         let image = UIImageView().forAutolayout()
@@ -76,7 +72,7 @@ class RegistrationViewController: UIViewController {
     private func buttonTapped() {
         let confirmViewController = CombackViewController()
         navigationController?.pushViewController(confirmViewController, animated: true)
-        navigationController?.setViewControllers([confirmViewController], animated: false)
+//        navigationController?.setViewControllers([confirmViewController], animated: false)
     }
 
     func createUser(){

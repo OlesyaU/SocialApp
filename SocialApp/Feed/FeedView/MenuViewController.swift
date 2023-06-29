@@ -9,6 +9,10 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+
+private let actionsName = ["Сохранить в закладках","Включить уведомления","Скопировать ссылку","Поделиться в ...","Отменить подписку","Пожаловаться"]
+
+    private var constraintsForTableView: [NSLayoutConstraint] = []
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(MenuCell.self, forCellReuseIdentifier: MenuCell.identifier)
@@ -19,10 +23,6 @@ class MenuViewController: UIViewController {
         return tableView
     }()
 
-private let actionsName = ["Сохранить в закладках","Включить уведомления","Скопировать ссылку","Поделиться в ...","Отменить подписку","Пожаловаться"]
-
-    private var constraintsForTableView: [NSLayoutConstraint] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
@@ -31,16 +31,14 @@ private let actionsName = ["Сохранить в закладках","Вклю�
         view.addSubview(tableView)
 
         constraintsForTableView.append(contentsOf: [
-            tableView.pinTop(to: view.topAnchor, inset: 16),
+            tableView.pinTop(to: view.topAnchor, inset: 32),
             tableView.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor)
-
-        ])
+        ]
+        )
         NSLayoutConstraint.activate(constraintsForTableView)
     }
-
-
 }
 
 extension MenuViewController: UITableViewDataSource,UITableViewDelegate {
@@ -49,12 +47,13 @@ extension MenuViewController: UITableViewDataSource,UITableViewDelegate {
         return actionsName.count
     }
 
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuCell.identifier, for: indexPath) as? MenuCell else { return UITableViewCell()}
         let action = actionsName[indexPath.row]
         cell.conigure(action: action)
        return cell
     }
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

@@ -34,13 +34,13 @@ class EnterPhoneNumberViewModel {
             guard let phoneNumber = authData?.user.phoneNumber else {
                 return
             }
-            self?.user = User(phone: phoneNumber)
+
+            print(phoneNumber)
         }
     }
 }
 
 // TODO: - Replace all mocks for DataBase
-class DataBase {
-    var profiles: [Profile] = []
-    var posts = Post.mock(count: 7)
-}
+// TODO: - Replace in swift.file
+
+

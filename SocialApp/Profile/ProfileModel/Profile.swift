@@ -7,14 +7,15 @@
 
 import Foundation
 
-struct Profile {
+class Profile: Codable {
     let avatar: String
     let name: String
     let surname: String
     let profession: String
-    let posts: [Post]
-    let subscribers: [Profile]
-    let subscriptions: [Profile]
+    var posts: [Post]
+    var photos: [String]
+    var subscribers: Set<Profile>
+    var subscriptions: Set<Profile>
     let city: String
     let dateOfBirth: Date
     let education: String
@@ -26,14 +27,39 @@ struct Profile {
     var subscriptionsCount: Int {
         subscriptions.count
     }
+
+    var nickname: String {
+        name + "_" + surname
+    }
+    var photosCountString: String {
+        String(photos.count)
+    }
+
+    init(avatar: String, name: String, surname: String, profession: String, photos: [String], posts: [Post], subscribers: Set<Profile>, subscriptions: Set<Profile>, city: String, dateOfBirth: Date, education: String, career: String, contacts: [Contact]) {
+        self.avatar = avatar
+        self.name = name
+        self.surname = surname
+        self.profession = profession
+        self.posts = posts
+        self.subscribers = subscribers
+        self.subscriptions = subscriptions
+        self.city = city
+        self.dateOfBirth = dateOfBirth
+        self.education = education
+        self.career = career
+        self.contacts = contacts
+        self.photos = photos
+    }
+
     static func mock(count: Int) -> [Profile] {
         var profiles: [Profile] = []
         for i in 0...count {
             let profile = Profile(
                 avatar: avatars().randomElement()!.description,
                 name: getAuthorNames().randomElement()!,
-                surname: String.random(length: i),
+                surname: getAuthorSurnames().randomElement()!,
                 profession: getProfession().randomElement()!,
+                photos: [],
                 posts: Post.mock(count: i),
                 subscribers: [],
                 subscriptions: [],
@@ -49,16 +75,33 @@ struct Profile {
     }
 }
 
-extension String {
-    static func random(length: Int = 20) -> String {
-        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        var randomString: String = ""
+//extension String {
+//    static func random(length: Int = 20) -> String {
+//        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+//        var randomString: String = ""
+//
+//        for _ in 0..<length {
+//            let randomValue = arc4random_uniform(UInt32(base.count))
+//            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
+//        }
+//        return randomString
+//    }
+//}
 
-        for _ in 0..<length {
-            let randomValue = arc4random_uniform(UInt32(base.count))
-            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
-        }
-        return randomString
+extension Profile: Hashable {
+    static func == (lhs: Profile, rhs: Profile) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+
+    // TODO: - Implement hashable for posts and contact if needed
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(avatar)
+        hasher.combine(name)
+        hasher.combine(surname)
+        hasher.combine(profession)
+        hasher.combine(city)
+        hasher.combine(dateOfBirth)
+        hasher.combine(education)
+        hasher.combine(career)
     }
 }
-

@@ -142,7 +142,6 @@ extension UIView {
         return self
     }
    
-    
     @discardableResult
     func forAutolayout() -> Self {
         translatesAutoresizingMaskIntoConstraints = false
@@ -157,6 +156,7 @@ extension NSLayoutConstraint {
         return self
     }
 }
+
 extension UIView {
     func setShadow(color: UIColor, radius: CGFloat, offset: CGSize, opacity: Float) {
             layer.shadowColor = color.cgColor
@@ -165,6 +165,7 @@ extension UIView {
             layer.shadowOpacity = opacity
         }
 }
+
 extension String {
     func applyPatternOnNumbers(pattern: String, replacementCharacter: Character) -> String {
         var pureNumber = self.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
@@ -177,5 +178,27 @@ extension String {
             pureNumber.insert(patternCharacter, at: stringIndex)
         }
         return pureNumber
+    }
+}
+extension UIButton {
+    func applyIcon(name: String, tintColor: UIColor?, imageEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)) {
+        var image = UIImage(named: name)
+        if let tintColor = tintColor {
+            image = image?.withRenderingMode(.alwaysTemplate)
+            self.tintColor = tintColor
+        }
+        setImage(image, for: .normal)
+//        self.imageEdgeInsets = imageEdgeInsets
+
+    }
+    func applyIcon(systemName: String, tintColor: UIColor?, imageEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)) {
+        var image = UIImage(systemName: systemName)
+        if let tintColor = tintColor {
+            image = image?.withRenderingMode(.alwaysTemplate)
+            self.tintColor = tintColor
+        }
+        setImage(image, for: .normal)
+//        self.imageEdgeInsets = imageEdgeInsets
+
     }
 }
