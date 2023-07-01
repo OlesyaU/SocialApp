@@ -45,9 +45,11 @@ class DataBase {
     )
 
     init() {
+        let posts = Post.mock(count: 6, profile: testProfile)
+        testProfile.posts = posts
+
         if profiles.isEmpty {
             profiles = generateMockData()
-            print(profiles)
         } else {
             print("Hello from init DatatBase profiles :)")
         }
@@ -81,7 +83,7 @@ class DataBase {
             .isEmpty
 
         profiles.forEach { profile in
-            profile.posts.append(contentsOf: Post.mock(count: Int.random(in: 1...7)))
+            profile.posts.append(contentsOf: Post.mock(count: Int.random(in: 1...7), profile: profile))
         }
         profiles.append(myProfile)
         saveDataToUserDefaults()
@@ -118,8 +120,12 @@ class DataBase {
         return phone == number ? true : false
     }
 
-    func getFeed(for profile: Profile) -> [Post] { [] }
+    /// Description -  real posts of test user are commented
 
+    func getPosts() -> [Post] {
+
+//        testProfile.subscriptions.flatMap(\.posts)
+        profiles.flatMap(\.posts).shuffled()
+    }
 }
 
-// TODO: - Resolve problem with feed

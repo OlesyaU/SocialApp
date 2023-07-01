@@ -6,20 +6,25 @@
 //
 
 import UIKit
- class PersonalDataViewModel {
-     let nickname: String
-     let burgerIcon = "line.3.horizontal"
-     let avatarImageString: String
-     let fullName: String
-     let professionLabelTitle: String
-     let moreInfoButtonIcon = "exclamationmark.circle.fill"
-     let moreInfoButtonTitle = "Подробная информация"
-     let editButtonTitle = "Редактировать"
-
-     init(profile: Profile){
-         nickname = profile.nickname
-         avatarImageString = profile.avatar
-         fullName = profile.name + " " + profile.surname
-         professionLabelTitle = profile.profession
-     }
+class PersonalDataViewModel {
+    let nickname: String
+    let burgerIcon = IconsName.burger.nameIcon
+    let avatarImageString: String
+    let fullName: String
+    let professionLabelTitle: String
+    let moreInfoButtonIcon = IconsName.moreInfo.nameIcon
+    let moreInfoButtonTitle = "Подробная информация"
+    let editButtonTitle = "Редактировать"
+    let titleCallButton = "Позвонить"
+    let titleMessagwButton = "Сообщение"
+    var isMyProfile: Bool
+    
+    init(profile: Profile){
+        nickname = profile.nickname
+        avatarImageString = profile.avatar
+        fullName = profile.name + " " + profile.surname
+        professionLabelTitle = profile.profession
+        isMyProfile = DataBase.shared.testProfile == profile
+    }
 }
+

@@ -10,6 +10,7 @@ import FloatingPanel
 
 protocol FeedCellProtocol {
     func showMenuViewController()
+    func openFriendProfile(friendProfile: Profile)
 }
 
 class FeedTableViewController: UITableViewController {
@@ -37,20 +38,28 @@ class FeedTableViewController: UITableViewController {
             cell.delegate = self
             let post = viewModel.posts[indexPath.row - 1]
             cell.configureCell(post: post)
+           
             return cell
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+  tableView.deselectRow(at: indexPath, animated: true)
+
     }
 
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        UITableView.automaticDimension
-//    }
 }
 
 extension FeedTableViewController: FeedCellProtocol {
+    func openFriendProfile(friendProfile: Profile) {
+ let profileVC = ProfileViewController()
+        profileVC.configure(profile: friendProfile)
+        
+
+        profileVC.navigationController?.navigationBar.tintColor = AppColors.orange
+        navigationController?.pushViewController(profileVC, animated: true)
+ }
+
     
     func showMenuViewController() {
         let menuViewController = MenuViewController()
@@ -66,6 +75,7 @@ extension FeedTableViewController: FeedCellProtocol {
         floatingPanel = floatingPanelController
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
+    
 
 }
 

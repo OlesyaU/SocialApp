@@ -44,7 +44,7 @@ extension Contact {
             let mobilePhone = Contact.mobilePhone(String(i))
             let fax = Contact.fax(String(i))
             let returnArray = [mail, phone, mobilePhone, fax]
-            guard i < returnArray.count else { return Contact.fax("Ошибся, брат")}
+            guard i < returnArray.count else { return Contact.fax("Ошибочка вышла")}
             return returnArray[i]
         }
         var result: [Contact] = []

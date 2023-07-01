@@ -20,15 +20,10 @@ class ProfileActionsCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        actionsStackView.arrangedSubviews.forEach { actionsStackView.removeArrangedSubview($0)}
-//    }
-
     func configure(viewModels: [ProfileActionViewModel]) {
-//        actionsStackView.arrangedSubviews.forEach { actionsStackView.removeArrangedSubview($0) }
         actionsStackView.configure(buttonViewModels: viewModels)
     }
+    
     private func setupUI() {
         actionsStackView.placed(on: contentView)
         cellConstraint.append(contentsOf: [

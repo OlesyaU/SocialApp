@@ -7,13 +7,24 @@
 
 import UIKit
 
+
 final class FeedCell: UITableViewCell {
     private enum Constants {
         static let sideInset: CGFloat = 16
         static let heightAvatar: CGFloat = 56
     }
+    private var friendProfile: Profile?
    var delegate: FeedCellProtocol?
+    var getFriendProfile: ((_ friendProfile: Profile)->Void)?
 
+    private lazy var contentHeaderCellView: UIView = {
+        let image = UIView()
+        image.backgroundColor = .clear
+        image.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openProfileGestureAction))
+        image.addGestureRecognizer(tapGesture)
+        return image
+    }()
     private lazy var image: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -24,10 +35,10 @@ final class FeedCell: UITableViewCell {
 
     private lazy var authorPhoto: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "Ready")
+        image.contentMode = .scaleAspectFill
         image.isUserInteractionEnabled = false
-        image.cornerRadius(cornerRadius: image.frame.width / 2)
+        image.cornerRadius(cornerRadius: Constants.sideInset)
+        image.clipsToBounds = true
         return image
     }()
 
@@ -109,6 +120,11 @@ final class FeedCell: UITableViewCell {
 
     private var commonConstraints: [NSLayoutConstraint] = []
 
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        layout()
+//    }
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
@@ -119,11 +135,16 @@ final class FeedCell: UITableViewCell {
     }
 
     private func layout() {
-        [image,descriptionLabel,commentsLabel,likesLabel,authorNameLabel, professionLabel, authorPhoto, likesIcon,commentsIcon, dotsImage, bookmarkIcon].forEach {$0.forAutolayout()}
-        [image,descriptionLabel,commentsLabel,likesLabel,authorNameLabel, professionLabel, authorPhoto, likesIcon, commentsIcon, dotsImage, bookmarkIcon].forEach {contentView.addSubview($0)}
+        [contentHeaderCellView, authorPhoto,authorNameLabel, professionLabel, image, descriptionLabel, commentsLabel, likesLabel,   likesIcon, commentsIcon, dotsImage, bookmarkIcon].forEach {$0.forAutolayout()}
+        [contentHeaderCellView, image, descriptionLabel, commentsLabel, likesLabel, authorNameLabel, professionLabel, authorPhoto, likesIcon, commentsIcon, dotsImage, bookmarkIcon].forEach {contentView.addSubview($0)}
 
         commonConstraints.append(
             contentsOf: [
+                contentHeaderCellView.pinTop(to: contentView.topAnchor),
+                contentHeaderCellView.pinLeading(to: contentView.leadingAnchor),
+                contentHeaderCellView.pinTrailing(to: contentView.trailingAnchor),
+                contentHeaderCellView.pinBottom(to: image.topAnchor),
+
                 authorPhoto.pinHeight(equalTo: Constants.heightAvatar),
                 authorPhoto.pinWeight(equalTo: Constants.heightAvatar),
                 authorPhoto.pinTop(to: contentView.topAnchor,inset: Constants.sideInset),
@@ -196,17 +217,44 @@ final class FeedCell: UITableViewCell {
         NSLayoutConstraint.activate(commonConstraints)
     }
 
+
     func configureCell(post: Post) {
         image.image = UIImage(named: post.image)
-        authorNameLabel.text = post.author
+        authorNameLabel.text = post.author.name
         professionLabel.text = post.profession
         descriptionLabel.text = post.description
         likesLabel.text = String(post.likes)
         commentsLabel.text = String(post.comments)
+        authorPhoto.image = UIImage(named: post.author.avatar)
+        friendProfile = post.author
+
     }
 
     @objc private func dotsGestureAction() {
         dotsImage.tintColor = .systemOrange
         delegate?.showMenuViewController()
     }
+
+    @objc private func openProfileGestureAction() {
+        print("open profile gesture worked")
+
+
+            getFriendProfile?(friendProfile!)
+        delegate?.openFriendProfile(friendProfile: friendProfile!)
+
+
+//        TODO: - open cell with  this user data
+//            func createProfileViewController(profile: Profile) -> ProfileViewController {
+//                let model = ProfileViewModel(profile: profile)
+//                let controller = ProfileViewController()
+//                let viewModel = FriendProfileViewModel()
+////                controller.configure(with: model)
+//            }
+    }
+
+    //    func createProfileViewController(profile: Profile) -> ProfileViewController {
+    //        let model = ProfileViewModel(profile: profile)
+    //        let controller = ProfileViewController()
+    //        controller.configure(with: viewModel)
+    //    }
 }

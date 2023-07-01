@@ -26,7 +26,7 @@ class EnterPhoneNumberViewModel {
     }
 
     func signInAndRetrieveData(with credential: PhoneAuthCredential) {
-        Auth.auth().signIn(with: credential) { [weak self] (authData: AuthDataResult?, error: Error?) in
+        Auth.auth().signIn(with: credential) { (authData: AuthDataResult?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -34,13 +34,7 @@ class EnterPhoneNumberViewModel {
             guard let phoneNumber = authData?.user.phoneNumber else {
                 return
             }
-
             print(phoneNumber)
         }
     }
 }
-
-// TODO: - Replace all mocks for DataBase
-// TODO: - Replace in swift.file
-
-

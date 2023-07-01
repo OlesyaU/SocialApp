@@ -38,7 +38,6 @@ final class PersonalDataView: UIView {
         })
 
         button.tintColor = .systemOrange
-//        button.applyIcon(systemName: "line.3.horizontal", tintColor: .systemOrange)
         return button
     }()
 
@@ -62,9 +61,7 @@ final class PersonalDataView: UIView {
         let button = UIButton( primaryAction: UIAction {  _ in
 //           action will be here
         })
-        button.setTitle("Подробная информация", for: .normal)
         button.setTitleColor(.black, for: .normal)
-//        button.applyIcon(systemName: "exclamationmark.circle.fill", tintColor: .systemOrange)
         return button
     }()
 
@@ -74,8 +71,34 @@ final class PersonalDataView: UIView {
         })
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemOrange
-        button.setTitle("Редактировать", for: .normal)
         button.cornerRadius(cornerRadius: 15)
+        return button
+    }()
+
+    private lazy var messageButton: UIButton = {
+        let button = UIButton(
+            primaryAction: UIAction { [unowned self] _ in
+//           action    write message to user
+            }
+        ).forAutolayout()
+
+        button.setBackgroundImage(.buttonBackgroundImageNormal, for: .normal)
+        button.setBackgroundImage(.buttonBackgroundImageSelected, for: .highlighted)
+        button.setBackgroundImage(.buttonBackgroundImageSelected, for: .disabled)
+        button.cornerRadius()
+        return button
+    }()
+    private lazy var callButton: UIButton = {
+        let button = UIButton(
+            primaryAction: UIAction { [unowned self] _ in
+//            action     call to user
+            }
+        ).forAutolayout()
+
+        button.setBackgroundImage(.buttonBackgroundImageNormal, for: .normal)
+        button.setBackgroundImage(.buttonBackgroundImageSelected, for: .highlighted)
+        button.setBackgroundImage(.buttonBackgroundImageSelected, for: .disabled)
+        button.cornerRadius()
         return button
     }()
 
@@ -94,8 +117,62 @@ final class PersonalDataView: UIView {
 
     func configure(with viewModel: PersonalDataViewModel) {
         self.viewModel = viewModel
+        if viewModel.isMyProfile {
+            configureMyProfile()
+        } else {
+            configureFriendProfile()
+        }
         setupUI()
     }
+
+    func configureMyProfile() {
+        [editButton, burgerButton].forEach({$0.forAutolayout()})
+        [editButton, burgerButton].forEach({addSubview($0)})
+        editButton.setTitle(viewModel?.editButtonTitle, for: .normal)
+        personalDataViewConstraints.append(contentsOf: [
+            burgerButton.pinTop(to: topAnchor),
+            burgerButton.pinHeight(equalTo: Constants.sideInset),
+            burgerButton.pinWeight(equalTo: Constants.sideInset),
+            burgerButton.pinTrailing(to: trailingAnchor, inset: Constants.sideInset),
+            editButton.pinTop(to: avatarImage.bottomAnchor, inset: Constants.sideInset * 2),
+            editButton.pinLeading(to: avatarImage.leadingAnchor),
+            editButton.pinTrailing(to: burgerButton.trailingAnchor),
+            editButton.pinHeight(equalTo: Constants.editButtonHeight)
+
+        ])
+               NSLayoutConstraint.activate(personalDataViewConstraints)
+    }
+    func configureFriendProfile() {
+        [messageButton, callButton].forEach({$0.forAutolayout()})
+        [messageButton, callButton].forEach({addSubview($0)})
+        messageButton.setTitle(viewModel?.titleMessagwButton, for: .normal)
+        callButton.setTitle(viewModel?.titleCallButton, for: .normal)
+        callButton.isSelected = false
+        personalDataViewConstraints.append(contentsOf: [
+            callButton.pinTop(to: moreInfoButton.bottomAnchor, inset: Constants.sideInset),
+            callButton.pinTop(to: avatarImage.bottomAnchor, inset: Constants.sideInset * 2),
+            callButton.pinWeight(equalTo: UIScreen.main.bounds.width / 3),
+
+
+            callButton.pinTrailing(to: trailingAnchor, inset: Constants.sideInset),
+            callButton.pinHeight(equalTo: Constants.editButtonHeight),
+            callButton.pinBottom(to: bottomAnchor, inset: Constants.sideInset),
+
+
+            messageButton.pinLeading(to: avatarImage.leadingAnchor),
+            messageButton.pinHeight(equalTo: Constants.editButtonHeight),
+messageButton.pinTop(to: moreInfoButton.bottomAnchor, inset: Constants.sideInset),
+           messageButton.pinWeight(equalTo: UIScreen.main.bounds.width / 3),
+
+
+
+
+        ])
+               NSLayoutConstraint.activate(personalDataViewConstraints)
+
+        setupUI()
+    }
+
 
     private func setupUI() {
         nikNameLabel.text = viewModel?.nickname
@@ -105,14 +182,15 @@ final class PersonalDataView: UIView {
         professionLabel.text = viewModel?.professionLabelTitle
         moreInfoButton.setTitle(viewModel?.moreInfoButtonTitle, for: .normal)
         moreInfoButton.applyIcon(systemName: viewModel?.moreInfoButtonIcon ?? "", tintColor: .systemOrange)
-        editButton.setTitle(viewModel?.editButtonTitle, for: .normal)
+
+
     }
 
     private func layout() {
-        [nikNameLabel, fullNameLabel, avatarImage, moreInfoButton, burgerButton, professionLabel, editButton].forEach({
+        [nikNameLabel, fullNameLabel, avatarImage,  professionLabel, moreInfoButton].forEach({
             $0.forAutolayout()
         })
-        [nikNameLabel, fullNameLabel, avatarImage, moreInfoButton, burgerButton, professionLabel, editButton].forEach({
+        [nikNameLabel, fullNameLabel, avatarImage,  professionLabel, moreInfoButton].forEach({
             addSubview($0)
         })
 
@@ -120,10 +198,7 @@ final class PersonalDataView: UIView {
             nikNameLabel.pinTop(to: topAnchor),
             nikNameLabel.pinLeading(to: leadingAnchor, inset: Constants.sideInset),
 
-            burgerButton.pinTop(to: topAnchor),
-            burgerButton.pinHeight(equalTo: Constants.sideInset),
-            burgerButton.pinWeight(equalTo: Constants.sideInset),
-            burgerButton.pinTrailing(to: trailingAnchor, inset: Constants.sideInset),
+
 
             avatarImage.pinLeading(to: leadingAnchor, inset: Constants.sideInset),
             avatarImage.pinTop(to: nikNameLabel.bottomAnchor, inset: Constants.sideInset),
@@ -138,12 +213,7 @@ final class PersonalDataView: UIView {
 
             moreInfoButton.pinTop(to: professionLabel.bottomAnchor),
             moreInfoButton.pinLeading(to: professionLabel.leadingAnchor),
-
-            editButton.pinTop(to: avatarImage.bottomAnchor, inset: Constants.sideInset * 2),
-            editButton.pinLeading(to: avatarImage.leadingAnchor),
-            editButton.pinTrailing(to: burgerButton.trailingAnchor),
-            editButton.pinHeight(equalTo: Constants.editButtonHeight)
- ])
+        ])
         NSLayoutConstraint.activate(personalDataViewConstraints)
     }
 

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ProfileActionView: UIView {
+final class ProfileActionView: UIView {
 
-    private var viewModel: ProfileActionViewModel
+    private var viewModel: ProfileActionViewModel?
 
     private var typesStackConstraints: [NSLayoutConstraint] = []
 
@@ -46,15 +46,21 @@ class ProfileActionView: UIView {
         return label
     }()
     
-    init(viewModel: ProfileActionViewModel){
-        self.viewModel = viewModel
+    init(){
         super.init(frame: .zero)
         layout()
-        setupUI()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func configure(with viewModel: ProfileActionViewModel) {
+        self.viewModel = viewModel
+        setupUI()
+        viewModel.onModelChanged = { [weak self] in
+            self?.setupUI()
+        }
     }
 
     private func layout() {
@@ -80,6 +86,7 @@ class ProfileActionView: UIView {
     }
 
     private func setupUI() {
+        guard let viewModel else { return }
         typeTitleLabel.text = viewModel.type.title
         countLabel.text = String(viewModel.count)
         if viewModel.isSelected {
@@ -92,6 +99,6 @@ class ProfileActionView: UIView {
     }
 
     @objc private func typeTap() {
-        viewModel.viewDidTapped()
+        viewModel?.viewDidTapped()
     }
 }

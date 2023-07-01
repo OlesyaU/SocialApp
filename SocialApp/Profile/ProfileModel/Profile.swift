@@ -13,7 +13,7 @@ class Profile: Codable {
     let surname: String
     let profession: String
     var posts: [Post]
-    var photos: [String]
+    let photos: [String]
     var subscribers: Set<Profile>
     var subscriptions: Set<Profile>
     let city: String
@@ -53,14 +53,14 @@ class Profile: Codable {
 
     static func mock(count: Int) -> [Profile] {
         var profiles: [Profile] = []
-        for i in 0...count {
+        for _ in 0...count {
             let profile = Profile(
                 avatar: avatars().randomElement()!.description,
                 name: getAuthorNames().randomElement()!,
                 surname: getAuthorSurnames().randomElement()!,
                 profession: getProfession().randomElement()!,
-                photos: [],
-                posts: Post.mock(count: i),
+                photos: getPhoto().shuffled(),
+                posts: [],
                 subscribers: [],
                 subscriptions: [],
                 city: getCity().randomElement()!,
@@ -69,24 +69,15 @@ class Profile: Codable {
                 career: getProfession().randomElement()!,
                 contacts: Contact.random(3)
             )
+            let posts = Post.mock(count: 7, profile: profile)
+            profile.posts = posts
             profiles.append(profile)
         }
+        
         return profiles
     }
 }
 
-//extension String {
-//    static func random(length: Int = 20) -> String {
-//        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-//        var randomString: String = ""
-//
-//        for _ in 0..<length {
-//            let randomValue = arc4random_uniform(UInt32(base.count))
-//            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
-//        }
-//        return randomString
-//    }
-//}
 
 extension Profile: Hashable {
     static func == (lhs: Profile, rhs: Profile) -> Bool {

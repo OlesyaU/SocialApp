@@ -32,6 +32,9 @@ class ProfileViewCell: UITableViewCell {
         self.viewModel = viewModel
         personalView.configure(with: viewModel)
     }
+    func configureFriendProfile(with friendProifile: PersonalDataViewModel) {
+        personalView.configureFriendProfile()
+    }
     
     private func layout() {
         [personalView].forEach({$0.forAutolayout()})

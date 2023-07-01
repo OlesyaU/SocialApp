@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProfileActionViewModel {
+class ProfileActionViewModel {
     enum ProfileActionsType {
         case publications(count: Int)
         case subscriptions(count: Int)
@@ -30,7 +30,7 @@ struct ProfileActionViewModel {
             onModelChanged?()
         }
     }
-    var onModelSelected: ((Bool) -> Void)?
+    var onModelSelected: (() -> Void)?
     var onModelChanged: (() -> Void)?
 
     let type: ProfileActionsType
@@ -42,14 +42,13 @@ struct ProfileActionViewModel {
         }
     }
 
-    init(isSelected: Bool, type: ProfileActionsType, onModelSelected: @escaping (Bool) -> Void) {
+    init(isSelected: Bool, type: ProfileActionsType, onModelSelected: @escaping () -> Void) {
         self.isSelected = isSelected
         self.type = type
         self.onModelSelected = onModelSelected
-        self.onModelChanged = nil
     }
 
     func viewDidTapped() {
-
+        onModelSelected?()
     }
 }

@@ -6,10 +6,10 @@
 //
 
 import Foundation
-//import UIKit
 
 final class FeedViewModel {
-    let posts = Post.mock(count: 7)
+    let posts = DataBase.shared.getPosts()
     let profiles = Profile.mock(count: 7)
+    
 }
 

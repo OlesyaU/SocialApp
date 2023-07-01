@@ -9,60 +9,60 @@ import UIKit
 
 class ProfileViewController: UITableViewController {
 
-    lazy var actionsViewModels: [ProfileActionViewModel] = [
-        .init(isSelected: true, type: .publications(count: 1400), onModelSelected:  { [weak self] _ in
-            print("tapped publications action")
-        }),
-        .init(isSelected: false, type: .subscribers(count: 5), onModelSelected: { [weak self] _ in
-            print("tapped subscribers action")
-        }),
-        .init(isSelected: false, type: .subscriptions(count: 3), onModelSelected:  { [weak self] _ in
-            print("tapped subscriptions action")
-        })
-    ]
-
-    let buttonViewModels: [ProfileIconButtonViewModel] = [
-        .init(type: .write, action: {
-            print("write")
-        }),
-        .init(type: .history, action: {
-            print("history")
-        }),
-        .init(type: .photo, action: {
-            print("photo")
-        })
-    ]
-
+    private var viewModel = ProfileViewModel()
+    private var friend: Profile?
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsSelection = false
         tableView.register(ProfileViewCell.self, forCellReuseIdentifier: ProfileViewCell.identifier)
-        tableView.register(ProfileActionsCell.self, forCellReuseIdentifier: ProfileActionsCell.identifier)
-        tableView.register(ProfileIconButtonsCell.self, forCellReuseIdentifier: ProfileIconButtonsCell.identifier)
         tableView.register(PhotosCell.self, forCellReuseIdentifier: PhotosCell.identifier)
         tableView.register(FindMyPostsCell.self, forCellReuseIdentifier: FindMyPostsCell.identifier)
-        tableView.register(ProfilePostsCell.self, forCellReuseIdentifier: ProfilePostsCell.identifier)
+        tableView.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
+        print(viewModel.personalData.isMyProfile )
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+//        if viewModel.personalData.isMyProfile {
+            return 6
+//        } else {
+//            return 5
+//        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-            case 0:
-                return 1
-            case 1:
-                return 1
-            case 2:
-                return 1
-            case 3:
-                return 1
-            case 4:
-                return 1
-            default:
-                return 20
+        if viewModel.personalData.isMyProfile {
+
+            switch section {
+                case 0:
+                    return 1
+                case 1:
+                    return 1
+                case 2:
+                    return 1
+                case 3:
+                    return 1
+                case 4:
+                    return 1
+                default:
+                    return viewModel.testProfile.posts.count
+            }
+        } else {
+            switch section {
+                case 0:
+                    return 1
+                case 1:
+                    return 1
+                case 2:
+                    return 1
+                case 3:
+                    return 0
+                case 4:
+                    return 1
+                default:
+                    return friend?.posts.count ?? 10
+            }
         }
     }
 
@@ -70,93 +70,69 @@ class ProfileViewController: UITableViewController {
         switch indexPath.section {
             case 0:
                 guard let personalDataCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewCell.identifier, for: indexPath) as? ProfileViewCell else { return UITableViewCell() }
+                if viewModel.personalData.isMyProfile {
 
-                // TODO: - Взять из вью - модели
-                let testProfile = DataBase.shared.testProfile
-                let viewModel = PersonalDataViewModel(profile: testProfile)
-                personalDataCell.configure(with: viewModel)
+                    personalDataCell.configure(with: viewModel.personalData)
+                } else {
+                    personalDataCell.configure(with: PersonalDataViewModel(profile: friend!))
+                }
                 return personalDataCell
+
             case 1:
-                guard let profileActionsCell = tableView.dequeueReusableCell(withIdentifier: ProfileActionsCell.identifier, for: indexPath) as? ProfileActionsCell else { return UITableViewCell()}
-                profileActionsCell.configure(viewModels: actionsViewModels)
+                let profileActionsCell = ProfileActionsCell()
+                profileActionsCell.configure(viewModels: viewModel.actionsViewModels)
                 return profileActionsCell
+
             case 2:
-                guard let buttonsIconCell = tableView.dequeueReusableCell(withIdentifier: ProfileIconButtonsCell.identifier, for: indexPath) as? ProfileIconButtonsCell else { return UITableViewCell() }
-                buttonsIconCell.configure(viewModels: buttonViewModels)
+                if viewModel.personalData.isMyProfile != true {
+                    fallthrough
+                }
+                let buttonsIconCell = ProfileIconButtonsCell()
+                buttonsIconCell.configure(viewModels: viewModel.buttonViewModels)
                 return buttonsIconCell
             case 3:
                 guard let photosCell = tableView.dequeueReusableCell(withIdentifier: PhotosCell.identifier, for: indexPath) as? PhotosCell else {return UITableViewCell()}
-                let testProfile = DataBase.shared.testProfile
-                var photosCellViewModel = PhotosCellViewModel(profile: testProfile)
-                photosCell.configure(viewModel: photosCellViewModel)
-                
+                if viewModel.personalData.isMyProfile {
+                    photosCell.configure(viewModel: viewModel.photosCellViewModel)
+                } else {
+                    photosCell.configure(viewModel: PhotosCellViewModel(profile: friend!))
+                }
                 return photosCell
+
             case 4:
                 guard let findCell = tableView.dequeueReusableCell(withIdentifier: FindMyPostsCell.identifier, for: indexPath) as? FindMyPostsCell else {return UITableViewCell()}
-                let findViewModel = FindMyPostsViewModel()
-                findCell.configure(viewModel: findViewModel)
-
+                findCell.configure(viewModel: viewModel.findViewModel)
                 return findCell
             default:
-                guard let postDataCell = tableView.dequeueReusableCell(withIdentifier: ProfilePostsCell.identifier, for: indexPath) as? ProfilePostsCell else { return UITableViewCell() }
+                guard let postDataCell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UITableViewCell() }
+                var post = viewModel.testProfile.posts[indexPath.row]
+                postDataCell.configureCell(post: post)
                 return postDataCell
         }
-
-
- }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        switch indexPath.section {
-//            case 3:
-//                return 250
-//            default:
-//                return UITableView.automaticDimension
-//        }
-        UITableView.automaticDimension
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    func configure(profile: Profile) {
+        navigationItem.title = profile.nickname.lowercased()
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem.menuButton(self, action: #selector(dotsAction), imageName: viewModel.dotsIcon, tintColor: AppColors.orange)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: viewModel.leftArrowIconString), style: .plain, target: self, action: #selector(backAction))
+        navigationItem.leftBarButtonItem?.tintColor = AppColors.orange
+//        viewModel.personalData.isMyProfile.toggle()
+        //        viewModel.testProfile = profile
+        self.friend = profile
 
     }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    @objc private func dotsAction(){
+        print(#file, #line)
+        //        TODO: - set action (push view with profile information more something like this)
+
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func backAction(){
+        navigationController?.popViewController(animated: true)
     }
-    */
-
 }

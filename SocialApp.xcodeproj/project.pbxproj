@@ -29,7 +29,6 @@
 		7614A4082A44362A004D7466 /* FloatingPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A4072A44362A004D7466 /* FloatingPanelViewController.swift */; };
 		7614A40B2A44AEB7004D7466 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A40A2A44AEB7004D7466 /* DataBase.swift */; };
 		7614A42F2A45B1FD004D7466 /* CombackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A42E2A45B1FD004D7466 /* CombackViewModel.swift */; };
-		7614A4312A496AE3004D7466 /* ProfilePostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A4302A496AE3004D7466 /* ProfilePostsCell.swift */; };
 		7614A4332A496B15004D7466 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A4322A496B15004D7466 /* ProfileViewModel.swift */; };
 		7614A4352A496C2D004D7466 /* PersonalDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A4342A496C2D004D7466 /* PersonalDataView.swift */; };
 		7614A4372A499084004D7466 /* ProfileActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A4362A499084004D7466 /* ProfileActionView.swift */; };
@@ -49,6 +48,7 @@
 		767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074122A39955A007FC469 /* RegistrationViewController.swift */; };
 		767074182A39955D007FC469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 767074172A39955D007FC469 /* Assets.xcassets */; };
 		7670741B2A39955D007FC469 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767074192A39955D007FC469 /* LaunchScreen.storyboard */; };
+		76CB113A2A4F51CA009B29F4 /* FriendProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11392A4F51CA009B29F4 /* FriendProfileViewModel.swift */; };
 		76CD09912A3C7453001A1B31 /* OrientationDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD09902A3C7453001A1B31 /* OrientationDevice.swift */; };
 		76CD09992A3C971F001A1B31 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76CD09982A3C971F001A1B31 /* FirebaseAuth */; };
 		76CD099B2A3C97AA001A1B31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */; };
@@ -82,7 +82,6 @@
 		7614A4072A44362A004D7466 /* FloatingPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelViewController.swift; sourceTree = "<group>"; };
 		7614A40A2A44AEB7004D7466 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		7614A42E2A45B1FD004D7466 /* CombackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombackViewModel.swift; sourceTree = "<group>"; };
-		7614A4302A496AE3004D7466 /* ProfilePostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsCell.swift; sourceTree = "<group>"; };
 		7614A4322A496B15004D7466 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		7614A4342A496C2D004D7466 /* PersonalDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataView.swift; sourceTree = "<group>"; };
 		7614A4362A499084004D7466 /* ProfileActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActionView.swift; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		767074172A39955D007FC469 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7670741A2A39955D007FC469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7670741C2A39955D007FC469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76CB11392A4F51CA009B29F4 /* FriendProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewModel.swift; sourceTree = "<group>"; };
 		76CD09902A3C7453001A1B31 /* OrientationDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationDevice.swift; sourceTree = "<group>"; };
 		76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76EFE9F42A39BB3A0083DE09 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
@@ -284,7 +284,6 @@
 				7614A43E2A49C73F004D7466 /* ProfileIconButton */,
 				7614A48A2A4C6C91004D7466 /* PhotoCell */,
 				76F042DE2A4DE1F900631896 /* FindMyPosts */,
-				7614A44C2A4AD988004D7466 /* ProfilePosts */,
 			);
 			path = ProfileView;
 			sourceTree = "<group>";
@@ -310,8 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				7614A4412A49C76B004D7466 /* ProfileIconButtonType.swift */,
-				7614A43F2A49C758004D7466 /* ProfileIconButton.swift */,
 				7614A4432A49CB50004D7466 /* ProfileIconButtonsStackView.swift */,
+				7614A43F2A49C758004D7466 /* ProfileIconButton.swift */,
 				7614A4472A49D1AF004D7466 /* ProfileIconButtonsCell.swift */,
 			);
 			path = ProfileIconButton;
@@ -324,14 +323,6 @@
 				7614A3B22A408D9A004D7466 /* ProfileViewCell.swift */,
 			);
 			path = ProfilePesonalData;
-			sourceTree = "<group>";
-		};
-		7614A44C2A4AD988004D7466 /* ProfilePosts */ = {
-			isa = PBXGroup;
-			children = (
-				7614A4302A496AE3004D7466 /* ProfilePostsCell.swift */,
-			);
-			path = ProfilePosts;
 			sourceTree = "<group>";
 		};
 		7614A44D2A4AD9B5004D7466 /* ProfileActions */ = {
@@ -414,6 +405,7 @@
 				767074192A39955D007FC469 /* LaunchScreen.storyboard */,
 				7670741C2A39955D007FC469 /* Info.plist */,
 				76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */,
+				76CB11392A4F51CA009B29F4 /* FriendProfileViewModel.swift */,
 			);
 			path = SocialApp;
 			sourceTree = "<group>";
@@ -594,7 +586,6 @@
 				767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */,
 				7614A42F2A45B1FD004D7466 /* CombackViewModel.swift in Sources */,
 				7614A3952A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift in Sources */,
-				7614A4312A496AE3004D7466 /* ProfilePostsCell.swift in Sources */,
 				7614A4482A49D1AF004D7466 /* ProfileIconButtonsCell.swift in Sources */,
 				7614A3A72A408004004D7466 /* MainTabBarController.swift in Sources */,
 				7614A3B32A408D9A004D7466 /* ProfileViewCell.swift in Sources */,
@@ -608,6 +599,7 @@
 				7614A39C2A3F426D004D7466 /* ConfirmViewController.swift in Sources */,
 				7614A4892A4C484F004D7466 /* PersonalDataViewModel.swift in Sources */,
 				7614A3A92A4080CC004D7466 /* ProfileViewController.swift in Sources */,
+				76CB113A2A4F51CA009B29F4 /* FriendProfileViewModel.swift in Sources */,
 				76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */,
 				76EFE9FD2A3A06190083DE09 /* CombackViewController.swift in Sources */,
 				7614A4372A499084004D7466 /* ProfileActionView.swift in Sources */,

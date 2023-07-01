@@ -35,13 +35,25 @@ final class FindMyPostsCell: UITableViewCell {
     }
     
     private func layout() {
-        [titleLabel, magnifyingglass].forEach({$0.forAutolayout()})
-        [titleLabel, magnifyingglass].forEach({contentView.addSubview($0)})
+       titleLabel.forAutolayout()
+    contentView.addSubview(titleLabel)
+        titleLabel.textColor = viewModel?.titleColor
+        titleLabel.font = viewModel?.titleFont
         cellConstraints.append(contentsOf: [
             titleLabel.pinTop(to: contentView.topAnchor, inset: constraintCell),
             titleLabel.pinLeading(to: contentView.leadingAnchor, inset: constraintCell),
-            titleLabel.pinBottom(to: contentView.bottomAnchor, inset: constraintCell),
-            
+            titleLabel.pinBottom(to: contentView.bottomAnchor, inset: constraintCell)
+        ])
+        NSLayoutConstraint.activate(cellConstraints)
+    }
+    
+    func configure(viewModel: FindMyPostsViewModel) {
+        magnifyingglass.forAutolayout()
+        self.contentView.addSubview(magnifyingglass)
+        titleLabel.text = viewModel.title
+        magnifyingglass.image = UIImage(systemName: viewModel.icon)
+        magnifyingglass.tintColor = viewModel.iconColor
+        cellConstraints.append(contentsOf: [
             magnifyingglass.pinTop(to: contentView.topAnchor, inset: constraintCell),
             magnifyingglass.pinTrailing(to: contentView.trailingAnchor, inset: constraintCell),
             magnifyingglass.pinHeight(equalTo: 24),
@@ -50,12 +62,9 @@ final class FindMyPostsCell: UITableViewCell {
         ])
         NSLayoutConstraint.activate(cellConstraints)
     }
-    
-    func configure(viewModel: FindMyPostsViewModel) {
-        titleLabel.text = viewModel.title
-        titleLabel.textColor = viewModel.titleColor
-        titleLabel.font = viewModel.titleFont
-        magnifyingglass.image = UIImage(systemName: viewModel.icon)
-        magnifyingglass.tintColor = viewModel.iconColor
+
+    func configureFriend(for friend: FindMyPostsViewModel) {
+        titleLabel.text = friend.titleForFriendProfile
+
     }
 }
