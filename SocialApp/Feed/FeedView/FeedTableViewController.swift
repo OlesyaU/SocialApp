@@ -56,7 +56,7 @@ extension FeedTableViewController: FeedCellProtocol {
         profileVC.configure(profile: friendProfile)
         
 
-        profileVC.navigationController?.navigationBar.tintColor = AppColors.orange
+//        profileVC.navigationController?.navigationBar.tintColor = AppColors.orange
         navigationController?.pushViewController(profileVC, animated: true)
  }
 

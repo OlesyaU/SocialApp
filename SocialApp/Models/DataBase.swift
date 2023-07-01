@@ -13,21 +13,21 @@ class DataBase {
 
     var profiles: [Profile] = []
 
-    var myProfile = Profile(
-        avatar: "",
-        name: "",
-        surname: "",
-        profession: "",
-        photos: getPhoto().shuffled(),
-        posts: [],
-        subscribers: [],
-        subscriptions: [],
-        city: "",
-        dateOfBirth: Date(),
-        education: "",
-        career: "",
-        contacts: [.mobilePhone("+7 999 999 99 99")]
-    )
+//    var myProfile = Profile(
+//        avatar: "",
+//        name: "",
+//        surname: "",
+//        profession: "",
+//        photos: getPhoto().shuffled(),
+//        posts: [],
+//        subscribers: [],
+//        subscriptions: [],
+//        city: "",
+//        dateOfBirth: Date(),
+//        education: "",
+//        career: "",
+//        contacts: [.mobilePhone("+7 999 999 99 99")]
+//    )
     var testProfile = Profile(
         avatar: "Avatar2",
         name: "Name",
@@ -85,7 +85,7 @@ class DataBase {
         profiles.forEach { profile in
             profile.posts.append(contentsOf: Post.mock(count: Int.random(in: 1...7), profile: profile))
         }
-        profiles.append(myProfile)
+        profiles.append(testProfile)
         saveDataToUserDefaults()
         return profiles
     }

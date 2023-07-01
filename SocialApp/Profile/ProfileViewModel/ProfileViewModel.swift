@@ -8,11 +8,10 @@
 import UIKit
 final class ProfileViewModel {
     var testProfile: Profile
-    var friend: Profile?
     let posts: [Post]
     let findViewModel: FindMyPostsViewModel
     let photosCellViewModel: PhotosCellViewModel
-    let personalData: PersonalDataViewModel
+    var personalData: PersonalDataViewModel
 
     let leftArrowIconString = IconsName.leftArrow.nameIcon
     let titleFrienCell = "Мои записи"

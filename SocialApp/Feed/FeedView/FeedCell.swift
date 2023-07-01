@@ -15,7 +15,7 @@ final class FeedCell: UITableViewCell {
     }
     private var friendProfile: Profile?
    var delegate: FeedCellProtocol?
-    var getFriendProfile: ((_ friendProfile: Profile)->Void)?
+    var getFriendProfile: ((_ friendProfile: Profile) -> Void)?
 
     private lazy var contentHeaderCellView: UIView = {
         let image = UIView()
@@ -120,10 +120,7 @@ final class FeedCell: UITableViewCell {
 
     private var commonConstraints: [NSLayoutConstraint] = []
 
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        layout()
-//    }
+
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

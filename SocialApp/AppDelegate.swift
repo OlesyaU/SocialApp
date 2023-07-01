@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        print("CHECK1 - \(DataBase.shared.profiles)")
 
-        print("DATA BASE CONTAINS OUR USER \(DataBase.shared.profiles.contains(DataBase.shared.myProfile))")
+        print("DATA BASE CONTAINS OUR USER \(DataBase.shared.profiles.contains(DataBase.shared.testProfile))")
 
         return true
     }

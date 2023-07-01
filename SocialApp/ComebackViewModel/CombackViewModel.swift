@@ -16,7 +16,7 @@ class CombackViewModel: ComebackViewModelProtocol {
             return nil
         }
         print("CHECK1 succeed validation ")
-       return model.getProfile(by: phone) ? model.myProfile : nil
+        return model.getProfile(by: phone) ? model.testProfile : nil
     }
 
     func validate(phone: String) -> Bool {
