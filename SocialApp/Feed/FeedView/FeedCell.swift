@@ -13,10 +13,8 @@ final class FeedCell: UITableViewCell {
         static let sideInset: CGFloat = 16
         static let heightAvatar: CGFloat = 56
     }
-    private var friendProfile: Profile?
-    private var postCell: Post?
-    private let viewModel = FeedViewModel()
-   var delegate: FeedCellProtocol?
+    private var viewModel: FeedCellViewModel?
+       var delegate: FeedCellProtocol?
     var getFriendProfile: ((_ friendProfile: Profile) -> Void)?
     var getPost: ((_ post: Post) -> Void)?
     private lazy var contentHeaderCellView: UIView = {
@@ -51,28 +49,24 @@ final class FeedCell: UITableViewCell {
     private let professionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-
         return label
     }()
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-
         return label
     }()
 
     private let likesLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-
         return label
     }()
 
     private lazy var likesIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-
         return image
     }()
 
@@ -109,6 +103,7 @@ final class FeedCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
+
     }
 
 
@@ -201,6 +196,22 @@ final class FeedCell: UITableViewCell {
         NSLayoutConstraint.activate(commonConstraints)
     }
 
+    private func setUp() {
+        guard let model = self.viewModel else {
+        return
+        }
+        dotsImage.image = UIImage(named: model.dotsIconName)?.withTintColor(model.colorForDotsImage)
+        likesIcon.image = UIImage(systemName: model.likesIconName)
+        bookmarkIcon.image = UIImage(systemName: model.bookmarkIconName)
+        commentsIcon.image = UIImage(systemName: model.commentsIconName)
+        [likesIcon, commentsIcon].forEach({$0.tintColor = model.colorForIcons})
+
+        if model.isSaved {
+            bookmarkIcon.tintColor = model.colorForDotsImage
+        } else {
+            bookmarkIcon.tintColor = model.colorForIcons
+        }
+    }
 
     func configureCell(post: Post) {
         image.image = UIImage(named: post.image)
@@ -210,18 +221,19 @@ final class FeedCell: UITableViewCell {
         likesLabel.text = String(post.likes)
         commentsLabel.text = String(post.comments)
         authorPhoto.image = UIImage(named: post.author.avatar)
-        friendProfile = post.author
-        postCell = post
-
+        self.viewModel = FeedCellViewModel(post: post)
+        setUp()
     }
 //TODO: - if from Feed did tap - dotsFromFeedGestureAction else dotsFromProfileGestureAction
 
 
     @objc func tapDotsAction() {
         print("tapDotsAction gesture worked")
-
-//        if mainTabBar.selectedIndex == 0 {
-//            dotsFromFeedGestureAction()
+        guard let model = self.viewModel else {
+        return
+        }
+//        if model.isMyPost {
+            dotsFromFeedGestureAction()
 //        } else {
 //            dotsFromProfileGestureAction()
 //        }
@@ -231,26 +243,26 @@ final class FeedCell: UITableViewCell {
 
      private func dotsFromFeedGestureAction() {
         print("dotsFromFeedGestureAction gesture worked")
-        dotsImage.tintColor = AppColors.orange
         delegate?.showMenuViewController()
     }
 
    private func dotsFromProfileGestureAction() {
         print("dotsFromProfileGestureAction gesture worked")
-        getPost?(postCell!)
-        delegate?.openPostMenuFromProfile(post: postCell!)
+
+//        delegate?.openPostMenuFromProfile(post: postCell!)
     }
 
     @objc private func openProfileGestureAction() {
         print("open profile gesture worked")
-        getFriendProfile?(friendProfile!)
-        delegate?.openFriendProfile(friendProfile: friendProfile!)
+        delegate?.openFriendProfile(friendProfile: viewModel!.author)
 
 
     }
 
 
 }
+//    private var friendProfile: Profile?
+//    private var postCell: Post?
 
 
 

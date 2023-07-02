@@ -15,7 +15,7 @@ final class FeedCellViewModel {
     let colorFontForAuthorNameLabel = AppColors.black
     let fontForDescriptionLabel = UIFont.textRegular
     let colorFontForDescriptionAndIcons = AppColors.gray
-    let colorForIcons = AppColors.black
+    let colorForIcons = AppColors.darkGray
     let colorForDotsImage = AppColors.orange
     let likesIconName =  IconsName.likes.nameIcon
     let commentsIconName =  IconsName.comments.nameIcon
