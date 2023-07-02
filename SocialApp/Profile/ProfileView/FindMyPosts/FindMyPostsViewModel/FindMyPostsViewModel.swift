@@ -16,6 +16,3 @@ struct FindMyPostsViewModel {
     let titleFont = UIFont.textRegular
 }
 
-struct AppColors {
-  static  let orange: UIColor = .systemOrange
-}

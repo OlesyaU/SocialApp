@@ -55,15 +55,15 @@ final class CombackViewController: UIViewController {
         let field = UITextField().forAutolayout()
         field.cornerRadius()
         field.layer.borderWidth = 0.8
-        field.layer.borderColor = UIColor.black.cgColor
+        field.layer.borderColor = AppColors.black.cgColor
         field.keyboardType = .phonePad
-        field.textAlignment = .center
-        let centeredParagraphStyle = NSMutableParagraphStyle()
-        centeredParagraphStyle.alignment = .center
-        field.attributedPlaceholder = NSAttributedString(
-            string: Constants.placeholderString,
-            attributes: [.paragraphStyle: centeredParagraphStyle]
-        )
+        field.textAlignment = TextAttribute.centerText
+//        let centeredParagraphStyle = NSMutableParagraphStyle()
+//        centeredParagraphStyle.alignment = .center
+//        field.attributedPlaceholder = NSAttributedString(
+//            string: Constants.placeholderString,
+//            attributes: [.paragraphStyle: centeredParagraphStyle]
+//        )
         field.delegate = self
         field.clearButtonMode = .always
         return field

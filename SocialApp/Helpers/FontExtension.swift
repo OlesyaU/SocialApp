@@ -9,6 +9,7 @@ import UIKit
 extension UIFont {
     static let titleBold = UIFont(name: "AvenirNextCondensed-Bold", size: 18)
     static let textRegular = UIFont(name: "AvenirNextCondensed-Regular", size: 16)
+   
 }
 
 enum IconsName {
@@ -17,6 +18,10 @@ enum IconsName {
     case rightArrow
     case burger
     case moreInfo
+    case likes
+    case comments
+    case bookmark
+
 
    var nameIcon: String {
         switch self {
@@ -30,9 +35,17 @@ enum IconsName {
               return  "line.3.horizontal"
             case .moreInfo:
               return  "exclamationmark.circle.fill"
+            case .likes:
+                return "heart"
+            case .comments:
+                return "message"
+            case .bookmark:
+                return "bookmark"
         }
     }
 }
+
+
 extension UIBarButtonItem {
 
     static func menuButton(_ target: Any?, action: Selector, imageName: String, tintColor: UIColor) -> UIBarButtonItem {

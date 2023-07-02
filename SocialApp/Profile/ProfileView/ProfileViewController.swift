@@ -18,32 +18,31 @@ class ProfileViewController: UITableViewController {
         tableView.register(PhotosCell.self, forCellReuseIdentifier: PhotosCell.identifier)
         tableView.register(FindMyPostsCell.self, forCellReuseIdentifier: FindMyPostsCell.identifier)
         tableView.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
+
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-            return 6
- 
+        return 6
+
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if viewModel.personalData.isMyProfile {
-
-            switch section {
-                case 0:
-                    return 1
-                case 1:
-                    return 1
-                case 2:
-                    return viewModel.personalData.isMyProfile ? 1 : 0
-                case 3:
-                    return 1
-                case 4:
-                    return 1
-                default:
-                    return viewModel.posts.count
-            }
+        switch section {
+            case 0:
+                return 1
+            case 1:
+                return 1
+            case 2:
+                return viewModel.personalData.isMyProfile ? 1 : 0
+            case 3:
+                return 1
+            case 4:
+                return 1
+            default:
+                return viewModel.posts.filter({$0.author.nickname == viewModel.personalData.nickname}).count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,17 +67,32 @@ class ProfileViewController: UITableViewController {
             case 3:
                 guard let photosCell = tableView.dequeueReusableCell(withIdentifier: PhotosCell.identifier, for: indexPath) as? PhotosCell else {return UITableViewCell()}
 
-                    photosCell.configure(viewModel: viewModel.photosCellViewModel)
+                photosCell.configure(viewModel: viewModel.photosCellViewModel)
 
                 return photosCell
 
             case 4:
                 guard let findCell = tableView.dequeueReusableCell(withIdentifier: FindMyPostsCell.identifier, for: indexPath) as? FindMyPostsCell else {return UITableViewCell()}
-                findCell.configure(viewModel: viewModel.findViewModel)
+                if viewModel.personalData.isMyProfile {
+
+                    findCell.configure(viewModel: viewModel.findViewModel)
+                } else {
+                    findCell.configureFriend(for: viewModel.findViewModel)
+                }
                 return findCell
             default:
                 guard let postDataCell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UITableViewCell() }
-                var post = viewModel.testProfile.posts[indexPath.row]
+                var post: Post
+                if viewModel.personalData.isMyProfile {
+
+                    post = viewModel.testProfile.posts[indexPath.row]
+                } else {
+
+                    //                    post = viewModel.posts[indexPath.row]
+                    /// -  show posts this friend
+
+                    post = viewModel.posts.filter({$0.author.nickname == viewModel.personalData.nickname})[indexPath.row]
+                }
                 postDataCell.configureCell(post: post)
                 return postDataCell
         }
@@ -94,16 +108,23 @@ class ProfileViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem.menuButton(self, action: #selector(dotsAction), imageName: viewModel.dotsIcon, tintColor: AppColors.orange)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: viewModel.leftArrowIconString), style: .plain, target: self, action: #selector(backAction))
         navigationItem.leftBarButtonItem?.tintColor = AppColors.orange
-                        viewModel.personalData = PersonalDataViewModel(profile: profile)
+        viewModel.personalData = PersonalDataViewModel(profile: profile)
 
     }
 
     @objc private func dotsAction(){
         print(#file, #line)
-        //        TODO: - set action (push view with profile information more something like this)
+        //        TODO: - set action (push view with profile information more something like this) go to moreInfoVC
+
 
     }
     @objc private func backAction(){
         navigationController?.popViewController(animated: true)
     }
-}
+
+
+    }
+
+
+
+

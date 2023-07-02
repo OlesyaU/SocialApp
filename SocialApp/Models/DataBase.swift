@@ -12,22 +12,6 @@ class DataBase {
     static let shared = DataBase()
 
     var profiles: [Profile] = []
-
-//    var myProfile = Profile(
-//        avatar: "",
-//        name: "",
-//        surname: "",
-//        profession: "",
-//        photos: getPhoto().shuffled(),
-//        posts: [],
-//        subscribers: [],
-//        subscriptions: [],
-//        city: "",
-//        dateOfBirth: Date(),
-//        education: "",
-//        career: "",
-//        contacts: [.mobilePhone("+7 999 999 99 99")]
-//    )
     var testProfile = Profile(
         avatar: "Avatar2",
         name: "Name",
@@ -45,7 +29,10 @@ class DataBase {
     )
 
     init() {
-        let posts = Post.mock(count: 6, profile: testProfile)
+        var posts = Post.mock(count: 6, profile: testProfile)
+        for i in 0...5 {
+            posts[i].isSaved = Bool.random()
+        }
         testProfile.posts = posts
 
         if profiles.isEmpty {
@@ -123,7 +110,6 @@ class DataBase {
     /// Description -  real posts of test user are commented
 
     func getPosts() -> [Post] {
-
 //        testProfile.subscriptions.flatMap(\.posts)
         profiles.flatMap(\.posts).shuffled()
     }

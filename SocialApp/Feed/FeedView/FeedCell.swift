@@ -14,12 +14,13 @@ final class FeedCell: UITableViewCell {
         static let heightAvatar: CGFloat = 56
     }
     private var friendProfile: Profile?
+    private var postCell: Post?
+    private let viewModel = FeedViewModel()
    var delegate: FeedCellProtocol?
     var getFriendProfile: ((_ friendProfile: Profile) -> Void)?
-
+    var getPost: ((_ post: Post) -> Void)?
     private lazy var contentHeaderCellView: UIView = {
         let image = UIView()
-        image.backgroundColor = .clear
         image.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openProfileGestureAction))
         image.addGestureRecognizer(tapGesture)
@@ -28,7 +29,6 @@ final class FeedCell: UITableViewCell {
     private lazy var image: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.backgroundColor = .backgroundPrimary
         image.isUserInteractionEnabled = false
         return image
     }()
@@ -45,48 +45,40 @@ final class FeedCell: UITableViewCell {
     private let authorNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .black
         return label
     }()
 
     private let professionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .gray
+
         return label
     }()
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = .systemGray
+
         return label
     }()
 
     private let likesLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .black
+
         return label
     }()
 
     private lazy var likesIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(systemName: "heart")
-        image.tintColor = .gray
+
         return image
     }()
 
     private let commentsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .black
         label.textAlignment = .left
         return label
     }()
@@ -94,18 +86,14 @@ final class FeedCell: UITableViewCell {
     private lazy var commentsIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(systemName: "message")
-        image.tintColor = .gray
         return image
     }()
 
     private lazy var dotsImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.tintColor = .systemOrange
-        image.image = UIImage(named: "DotsVertical")
         image.isUserInteractionEnabled = true
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(dotsGestureAction))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapDotsAction))
         image.addGestureRecognizer(gesture)
         return image
     }()
@@ -113,19 +101,18 @@ final class FeedCell: UITableViewCell {
     private lazy var bookmarkIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.image = UIImage(systemName: "bookmark")
-        image.tintColor = .darkGray
         return image
     }()
 
     private var commonConstraints: [NSLayoutConstraint] = []
 
-
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
     }
+
+
+
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -218,26 +205,64 @@ final class FeedCell: UITableViewCell {
     func configureCell(post: Post) {
         image.image = UIImage(named: post.image)
         authorNameLabel.text = post.author.name
-        professionLabel.text = post.profession
+        professionLabel.text = post.author.profession
         descriptionLabel.text = post.description
         likesLabel.text = String(post.likes)
         commentsLabel.text = String(post.comments)
         authorPhoto.image = UIImage(named: post.author.avatar)
         friendProfile = post.author
+        postCell = post
 
     }
+//TODO: - if from Feed did tap - dotsFromFeedGestureAction else dotsFromProfileGestureAction
 
-    @objc private func dotsGestureAction() {
-        dotsImage.tintColor = .systemOrange
+
+    @objc func tapDotsAction() {
+        print("tapDotsAction gesture worked")
+
+//        if mainTabBar.selectedIndex == 0 {
+//            dotsFromFeedGestureAction()
+//        } else {
+//            dotsFromProfileGestureAction()
+//        }
+    }
+
+
+
+     private func dotsFromFeedGestureAction() {
+        print("dotsFromFeedGestureAction gesture worked")
+        dotsImage.tintColor = AppColors.orange
         delegate?.showMenuViewController()
+    }
+
+   private func dotsFromProfileGestureAction() {
+        print("dotsFromProfileGestureAction gesture worked")
+        getPost?(postCell!)
+        delegate?.openPostMenuFromProfile(post: postCell!)
     }
 
     @objc private func openProfileGestureAction() {
         print("open profile gesture worked")
-
-
-            getFriendProfile?(friendProfile!)
+        getFriendProfile?(friendProfile!)
         delegate?.openFriendProfile(friendProfile: friendProfile!)
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //        TODO: - open cell with  this user data
@@ -247,11 +272,12 @@ final class FeedCell: UITableViewCell {
 //                let viewModel = FriendProfileViewModel()
 ////                controller.configure(with: model)
 //            }
-    }
 
-    //    func createProfileViewController(profile: Profile) -> ProfileViewController {
-    //        let model = ProfileViewModel(profile: profile)
-    //        let controller = ProfileViewController()
-    //        controller.configure(with: viewModel)
-    //    }
-}
+
+
+
+//    func createProfileViewController(profile: Profile) -> ProfileViewController {
+//        let model = ProfileViewModel(profile: profile)
+//        let controller = ProfileViewController()
+//        controller.configure(with: viewModel)
+//    }

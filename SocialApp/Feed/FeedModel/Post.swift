@@ -8,12 +8,11 @@ import UIKit
 
 struct Post: Codable, Equatable {
     let author: Profile
-    let profession: String
     let image: String
     let description: String
     let likes: Int
     let comments: Int
-    let isSaved: Bool
+    var isSaved: Bool
 }
 
 extension Post {
@@ -21,7 +20,6 @@ extension Post {
         var result: [Post] = []
         for _ in 0...count {
             let post = Post(author: profile,
-                            profession: profile.profession,
                             image: avatars().randomElement()!,
                             description: lorem,
                             likes: (0...290).randomElement()!,

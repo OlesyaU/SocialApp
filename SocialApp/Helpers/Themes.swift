@@ -25,3 +25,4 @@ extension UIImage {
     static let buttonBackgroundImageNormal = UIImage(named: "buttonNormal")
     static let buttonBackgroundImageSelected = UIImage(named: "buttonSelected")
 }
+

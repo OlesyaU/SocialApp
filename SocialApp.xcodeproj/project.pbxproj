@@ -48,7 +48,14 @@
 		767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074122A39955A007FC469 /* RegistrationViewController.swift */; };
 		767074182A39955D007FC469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 767074172A39955D007FC469 /* Assets.xcassets */; };
 		7670741B2A39955D007FC469 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767074192A39955D007FC469 /* LaunchScreen.storyboard */; };
-		76CB113A2A4F51CA009B29F4 /* FriendProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11392A4F51CA009B29F4 /* FriendProfileViewModel.swift */; };
+		76CB113C2A50F14D009B29F4 /* ProfileDotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB113B2A50F14D009B29F4 /* ProfileDotsController.swift */; };
+		76CB113E2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB113D2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift */; };
+		76CB11642A5190F1009B29F4 /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11632A5190F1009B29F4 /* ExtensionViewController.swift */; };
+		76CB11682A51A7E1009B29F4 /* FeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11672A51A7E1009B29F4 /* FeedCellViewModel.swift */; };
+		76CB116A2A51A9B3009B29F4 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11692A51A9B3009B29F4 /* AppColors.swift */; };
+		76CB116C2A51BC0A009B29F4 /* MenuViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB116B2A51BC0A009B29F4 /* MenuViewViewModel.swift */; };
+		76CB116E2A51BC4E009B29F4 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB116D2A51BC4E009B29F4 /* MenuModel.swift */; };
+		76CB11742A51C00B009B29F4 /* TextAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11732A51C00B009B29F4 /* TextAttribute.swift */; };
 		76CD09912A3C7453001A1B31 /* OrientationDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD09902A3C7453001A1B31 /* OrientationDevice.swift */; };
 		76CD09992A3C971F001A1B31 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76CD09982A3C971F001A1B31 /* FirebaseAuth */; };
 		76CD099B2A3C97AA001A1B31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */; };
@@ -103,7 +110,14 @@
 		767074172A39955D007FC469 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7670741A2A39955D007FC469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7670741C2A39955D007FC469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76CB11392A4F51CA009B29F4 /* FriendProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewModel.swift; sourceTree = "<group>"; };
+		76CB113B2A50F14D009B29F4 /* ProfileDotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDotsController.swift; sourceTree = "<group>"; };
+		76CB113D2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDotsControllerViewModel.swift; sourceTree = "<group>"; };
+		76CB11632A5190F1009B29F4 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
+		76CB11672A51A7E1009B29F4 /* FeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellViewModel.swift; sourceTree = "<group>"; };
+		76CB11692A51A9B3009B29F4 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		76CB116B2A51BC0A009B29F4 /* MenuViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewViewModel.swift; sourceTree = "<group>"; };
+		76CB116D2A51BC4E009B29F4 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		76CB11732A51C00B009B29F4 /* TextAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttribute.swift; sourceTree = "<group>"; };
 		76CD09902A3C7453001A1B31 /* OrientationDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationDevice.swift; sourceTree = "<group>"; };
 		76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76EFE9F42A39BB3A0083DE09 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
@@ -214,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				7614A3BA2A41A6D4004D7466 /* FeedViewModel.swift */,
+				76CB11672A51A7E1009B29F4 /* FeedCellViewModel.swift */,
 			);
 			path = FeedViewModel;
 			sourceTree = "<group>";
@@ -221,12 +236,11 @@
 		7614A3A12A407C7E004D7466 /* FeedView */ = {
 			isa = PBXGroup;
 			children = (
+				76CB116F2A51BCA2009B29F4 /* Menu */,
 				7614A39D2A407B9C004D7466 /* FeedTableViewController.swift */,
 				7614A3B02A408D6F004D7466 /* FeedCell.swift */,
 				7614A3BE2A42CDD3004D7466 /* FirstFeedCell.swift */,
 				7614A3FD2A432E4D004D7466 /* StoryCollectionViewCell.swift */,
-				7614A4002A44273D004D7466 /* MenuViewController.swift */,
-				7614A4022A442857004D7466 /* MenuCell.swift */,
 				7614A4072A44362A004D7466 /* FloatingPanelViewController.swift */,
 			);
 			path = FeedView;
@@ -271,6 +285,7 @@
 			children = (
 				7614A4322A496B15004D7466 /* ProfileViewModel.swift */,
 				7614A4882A4C484F004D7466 /* PersonalDataViewModel.swift */,
+				76CB113D2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift */,
 			);
 			path = ProfileViewModel;
 			sourceTree = "<group>";
@@ -279,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				7614A3A82A4080CC004D7466 /* ProfileViewController.swift */,
+				76CB113B2A50F14D009B29F4 /* ProfileDotsController.swift */,
 				7614A44B2A4AD965004D7466 /* ProfilePesonalData */,
 				7614A44D2A4AD9B5004D7466 /* ProfileActions */,
 				7614A43E2A49C73F004D7466 /* ProfileIconButton */,
@@ -405,9 +421,43 @@
 				767074192A39955D007FC469 /* LaunchScreen.storyboard */,
 				7670741C2A39955D007FC469 /* Info.plist */,
 				76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */,
-				76CB11392A4F51CA009B29F4 /* FriendProfileViewModel.swift */,
 			);
 			path = SocialApp;
+			sourceTree = "<group>";
+		};
+		76CB116F2A51BCA2009B29F4 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				76CB11722A51BCE2009B29F4 /* MenuView */,
+				76CB11712A51BCD2009B29F4 /* MenuViewModel */,
+				76CB11702A51BCBE009B29F4 /* MenuModel */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		76CB11702A51BCBE009B29F4 /* MenuModel */ = {
+			isa = PBXGroup;
+			children = (
+				76CB116D2A51BC4E009B29F4 /* MenuModel.swift */,
+			);
+			path = MenuModel;
+			sourceTree = "<group>";
+		};
+		76CB11712A51BCD2009B29F4 /* MenuViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				76CB116B2A51BC0A009B29F4 /* MenuViewViewModel.swift */,
+			);
+			path = MenuViewModel;
+			sourceTree = "<group>";
+		};
+		76CB11722A51BCE2009B29F4 /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				7614A4002A44273D004D7466 /* MenuViewController.swift */,
+				7614A4022A442857004D7466 /* MenuCell.swift */,
+			);
+			path = MenuView;
 			sourceTree = "<group>";
 		};
 		76EFE9EA2A39B9860083DE09 /* Confirm */ = {
@@ -475,6 +525,9 @@
 				76CD09902A3C7453001A1B31 /* OrientationDevice.swift */,
 				7614A3BC2A4207A2004D7466 /* DataForPost.swift */,
 				76F042DC2A4D663F00631896 /* FontExtension.swift */,
+				76CB11632A5190F1009B29F4 /* ExtensionViewController.swift */,
+				76CB11692A51A9B3009B29F4 /* AppColors.swift */,
+				76CB11732A51C00B009B29F4 /* TextAttribute.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -584,22 +637,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */,
+				76CB116E2A51BC4E009B29F4 /* MenuModel.swift in Sources */,
 				7614A42F2A45B1FD004D7466 /* CombackViewModel.swift in Sources */,
 				7614A3952A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift in Sources */,
 				7614A4482A49D1AF004D7466 /* ProfileIconButtonsCell.swift in Sources */,
 				7614A3A72A408004004D7466 /* MainTabBarController.swift in Sources */,
 				7614A3B32A408D9A004D7466 /* ProfileViewCell.swift in Sources */,
+				76CB11682A51A7E1009B29F4 /* FeedCellViewModel.swift in Sources */,
 				7614A44A2A4AAD44004D7466 /* ProfileActionsCell.swift in Sources */,
 				7614A40B2A44AEB7004D7466 /* DataBase.swift in Sources */,
 				76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */,
 				7614A39E2A407B9C004D7466 /* FeedTableViewController.swift in Sources */,
+				76CB113E2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift in Sources */,
 				7614A3BB2A41A6D4004D7466 /* FeedViewModel.swift in Sources */,
+				76CB116A2A51A9B3009B29F4 /* AppColors.swift in Sources */,
 				7614A3B92A40C4A7004D7466 /* Contact.swift in Sources */,
 				7614A3FE2A432E4D004D7466 /* StoryCollectionViewCell.swift in Sources */,
 				7614A39C2A3F426D004D7466 /* ConfirmViewController.swift in Sources */,
+				76CB116C2A51BC0A009B29F4 /* MenuViewViewModel.swift in Sources */,
 				7614A4892A4C484F004D7466 /* PersonalDataViewModel.swift in Sources */,
 				7614A3A92A4080CC004D7466 /* ProfileViewController.swift in Sources */,
-				76CB113A2A4F51CA009B29F4 /* FriendProfileViewModel.swift in Sources */,
+				76CB113C2A50F14D009B29F4 /* ProfileDotsController.swift in Sources */,
 				76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */,
 				76EFE9FD2A3A06190083DE09 /* CombackViewController.swift in Sources */,
 				7614A4372A499084004D7466 /* ProfileActionView.swift in Sources */,
@@ -615,6 +673,7 @@
 				7614A4912A4C70AE004D7466 /* PhotosCell.swift in Sources */,
 				7614A4352A496C2D004D7466 /* PersonalDataView.swift in Sources */,
 				76CD09912A3C7453001A1B31 /* OrientationDevice.swift in Sources */,
+				76CB11742A51C00B009B29F4 /* TextAttribute.swift in Sources */,
 				76F042E22A4DE28300631896 /* FindMyPostsViewModel.swift in Sources */,
 				7614A3932A3F0DF3004D7466 /* EnterNumberViewController.swift in Sources */,
 				7614A4392A4995C1004D7466 /* ProfileActionViewModel.swift in Sources */,
@@ -622,6 +681,7 @@
 				7614A4442A49CB50004D7466 /* ProfileIconButtonsStackView.swift in Sources */,
 				767074112A39955A007FC469 /* SceneDelegate.swift in Sources */,
 				7614A3B12A408D6F004D7466 /* FeedCell.swift in Sources */,
+				76CB11642A5190F1009B29F4 /* ExtensionViewController.swift in Sources */,
 				7614A3B52A408E8B004D7466 /* Post.swift in Sources */,
 				7614A48C2A4C6CAD004D7466 /* PhotosCellViewModel.swift in Sources */,
 				7614A4032A442857004D7466 /* MenuCell.swift in Sources */,

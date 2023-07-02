@@ -11,6 +11,7 @@ import FloatingPanel
 protocol FeedCellProtocol {
     func showMenuViewController()
     func openFriendProfile(friendProfile: Profile)
+    func openPostMenuFromProfile(post: Post)
 }
 
 class FeedTableViewController: UITableViewController {
@@ -38,27 +39,39 @@ class FeedTableViewController: UITableViewController {
             cell.delegate = self
             let post = viewModel.posts[indexPath.row - 1]
             cell.configureCell(post: post)
-           
+
             return cell
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   tableView.deselectRow(at: indexPath, animated: true)
-
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        addPostMenuTable(frame: cell.frame)
+    }
+    private func addPostMenuTable(frame: CGRect) {
+        let table = ProfileDotsController()
+        table.view.backgroundColor = .red
+        table.view.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: 200, height: 200)
+//        add(second)
+//        add(vc)
+        add(table)
     }
 
 }
 
 extension FeedTableViewController: FeedCellProtocol {
-    func openFriendProfile(friendProfile: Profile) {
- let profileVC = ProfileViewController()
-        profileVC.configure(profile: friendProfile)
-        
+    func openPostMenuFromProfile(post: Post) {
+//        open containerVC with table
+// save and ather thing with post
 
-//        profileVC.navigationController?.navigationBar.tintColor = AppColors.orange
+    }
+
+    func openFriendProfile(friendProfile: Profile) {
+        let profileVC = ProfileViewController()
+        profileVC.configure(profile: friendProfile)
         navigationController?.pushViewController(profileVC, animated: true)
- }
+    }
 
     
     func showMenuViewController() {
