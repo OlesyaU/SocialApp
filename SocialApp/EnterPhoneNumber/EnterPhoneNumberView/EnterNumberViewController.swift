@@ -234,7 +234,7 @@ extension EnterPhoneNumberViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        print("Text field text \(textField.text)")
+        print("Text field text \(String(describing: textField.text))")
         return true
     }
 }

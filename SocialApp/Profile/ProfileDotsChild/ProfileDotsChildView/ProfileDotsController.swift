@@ -12,8 +12,9 @@ class ProfileDotsController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        view.backgroundColor = viewModel.backgroundColor
         view.cornerRadius(cornerRadius: 15)
+      
     }
 
     // MARK: - Table view data source
@@ -29,6 +30,8 @@ class ProfileDotsController: UITableViewController {
        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "identifier")
  cell.backgroundColor = .cyan
   cell.textLabel?.text = viewModel.profilePostDotsItems[indexPath.row]
+        cell.textLabel?.textColor = viewModel.profilePostDotsItemsColor
+        cell.textLabel?.font = viewModel.profilePostDotsItemsFont
  return cell
     }
 

@@ -15,6 +15,7 @@ final class FeedCell: UITableViewCell {
     }
     private var viewModel: FeedCellViewModel?
        var delegate: FeedCellProtocol?
+    var postMenuDelegate: ProfileDotsProtocol?
     var getFriendProfile: ((_ friendProfile: Profile) -> Void)?
     var getPost: ((_ post: Post) -> Void)?
     private lazy var contentHeaderCellView: UIView = {
@@ -232,29 +233,39 @@ final class FeedCell: UITableViewCell {
         guard let model = self.viewModel else {
         return
         }
-//        if model.isMyPost {
+//        model.author.nickname == model.postCell.author.nickname
+//         =,model.isMyPost,
+        print("IISS MMYYY POOOSSTT \(model.isMyPost)")
+        if model.isMyPost {
+            dotsFromProfileGestureAction()
+        } else  if !model.isMyPost, model.author.nickname == model.postCell.author.nickname{
             dotsFromFeedGestureAction()
-//        } else {
-//            dotsFromProfileGestureAction()
-//        }
+        }
     }
 
-
+//    if !model.isMyPost
 
      private func dotsFromFeedGestureAction() {
         print("dotsFromFeedGestureAction gesture worked")
         delegate?.showMenuViewController()
+         postMenuDelegate?.showMenuViewController()
     }
 
    private func dotsFromProfileGestureAction() {
         print("dotsFromProfileGestureAction gesture worked")
-
-//        delegate?.openPostMenuFromProfile(post: postCell!)
+       guard let model = self.viewModel else {
+       return
+       }
+//       delegate?.openPostMenuFromProfile(post: model.postCell)
+       postMenuDelegate?.openPostMenuFromProfile(post: model.postCell)
     }
 
     @objc private func openProfileGestureAction() {
-        print("open profile gesture worked")
-        delegate?.openFriendProfile(friendProfile: viewModel!.author)
+//        print("open profile gesture worked")
+        guard let model = self.viewModel else {
+        return
+        }
+        delegate?.openFriendProfile(friendProfile: model.author)
 
 
     }

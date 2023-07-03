@@ -11,7 +11,7 @@ import FloatingPanel
 protocol FeedCellProtocol {
     func showMenuViewController()
     func openFriendProfile(friendProfile: Profile)
-    func openPostMenuFromProfile(post: Post)
+//    func openPostMenuFromProfile(post: Post)
 }
 
 class FeedTableViewController: UITableViewController {
@@ -47,7 +47,7 @@ class FeedTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   tableView.deselectRow(at: indexPath, animated: true)
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        addPostMenuTable(frame: cell.frame)
+//        addPostMenuTable(frame: cell.frame)
     }
     private func addPostMenuTable(frame: CGRect) {
         let table = ProfileDotsController()
@@ -61,11 +61,13 @@ class FeedTableViewController: UITableViewController {
 }
 
 extension FeedTableViewController: FeedCellProtocol {
-    func openPostMenuFromProfile(post: Post) {
-//        open containerVC with table
-// save and ather thing with post
-
-    }
+//    func openPostMenuFromProfile(post: Post) {
+//        let table = ProfileDotsController()
+//        table.view.frame = view.frame(forAlignmentRect: CGRect(x: 50, y: 100, width: 200, height: 200))
+////        table.view.frame = self.CGRect(x: frame.origin.x, y: frame.origin.y, width: 200, height: 200)
+//        add(table)
+//
+//    }
 
     func openFriendProfile(friendProfile: Profile) {
         let profileVC = ProfileViewController()

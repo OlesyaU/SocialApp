@@ -1,8 +1,3 @@
-//
-//  UIView+Autolayout.swift
-//
-//  Created by KOLOVATOV Aleksandr on 14.06.2023.
-//
 
 import UIKit
 

@@ -10,6 +10,7 @@ class EnterPhoneNumberViewModel {
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
+                    print(error.localizedDescription)
                     return
                 }
                 self.verificationId = verificationID

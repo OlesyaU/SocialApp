@@ -36,7 +36,7 @@ final class FeedCellViewModel {
     let avatarImageString: String
     let professionLabelTitle: String
     let moreInfoButtonIcon = IconsName.moreInfo.nameIcon
-
+    let postCell: Post
 
     init(post: Post) {
         author = post.author
@@ -52,5 +52,7 @@ final class FeedCellViewModel {
         professionLabelTitle = post.author.profession
         isSaved = post.isSaved
         isMyPost = testProfile.posts.contains(post)
+//        isMyPost = testProfile.nickname == post.author.nickname
+        postCell = post
     }
 }

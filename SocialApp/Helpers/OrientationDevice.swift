@@ -1,9 +1,3 @@
-//
-//  OrientationDevice.swift
-//  SocialApp
-//
-//  Created by Олеся on 16.06.2023.
-//
 
 import Foundation
 import UIKit

@@ -6,11 +6,17 @@
 //
 
 import UIKit
+import FloatingPanel
+protocol ProfileDotsProtocol {
+    func openPostMenuFromProfile(post: Post)
+    func showMenuViewController()
 
-class ProfileViewController: UITableViewController {
+}
+
+class ProfileViewController: UITableViewController, FloatingPanelControllerDelegate {
 
     private var viewModel = ProfileViewModel()
-
+    private var floatingPanel: FloatingPanelController?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsSelection = false
@@ -83,6 +89,7 @@ class ProfileViewController: UITableViewController {
             default:
                 guard let postDataCell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UITableViewCell() }
                 var post: Post
+                postDataCell.postMenuDelegate = self
                 if viewModel.personalData.isMyProfile {
 
                     post = viewModel.testProfile.posts[indexPath.row]
@@ -126,5 +133,29 @@ class ProfileViewController: UITableViewController {
     }
 
 
+extension ProfileViewController: ProfileDotsProtocol {
+    func openPostMenuFromProfile(post: Post) {
+        let table = ProfileDotsController()
+        table.view.frame = view.frame(forAlignmentRect: CGRect(x: 50, y: 100, width: 200, height: 200))
+//        table.view.frame = self.CGRect(x: frame.origin.x, y: frame.origin.y, width: 200, height: 200)
+        add(table)
 
+    }
+    func showMenuViewController() {
+        let menuViewController = MenuViewController()
+
+        let floatingPanelController = FloatingPanelController()
+        floatingPanelController.delegate = self
+        floatingPanelController.surfaceView.layer.cornerRadius = 12
+        floatingPanelController.surfaceView.clipsToBounds = true
+        floatingPanelController.set(contentViewController: menuViewController)
+
+        floatingPanelController.isRemovalInteractionEnabled = true
+        present(floatingPanelController, animated: true)
+        floatingPanel = floatingPanelController
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+
+
+}
 

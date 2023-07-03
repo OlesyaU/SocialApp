@@ -266,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				7614A3AD2A40815C004D7466 /* ProfileModel */,
+				76CB11772A52AA30009B29F4 /* ProfileDotsChild */,
 				7614A3AC2A40814E004D7466 /* ProfileView */,
 				7614A3AB2A40813D004D7466 /* ProfileViewModel */,
 			);
@@ -285,7 +286,6 @@
 			children = (
 				7614A4322A496B15004D7466 /* ProfileViewModel.swift */,
 				7614A4882A4C484F004D7466 /* PersonalDataViewModel.swift */,
-				76CB113D2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift */,
 			);
 			path = ProfileViewModel;
 			sourceTree = "<group>";
@@ -294,7 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				7614A3A82A4080CC004D7466 /* ProfileViewController.swift */,
-				76CB113B2A50F14D009B29F4 /* ProfileDotsController.swift */,
 				7614A44B2A4AD965004D7466 /* ProfilePesonalData */,
 				7614A44D2A4AD9B5004D7466 /* ProfileActions */,
 				7614A43E2A49C73F004D7466 /* ProfileIconButton */,
@@ -458,6 +457,31 @@
 				7614A4022A442857004D7466 /* MenuCell.swift */,
 			);
 			path = MenuView;
+			sourceTree = "<group>";
+		};
+		76CB11772A52AA30009B29F4 /* ProfileDotsChild */ = {
+			isa = PBXGroup;
+			children = (
+				76CB117A2A52AA79009B29F4 /* ProfileDotsChildView */,
+				76CB11792A52AA68009B29F4 /* ProfileDotsChildViewModel */,
+			);
+			path = ProfileDotsChild;
+			sourceTree = "<group>";
+		};
+		76CB11792A52AA68009B29F4 /* ProfileDotsChildViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				76CB113D2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift */,
+			);
+			path = ProfileDotsChildViewModel;
+			sourceTree = "<group>";
+		};
+		76CB117A2A52AA79009B29F4 /* ProfileDotsChildView */ = {
+			isa = PBXGroup;
+			children = (
+				76CB113B2A50F14D009B29F4 /* ProfileDotsController.swift */,
+			);
+			path = ProfileDotsChildView;
 			sourceTree = "<group>";
 		};
 		76EFE9EA2A39B9860083DE09 /* Confirm */ = {
