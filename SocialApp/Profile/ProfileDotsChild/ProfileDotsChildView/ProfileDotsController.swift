@@ -17,9 +17,21 @@ class ProfileDotsController: UITableViewController {
       
     }
 
+    func layout(frame: CGRect) {
+        let originX = frame.origin.x
+        let originY = frame.origin.y
+        let size = CGSize(width: 300, height: 300)
+        tableView.frame = .init(origin: .init(x: originX, y: originY), size: size)
+    }
+
     // MARK: - Table view data source
 
-
+    func prepareForRemove() {
+        tableView.removeFromSuperview()
+        view.removeFromSuperview()
+        willMove(toParent: nil)
+        removeFromParent()
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.profilePostDotsItems.count

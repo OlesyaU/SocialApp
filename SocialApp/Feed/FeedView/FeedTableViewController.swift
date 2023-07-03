@@ -11,8 +11,11 @@ import FloatingPanel
 protocol FeedCellProtocol {
     func showMenuViewController()
     func openFriendProfile(friendProfile: Profile)
+//    func addDotsMenuContainerView()
+    }
+
 //    func openPostMenuFromProfile(post: Post)
-}
+
 
 class FeedTableViewController: UITableViewController {
     private var viewModel = FeedViewModel()
@@ -38,7 +41,7 @@ class FeedTableViewController: UITableViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell  else {return UITableViewCell()}
             cell.delegate = self
             let post = viewModel.posts[indexPath.row - 1]
-            cell.configureCell(post: post)
+            cell.configureCell(post: post, indexPath: indexPath)
 
             return cell
         }
@@ -49,18 +52,19 @@ class FeedTableViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
 //        addPostMenuTable(frame: cell.frame)
     }
-    private func addPostMenuTable(frame: CGRect) {
-        let table = ProfileDotsController()
-        table.view.backgroundColor = .red
-        table.view.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: 200, height: 200)
-//        add(second)
-//        add(vc)
-        add(table)
-    }
+//    private func addPostMenuTable(frame: CGRect) {
+//        let table = ProfileDotsController()
+//        table.view.backgroundColor = .red
+//        table.view.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: 200, height: 200)
+//
+//        add(table)
+//    }
 
 }
 
 extension FeedTableViewController: FeedCellProtocol {
+
+
 //    func openPostMenuFromProfile(post: Post) {
 //        let table = ProfileDotsController()
 //        table.view.frame = view.frame(forAlignmentRect: CGRect(x: 50, y: 100, width: 200, height: 200))

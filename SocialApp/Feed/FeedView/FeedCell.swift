@@ -16,8 +16,7 @@ final class FeedCell: UITableViewCell {
     private var viewModel: FeedCellViewModel?
        var delegate: FeedCellProtocol?
     var postMenuDelegate: ProfileDotsProtocol?
-    var getFriendProfile: ((_ friendProfile: Profile) -> Void)?
-    var getPost: ((_ post: Post) -> Void)?
+
     private lazy var contentHeaderCellView: UIView = {
         let image = UIView()
         image.isUserInteractionEnabled = true
@@ -84,7 +83,7 @@ final class FeedCell: UITableViewCell {
         return image
     }()
 
-    private lazy var dotsImage: UIImageView = {
+     lazy var dotsImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.isUserInteractionEnabled = true
@@ -212,9 +211,10 @@ final class FeedCell: UITableViewCell {
         } else {
             bookmarkIcon.tintColor = model.colorForIcons
         }
+
     }
 
-    func configureCell(post: Post) {
+    func configureCell(post: Post, indexPath: IndexPath) {
         image.image = UIImage(named: post.image)
         authorNameLabel.text = post.author.name
         professionLabel.text = post.author.profession
@@ -222,7 +222,7 @@ final class FeedCell: UITableViewCell {
         likesLabel.text = String(post.likes)
         commentsLabel.text = String(post.comments)
         authorPhoto.image = UIImage(named: post.author.avatar)
-        self.viewModel = FeedCellViewModel(post: post)
+        self.viewModel = FeedCellViewModel(post: post, indexPath: indexPath)
         setUp()
     }
 //TODO: - if from Feed did tap - dotsFromFeedGestureAction else dotsFromProfileGestureAction
@@ -243,6 +243,7 @@ final class FeedCell: UITableViewCell {
         }
     }
 
+   
 //    if !model.isMyPost
 
      private func dotsFromFeedGestureAction() {
@@ -257,7 +258,7 @@ final class FeedCell: UITableViewCell {
        return
        }
 //       delegate?.openPostMenuFromProfile(post: model.postCell)
-       postMenuDelegate?.openPostMenuFromProfile(post: model.postCell)
+       postMenuDelegate?.openPostMenuFromProfile(post: model.postCell, indexPath: model.indexPath)
     }
 
     @objc private func openProfileGestureAction() {

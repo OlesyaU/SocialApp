@@ -38,7 +38,9 @@ final class FeedCellViewModel {
     let moreInfoButtonIcon = IconsName.moreInfo.nameIcon
     let postCell: Post
 
-    init(post: Post) {
+    let indexPath: IndexPath
+
+    init(post: Post, indexPath: IndexPath) {
         author = post.author
         profession = post.author.profession
         image = post.image
@@ -54,5 +56,6 @@ final class FeedCellViewModel {
         isMyPost = testProfile.posts.contains(post)
 //        isMyPost = testProfile.nickname == post.author.nickname
         postCell = post
+        self.indexPath = indexPath
     }
 }
