@@ -25,7 +25,8 @@ class DataBase {
         dateOfBirth: Date(),
         education: "",
         career: "",
-        contacts: [.mobilePhone("+7 999 999 99 99")]
+        contacts: [.mobilePhone("+7 999 999 99 99")],
+        gender: .female
     )
 
     init() {

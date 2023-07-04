@@ -35,6 +35,7 @@ final class PersonalDataView: UIView {
         let button = UIButton(primaryAction: UIAction { _ in
 // open burger menu view
             print("burger Button Tapped")
+            self.viewModel?.burgerButtonSelected()
         })
 
         button.tintColor = .systemOrange

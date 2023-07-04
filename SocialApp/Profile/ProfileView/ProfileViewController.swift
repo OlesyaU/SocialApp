@@ -117,6 +117,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             guard let personalDataCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewCell.identifier, for: indexPath) as? ProfileViewCell else { return UITableViewCell() }
+                let testProfile = DataBase.shared.testProfile
+
+                viewModel.personalData.onBurgerButtonSelected = { [weak self] in
+                self?.showRedactProfileModule()
+            }
+//
             personalDataCell.configure(with: viewModel.personalData)
             return personalDataCell
 
@@ -218,5 +224,12 @@ extension ProfileViewController: ProfileDotsProtocol {
         containerView.isHidden = true
         tableView.isScrollEnabled = true
         tableDotsMenu.prepareForRemove()
+    }
+    private func showRedactProfileModule() {
+        // TODO: - Взять профиль из viewModel
+        let profileViewModel = ProfileInformationViewModel(profile: DataBase.shared.testProfile)
+        let viewController = ProfileInformationViewController(viewModel: profileViewModel)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

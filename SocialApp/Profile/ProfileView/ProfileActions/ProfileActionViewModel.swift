@@ -46,6 +46,8 @@ class ProfileActionViewModel {
         self.isSelected = isSelected
         self.type = type
         self.onModelSelected = onModelSelected
+//        self.onModelChanged = nil
+        
     }
 
     func viewDidTapped() {

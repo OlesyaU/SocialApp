@@ -57,9 +57,19 @@
 		76CB116E2A51BC4E009B29F4 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB116D2A51BC4E009B29F4 /* MenuModel.swift */; };
 		76CB11742A51C00B009B29F4 /* TextAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11732A51C00B009B29F4 /* TextAttribute.swift */; };
 		76CB11802A52F534009B29F4 /* DotsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB117F2A52F534009B29F4 /* DotsContainerView.swift */; };
+		76CB11822A540202009B29F4 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11812A540202009B29F4 /* Gender.swift */; };
+		76CB11892A541F42009B29F4 /* ProfileInformationSelectGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11882A541F42009B29F4 /* ProfileInformationSelectGenderCell.swift */; };
+		76CB118B2A541FA3009B29F4 /* ProfileInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB118A2A541FA3009B29F4 /* ProfileInformationViewController.swift */; };
+		76CB118D2A541FEB009B29F4 /* ProfileInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB118C2A541FEB009B29F4 /* ProfileInformationViewModel.swift */; };
+		76CB118F2A5420E7009B29F4 /* ProfileInformationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB118E2A5420E7009B29F4 /* ProfileInformationItem.swift */; };
+		76CB11912A54218E009B29F4 /* ProfileInformationSelectGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11902A54218E009B29F4 /* ProfileInformationSelectGenderViewModel.swift */; };
+		76CB11962A542443009B29F4 /* EnterDataTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11952A542443009B29F4 /* EnterDataTextFieldType.swift */; };
+		76CB11982A542489009B29F4 /* EnterDataTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11972A542489009B29F4 /* EnterDataTextField.swift */; };
+		76CB119A2A5424BE009B29F4 /* EnterDataTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11992A5424BE009B29F4 /* EnterDataTextFieldCell.swift */; };
 		76CD09912A3C7453001A1B31 /* OrientationDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD09902A3C7453001A1B31 /* OrientationDevice.swift */; };
 		76CD09992A3C971F001A1B31 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76CD09982A3C971F001A1B31 /* FirebaseAuth */; };
 		76CD099B2A3C97AA001A1B31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */; };
+		76D0AA502A542DAF00646F43 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D0AA4F2A542DAF00646F43 /* UIImage+Extension.swift */; };
 		76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F42A39BB3A0083DE09 /* Themes.swift */; };
 		76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */; };
 		76EFE9FD2A3A06190083DE09 /* CombackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FC2A3A06190083DE09 /* CombackViewController.swift */; };
@@ -120,8 +130,18 @@
 		76CB116D2A51BC4E009B29F4 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		76CB11732A51C00B009B29F4 /* TextAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttribute.swift; sourceTree = "<group>"; };
 		76CB117F2A52F534009B29F4 /* DotsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsContainerView.swift; sourceTree = "<group>"; };
+		76CB11812A540202009B29F4 /* Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		76CB11882A541F42009B29F4 /* ProfileInformationSelectGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationSelectGenderCell.swift; sourceTree = "<group>"; };
+		76CB118A2A541FA3009B29F4 /* ProfileInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationViewController.swift; sourceTree = "<group>"; };
+		76CB118C2A541FEB009B29F4 /* ProfileInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationViewModel.swift; sourceTree = "<group>"; };
+		76CB118E2A5420E7009B29F4 /* ProfileInformationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationItem.swift; sourceTree = "<group>"; };
+		76CB11902A54218E009B29F4 /* ProfileInformationSelectGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationSelectGenderViewModel.swift; sourceTree = "<group>"; };
+		76CB11952A542443009B29F4 /* EnterDataTextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterDataTextFieldType.swift; sourceTree = "<group>"; };
+		76CB11972A542489009B29F4 /* EnterDataTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterDataTextField.swift; sourceTree = "<group>"; };
+		76CB11992A5424BE009B29F4 /* EnterDataTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterDataTextFieldCell.swift; sourceTree = "<group>"; };
 		76CD09902A3C7453001A1B31 /* OrientationDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationDevice.swift; sourceTree = "<group>"; };
 		76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		76D0AA4F2A542DAF00646F43 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		76EFE9F42A39BB3A0083DE09 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		76EFE9FC2A3A06190083DE09 /* CombackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombackViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +287,8 @@
 		7614A3A42A407CBF004D7466 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				76CB11922A542294009B29F4 /* EnterData */,
+				76CB11852A541E72009B29F4 /* ProfileInformation */,
 				7614A3AD2A40815C004D7466 /* ProfileModel */,
 				76CB11772A52AA30009B29F4 /* ProfileDotsChild */,
 				7614A3AC2A40814E004D7466 /* ProfileView */,
@@ -309,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				7614A3B62A409039004D7466 /* Profile.swift */,
+				76CB11812A540202009B29F4 /* Gender.swift */,
 				7614A3B82A40C4A7004D7466 /* Contact.swift */,
 			);
 			path = ProfileModel;
@@ -486,6 +509,60 @@
 			path = ProfileDotsChildView;
 			sourceTree = "<group>";
 		};
+		76CB11852A541E72009B29F4 /* ProfileInformation */ = {
+			isa = PBXGroup;
+			children = (
+				76CB11872A541E98009B29F4 /* ViewModel */,
+				76CB11862A541E8E009B29F4 /* View */,
+			);
+			path = ProfileInformation;
+			sourceTree = "<group>";
+		};
+		76CB11862A541E8E009B29F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				76CB11882A541F42009B29F4 /* ProfileInformationSelectGenderCell.swift */,
+				76CB118A2A541FA3009B29F4 /* ProfileInformationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		76CB11872A541E98009B29F4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				76CB118C2A541FEB009B29F4 /* ProfileInformationViewModel.swift */,
+				76CB118E2A5420E7009B29F4 /* ProfileInformationItem.swift */,
+				76CB11902A54218E009B29F4 /* ProfileInformationSelectGenderViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		76CB11922A542294009B29F4 /* EnterData */ = {
+			isa = PBXGroup;
+			children = (
+				76CB11942A5423AA009B29F4 /* ViewModel */,
+				76CB11932A5422A4009B29F4 /* View */,
+			);
+			path = EnterData;
+			sourceTree = "<group>";
+		};
+		76CB11932A5422A4009B29F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				76CB11972A542489009B29F4 /* EnterDataTextField.swift */,
+				76CB11992A5424BE009B29F4 /* EnterDataTextFieldCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		76CB11942A5423AA009B29F4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				76CB11952A542443009B29F4 /* EnterDataTextFieldType.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		76EFE9EA2A39B9860083DE09 /* Confirm */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,6 +632,7 @@
 				76CB11692A51A9B3009B29F4 /* AppColors.swift */,
 				76CB11732A51C00B009B29F4 /* TextAttribute.swift */,
 				76CB117F2A52F534009B29F4 /* DotsContainerView.swift */,
+				76D0AA4F2A542DAF00646F43 /* UIImage+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -664,6 +742,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				767074132A39955A007FC469 /* RegistrationViewController.swift in Sources */,
+				76CB11822A540202009B29F4 /* Gender.swift in Sources */,
+				76CB11982A542489009B29F4 /* EnterDataTextField.swift in Sources */,
 				76CB116E2A51BC4E009B29F4 /* MenuModel.swift in Sources */,
 				7614A42F2A45B1FD004D7466 /* CombackViewModel.swift in Sources */,
 				7614A3952A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift in Sources */,
@@ -680,20 +760,28 @@
 				7614A3BB2A41A6D4004D7466 /* FeedViewModel.swift in Sources */,
 				76CB116A2A51A9B3009B29F4 /* AppColors.swift in Sources */,
 				7614A3B92A40C4A7004D7466 /* Contact.swift in Sources */,
+				76CB118F2A5420E7009B29F4 /* ProfileInformationItem.swift in Sources */,
+				76CB118B2A541FA3009B29F4 /* ProfileInformationViewController.swift in Sources */,
 				7614A3FE2A432E4D004D7466 /* StoryCollectionViewCell.swift in Sources */,
+				76CB119A2A5424BE009B29F4 /* EnterDataTextFieldCell.swift in Sources */,
 				7614A39C2A3F426D004D7466 /* ConfirmViewController.swift in Sources */,
 				76CB116C2A51BC0A009B29F4 /* MenuViewViewModel.swift in Sources */,
 				7614A4892A4C484F004D7466 /* PersonalDataViewModel.swift in Sources */,
+				76CB11962A542443009B29F4 /* EnterDataTextFieldType.swift in Sources */,
+				76D0AA502A542DAF00646F43 /* UIImage+Extension.swift in Sources */,
 				7614A3A92A4080CC004D7466 /* ProfileViewController.swift in Sources */,
 				76CB113C2A50F14D009B29F4 /* ProfileDotsController.swift in Sources */,
 				76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */,
 				76EFE9FD2A3A06190083DE09 /* CombackViewController.swift in Sources */,
 				7614A4372A499084004D7466 /* ProfileActionView.swift in Sources */,
 				7614A3B72A409039004D7466 /* Profile.swift in Sources */,
+				76CB118D2A541FEB009B29F4 /* ProfileInformationViewModel.swift in Sources */,
 				7614A3BD2A4207A2004D7466 /* DataForPost.swift in Sources */,
 				7614A4402A49C758004D7466 /* ProfileIconButton.swift in Sources */,
 				7614A4422A49C76B004D7466 /* ProfileIconButtonType.swift in Sources */,
+				76CB11892A541F42009B29F4 /* ProfileInformationSelectGenderCell.swift in Sources */,
 				7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */,
+				76CB11912A54218E009B29F4 /* ProfileInformationSelectGenderViewModel.swift in Sources */,
 				7614A4012A44273D004D7466 /* MenuViewController.swift in Sources */,
 				76F042E42A4DE2AE00631896 /* FindMyPostsCell.swift in Sources */,
 				7614A4082A44362A004D7466 /* FloatingPanelViewController.swift in Sources */,

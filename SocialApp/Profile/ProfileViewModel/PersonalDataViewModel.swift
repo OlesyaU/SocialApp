@@ -18,13 +18,18 @@ class PersonalDataViewModel {
     let titleCallButton = "Позвонить"
     let titleMessagwButton = "Сообщение"
     var isMyProfile: Bool
-    
+    var onBurgerButtonSelected: (() -> Void)?
+
     init(profile: Profile){
         nickname = profile.nickname
         avatarImageString = profile.avatar
         fullName = profile.name + " " + profile.surname
         professionLabelTitle = profile.profession
         isMyProfile = DataBase.shared.testProfile == profile
+    }
+
+    func burgerButtonSelected() {
+        onBurgerButtonSelected?()
     }
 }
 

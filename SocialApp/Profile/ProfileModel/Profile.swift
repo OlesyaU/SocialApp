@@ -21,6 +21,7 @@ class Profile: Codable {
     let education: String
     let career: String
     let contacts: [Contact]
+    let gender: Gender
     var subscribersCount: Int {
         subscribers.count
     }
@@ -35,7 +36,7 @@ class Profile: Codable {
         String(photos.count)
     }
 
-    init(avatar: String, name: String, surname: String, profession: String, photos: [String], posts: [Post], subscribers: Set<Profile>, subscriptions: Set<Profile>, city: String, dateOfBirth: Date, education: String, career: String, contacts: [Contact]) {
+    init(avatar: String, name: String, surname: String, profession: String, photos: [String], posts: [Post], subscribers: Set<Profile>, subscriptions: Set<Profile>, city: String, dateOfBirth: Date, education: String, career: String, contacts: [Contact], gender: Gender) {
         self.avatar = avatar
         self.name = name
         self.surname = surname
@@ -49,6 +50,7 @@ class Profile: Codable {
         self.career = career
         self.contacts = contacts
         self.photos = photos
+        self.gender = gender
     }
 
     static func mock(count: Int) -> [Profile] {
@@ -67,10 +69,12 @@ class Profile: Codable {
                 dateOfBirth: Date(),
                 education: getProfession().randomElement()!,
                 career: getProfession().randomElement()!,
-                contacts: Contact.random(3)
+                contacts: Contact.random(3),
+                gender: .female
+
             )
-            let posts = Post.mock(count: 7, profile: profile)
-            profile.posts = posts
+//            let posts = Post.mock(count: 7, profile: profile)
+//            profile.posts = posts
             profiles.append(profile)
         }
         
