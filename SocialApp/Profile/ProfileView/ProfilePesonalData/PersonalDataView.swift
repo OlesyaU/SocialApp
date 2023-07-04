@@ -35,7 +35,7 @@ final class PersonalDataView: UIView {
         let button = UIButton(primaryAction: UIAction { _ in
 // open burger menu view
             print("burger Button Tapped")
-            self.viewModel?.burgerButtonSelected()
+//            self.viewModel?.burgerButtonSelected()
         })
 
         button.tintColor = .systemOrange
@@ -66,10 +66,12 @@ final class PersonalDataView: UIView {
         return button
     }()
 
-    private let editButton: UIButton = {
-        let button = UIButton( primaryAction: UIAction {  _ in
-//           action will be here
-        })
+    private lazy var editButton: UIButton = {
+        let button = UIButton(primaryAction: UIAction { _ in
+            // open burger menu view
+                        print("burger Button Tapped")
+                        self.viewModel?.burgerButtonSelected()
+                    })
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemOrange
         button.cornerRadius(cornerRadius: 15)
