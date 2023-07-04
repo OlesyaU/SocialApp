@@ -73,11 +73,10 @@ class Profile: Codable {
                 gender: .female
 
             )
-//            let posts = Post.mock(count: 7, profile: profile)
-//            profile.posts = posts
+            let posts = Post.mock(count: 9, profile: profile)
+            profile.posts = posts
             profiles.append(profile)
         }
-        
         return profiles
     }
 }

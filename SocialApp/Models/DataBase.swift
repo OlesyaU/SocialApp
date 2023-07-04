@@ -30,11 +30,13 @@ class DataBase {
     )
 
     init() {
+
         var posts = Post.mock(count: 6, profile: testProfile)
         for i in 0...5 {
             posts[i].isSaved = Bool.random()
         }
         testProfile.posts = posts
+        testProfile.subscribers =  Set(profiles)
 
         if profiles.isEmpty {
             profiles = generateMockData()
@@ -114,5 +116,6 @@ class DataBase {
 //        testProfile.subscriptions.flatMap(\.posts)
         profiles.flatMap(\.posts).shuffled()
     }
+    
 }
 

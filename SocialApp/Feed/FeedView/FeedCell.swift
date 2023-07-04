@@ -220,7 +220,7 @@ final class FeedCell: UITableViewCell {
         professionLabel.text = post.author.profession
         descriptionLabel.text = post.description
         likesLabel.text = String(post.likes)
-        commentsLabel.text = String(post.comments)
+        commentsLabel.text = String(post.comments.count)
         authorPhoto.image = UIImage(named: post.author.avatar)
         self.viewModel = FeedCellViewModel(post: post, indexPath: indexPath)
         setUp()

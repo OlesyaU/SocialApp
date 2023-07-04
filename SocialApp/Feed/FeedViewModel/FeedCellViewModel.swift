@@ -46,7 +46,7 @@ final class FeedCellViewModel {
         image = post.image
         description = post.description
         likes = post.likes
-        comments = post.comments
+        comments = post.comments.count
         isSaved = post.isSaved
         testProfile = DataBase.shared.testProfile
         nickname = post.author.nickname
