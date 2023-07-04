@@ -13,16 +13,13 @@ struct Comment: Codable, Equatable {
     let date: Date
     let likes: Int
     let isLike: Bool
-    init( author: Profile, text: String, date: Date, likes: Int, isLike: Bool) {
-
+    init(author: Profile, text: String, date: Date, likes: Int, isLike: Bool) {
         self.text = text
         self.date = date
         self.likes = likes
         self.isLike = isLike
         self.author = author
-
     }
-
 }
 
 extension Comment {
