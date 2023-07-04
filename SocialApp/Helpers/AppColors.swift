@@ -12,5 +12,7 @@ struct AppColors {
     static  let clear: UIColor = .clear
     static  let gray: UIColor = .gray
     static  let darkGray: UIColor = .darkGray
+    static let biege: UIColor = .init(red: 230, green: 215, blue: 200, alpha: 1)
+
    
 }

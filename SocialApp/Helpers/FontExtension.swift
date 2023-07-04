@@ -21,6 +21,7 @@ enum IconsName {
     case likes
     case comments
     case bookmark
+    case paperclip
 
 
    var nameIcon: String {
@@ -41,6 +42,8 @@ enum IconsName {
                 return "message"
             case .bookmark:
                 return "bookmark"
+            case .paperclip:
+                return "paperclip"
         }
     }
 }

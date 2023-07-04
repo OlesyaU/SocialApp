@@ -5,13 +5,23 @@
 //  Created by Олеся on 04.07.2023.
 //
 
-import Foundation
+import UIKit
 final class PublicationViewModel {
-//    let publication = Post(author: <#T##Profile#>, image: <#T##String#>, description: <#T##String#>, likes: <#T##Int#>, comments: <#T##Int#>, isSaved: <#T##Bool#>)
-//    let comment = Comment(author: <#T##Profile#>, post: <#Post#>, text: <#T##String#>, date: <#T##Date#>, likes: <#T##Int#>, isLike: <#T##Bool#>)
+    let post: Post
+    let comments: [Comment]
+    let titleController = "Публикации"
+    let titleForComment = "оставить комментарий"
+    let arrowIcon = IconsName.leftArrow.nameIcon
+    let dotsIconName = IconsName.dots.nameIcon
+    let colorNickname = AppColors.orange
+    let colorTitle = AppColors.black
+    let fontTitle = UIFont.titleBold
+    let iconForComment = IconsName.moreInfo.nameIcon
+    let colorCommentCell = AppColors.biege
+    let iconPaperclip = IconsName.paperclip.nameIcon
 
-//    init(publication: Post)
-
-
-
+    init(post: Post, comments: [Comment]) {
+        self.post = post
+        self.comments = post.comments
+    }
 }

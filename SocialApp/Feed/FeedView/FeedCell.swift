@@ -27,7 +27,9 @@ final class FeedCell: UITableViewCell {
     private lazy var image: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.isUserInteractionEnabled = false
+        image.isUserInteractionEnabled = true
+        let tapToImage = UITapGestureRecognizer(target: self, action: #selector(openPost))
+        image.addGestureRecognizer(tapToImage)
         return image
     }()
 
@@ -122,7 +124,7 @@ final class FeedCell: UITableViewCell {
                 contentHeaderCellView.pinTop(to: contentView.topAnchor),
                 contentHeaderCellView.pinLeading(to: contentView.leadingAnchor),
                 contentHeaderCellView.pinTrailing(to: contentView.trailingAnchor),
-                contentHeaderCellView.pinBottom(to: image.topAnchor),
+                contentHeaderCellView.pinBottom(to: descriptionLabel.topAnchor),
 
                 authorPhoto.pinHeight(equalTo: Constants.heightAvatar),
                 authorPhoto.pinWeight(equalTo: Constants.heightAvatar),
@@ -241,6 +243,16 @@ final class FeedCell: UITableViewCell {
         } else  if !model.isMyPost, model.author.nickname == model.postCell.author.nickname{
             dotsFromFeedGestureAction()
         }
+    }
+    @objc func openPost() {
+//      ADD Action for open publication with comments
+        guard let model = self.viewModel else {
+        return
+        }
+//        model.author.nickname == model.postCell.author.nickname
+//         =,model.isMyPost,
+        print("IISS MMYYY POOOSSTT \(openPost)")
+
     }
 
    
