@@ -9,34 +9,28 @@ import Foundation
 
 class DataBase {
 
+    var testProfile: Profile
     static let shared = DataBase()
 
     var profiles: [Profile] = []
-    var testProfile = Profile(
-        avatar: "Avatar2",
-        name: "Name",
-        surname: "Surname",
-        profession: "Profession",
-        photos: getPhoto().shuffled(),
-        posts: [],
-        subscribers: [],
-        subscriptions: [],
-        city: "",
-        dateOfBirth: Date(),
-        education: "",
-        career: "",
-        contacts: [.mobilePhone("+7 999 999 99 99")],
-        gender: .female
-    )
 
     init() {
-
-        var posts = Post.mock(count: 6, profile: testProfile)
-        for i in 0...5 {
-            posts[i].isSaved = Bool.random()
-        }
-        testProfile.posts = posts
-        testProfile.subscribers =  Set(profiles)
+        testProfile =  Profile(
+            avatar: "Avatar2",
+            name: "Name",
+            surname: "Surname",
+            profession: "Profession",
+            photos: getPhoto().shuffled(),
+            posts: [],
+            subscribers: [],
+            subscriptions: [],
+            city: "",
+            dateOfBirth: Date(),
+            education: "",
+            career: "",
+            contacts: [.mobilePhone("+7 999 999 99 99")],
+            gender: .female
+        )
 
         if profiles.isEmpty {
             profiles = generateMockData()
@@ -47,6 +41,7 @@ class DataBase {
 
     private func generateMockData() -> [Profile] {
         var profiles = Profile.mock(count: 7)
+        profiles.append(testProfile)
 
         repeat {
             let randomProfile = profiles[Int.random(in: 0...profiles.count - 1)]
@@ -75,10 +70,22 @@ class DataBase {
         profiles.forEach { profile in
             profile.posts.append(contentsOf: Post.mock(count: Int.random(in: 1...7), profile: profile))
         }
-        profiles.append(testProfile)
+
+        repeat {
+            let comments = Comment.mock(count: Int.random(in: 0...20), for: profiles)
+            let profile = profiles[Int.random(in: 0..<profiles.count)]
+            profile.posts[Int.random(in: 0..<profile.posts.count)].comments.append(contentsOf: comments)
+        } while !profiles
+            .flatMap(\.posts)
+            .map(\.comments)
+            .map(\.count)
+            .filter { $0 < 15 }
+            .isEmpty
+
         saveDataToUserDefaults()
         return profiles
     }
+
 
     private func saveDataToUserDefaults(){
         do {

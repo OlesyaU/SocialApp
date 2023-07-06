@@ -15,8 +15,7 @@ final class FindMyPostsCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        
-        return label
+                return label
     }()
     
     private let magnifyingglass: UIImageView = {
@@ -35,8 +34,8 @@ final class FindMyPostsCell: UITableViewCell {
     }
     
     private func layout() {
-       titleLabel.forAutolayout()
-    contentView.addSubview(titleLabel)
+        titleLabel.forAutolayout()
+        contentView.addSubview(titleLabel)
         titleLabel.textColor = viewModel?.titleColor
         titleLabel.font = viewModel?.titleFont
         cellConstraints.append(contentsOf: [
@@ -51,6 +50,10 @@ final class FindMyPostsCell: UITableViewCell {
         magnifyingglass.forAutolayout()
         self.contentView.addSubview(magnifyingglass)
         titleLabel.text = viewModel.title
+        titleLabel.textColor = viewModel.titleColor
+        titleLabel.font = viewModel.titleFont
+        contentView.backgroundColor = viewModel.backgroundCellColor
+
         magnifyingglass.image = UIImage(systemName: viewModel.icon)
         magnifyingglass.tintColor = viewModel.iconColor
         cellConstraints.append(contentsOf: [
@@ -62,9 +65,16 @@ final class FindMyPostsCell: UITableViewCell {
         ])
         NSLayoutConstraint.activate(cellConstraints)
     }
-
+    
     func configureFriend(for friend: FindMyPostsViewModel) {
         titleLabel.text = friend.titleForFriendProfile
-
+        contentView.backgroundColor = viewModel?.backgroundCellColor
+        //        DOESNT WORK!!!
+        
     }
+    func configureForComments(for post: Post) {
+        titleLabel.text = "\(post.comments.count) комментариев"
+        
+    }
+    
 }

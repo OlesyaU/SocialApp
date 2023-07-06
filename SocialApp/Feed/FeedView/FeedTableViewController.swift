@@ -11,15 +11,15 @@ import FloatingPanel
 protocol FeedCellProtocol {
     func showMenuViewController()
     func openFriendProfile(friendProfile: Profile)
-//    func addDotsMenuContainerView()
+    func openCurrentPost(post: Post)
     }
 
 //    func openPostMenuFromProfile(post: Post)
 
 
-class FeedTableViewController: UITableViewController {
+final class FeedTableViewController: UITableViewController {
     private var viewModel = FeedViewModel()
-
+    private var publicationViewModel: PublicationViewModel?
     private var floatingPanel: FloatingPanelController?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,36 +42,22 @@ class FeedTableViewController: UITableViewController {
             cell.delegate = self
             let post = viewModel.posts[indexPath.row - 1]
             cell.configureCell(post: post, indexPath: indexPath)
-
+            publicationViewModel = PublicationViewModel(post: post)
             return cell
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  tableView.deselectRow(at: indexPath, animated: true)
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-//        addPostMenuTable(frame: cell.frame)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-//    private func addPostMenuTable(frame: CGRect) {
-//        let table = ProfileDotsController()
-//        table.view.backgroundColor = .red
-//        table.view.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: 200, height: 200)
-//
-//        add(table)
-//    }
-
 }
 
 extension FeedTableViewController: FeedCellProtocol {
-
-
-//    func openPostMenuFromProfile(post: Post) {
-//        let table = ProfileDotsController()
-//        table.view.frame = view.frame(forAlignmentRect: CGRect(x: 50, y: 100, width: 200, height: 200))
-////        table.view.frame = self.CGRect(x: frame.origin.x, y: frame.origin.y, width: 200, height: 200)
-//        add(table)
-//
-//    }
+    func openCurrentPost(post:Post) {
+        let publicationVC = PublicationViewController()
+        publicationVC.configure(post: post)
+        navigationController?.pushViewController(publicationVC, animated: true)
+    }
 
     func openFriendProfile(friendProfile: Profile) {
         let profileVC = ProfileViewController()
@@ -79,7 +65,6 @@ extension FeedTableViewController: FeedCellProtocol {
         navigationController?.pushViewController(profileVC, animated: true)
     }
 
-    
     func showMenuViewController() {
         let menuViewController = MenuViewController()
 
@@ -94,7 +79,6 @@ extension FeedTableViewController: FeedCellProtocol {
         floatingPanel = floatingPanelController
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
-    
 
 }
 

@@ -166,16 +166,10 @@ final class PersonalDataView: UIView {
             messageButton.pinHeight(equalTo: Constants.editButtonHeight),
 messageButton.pinTop(to: moreInfoButton.bottomAnchor, inset: Constants.sideInset),
            messageButton.pinWeight(equalTo: UIScreen.main.bounds.width / 3),
-
-
-
-
         ])
                NSLayoutConstraint.activate(personalDataViewConstraints)
-
         setupUI()
     }
-
 
     private func setupUI() {
         nikNameLabel.text = viewModel?.nickname
@@ -185,8 +179,6 @@ messageButton.pinTop(to: moreInfoButton.bottomAnchor, inset: Constants.sideInset
         professionLabel.text = viewModel?.professionLabelTitle
         moreInfoButton.setTitle(viewModel?.moreInfoButtonTitle, for: .normal)
         moreInfoButton.applyIcon(systemName: viewModel?.moreInfoButtonIcon ?? "", tintColor: .systemOrange)
-
-
     }
 
     private func layout() {
@@ -200,8 +192,6 @@ messageButton.pinTop(to: moreInfoButton.bottomAnchor, inset: Constants.sideInset
         personalDataViewConstraints.append(contentsOf: [
             nikNameLabel.pinTop(to: topAnchor),
             nikNameLabel.pinLeading(to: leadingAnchor, inset: Constants.sideInset),
-
-
 
             avatarImage.pinLeading(to: leadingAnchor, inset: Constants.sideInset),
             avatarImage.pinTop(to: nikNameLabel.bottomAnchor, inset: Constants.sideInset),

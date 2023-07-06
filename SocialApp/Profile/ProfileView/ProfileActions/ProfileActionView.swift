@@ -51,14 +51,6 @@ final class ProfileActionView: UIView {
         layout()
     }
 
-//    init(viewModel: ProfileActionViewModel){
-//        self.viewModel = viewModel
-//        super.init(frame: .zero)
-//        layout()
-//        setupUI()
-//    }
-//
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -97,12 +89,11 @@ final class ProfileActionView: UIView {
         guard let viewModel else { return }
         typeTitleLabel.text = viewModel.type.title
         countLabel.text = String(viewModel.count)
+
         if viewModel.isSelected {
-            countLabel.textColor = .orange
-            typeTitleLabel.textColor = .orange
+            [countLabel,typeTitleLabel].forEach({$0.textColor = viewModel.chosenItemColor})
         } else {
-            countLabel.textColor = .gray
-            typeTitleLabel.textColor = .gray
+            [countLabel,typeTitleLabel].forEach({$0.textColor = viewModel.itemsColor})
         }
     }
 

@@ -32,7 +32,8 @@ class ProfileActionViewModel {
     }
     var onModelSelected: (() -> Void)?
     var onModelChanged: (() -> Void)?
-
+    let itemsColor = AppColors.black
+    let chosenItemColor = AppColors.orange
     let type: ProfileActionsType
 
     var count: Int {
@@ -46,7 +47,6 @@ class ProfileActionViewModel {
         self.isSelected = isSelected
         self.type = type
         self.onModelSelected = onModelSelected
-//        self.onModelChanged = nil
         
     }
 

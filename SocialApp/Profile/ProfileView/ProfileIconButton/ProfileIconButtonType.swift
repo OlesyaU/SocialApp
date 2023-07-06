@@ -10,6 +10,7 @@ import UIKit
 struct ProfileIconButtonViewModel {
     let type: ProfileIconButtonType
     let action: () -> Void
+    let itemsColor = AppColors.black
 }
 
 enum ProfileIconButtonType {

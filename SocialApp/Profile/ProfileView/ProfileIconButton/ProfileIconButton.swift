@@ -9,7 +9,7 @@ import UIKit
 
 final class ProfileIconButton: UIView {
     private var iconButtonConstraint: [NSLayoutConstraint] = []
-
+    
     private enum Constants {
         static let sideInset: CGFloat = 16
         static let heightIcon: CGFloat = 44
@@ -22,7 +22,7 @@ final class ProfileIconButton: UIView {
         stackView.spacing = 8
         return stackView
     }()
-
+    
     private lazy var iconImage: UIImageView = {
         let image = UIImageView()
         image.image = type.icon
@@ -31,7 +31,7 @@ final class ProfileIconButton: UIView {
         image.contentMode = .center
         return image
     }()
-
+    
     private lazy var iconlabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
@@ -41,36 +41,38 @@ final class ProfileIconButton: UIView {
         label.sizeToFit()
         return label
     }()
-
+    
     private lazy var tapGesture: UITapGestureRecognizer = {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
         return gesture
     }()
-
+    
     private let type: ProfileIconButtonType
     private let onTap: (() -> Void)
-
+    
     init(viewModel: ProfileIconButtonViewModel) {
         type = viewModel.type
         onTap = viewModel.action
         super.init(frame: .zero)
-
+        iconlabel.textColor = viewModel.itemsColor
+        iconImage.tintColor = viewModel.itemsColor
+        
         isUserInteractionEnabled = true
         layout()
         addGestureRecognizer(tapGesture)
         setContentHuggingPriority(.required, for: .horizontal)
         setContentCompressionResistancePriority(.required, for: .horizontal)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     @objc
     private func didTap() {
         onTap()
     }
-
+    
     private func layout() {
         [stackView, iconlabel, iconImage].forEach { $0.forAutolayout() }
         [iconImage, iconlabel].forEach { stackView.addArrangedSubview($0) }
@@ -81,7 +83,7 @@ final class ProfileIconButton: UIView {
             iconImage.pinWeight(equalTo: Constants.heightIcon),
             iconImage.pinLeading(to: iconlabel.leadingAnchor),
             iconImage.pinTrailing(to: iconlabel.trailingAnchor),
-
+            
             iconlabel.pinLeading(to: stackView.leadingAnchor),
             iconlabel.pinTrailing(to: stackView.trailingAnchor),
             iconlabel.pinTop(to: iconImage.bottomAnchor),

@@ -8,7 +8,7 @@
 import UIKit
 final class ProfileDotsControllerViewModel {
     let profilePostDotsItems = ["Сохранить в закладках","Закрепить","Выключить комментарии","Скопировать ссылку","Архивировать запись","Удалить"]
-    let profilePostDotsItemsFont = UIFont.titleBold
+    let profilePostDotsItemsFont = UIFont.textBold
     let profilePostDotsItemsColor = AppColors.black
-    let backgroundColor: UIColor = .backgroundPrimary
+    let backgroundColor: UIColor = AppColors.biege
 }

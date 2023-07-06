@@ -7,7 +7,7 @@
 
 import UIKit
 extension UIFont {
-    static let titleBold = UIFont(name: "AvenirNextCondensed-Bold", size: 18)
+    static let textBold = UIFont(name: "AvenirNextCondensed-Bold", size: 18)
     static let textRegular = UIFont(name: "AvenirNextCondensed-Regular", size: 16)
    
 }
@@ -19,6 +19,7 @@ enum IconsName {
     case burger
     case moreInfo
     case likes
+    case likesFill
     case comments
     case bookmark
     case paperclip
@@ -44,6 +45,8 @@ enum IconsName {
                 return "bookmark"
             case .paperclip:
                 return "paperclip"
+            case .likesFill:
+                return "heart.fill"
         }
     }
 }

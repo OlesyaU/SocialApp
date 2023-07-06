@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Profile: Codable {
+class Profile: Codable, Equatable {
     let avatar: String
     let name: String
     let surname: String
@@ -57,24 +57,21 @@ class Profile: Codable {
         var profiles: [Profile] = []
         for _ in 0...count {
             let profile = Profile(
-                avatar: avatars().randomElement()!.description,
-                name: getAuthorNames().randomElement()!,
-                surname: getAuthorSurnames().randomElement()!,
-                profession: getProfession().randomElement()!,
+                avatar: avatars().randomElement() ?? "" .description,
+                name: getAuthorNames().randomElement() ?? "",
+                surname: getAuthorSurnames().randomElement() ?? "",
+                profession: getProfession().randomElement() ?? "",
                 photos: getPhoto().shuffled(),
                 posts: [],
                 subscribers: [],
                 subscriptions: [],
-                city: getCity().randomElement()!,
+                city: getCity().randomElement() ?? "",
                 dateOfBirth: Date(),
-                education: getProfession().randomElement()!,
-                career: getProfession().randomElement()!,
+                education: getProfession().randomElement() ?? "",
+                career: getProfession().randomElement() ?? "",
                 contacts: Contact.random(3),
                 gender: .female
-
             )
-            let posts = Post.mock(count: 9, profile: profile)
-            profile.posts = posts
             profiles.append(profile)
         }
         return profiles

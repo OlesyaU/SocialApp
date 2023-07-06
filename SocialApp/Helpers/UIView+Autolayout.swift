@@ -57,6 +57,11 @@ extension UIView {
     }
 
     @discardableResult
+    func pinTopGreaterThanOrEqual(to anchor: NSLayoutYAxisAnchor, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        topAnchor.constraint(greaterThanOrEqualTo: anchor, constant: inset)
+    }
+
+    @discardableResult
     func pinBottom(to view: UIView, inset: CGFloat = .zero) -> NSLayoutConstraint {
         bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -inset)
     }

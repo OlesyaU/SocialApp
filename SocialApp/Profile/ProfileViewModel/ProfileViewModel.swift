@@ -19,7 +19,7 @@ final class ProfileViewModel {
     let iconsColor = AppColors.orange
     let titleColor: UIColor = .black
     let backgroundCellColor: UIColor = .backgroundPrimary
-    let titleFont = UIFont.textRegular
+    let titleFont = UIFont.textBold
 
 
     lazy var actionsViewModels: [ProfileActionViewModel] = [

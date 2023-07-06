@@ -8,13 +8,14 @@
 import UIKit
 import FloatingPanel
 
-protocol ProfileDotsProtocol {
+protocol ProfileControllerProtocol {
     func openPostMenuFromProfile(post: Post, indexPath: IndexPath)
     func showMenuViewController()
 }
 
 class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
-    private var viewModel = ProfileViewModel()
+
+    private var viewModelProfile = ProfileViewModel()
     private var floatingPanel: FloatingPanelController?
     private let tableDotsMenu = ProfileDotsController()
     private let tableView = UITableView()
@@ -27,25 +28,27 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
     }
 
     func configure(profile: Profile) {
-        viewModel.personalData = PersonalDataViewModel(profile: profile)
+        viewModelProfile.personalData = PersonalDataViewModel(profile: profile)
         navigationItem.title = profile.nickname.lowercased()
+    
 
         navigationItem.rightBarButtonItem = UIBarButtonItem.menuButton(
             self,
             action: #selector(dotsAction),
-            imageName: viewModel.dotsIcon,
-            tintColor: AppColors.orange
+            imageName: viewModelProfile.dotsIcon,
+            tintColor: viewModelProfile.iconsColor
         )
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: viewModel.leftArrowIconString),
+            image: UIImage(systemName: viewModelProfile.leftArrowIconString)?.withTintColor(viewModelProfile.iconsColor),
             style: .plain,
             target: self,
             action: #selector(backAction)
         )
 
-        navigationItem.leftBarButtonItem?.tintColor = AppColors.orange
+        navigationItem.leftBarButtonItem?.tintColor = viewModelProfile.iconsColor
     }
+
 
     private func layout() {
         view.addSubview(tableView)
@@ -71,6 +74,7 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
         ])
         containerView.isHidden = true
     }
+
 
     private func configureTableView() {
         tableView.allowsSelection = false
@@ -103,13 +107,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 1
         case 2:
-            return viewModel.personalData.isMyProfile ? 1 : 0
+            return viewModelProfile.personalData.isMyProfile ? 1 : 0
         case 3:
             return 1
         case 4:
             return 1
         default:
-            return viewModel.posts.filter({$0.author.nickname == viewModel.personalData.nickname}).count
+            return viewModelProfile.posts.filter({$0.author.nickname == viewModelProfile.personalData.nickname}).count
         }
     }
 
@@ -119,51 +123,51 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             guard let personalDataCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewCell.identifier, for: indexPath) as? ProfileViewCell else { return UITableViewCell() }
                 let testProfile = DataBase.shared.testProfile
 
-                viewModel.personalData.onBurgerButtonSelected = { [weak self] in
+                viewModelProfile.personalData.onBurgerButtonSelected = { [weak self] in
                 self?.showRedactProfileModule()
             }
 //
-            personalDataCell.configure(with: viewModel.personalData)
+            personalDataCell.configure(with: viewModelProfile.personalData)
             return personalDataCell
 
         case 1:
             let profileActionsCell = ProfileActionsCell()
-            profileActionsCell.configure(viewModels: viewModel.actionsViewModels)
+            profileActionsCell.configure(viewModels: viewModelProfile.actionsViewModels)
             return profileActionsCell
 
         case 2:
-            if viewModel.personalData.isMyProfile != true {
+            if viewModelProfile.personalData.isMyProfile != true {
                 fallthrough
             }
 
             let buttonsIconCell = ProfileIconButtonsCell()
-            buttonsIconCell.configure(viewModels: viewModel.buttonViewModels)
+            buttonsIconCell.configure(viewModels: viewModelProfile.buttonViewModels)
             return buttonsIconCell
         case 3:
             guard let photosCell = tableView.dequeueReusableCell(withIdentifier: PhotosCell.identifier, for: indexPath) as? PhotosCell else {return UITableViewCell()}
-            photosCell.configure(viewModel: viewModel.photosCellViewModel)
+            photosCell.configure(viewModel: viewModelProfile.photosCellViewModel)
             return photosCell
         case 4:
             guard let findCell = tableView.dequeueReusableCell(withIdentifier: FindMyPostsCell.identifier, for: indexPath) as? FindMyPostsCell else {return UITableViewCell()}
-            if viewModel.personalData.isMyProfile {
-                findCell.configure(viewModel: viewModel.findViewModel)
+            if viewModelProfile.personalData.isMyProfile {
+                findCell.configure(viewModel: viewModelProfile.findViewModel)
             } else {
-                findCell.configureFriend(for: viewModel.findViewModel)
+                findCell.configureFriend(for: viewModelProfile.findViewModel)
             }
             return findCell
         default:
             guard let postDataCell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UITableViewCell() }
             var post: Post
-            postDataCell.postMenuDelegate = self
-            if viewModel.personalData.isMyProfile {
+            postDataCell.profileControllerDelegate = self
+            if viewModelProfile.personalData.isMyProfile {
 
-                post = viewModel.testProfile.posts[indexPath.row]
+                post = viewModelProfile.testProfile.posts[indexPath.row]
             } else {
 
                 //                    post = viewModel.posts[indexPath.row]
                 /// -  show posts this friend
 
-                post = viewModel.posts.filter({$0.author.nickname == viewModel.personalData.nickname})[indexPath.row]
+                post = viewModelProfile.posts.filter({$0.author.nickname == viewModelProfile.personalData.nickname})[indexPath.row]
             }
 
             postDataCell.configureCell(post: post, indexPath: indexPath)
@@ -177,7 +181,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ProfileViewController: ProfileDotsProtocol {
+extension ProfileViewController: ProfileControllerProtocol {
+
     func openPostMenuFromProfile(post: Post, indexPath: IndexPath) {
         containerView.isHidden = false
         tableDotsMenu.view.isUserInteractionEnabled = false
