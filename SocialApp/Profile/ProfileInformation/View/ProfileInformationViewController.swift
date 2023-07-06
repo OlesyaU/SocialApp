@@ -19,6 +19,12 @@ final class ProfileInformationViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        configureNavigation()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,14 +33,13 @@ final class ProfileInformationViewController: UITableViewController {
     }
 
     private func configure() {
-        title = viewModel.title
-        view.backgroundColor = .white
         tableView.allowsSelection = false
-
-        configureNavigation()
+        title = viewModel.title
+        view.backgroundColor = viewModel.backgroundColor
     }
 
     private func configureNavigation() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.tintColor = .systemOrange
 
         let rightBarButtonItem = UIBarButtonItem(

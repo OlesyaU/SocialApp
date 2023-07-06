@@ -12,6 +12,7 @@ final class ProfileInformationViewModel {
     var title = "Основная информация"
     var items: [ProfileInformationItem] = []
     var rightBarItemImage: UIImage = UIImage(systemName: "person.circle") ?? UIImage()
+    let backgroundColor: UIColor = .white
 
     init(profile: Profile) {
         initialProfile = profile

@@ -8,7 +8,6 @@
 import UIKit
 
 class ProfileViewCell: UITableViewCell {
-
     private enum Constants {
         static let sideInset: CGFloat = 16
     }
@@ -16,8 +15,6 @@ class ProfileViewCell: UITableViewCell {
     private lazy var personalView = PersonalDataView()
 
     private var cellConstraints: [NSLayoutConstraint] = []
-
-    private var viewModel: PersonalDataViewModel?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,9 +26,9 @@ class ProfileViewCell: UITableViewCell {
     }
 
     func configure(with viewModel: PersonalDataViewModel) {
-        self.viewModel = viewModel
         personalView.configure(with: viewModel)
     }
+    
     func configureFriendProfile(with friendProifile: PersonalDataViewModel) {
         personalView.configureFriendProfile()
     }
@@ -39,8 +36,8 @@ class ProfileViewCell: UITableViewCell {
     private func layout() {
         [personalView].forEach({$0.forAutolayout()})
         [personalView].forEach({contentView.addSubview($0)})
-        cellConstraints.append(contentsOf: [
 
+        cellConstraints.append(contentsOf: [
             personalView.pinTop(to: contentView.topAnchor, inset: Constants.sideInset),
             personalView.pinLeading(to: contentView.leadingAnchor, inset: Constants.sideInset),
             personalView.pinTrailing(to: contentView.trailingAnchor, inset: Constants.sideInset),

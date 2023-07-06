@@ -15,7 +15,7 @@ final class FeedCell: UITableViewCell {
     }
     private var viewModel: FeedCellViewModel?
     var delegate: FeedCellProtocol?
-    var profileControllerDelegate: ProfileControllerProtocol?
+    var profileControllerDelegate: ProfileViewDelegate?
     var publicationDelegate: PublicationControllerProtocol?
     
     private lazy var contentHeaderCellView: UIView = {

@@ -13,6 +13,9 @@ final class PersonalDataView: UIView {
         static let heightAvatar: CGFloat = 56
         static let editButtonHeight: CGFloat = 44
     }
+    private var viewModel: PersonalDataViewModel?
+
+    private var personalDataViewConstraints: [NSLayoutConstraint] = []
 
     private lazy var nikNameLabel: UILabel = {
         let label = UILabel()
@@ -30,12 +33,11 @@ final class PersonalDataView: UIView {
         return image
     }()
 
-
     private lazy var burgerButton: UIButton = {
-        let button = UIButton(primaryAction: UIAction { _ in
+        let button = UIButton(primaryAction: UIAction { [weak self] _ in
 // open burger menu view
             print("burger Button Tapped")
-//            self.viewModel?.burgerButtonSelected()
+            self?.viewModel?.burgerButtonSelected()
         })
 
         button.tintColor = .systemOrange
@@ -58,20 +60,18 @@ final class PersonalDataView: UIView {
         return label
     }()
 
-    private let moreInfoButton: UIButton = {
-        let button = UIButton( primaryAction: UIAction {  _ in
-//           action will be here
+    private lazy var moreInfoButton: UIButton = {
+        let button = UIButton( primaryAction: UIAction { [weak self] _ in
+            self?.viewModel?.moreInfoButtonSelected()
         })
         button.setTitleColor(.black, for: .normal)
         return button
     }()
 
     private lazy var editButton: UIButton = {
-        let button = UIButton(primaryAction: UIAction { _ in
-            // open burger menu view
-                        print("burger Button Tapped")
-                        self.viewModel?.burgerButtonSelected()
-                    })
+        let button = UIButton(primaryAction: UIAction { [weak self] _ in
+            self?.viewModel?.editButtonSelected()
+        })
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemOrange
         button.cornerRadius(cornerRadius: 15)
@@ -105,9 +105,6 @@ final class PersonalDataView: UIView {
         return button
     }()
 
-    private var viewModel: PersonalDataViewModel?
-
-    private var personalDataViewConstraints: [NSLayoutConstraint] = []
 
     init() {
         super.init(frame: .zero)

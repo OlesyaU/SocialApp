@@ -60,7 +60,8 @@ extension FeedTableViewController: FeedCellProtocol {
     }
 
     func openFriendProfile(friendProfile: Profile) {
-        let profileVC = ProfileViewController()
+        let viewModel = ProfileViewModel(profile: friendProfile)
+        let profileVC = ProfileViewController(viewModel: viewModel)
         profileVC.configure(profile: friendProfile)
         navigationController?.pushViewController(profileVC, animated: true)
     }

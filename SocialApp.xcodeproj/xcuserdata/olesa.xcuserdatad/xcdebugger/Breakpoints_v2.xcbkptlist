@@ -489,6 +489,21 @@
                   endingLineNumber = "75"
                   offsetFromSymbolStart = "2675">
                </Location>
+               <Location
+                  uuid = "BACA6603-5F80-4331-A7FD-B8B5640EE587 - 3ff6ac7116820aea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SocialApp.CommentViewModel.likeTapped() -&gt; ()"
+                  moduleName = "SocialApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olesa/Developer/SocialApp/SocialApp/Feed/FeedView/Publication/PublicationViewModel/CommentViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "2675">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -503,9 +518,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "setupUI()"
-            landmarkType = "7">
+            endingLineNumber = "123">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -519,9 +532,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "configureCell(viewModel:)"
-            landmarkType = "7">
+            endingLineNumber = "117">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

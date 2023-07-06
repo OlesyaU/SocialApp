@@ -5,50 +5,63 @@
 //  Created by Олеся on 19.06.2023.
 //
 
-import UIKit
 import FloatingPanel
+import UIKit
 
-protocol ProfileControllerProtocol {
+protocol ProfileViewDelegate: AnyObject {
     func openPostMenuFromProfile(post: Post, indexPath: IndexPath)
     func showMenuViewController()
+    func showRedactProfileModule()
+    func pushDetailsController(type: DetailedInformationViewType)
 }
 
 class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
-
-    private var viewModelProfile = ProfileViewModel()
+    private let profileViewModel: ProfileViewModel
     private var floatingPanel: FloatingPanelController?
     private let tableDotsMenu = ProfileDotsController()
     private let tableView = UITableView()
     private let containerView = UIView()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init(viewModel: ProfileViewModel) {
+        self.profileViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+
+        profileViewModel.personalDataViewModel.delegate = self
         layout()
         configureTableView()
     }
 
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let isNeedToShowNavBar = navigationController?.viewControllers.count ?? 0 > 1
+        navigationController?.setNavigationBarHidden(!isNeedToShowNavBar, animated: true)
+    }
+
     func configure(profile: Profile) {
-        viewModelProfile.personalData = PersonalDataViewModel(profile: profile)
+        profileViewModel.personalDataViewModel = PersonalDataViewModel(profile: profile)
+        profileViewModel.personalDataViewModel.delegate = self
         navigationItem.title = profile.nickname.lowercased()
-    
 
         navigationItem.rightBarButtonItem = UIBarButtonItem.menuButton(
             self,
             action: #selector(dotsAction),
-            imageName: viewModelProfile.dotsIcon,
-            tintColor: viewModelProfile.iconsColor
+            imageName: profileViewModel.dotsIcon,
+            tintColor: profileViewModel.iconsColor
         )
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: viewModelProfile.leftArrowIconString)?.withTintColor(viewModelProfile.iconsColor),
+            image: UIImage(systemName: profileViewModel.leftArrowIconString)?.withTintColor(profileViewModel.iconsColor),
             style: .plain,
             target: self,
             action: #selector(backAction)
         )
 
-        navigationItem.leftBarButtonItem?.tintColor = viewModelProfile.iconsColor
+        navigationItem.leftBarButtonItem?.tintColor = profileViewModel.iconsColor
     }
-
 
     private func layout() {
         view.addSubview(tableView)
@@ -84,6 +97,15 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
         tableView.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
     }
 
+    func pushDetailsController(type: DetailedInformationViewType) {
+        let viewModel = DetailInformationViewModel(profile: profileViewModel.profile, type: type)
+        let detailedViewController = DetailedInformationController(viewModel: viewModel)
+
+        navigationController?.setNavigationBarHidden(true, animated: false)
+//        detailedViewController.configure(viewModel: , state: .information)
+        navigationController?.pushViewController(detailedViewController, animated: true)
+    }
+
     @objc private func dotsAction(){
         print(#file, #line)
         //        TODO: - set action (push view with profile information more something like this) go to moreInfoVC
@@ -107,13 +129,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 1
         case 2:
-            return viewModelProfile.personalData.isMyProfile ? 1 : 0
+            return profileViewModel.personalDataViewModel.isMyProfile ? 1 : 0
         case 3:
             return 1
         case 4:
             return 1
         default:
-            return viewModelProfile.posts.filter({$0.author.nickname == viewModelProfile.personalData.nickname}).count
+            return profileViewModel.posts.filter({$0.author.nickname == profileViewModel.personalDataViewModel.nickname}).count
         }
     }
 
@@ -121,53 +143,48 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             guard let personalDataCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewCell.identifier, for: indexPath) as? ProfileViewCell else { return UITableViewCell() }
-                let testProfile = DataBase.shared.testProfile
 
-                viewModelProfile.personalData.onBurgerButtonSelected = { [weak self] in
-                self?.showRedactProfileModule()
-            }
-//
-            personalDataCell.configure(with: viewModelProfile.personalData)
+                personalDataCell.configure(with: profileViewModel.personalDataViewModel)
             return personalDataCell
 
         case 1:
             let profileActionsCell = ProfileActionsCell()
-            profileActionsCell.configure(viewModels: viewModelProfile.actionsViewModels)
+            profileActionsCell.configure(viewModels: profileViewModel.actionsViewModels)
             return profileActionsCell
 
         case 2:
-            if viewModelProfile.personalData.isMyProfile != true {
+            if profileViewModel.personalDataViewModel.isMyProfile != true {
                 fallthrough
             }
 
             let buttonsIconCell = ProfileIconButtonsCell()
-            buttonsIconCell.configure(viewModels: viewModelProfile.buttonViewModels)
+            buttonsIconCell.configure(viewModels: profileViewModel.buttonViewModels)
             return buttonsIconCell
         case 3:
             guard let photosCell = tableView.dequeueReusableCell(withIdentifier: PhotosCell.identifier, for: indexPath) as? PhotosCell else {return UITableViewCell()}
-            photosCell.configure(viewModel: viewModelProfile.photosCellViewModel)
+            photosCell.configure(viewModel: profileViewModel.photosCellViewModel)
             return photosCell
         case 4:
             guard let findCell = tableView.dequeueReusableCell(withIdentifier: FindMyPostsCell.identifier, for: indexPath) as? FindMyPostsCell else {return UITableViewCell()}
-            if viewModelProfile.personalData.isMyProfile {
-                findCell.configure(viewModel: viewModelProfile.findViewModel)
+            if profileViewModel.personalDataViewModel.isMyProfile {
+                findCell.configure(viewModel: profileViewModel.findMyPostsViewModel)
             } else {
-                findCell.configureFriend(for: viewModelProfile.findViewModel)
+                findCell.configureFriend(for: profileViewModel.findMyPostsViewModel)
             }
             return findCell
         default:
             guard let postDataCell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UITableViewCell() }
             var post: Post
             postDataCell.profileControllerDelegate = self
-            if viewModelProfile.personalData.isMyProfile {
+            if profileViewModel.personalDataViewModel.isMyProfile {
 
-                post = viewModelProfile.testProfile.posts[indexPath.row]
+                post = profileViewModel.profile.posts[indexPath.row]
             } else {
 
                 //                    post = viewModel.posts[indexPath.row]
                 /// -  show posts this friend
 
-                post = viewModelProfile.posts.filter({$0.author.nickname == viewModelProfile.personalData.nickname})[indexPath.row]
+                post = profileViewModel.posts.filter({$0.author.nickname == profileViewModel.personalDataViewModel.nickname})[indexPath.row]
             }
 
             postDataCell.configureCell(post: post, indexPath: indexPath)
@@ -181,15 +198,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ProfileViewController: ProfileControllerProtocol {
-
+extension ProfileViewController: ProfileViewDelegate {
     func openPostMenuFromProfile(post: Post, indexPath: IndexPath) {
         containerView.isHidden = false
         tableDotsMenu.view.isUserInteractionEnabled = false
         guard let cell = tableView.cellForRow(at: indexPath) as? FeedCell else { return }
         cell.dotsImage.frame(forAlignmentRect: view.frame)
         let dotsHeight = cell.dotsImage.frame.height
-        let frame = calculateFrame(cellFrame: cell.frame, dotsFrame: cell.dotsImage.frame)
         let point = cell.convert(cell.dotsImage.frame.origin, to: view)
         let newOriginX = point.x - 300
         let newFrame = CGRect(origin: .init(x: newOriginX, y: point.y + dotsHeight / 2), size: .init(width: 300, height: 300))
@@ -201,12 +216,12 @@ extension ProfileViewController: ProfileControllerProtocol {
         view.addGestureRecognizer(tap)
     }
 
-    private func calculateFrame(cellFrame: CGRect, dotsFrame: CGRect) -> CGRect {
-        let originX = cellFrame.origin.x + dotsFrame.origin.x - 300
-        let originY = cellFrame.origin.y + dotsFrame.origin.y + dotsFrame.height / 2
-        let width = dotsFrame.width
-        let height = dotsFrame.height
-        return .init(x: originX, y: originY, width: width, height: height)
+    func showRedactProfileModule() {
+        // TODO: - Взять профиль из viewModel
+        let profileViewModel = ProfileInformationViewModel(profile: DataBase.shared.testProfile)
+        let viewController = ProfileInformationViewController(viewModel: profileViewModel)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     func showMenuViewController() {
@@ -224,17 +239,17 @@ extension ProfileViewController: ProfileControllerProtocol {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
+    private func calculateFrame(cellFrame: CGRect, dotsFrame: CGRect) -> CGRect {
+        let originX = cellFrame.origin.x + dotsFrame.origin.x - 300
+        let originY = cellFrame.origin.y + dotsFrame.origin.y + dotsFrame.height / 2
+        let width = dotsFrame.width
+        let height = dotsFrame.height
+        return .init(x: originX, y: originY, width: width, height: height)
+    }
 
     @objc private func clearMenuTap() {
         containerView.isHidden = true
         tableView.isScrollEnabled = true
         tableDotsMenu.prepareForRemove()
-    }
-    private func showRedactProfileModule() {
-        // TODO: - Взять профиль из viewModel
-        let profileViewModel = ProfileInformationViewModel(profile: DataBase.shared.testProfile)
-        let viewController = ProfileInformationViewController(viewModel: profileViewModel)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationController?.pushViewController(viewController, animated: true)
     }
 }

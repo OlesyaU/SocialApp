@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 class PersonalDataViewModel {
     let nickname: String
     let burgerIcon = IconsName.burger.nameIcon
@@ -18,7 +19,8 @@ class PersonalDataViewModel {
     let titleCallButton = "Позвонить"
     let titleMessagwButton = "Сообщение"
     var isMyProfile: Bool
-    var onBurgerButtonSelected: (() -> Void)?
+
+    weak var delegate: ProfileViewDelegate?
 
     init(profile: Profile){
         nickname = profile.nickname
@@ -29,7 +31,15 @@ class PersonalDataViewModel {
     }
 
     func burgerButtonSelected() {
-        onBurgerButtonSelected?()
+        delegate?.pushDetailsController(type: .settings)
+    }
+
+    func editButtonSelected() {
+        delegate?.pushDetailsController(type: .information)
+    }
+
+    func moreInfoButtonSelected() {
+        delegate?.showRedactProfileModule()
     }
 }
 

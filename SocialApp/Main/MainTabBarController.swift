@@ -26,10 +26,11 @@ class MainTabBarController: UITabBarController {
     }
 
     func createProfileViewController() -> UINavigationController {
-        let profile = ProfileViewController()
+        let viewModel = ProfileViewModel(profile: DataBase.shared.testProfile)
+        let profile = ProfileViewController(viewModel: viewModel)
         profile.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
         let navigation = UINavigationController(rootViewController: profile)
-        navigation.navigationBar.isHidden = true
+        navigation.setNavigationBarHidden(true, animated: true)
         return  navigation
     }
     

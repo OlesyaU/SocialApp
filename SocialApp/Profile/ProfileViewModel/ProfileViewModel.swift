@@ -6,12 +6,13 @@
 //
 
 import UIKit
+
 final class ProfileViewModel {
-    var testProfile: Profile
+    var profile: Profile
     let posts: [Post]
-    let findViewModel: FindMyPostsViewModel
+    let findMyPostsViewModel: FindMyPostsViewModel
     let photosCellViewModel: PhotosCellViewModel
-    var personalData: PersonalDataViewModel
+    var personalDataViewModel: PersonalDataViewModel
 
     let leftArrowIconString = IconsName.leftArrow.nameIcon
     let titleFrienCell = "Мои записи"
@@ -21,18 +22,17 @@ final class ProfileViewModel {
     let backgroundCellColor: UIColor = .backgroundPrimary
     let titleFont = UIFont.textBold
 
-
     lazy var actionsViewModels: [ProfileActionViewModel] = [
         .init(
             isSelected: true,
-            type: .publications(count: testProfile.posts.count),
+            type: .publications(count: profile.posts.count),
             onModelSelected:  { [weak self] in
                 self?.modelSelected(at: 0)
             }),
-        .init(isSelected: false, type: .subscribers(count: testProfile.subscribersCount), onModelSelected: { [weak self] in
+        .init(isSelected: false, type: .subscribers(count: profile.subscribersCount), onModelSelected: { [weak self] in
             self?.modelSelected(at: 1)
         }),
-        .init(isSelected: false, type: .subscriptions(count: testProfile.subscriptionsCount), onModelSelected:  { [weak self] in
+        .init(isSelected: false, type: .subscriptions(count: profile.subscriptionsCount), onModelSelected:  { [weak self] in
             self?.modelSelected(at: 2)
         })
     ]
@@ -50,22 +50,11 @@ final class ProfileViewModel {
     ]
 
     init(profile: Profile) {
-        testProfile = profile
+        self.profile = profile
         posts = profile.posts
         photosCellViewModel = PhotosCellViewModel(profile: profile)
-        findViewModel = FindMyPostsViewModel()
-        personalData = PersonalDataViewModel(profile: profile)
-       
-    }
-
-    init() {
-        testProfile = DataBase.shared.testProfile
-        posts = DataBase.shared.getPosts()
-        photosCellViewModel = PhotosCellViewModel(profile: testProfile)
-        findViewModel = FindMyPostsViewModel()
-        personalData = PersonalDataViewModel(profile: testProfile)
-
-
+        findMyPostsViewModel = FindMyPostsViewModel()
+        personalDataViewModel = PersonalDataViewModel(profile: profile)
     }
 
     private func modelSelected(at selectedIndex: Int) {
@@ -74,13 +63,7 @@ final class ProfileViewModel {
         }
         actionsViewModels[selectedIndex].isSelected = true
     }
-
-
-
-
-
-
-    private func createItems() {
+   private func createItems() {
 
     }
 }

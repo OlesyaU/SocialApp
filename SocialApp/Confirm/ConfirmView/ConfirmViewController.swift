@@ -130,6 +130,7 @@ class ConfirmViewController: UIViewController {
 
     private func buttonTapped() {
         let confirmViewController = MainTabBarController()
+        navigationController?.setNavigationBarHidden(true, animated: true)
         navigationController?.setViewControllers([confirmViewController], animated: false)
     }
 

@@ -76,7 +76,7 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
 
     private func configureTableView() {
         tableView.allowsSelection = false
-        tableView.register(OneCommentCell.self, forCellReuseIdentifier: OneCommentCell.identifier)
+        tableView.register(CommentCell.self, forCellReuseIdentifier: CommentCell.identifier)
         tableView.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
     }
 
@@ -122,7 +122,7 @@ extension PublicationViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.configureForComments(for: post)
                 return cell
             case 2:
-                guard let oneCommentCell = tableView.dequeueReusableCell(withIdentifier: OneCommentCell.identifier, for: indexPath) as? OneCommentCell,
+                guard let oneCommentCell = tableView.dequeueReusableCell(withIdentifier: CommentCell.identifier, for: indexPath) as? CommentCell,
                       post.comments.count > indexPath.row
                 else {return UITableViewCell()}
                 let vm = CommentViewModel(comment: post.comments[indexPath.row])
