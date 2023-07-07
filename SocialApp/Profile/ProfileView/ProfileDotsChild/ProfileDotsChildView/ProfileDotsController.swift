@@ -40,8 +40,8 @@ class ProfileDotsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "identifier")
- cell.backgroundColor = .cyan
   cell.textLabel?.text = viewModel.profilePostDotsItems[indexPath.row]
+        cell.contentView.backgroundColor = viewModel.backgroundColor
         cell.textLabel?.textColor = viewModel.profilePostDotsItemsColor
         cell.textLabel?.font = viewModel.profilePostDotsItemsFont
  return cell

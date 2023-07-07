@@ -21,13 +21,11 @@ final class ProfileInformationViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         configureNavigation()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configure()
         registerCells()
     }

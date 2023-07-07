@@ -102,7 +102,6 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
         let detailedViewController = DetailedInformationController(viewModel: viewModel)
 
         navigationController?.setNavigationBarHidden(true, animated: false)
-//        detailedViewController.configure(viewModel: , state: .information)
         navigationController?.pushViewController(detailedViewController, animated: true)
     }
 
