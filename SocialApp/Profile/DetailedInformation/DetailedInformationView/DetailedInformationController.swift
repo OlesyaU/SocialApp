@@ -24,6 +24,7 @@ final class DetailedInformationController: UIViewController {
         viewModel.headerViewModel.delegate = self
         headerView.configure(viewModel: viewModel.headerViewModel)
         layout()
+        setTableView()
     }
 
     required init?(coder: NSCoder) {
@@ -32,13 +33,11 @@ final class DetailedInformationController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
@@ -50,14 +49,19 @@ final class DetailedInformationController: UIViewController {
             headerView.pinLeading(to: view.leadingAnchor),
             headerView.pinTrailing(to: view.trailingAnchor),
 
+
             tableView.pinTop(to: headerView.bottomAnchor),
             tableView.pinLeading(to: view.leadingAnchor),
             tableView.pinTrailing(to: view.trailingAnchor),
             tableView.pinBottom(to: view.bottomAnchor)
         ])
-
         tableView.delegate = self
         tableView.dataSource = self
+    }
+
+    private func setTableView() {
+        tableView.backgroundColor = viewModel.backgroundColor
+        tableView.separatorStyle = .none
     }
 }
 
@@ -67,7 +71,7 @@ extension DetailedInformationController: UITableViewDelegate, UITableViewDataSou
         if viewModel.type == .information {
             return 1
         } else {
-          return 2
+            return 2
         }
     }
 
@@ -80,11 +84,11 @@ extension DetailedInformationController: UITableViewDelegate, UITableViewDataSou
                     return viewModel.titlesButtonSettingsState.count
                 }
             case 1:
-              return  1
+                return  1
             default:
                 break
         }
-       return 0
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,16 +99,19 @@ extension DetailedInformationController: UITableViewDelegate, UITableViewDataSou
                         let cell = UITableViewCell()
                         cell.imageView?.image = UIImage(systemName: viewModel.iconNamesSettingsState[indexPath.row])
                         cell.textLabel?.text = viewModel.titlesButtonInformationState[indexPath.row]
+                        cell.contentView.backgroundColor = viewModel.backgroundColor
                         return cell
                     case .information:
                         let cell = UITableViewCell()
                         cell.textLabel?.text = viewModel.titlesButtonInformationState[indexPath.row]
+                        cell.contentView.backgroundColor = viewModel.backgroundColor
                         return cell
                 }
             case 1:
                 let cell = UITableViewCell()
                 cell.imageView?.image = UIImage(systemName: viewModel.iconNamesSettingsState.last ?? "")
                 cell.textLabel?.text = viewModel.titlesButtonSettingsState.last
+                cell.contentView.backgroundColor = viewModel.backgroundColor
                 return cell
             default:
                 return UITableViewCell()
@@ -112,8 +119,7 @@ extension DetailedInformationController: UITableViewDelegate, UITableViewDataSou
 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard  let cell = tableView.cellForRow(at: indexPath) else {return}
-//        cell.imageView?.tintColor = UIColor(named: viewModel?.tappedIconsColor)
+        guard  tableView.cellForRow(at: indexPath) != nil else {return}
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

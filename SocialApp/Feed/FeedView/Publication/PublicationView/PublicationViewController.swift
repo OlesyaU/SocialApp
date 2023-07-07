@@ -20,6 +20,7 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
     private let tableDotsMenu = ProfileDotsController()
     private let tableView = UITableView()
     private let containerView = UIView()
+    private let leaveCommentView = LeaveCommentView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,33 +30,33 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
 
     func configure(post: Post) {
         viewModel = PublicationViewModel(post: post)
+        guard let viewModel = viewModel else {return}
+        leaveCommentView.configure(viewModel: viewModel)
 
-        navigationItem.title = viewModel?.titleController
+        navigationItem.title = viewModel.titleController
 
         navigationItem.rightBarButtonItem = UIBarButtonItem.menuButton(
             self,
             action: #selector(dotsAction),
-            imageName: viewModel?.dotsIconName ?? "",
-            tintColor: viewModel?.colorNickname ?? .white
+            imageName: viewModel.dotsIconName,
+            tintColor: viewModel.colorNickname
         )
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: viewModel?.arrowIcon ?? "")?.withTintColor(viewModel?.colorNickname ?? .white),
+            image: UIImage(systemName: viewModel.arrowIcon)?.withTintColor(viewModel.colorNickname),
             style: .plain,
             target: self,
             action: #selector(backAction)
         )
 
-        navigationItem.leftBarButtonItem?.tintColor = viewModel?.colorNickname
+        navigationItem.leftBarButtonItem?.tintColor = viewModel.colorNickname
 
     }
     private func layout() {
-        view.addSubview(tableView)
-        view.addSubview(containerView)
-        containerView.backgroundColor = .clear
+        [tableView, containerView, leaveCommentView].forEach({$0.forAutolayout()})
+        [tableView, containerView, leaveCommentView].forEach({view.addSubview($0)})
 
-        tableView.forAutolayout()
-        containerView.forAutolayout()
+        containerView.backgroundColor = .clear
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -69,7 +70,11 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
             containerView.pinTop(to: view),
             containerView.pinBottom(to: view),
             containerView.pinLeading(to: view),
-            containerView.pinTrailing(to: view)
+            containerView.pinTrailing(to: view),
+
+            leaveCommentView.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor),
+            leaveCommentView.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor),
+            leaveCommentView.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         containerView.isHidden = true
     }

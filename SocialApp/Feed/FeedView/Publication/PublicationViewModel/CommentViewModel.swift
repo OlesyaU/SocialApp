@@ -8,6 +8,7 @@
 import UIKit
 final class CommentViewModel {
     var comment: Comment
+    private let commentDate: Date
     let nickColor = AppColors.orange
     let dateTextColor = AppColors.lightGray
     let commentTextColor = AppColors.gray
@@ -19,7 +20,10 @@ final class CommentViewModel {
     let authorName: String
     let avatarImageString: String
     let commentText: String
-    let commentDateString: String
+    let fontRegular = UIFont.textRegular
+    var commentDateString: String {
+        setDateFormat(date: comment.date)
+    }
     private var likesCount: Int {
         comment.likedBy.count
     }
@@ -39,7 +43,7 @@ final class CommentViewModel {
         authorName = comment.author.nickname
         avatarImageString = comment.author.avatar
         commentText = comment.text
-        commentDateString = comment.date.description
+        commentDate = comment.date
         isLiked = comment.isLiked
     }
 
@@ -76,4 +80,11 @@ final class CommentViewModel {
         viewModelChanged?()
     }
 
+    private func setDateFormat(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "dd MMMM"
+        let stringDate = dateFormatter.string(from: Date())
+        return stringDate
+    }
 }

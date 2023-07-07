@@ -78,7 +78,7 @@ final class EnterDataTextField: UIView {
     }
 
     private func setupUI() {
-        textFieldContainer.backgroundColor = .systemOrange
+        textFieldContainer.backgroundColor = viewModel?.backgroundTextFieldColor
         textFieldContainer.layer.cornerRadius = 4
         textFieldContainer.clipsToBounds = true
 

@@ -83,6 +83,8 @@
 		76CD09912A3C7453001A1B31 /* OrientationDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD09902A3C7453001A1B31 /* OrientationDevice.swift */; };
 		76CD09992A3C971F001A1B31 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76CD09982A3C971F001A1B31 /* FirebaseAuth */; };
 		76CD099B2A3C97AA001A1B31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */; };
+		76D06E002A58458E0024E8F4 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D06DFF2A58458E0024E8F4 /* MainTabBarViewModel.swift */; };
+		76D06E022A586EDB0024E8F4 /* LeaveCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D06E012A586EDB0024E8F4 /* LeaveCommentView.swift */; };
 		76D0AA502A542DAF00646F43 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D0AA4F2A542DAF00646F43 /* UIImage+Extension.swift */; };
 		76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F42A39BB3A0083DE09 /* Themes.swift */; };
 		76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */; };
@@ -169,6 +171,8 @@
 		76CB11992A5424BE009B29F4 /* EnterDataTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterDataTextFieldCell.swift; sourceTree = "<group>"; };
 		76CD09902A3C7453001A1B31 /* OrientationDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationDevice.swift; sourceTree = "<group>"; };
 		76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		76D06DFF2A58458E0024E8F4 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
+		76D06E012A586EDB0024E8F4 /* LeaveCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveCommentView.swift; sourceTree = "<group>"; };
 		76D0AA4F2A542DAF00646F43 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		76EFE9F42A39BB3A0083DE09 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 		7614A3A32A407CAB004D7466 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				76D06DFE2A58456D0024E8F4 /* MainViewModel */,
+				76D06DFD2A5845560024E8F4 /* MainView */,
 				7614A3A62A408004004D7466 /* MainTabBarController.swift */,
 			);
 			path = Main;
@@ -467,6 +473,7 @@
 				764CBD502A559B72007F2788 /* CommentsCell.swift */,
 				761E26532A54407900CA2B4E /* CommentView.swift */,
 				764CBD522A55D291007F2788 /* CommentCell.swift */,
+				76D06E012A586EDB0024E8F4 /* LeaveCommentView.swift */,
 			);
 			path = PublicationView;
 			sourceTree = "<group>";
@@ -649,6 +656,21 @@
 				76CB11952A542443009B29F4 /* EnterDataTextFieldType.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		76D06DFD2A5845560024E8F4 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		76D06DFE2A58456D0024E8F4 /* MainViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				76D06DFF2A58458E0024E8F4 /* MainTabBarViewModel.swift */,
+			);
+			path = MainViewModel;
 			sourceTree = "<group>";
 		};
 		76EFE9EA2A39B9860083DE09 /* Confirm */ = {
@@ -876,6 +898,7 @@
 				76CB11892A541F42009B29F4 /* ProfileInformationSelectGenderCell.swift in Sources */,
 				764CBD592A56D7FB007F2788 /* DetailedInformationController.swift in Sources */,
 				7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */,
+				76D06E002A58458E0024E8F4 /* MainTabBarViewModel.swift in Sources */,
 				76CB11912A54218E009B29F4 /* ProfileInformationSelectGenderViewModel.swift in Sources */,
 				7614A4012A44273D004D7466 /* MenuViewController.swift in Sources */,
 				76F042E42A4DE2AE00631896 /* FindMyPostsCell.swift in Sources */,
@@ -906,6 +929,7 @@
 				7614A44F2A4AEA9D004D7466 /* ProfileActionStackView.swift in Sources */,
 				764CBD5F2A56DDFB007F2788 /* Draft.swift in Sources */,
 				7614A4932A4C7D83004D7466 /* PhotoCollectionViewCell.swift in Sources */,
+				76D06E022A586EDB0024E8F4 /* LeaveCommentView.swift in Sources */,
 				76F042DD2A4D663F00631896 /* FontExtension.swift in Sources */,
 				764CBD4D2A557129007F2788 /* CommentViewModel.swift in Sources */,
 				7614A3BF2A42CDD3004D7466 /* FirstFeedCell.swift in Sources */,

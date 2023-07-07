@@ -1,26 +1,24 @@
 //
-//  DetailedInformationHeaderView.swift
+//  LeaveCommentView.swift
 //  SocialApp
 //
-//  Created by Олеся on 06.07.2023.
+//  Created by Олеся on 07.07.2023.
 //
 
-import UIKit
-
-final class DetailedInformationHeaderView: UIView {
-    private var viewModel: DetailedInformationHeaderViewModel?
+import  UIKit
+final class LeaveCommentView: UIView {
+    private var viewModel: PublicationViewModel?
     private var viewConstraints: [NSLayoutConstraint] = []
     private enum Constants {
         static let inset: CGFloat = 16
         static let iconHeight: CGFloat = 24
     }
 
+
     private lazy var iconImage: UIImageView = {
         let image = UIImageView()
         image.isUserInteractionEnabled = true
         image.contentMode = .scaleAspectFill
-        let tap = UITapGestureRecognizer(target: self, action: #selector(backTap))
-        image.addGestureRecognizer(tap)
         return image
     }()
 
@@ -29,7 +27,7 @@ final class DetailedInformationHeaderView: UIView {
         label.numberOfLines = 1
         return label
     }()
-
+    
     init() {
         super.init(frame: .zero)
         layout()
@@ -49,22 +47,21 @@ final class DetailedInformationHeaderView: UIView {
             iconImage.pinWeight(equalTo: Constants.iconHeight),
             iconImage.pinLeading(to: safeAreaLayoutGuide.leadingAnchor, inset: Constants.inset),
 
-            titleLabel.pinTop(to: iconImage.bottomAnchor, inset: Constants.inset),
-            titleLabel.pinLeading(to: iconImage.leadingAnchor),
+            titleLabel.pinTop(to: safeAreaLayoutGuide.topAnchor, inset: Constants.inset),
+            titleLabel.pinLeading(to: iconImage.trailingAnchor, inset: Constants.inset),
             titleLabel.pinBottom(to: bottomAnchor, inset: Constants.inset)
         ])
         NSLayoutConstraint.activate(viewConstraints)
     }
-    
-    func configure(viewModel: DetailedInformationHeaderViewModel) {
-        self.viewModel = viewModel
-        backgroundColor = viewModel.backgroundColor
-        titleLabel.text = viewModel.profileFullName
-        titleLabel.font = viewModel.titleFont
-        iconImage.image = viewModel.backIcon
-    }
 
-    @objc private func backTap() {
-        viewModel?.backSelected()
+    func configure(viewModel: PublicationViewModel) {
+        self.viewModel = viewModel
+        backgroundColor = viewModel.leaveCommentViewColor
+        titleLabel.text = viewModel.leaveCommentString
+        titleLabel.font = viewModel.fontRegular
+        titleLabel.textColor = viewModel.leaveCommentStringColor
+        iconImage.image = UIImage(systemName: viewModel.leaveCommentIcon)
+        iconImage.tintColor = viewModel.colorTitle
     }
 }
+

@@ -9,7 +9,7 @@ import UIKit
 extension UIFont {
     static let textBold = UIFont(name: "AvenirNextCondensed-Bold", size: 18)
     static let textRegular = UIFont(name: "AvenirNextCondensed-Regular", size: 16)
-    }
+}
 
 enum IconsName {
     case dots
@@ -28,19 +28,21 @@ enum IconsName {
     case archive
     case settings
     case starFill
+    case house
+    case person
 
-   var nameIcon: String {
+    var nameIcon: String {
         switch self {
             case .dots:
-           return  "DotsVertical"
+                return  "DotsVertical"
             case .leftArrow:
-             return   "arrow.left"
+                return   "arrow.left"
             case .rightArrow:
-              return  "chevron.right"
+                return  "chevron.right"
             case .burger:
-              return  "line.3.horizontal"
+                return  "line.3.horizontal"
             case .moreInfo:
-              return  "exclamationmark.circle.fill"
+                return  "exclamationmark.circle.fill"
             case .likes:
                 return "heart"
             case .comments:
@@ -63,6 +65,10 @@ enum IconsName {
                 return "gearshape"
             case .starFill:
                 return "star.fill"
+            case .house:
+                return "house"
+            case .person:
+                return  "person.circle"
         }
     }
 }

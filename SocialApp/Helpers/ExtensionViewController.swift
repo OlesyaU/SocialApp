@@ -13,15 +13,6 @@ extension UIViewController {
         child.didMove(toParent: self)
     }
 
-//    func removeChildViewController() {
-//        guard parent != nil else {
-//            return
-//        }
-//        willMove(toParent: nil)
-//        view.removeFromSuperview()
-//        removeFromParent()
-//    }
-
     func removeChildViewController(_ child: UIViewController) {
         guard parent != nil else {
             return
@@ -30,6 +21,4 @@ extension UIViewController {
         child.view.removeFromSuperview()
         removeFromParent()
     }
-
-
 }

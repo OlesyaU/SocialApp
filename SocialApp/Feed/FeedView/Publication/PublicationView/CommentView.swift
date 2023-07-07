@@ -21,7 +21,7 @@ final class CommentView: UIView {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.isUserInteractionEnabled = false
-        image.cornerRadius(cornerRadius: image.frame.height / 2)
+        image.cornerRadius(cornerRadius: Constants.heightAvatar / 2)
         image.clipsToBounds = true
         return image
     }()
@@ -43,6 +43,7 @@ final class CommentView: UIView {
         label.numberOfLines = 1
         return label
     }()
+    
     private let likesCountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -57,6 +58,7 @@ final class CommentView: UIView {
         image.isUserInteractionEnabled = true
         return image
     }()
+
     private let answerLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -123,6 +125,8 @@ final class CommentView: UIView {
         authorNickLabel.text = viewModel.authorName
         authorNickLabel.textColor = viewModel.nickColor
         commentLabel.text = viewModel.commentText
+        commentLabel.font = viewModel.fontRegular
+        commentLabel.textColor = viewModel.commentTextColor
         dateLabel.text = viewModel.commentDateString
         answerLabel.text = viewModel.answerText
         authorPhoto.image = UIImage(named: viewModel.avatarImageString)

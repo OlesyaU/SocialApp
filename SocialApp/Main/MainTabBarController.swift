@@ -8,6 +8,7 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
+    private let mainTabBarViewModel = MainTabBarViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().backgroundColor = .backgroundPrimary
@@ -16,28 +17,27 @@ class MainTabBarController: UITabBarController {
             createProfileViewController(),
             createSavedViewController()
         ]
+        view.tintColor = mainTabBarViewModel.tintColorChosenItem
     }
 
     func createFeedViewController() -> UINavigationController {
         let feed = FeedTableViewController()
-        feed.title = "Главная"
-        feed.tabBarItem = UITabBarItem(title: "Главная", image: UIImage(systemName: "house.circle"), tag: 0)
+        feed.title = mainTabBarViewModel.generlTitle
+        feed.tabBarItem = UITabBarItem(title: mainTabBarViewModel.generlTitle, image: UIImage(systemName: mainTabBarViewModel.generalIcon), tag: 0)
         return UINavigationController(rootViewController: feed)
     }
 
     func createProfileViewController() -> UINavigationController {
         let viewModel = ProfileViewModel(profile: DataBase.shared.testProfile)
         let profile = ProfileViewController(viewModel: viewModel)
-        profile.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
-        let navigation = UINavigationController(rootViewController: profile)
-        navigation.setNavigationBarHidden(true, animated: true)
-        return  navigation
+        profile.tabBarItem = UITabBarItem(title: mainTabBarViewModel.profileTitle, image: UIImage(systemName: mainTabBarViewModel.profileIcon), tag: 1)
+        return  UINavigationController(rootViewController: profile)
     }
     
     func createSavedViewController() -> UINavigationController {
         let saved = SavedViewController()
-        saved.title = "Coxpaнённые"
-        saved.tabBarItem = UITabBarItem(title: "Coxpaнённые", image: UIImage(systemName: "square.and.arrow.down"), tag: 2)
+        saved.title = mainTabBarViewModel.savedTitle
+        saved.tabBarItem = UITabBarItem(title: mainTabBarViewModel.savedTitle, image: UIImage(systemName: mainTabBarViewModel.savedIcon), tag: 2)
         return UINavigationController(rootViewController: saved)
     }
 }

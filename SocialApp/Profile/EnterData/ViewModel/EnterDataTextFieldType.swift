@@ -15,6 +15,7 @@ enum EnterDataTextFieldType {
 }
 
 final class EnterDataTextFieldViewModel {
+    let backgroundTextFieldColor = AppColors.biege
     let type: EnterDataTextFieldType
     var typePlaceholder: String {
         switch type {

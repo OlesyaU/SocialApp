@@ -26,6 +26,7 @@ final class DetailedInformationHeaderViewModel {
 
     let profileFullName: String
     let backgroundColor = AppColors.biege
+    let titleFont = UIFont.textBold
     var backIcon: UIImage? {
         UIImage(systemName: iconString)?.imageWithColor(color: AppColors.orange)
     }

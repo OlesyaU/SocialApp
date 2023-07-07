@@ -20,17 +20,7 @@ final class DotsContainerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//    private func layout() {
-//        self.forAutolayout()
-//        constraintsView.append(contentsOf: [
-//            self.pinTop(to: view.topAnchor),
-//            self.pinLeading(to: view.leadingAnchor),
-//            self.pinTrailing(to: view.trailingAnchor),
-//            self.pinBottom(to: view.bottomAnchor)
-//
-//        ])
-//        NSLayoutConstraint.activate(constraintsView)
-//    }
+
     func layout(to view: UIView) {
 
         constraintsView.append(contentsOf: [
