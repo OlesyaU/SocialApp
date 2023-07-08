@@ -80,7 +80,7 @@ final class ProfileIconButton: UIView {
         iconButtonConstraint.append(contentsOf: [
             iconImage.pinTop(to: stackView.topAnchor),
             iconImage.pinHeight(equalTo: Constants.heightIcon),
-            iconImage.pinWeight(equalTo: Constants.heightIcon),
+            iconImage.pinWidth(equalTo: Constants.heightIcon),
             iconImage.pinLeading(to: iconlabel.leadingAnchor),
             iconImage.pinTrailing(to: iconlabel.trailingAnchor),
             
@@ -88,7 +88,7 @@ final class ProfileIconButton: UIView {
             iconlabel.pinTrailing(to: stackView.trailingAnchor),
             iconlabel.pinTop(to: iconImage.bottomAnchor),
             iconlabel.pinBottom(to: stackView.bottomAnchor),
-            stackView.pinWeight(equalTo: 100),
+            stackView.pinWidth(equalTo: 100),
             
             stackView.pinTop(to: topAnchor),
             stackView.pinLeading(to: leadingAnchor),

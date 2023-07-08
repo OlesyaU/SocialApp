@@ -17,7 +17,7 @@ final class FeedCell: UITableViewCell {
     var delegate: FeedCellProtocol?
     var profileControllerDelegate: ProfileViewDelegate?
     var publicationDelegate: PublicationControllerProtocol?
-    
+
     private lazy var contentHeaderCellView: UIView = {
         let image = UIView()
         image.isUserInteractionEnabled = true
@@ -126,7 +126,7 @@ final class FeedCell: UITableViewCell {
                 contentHeaderCellView.pinBottom(to: descriptionLabel.topAnchor),
 
                 authorPhoto.pinHeight(equalTo: Constants.heightAvatar),
-                authorPhoto.pinWeight(equalTo: Constants.heightAvatar),
+                authorPhoto.pinWidth(equalTo: Constants.heightAvatar),
                 authorPhoto.pinTop(to: contentView.topAnchor,inset: Constants.sideInset),
                 authorPhoto.pinLeading(to: contentView.leadingAnchor, inset:  Constants.sideInset),
                 authorPhoto.pinBottom(to: descriptionLabel.topAnchor, inset: Constants.sideInset),
@@ -145,7 +145,7 @@ final class FeedCell: UITableViewCell {
 
                 dotsImage.pinTop(to:contentView.topAnchor,inset: Constants.sideInset),
                 dotsImage.pinBottom(to: authorPhoto.bottomAnchor),
-                dotsImage.pinWeight(equalTo: 20),
+                dotsImage.pinWidth(equalTo: 20),
                 dotsImage.pinTrailing(to: contentView.trailingAnchor, inset: Constants.sideInset),
                 dotsImage.pinLeading(to: professionLabel.trailingAnchor),
 
@@ -166,30 +166,30 @@ final class FeedCell: UITableViewCell {
                 likesIcon.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
                 likesIcon.pinLeading(to: contentView.leadingAnchor, inset: Constants.sideInset),
                 likesIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
-                likesIcon.pinWeight(equalTo: Constants.heightAvatar / 2),
+                likesIcon.pinWidth(equalTo: Constants.heightAvatar / 2),
                 likesIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
 
 
                 likesLabel.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
                 likesLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
-                likesLabel.pinWeight(equalTo: Constants.heightAvatar),
+                likesLabel.pinWidth(equalTo: Constants.heightAvatar),
                 likesLabel.pinLeading(to: likesIcon.trailingAnchor, inset: Constants.sideInset / 2),
                 likesLabel.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
 
                 commentsIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
-                commentsIcon.pinWeight(equalTo: Constants.heightAvatar / 2),
+                commentsIcon.pinWidth(equalTo: Constants.heightAvatar / 2),
                 commentsIcon.pinLeading(to: likesLabel.trailingAnchor, inset: Constants.sideInset),
                 commentsIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
 
                 commentsLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
-                commentsLabel.pinWeight(equalTo: Constants.heightAvatar),
+                commentsLabel.pinWidth(equalTo: Constants.heightAvatar),
                 commentsLabel.pinLeading(to: commentsIcon.trailingAnchor, inset: Constants.sideInset / 2),
                 commentsLabel.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
 
 
                 bookmarkIcon.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
                 bookmarkIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
-                bookmarkIcon.pinWeight(equalTo: Constants.heightAvatar / 2),
+                bookmarkIcon.pinWidth(equalTo: Constants.heightAvatar / 2),
                 bookmarkIcon.pinTrailing(to: contentView.trailingAnchor, inset: Constants.sideInset),
                 bookmarkIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset)
             ]

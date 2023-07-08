@@ -44,7 +44,7 @@ final class LeaveCommentView: UIView {
 
             iconImage.pinTop(to: safeAreaLayoutGuide.topAnchor, inset: Constants.inset),
             iconImage.pinHeight(equalTo: Constants.iconHeight),
-            iconImage.pinWeight(equalTo: Constants.iconHeight),
+            iconImage.pinWidth(equalTo: Constants.iconHeight),
             iconImage.pinLeading(to: safeAreaLayoutGuide.leadingAnchor, inset: Constants.inset),
 
             titleLabel.pinTop(to: safeAreaLayoutGuide.topAnchor, inset: Constants.inset),

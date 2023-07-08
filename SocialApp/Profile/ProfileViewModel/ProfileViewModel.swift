@@ -49,12 +49,15 @@ final class ProfileViewModel {
         })
     ]
 
+    var onPhotosCellSelected: (() -> Void)?
+
     init(profile: Profile) {
         self.profile = profile
         posts = profile.posts
         photosCellViewModel = PhotosCellViewModel(profile: profile)
         findMyPostsViewModel = FindMyPostsViewModel()
         personalDataViewModel = PersonalDataViewModel(profile: profile)
+        photosCellViewModel.delegate = self
     }
 
     private func modelSelected(at selectedIndex: Int) {
@@ -63,7 +66,10 @@ final class ProfileViewModel {
         }
         actionsViewModels[selectedIndex].isSelected = true
     }
-   private func createItems() {
+}
 
+extension ProfileViewModel: PhotosCellViewModelDelegate {
+    func photosCellSelected() {
+        onPhotosCellSelected?()
     }
 }

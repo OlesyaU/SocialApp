@@ -17,6 +17,8 @@ class PhotosCell: UITableViewCell {
     private var viewModel: PhotosCellViewModel?
     private var cellConstraints: [NSLayoutConstraint] = []
 
+    private let containerView = UIView()
+
     private let photoLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -32,14 +34,12 @@ class PhotosCell: UITableViewCell {
         return label
     }()
 
-
     private lazy var arrowImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .center
         image.tintColor = .black
         return image
     }()
-
 
     private lazy var collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -63,29 +63,45 @@ class PhotosCell: UITableViewCell {
     }
 
     private func layout() {
-        [photoLabel, photoCountLabel, arrowImage, collection].forEach {$0.forAutolayout()}
-        [photoLabel, photoCountLabel, arrowImage, collection].forEach {contentView.addSubview($0)}
+
+        contentView.addSubview(containerView)
+        contentView.addSubview(collection)
+
+        [photoLabel, photoCountLabel, arrowImage, collection, containerView].forEach {$0.forAutolayout()}
+        [photoLabel, photoCountLabel, arrowImage].forEach {containerView.addSubview($0)}
 
         cellConstraints.append(contentsOf: [
-            photoLabel.pinTop(to: contentView.topAnchor, inset: Constants.sideInset),
-            photoLabel.pinLeading(to: contentView.leadingAnchor, inset: Constants.sideInset),
+            containerView.pinTop(to: contentView.topAnchor),
+            containerView.pinLeading(to: contentView.leadingAnchor),
+            containerView.pinTrailing(to: contentView.trailingAnchor),
 
-            photoCountLabel.pinTop(to: contentView.topAnchor, inset: Constants.sideInset),
+            photoLabel.pinTop(to: containerView.topAnchor, inset: Constants.sideInset),
+            photoLabel.pinLeading(to: containerView.leadingAnchor, inset: Constants.sideInset),
+
+            photoCountLabel.pinTop(to: containerView.topAnchor, inset: Constants.sideInset),
             photoCountLabel.pinLeading(to: photoLabel.trailingAnchor, inset: Constants.sideInset),
 
-            arrowImage.pinTop(to: contentView.topAnchor, inset: Constants.sideInset),
-            arrowImage.pinTrailing(to: contentView.trailingAnchor, inset: Constants.sideInset),
-            arrowImage.pinBottom(to: photoLabel.bottomAnchor),
+            arrowImage.pinTop(to: containerView.topAnchor, inset: Constants.sideInset),
+            arrowImage.pinTrailing(to: containerView.trailingAnchor, inset: Constants.sideInset),
+            arrowImage.pinBottom(to: containerView.bottomAnchor),
             arrowImage.pinHeight(equalTo: 24),
-            arrowImage.pinWeight(equalTo: 24),
+            arrowImage.pinWidth(equalTo: 24),
 
-            collection.pinTop(to: photoLabel.bottomAnchor, inset: Constants.sideInset),
+            collection.pinTop(to: containerView.bottomAnchor, inset: Constants.sideInset),
             collection.pinLeading(to: contentView.leadingAnchor, inset: Constants.sideInset),
             collection.pinTrailing(to: contentView.trailingAnchor),
             collection.pinHeight(equalTo: Constants.sidePhoto),
             collection.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset)
         ])
         NSLayoutConstraint.activate(cellConstraints)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        containerView.isUserInteractionEnabled = true
+        containerView.addGestureRecognizer(tapGesture)
+    }
+
+    @objc
+    private func didTap() {
+        viewModel?.photosCellSelected()
     }
 
     func configure(viewModel: PhotosCellViewModel) {

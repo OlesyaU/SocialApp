@@ -60,7 +60,7 @@ final class FindMyPostsCell: UITableViewCell {
             magnifyingglass.pinTop(to: contentView.topAnchor, inset: constraintCell),
             magnifyingglass.pinTrailing(to: contentView.trailingAnchor, inset: constraintCell),
             magnifyingglass.pinHeight(equalTo: 24),
-            magnifyingglass.pinWeight(equalTo: 24),
+            magnifyingglass.pinWidth(equalTo: 24),
             magnifyingglass.pinBottom(to: contentView.bottomAnchor, inset: constraintCell)
         ])
         NSLayoutConstraint.activate(cellConstraints)

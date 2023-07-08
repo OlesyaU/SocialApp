@@ -79,7 +79,7 @@ final class CommentView: UIView {
         [authorPhoto,  authorNickLabel, commentLabel, dateLabel, likesCountLabel, likesIcon, answerLabel].forEach {addSubview($0)}
         cellConstraints.append(contentsOf: [
             authorPhoto.pinHeight(equalTo: Constants.heightAvatar),
-            authorPhoto.pinWeight(equalTo: Constants.heightAvatar),
+            authorPhoto.pinWidth(equalTo: Constants.heightAvatar),
             authorPhoto.pinTop(to: topAnchor,inset: Constants.sideInset),
             authorPhoto.pinLeading(to:leadingAnchor, inset:  Constants.sideInset),
 
@@ -92,7 +92,7 @@ final class CommentView: UIView {
             likesIcon.pinTop(to: topAnchor, inset: Constants.sideInset),
             likesIcon.pinTrailing(to: likesCountLabel.leadingAnchor, inset: 4),
             likesIcon.pinHeight(equalTo: Constants.likeIconSide),
-            likesIcon.pinWeight(equalTo: Constants.likeIconSide),
+            likesIcon.pinWidth(equalTo: Constants.likeIconSide),
 
             commentLabel.pinTop(to: authorNickLabel.bottomAnchor),
             commentLabel.pinLeading(to: authorNickLabel.leadingAnchor),

@@ -128,13 +128,13 @@ extension CombackViewController {
                 welcomeLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
                 welcomeLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
 
-                phoneNumberField.pinWeight(equalTo: view.frame.width / 2),
+                phoneNumberField.pinWidth(equalTo: view.frame.width / 2),
 
                 secondLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
                 secondLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
 
                 confirmButton.pinHeight(equalTo: 44),
-                confirmButton.pinWeight(equalTo: view.frame.width / 2)
+                confirmButton.pinWidth(equalTo: view.frame.width / 2)
             ]
         )
 

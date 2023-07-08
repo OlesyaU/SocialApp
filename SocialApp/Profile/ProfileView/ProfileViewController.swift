@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
 
         profileViewModel.personalDataViewModel.delegate = self
         layout()
+        setupBindings()
         configureTableView()
     }
 
@@ -88,6 +89,15 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
         containerView.isHidden = true
     }
 
+    private func setupBindings() {
+        profileViewModel.onPhotosCellSelected = { [weak self] in
+            guard let self else { return }
+            let viewModel = PhotoGalleryViewModel(photosTitles: self.profileViewModel.profile.photos)
+            let viewController = PhotoGalleryViewController(viewModel: viewModel)
+
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 
     private func configureTableView() {
         tableView.allowsSelection = false

@@ -64,7 +64,7 @@ class FloatingPanelViewController: UIViewController {
         floatingView.addSubview(disclosureImageView)
         guard let disclosureImageViewSuperView = disclosureImageView.superview else { return }
         disclosureImageView.pinTop(to: disclosureImageViewSuperView, inset: 8)
-        disclosureImageView.pinWeight(equalTo: 36)
+        disclosureImageView.pinWidth(equalTo: 36)
         disclosureImageView.pinHeight(equalTo: 4)
         disclosureImageView.pinCenterX(to: disclosureImageViewSuperView)
 

@@ -20,29 +20,39 @@ extension UIView {
         view.addSubview(self)
     }
 
-    func pinEdges(to view: UIView, insets: UIEdgeInsets = .zero, excluding side: Side = .all) {
+    func pinEdges(to view: UIView, insets: UIEdgeInsets = .zero, excluding side: Side = .all) -> [NSLayoutConstraint] {
         switch side {
             case .all:
-                pinTop(to: view, inset: insets.top)
-                pinBottom(to: view, inset: insets.bottom)
-                pinLeading(to: view, inset: insets.left)
-                pinTrailing(to: view, inset: insets.right)
+            return [
+                pinTop(to: view, inset: insets.top),
+                pinBottom(to: view, inset: insets.bottom),
+                pinLeading(to: view, inset: insets.left),
+                pinTrailing(to: view, inset: insets.right),
+                ]
             case .left:
-                pinTop(to: view, inset: insets.top)
-                pinBottom(to: view, inset: insets.bottom)
+            return [
+                pinTop(to: view, inset: insets.top),
+                pinBottom(to: view, inset: insets.bottom),
                 pinTrailing(to: view, inset: insets.right)
+                ]
             case .right:
-                pinTop(to: view, inset: insets.top)
-                pinBottom(to: view, inset: insets.bottom)
+            return [
+                pinTop(to: view, inset: insets.top),
+                pinBottom(to: view, inset: insets.bottom),
                 pinLeading(to: view, inset: insets.left)
+                ]
             case .top:
-                pinBottom(to: view, inset: insets.bottom)
-                pinLeading(to: view, inset: insets.left)
+            return [
+                pinBottom(to: view, inset: insets.bottom),
+                pinLeading(to: view, inset: insets.left),
                 pinTrailing(to: view, inset: insets.right)
+                ]
             case .bottom:
-                pinTop(to: view, inset: insets.top)
-                pinLeading(to: view, inset: insets.left)
+            return [
+                pinTop(to: view, inset: insets.top),
+                pinLeading(to: view, inset: insets.left),
                 pinTrailing(to: view, inset: insets.right)
+                ]
         }
     }
 
@@ -126,10 +136,18 @@ extension UIView {
     }
 
     @discardableResult
-    func pinWeight(equalTo constant: CGFloat) -> NSLayoutConstraint {
+    func pinWidth(equalTo constant: CGFloat) -> NSLayoutConstraint {
        widthAnchor.constraint(equalToConstant: constant)
     }
 
+    func pinWeight(equalTo view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0) -> NSLayoutConstraint {
+        widthAnchor.constraint(
+            equalTo: view.widthAnchor,
+            multiplier: multiplier,
+            constant: constant
+        )
+    }
+    
     @discardableResult
     func pinWidth(constant: CGFloat, multiplier: CGFloat) -> NSLayoutConstraint {
         widthAnchor.constraint(equalToConstant: constant)

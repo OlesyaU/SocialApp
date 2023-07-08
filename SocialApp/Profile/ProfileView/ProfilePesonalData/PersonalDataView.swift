@@ -132,7 +132,7 @@ final class PersonalDataView: UIView {
         personalDataViewConstraints.append(contentsOf: [
             burgerButton.pinTop(to: topAnchor),
             burgerButton.pinHeight(equalTo: Constants.sideInset),
-            burgerButton.pinWeight(equalTo: Constants.sideInset),
+            burgerButton.pinWidth(equalTo: Constants.sideInset),
             burgerButton.pinTrailing(to: trailingAnchor, inset: Constants.sideInset),
             editButton.pinTop(to: avatarImage.bottomAnchor, inset: Constants.sideInset * 2),
             editButton.pinLeading(to: avatarImage.leadingAnchor),
@@ -151,7 +151,7 @@ final class PersonalDataView: UIView {
         personalDataViewConstraints.append(contentsOf: [
             callButton.pinTop(to: moreInfoButton.bottomAnchor, inset: Constants.sideInset),
             callButton.pinTop(to: avatarImage.bottomAnchor, inset: Constants.sideInset * 2),
-            callButton.pinWeight(equalTo: UIScreen.main.bounds.width / 3),
+            callButton.pinWidth(equalTo: UIScreen.main.bounds.width / 3),
 
 
             callButton.pinTrailing(to: trailingAnchor, inset: Constants.sideInset),
@@ -162,7 +162,7 @@ final class PersonalDataView: UIView {
             messageButton.pinLeading(to: avatarImage.leadingAnchor),
             messageButton.pinHeight(equalTo: Constants.editButtonHeight),
 messageButton.pinTop(to: moreInfoButton.bottomAnchor, inset: Constants.sideInset),
-           messageButton.pinWeight(equalTo: UIScreen.main.bounds.width / 3),
+           messageButton.pinWidth(equalTo: UIScreen.main.bounds.width / 3),
         ])
                NSLayoutConstraint.activate(personalDataViewConstraints)
         setupUI()
@@ -193,7 +193,7 @@ messageButton.pinTop(to: moreInfoButton.bottomAnchor, inset: Constants.sideInset
             avatarImage.pinLeading(to: leadingAnchor, inset: Constants.sideInset),
             avatarImage.pinTop(to: nikNameLabel.bottomAnchor, inset: Constants.sideInset),
             avatarImage.pinHeight(equalTo: Constants.heightAvatar),
-            avatarImage.pinWeight(equalTo: Constants.heightAvatar),
+            avatarImage.pinWidth(equalTo: Constants.heightAvatar),
 
             fullNameLabel.pinTop(to: avatarImage.topAnchor),
             fullNameLabel.pinLeading(to: avatarImage.trailingAnchor, inset: Constants.sideInset),
