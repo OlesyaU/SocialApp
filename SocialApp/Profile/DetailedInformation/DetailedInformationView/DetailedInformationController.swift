@@ -100,11 +100,13 @@ extension DetailedInformationController: UITableViewDelegate, UITableViewDataSou
                         cell.imageView?.image = UIImage(systemName: viewModel.iconNamesSettingsState[indexPath.row])
                         cell.textLabel?.text = viewModel.titlesButtonInformationState[indexPath.row]
                         cell.contentView.backgroundColor = viewModel.backgroundColor
+                       addGestureToCell(cell: cell)
                         return cell
                     case .information:
                         let cell = UITableViewCell()
                         cell.textLabel?.text = viewModel.titlesButtonInformationState[indexPath.row]
                         cell.contentView.backgroundColor = viewModel.backgroundColor
+                        addGestureToCell(cell: cell)
                         return cell
                 }
             case 1:
@@ -118,9 +120,18 @@ extension DetailedInformationController: UITableViewDelegate, UITableViewDataSou
         }
 
     }
+    private func addGestureToCell(cell: UITableViewCell) {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(popViewController))
+        cell.contentView.addGestureRecognizer(tap)
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard  tableView.cellForRow(at: indexPath) != nil else {return}
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    @objc private func popViewController() {
+        pop()
     }
 }
 

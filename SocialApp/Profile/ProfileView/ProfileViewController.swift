@@ -27,7 +27,6 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
     init(viewModel: ProfileViewModel) {
         self.profileViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-
         profileViewModel.personalDataViewModel.delegate = self
         layout()
         setupBindings()
@@ -96,7 +95,6 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
             guard let self else { return }
             let viewModel = PhotoGalleryViewModel(photosTitles: self.profileViewModel.profile.photos)
             let viewController = PhotoGalleryViewController(viewModel: viewModel)
-
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
@@ -193,14 +191,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 post = profileViewModel.profile.posts[indexPath.row]
             } else {
 
-                //                    post = viewModel.posts[indexPath.row]
+                //   post = viewModel.posts[indexPath.row]
                 /// -  show posts this friend
 
                 post = profileViewModel.posts.filter({$0.author.nickname == profileViewModel.personalDataViewModel.nickname})[indexPath.row]
             }
 
             postDataCell.configureCell(post: post, indexPath: indexPath)
-
             return postDataCell
         }
     }

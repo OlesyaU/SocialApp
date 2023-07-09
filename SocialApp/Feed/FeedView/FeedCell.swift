@@ -233,17 +233,15 @@ final class FeedCell: UITableViewCell {
     }
 
     func configurePublicationCell(post: Post) {
-        setUp()
         image.image = UIImage(named: post.image)
         authorNameLabel.text = post.author.nickname
         descriptionLabel.text = post.description
         likesLabel.text = String(post.likes)
-
         commentsLabel.text = String(post.comments.count)
         authorPhoto.image = UIImage(named: post.author.avatar)
+        setUp()
+        //        setUp doesn't work from here
     }
-    //TODO: - if from Feed did tap - dotsFromFeedGestureAction else dotsFromProfileGestureAction
-
 
     @objc func tapDotsAction() {
         print("tapDotsAction gesture worked")
@@ -278,18 +276,13 @@ final class FeedCell: UITableViewCell {
         guard let index = model.indexPath else {
             return
         }
-        //       delegate?.openPostMenuFromProfile(post: model.postCell)
         profileControllerDelegate?.openPostMenuFromProfile(post: model.postCell, indexPath: index)
     }
 
     @objc private func openProfileGestureAction() {
-        //        print("open profile gesture worked")
         guard let model = self.viewModel else {
             return
         }
         delegate?.openFriendProfile(friendProfile: model.author)
-
     }
-
-
 }
