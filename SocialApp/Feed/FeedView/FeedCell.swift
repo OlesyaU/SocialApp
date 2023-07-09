@@ -13,15 +13,13 @@ final class FeedCell: UITableViewCell {
         static let sideInset: CGFloat = 16
         static let heightAvatar: CGFloat = 56
     }
+
     private var viewModel: FeedCellViewModel?
-    var delegate: FeedCellProtocol?
-    var profileControllerDelegate: ProfileViewDelegate?
-    var publicationDelegate: PublicationControllerProtocol?
 
     private lazy var contentHeaderCellView: UIView = {
         let image = UIView()
         image.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openProfileGestureAction))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onHeaderTapped))
         image.addGestureRecognizer(tapGesture)
         return image
     }()
@@ -29,7 +27,7 @@ final class FeedCell: UITableViewCell {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.isUserInteractionEnabled = true
-        let tapToImage = UITapGestureRecognizer(target: self, action: #selector(openCurrentPost))
+        let tapToImage = UITapGestureRecognizer(target: self, action: #selector(onPostImageTapped))
         image.addGestureRecognizer(tapToImage)
         return image
     }()
@@ -45,6 +43,7 @@ final class FeedCell: UITableViewCell {
 
     private let authorNameLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.textRegular
         label.numberOfLines = 1
         return label
     }()
@@ -58,7 +57,7 @@ final class FeedCell: UITableViewCell {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        let tapToImage = UITapGestureRecognizer(target: self, action: #selector(openCurrentPost))
+        let tapToImage = UITapGestureRecognizer(target: self, action: #selector(onPostImageTapped))
         label.addGestureRecognizer(tapToImage)
         return label
     }()
@@ -92,7 +91,7 @@ final class FeedCell: UITableViewCell {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.isUserInteractionEnabled = true
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapDotsAction))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(onDotsTapped))
         image.addGestureRecognizer(gesture)
         return image
     }()
@@ -201,88 +200,41 @@ final class FeedCell: UITableViewCell {
         guard let model = self.viewModel else {
             return
         }
-        dotsImage.image = UIImage(named: model.dotsIconName)?.withTintColor(model.colorForDotsImage)
-        likesIcon.image = UIImage(systemName: model.likesIconName)
-        bookmarkIcon.image = UIImage(systemName: model.bookmarkIconName)
-        commentsIcon.image = UIImage(systemName: model.commentsIconName)
-        [likesIcon, commentsIcon].forEach({$0.tintColor = model.colorForIcons})
-
-        if model.isSaved {
-            bookmarkIcon.tintColor = model.colorForDotsImage
-        } else {
-            bookmarkIcon.tintColor = model.colorForIcons
-        }
 
     }
 
-    func configureCell(post: Post, indexPath: IndexPath) {
-        image.image = UIImage(named: post.image)
-        authorNameLabel.text = post.author.name + " " + post.author.surname
-        descriptionLabel.text = post.description
-        likesLabel.text = String(post.likes)
-        commentsLabel.text = String(post.comments.count)
-        authorPhoto.image = UIImage(named: post.author.avatar)
-        self.viewModel = FeedCellViewModel(post: post, indexPath: indexPath)
-        contentView.backgroundColor = viewModel?.cellBacgroundColor
-        contentHeaderCellView.backgroundColor = viewModel?.colorForContentHeaderCellView
-        authorNameLabel.textColor = viewModel?.colorFontForAuthorNameLabel
-        authorNameLabel.font = viewModel?.fontForAuthorLabels
-        professionLabel.text = post.author.profession
-        professionLabel.textColor = viewModel?.colorForProfessionLabel
-        setUp()
+    func configure(with viewModel: FeedCellViewModel) {
+        self.viewModel = viewModel
+
+        authorNameLabel.text = viewModel.authorNameText
+        descriptionLabel.text = viewModel.postText
+        likesLabel.text = viewModel.likesCountString
+        commentsLabel.text = viewModel.commentsCountString
+        professionLabel.text = viewModel.professionText
+
+        contentView.backgroundColor = viewModel.backgroundColor
+        contentHeaderCellView.backgroundColor = viewModel.headerViewColor
+        professionLabel.textColor = viewModel.professionLabelTextColor
+
+        image.image = viewModel.postImage
+        authorPhoto.image = viewModel.avatarImage
+        dotsImage.image = viewModel.dotsImage
+        likesIcon.image = viewModel.likesIconImage
+        bookmarkIcon.image = viewModel.bookmarkIcon
+        commentsIcon.image = viewModel.commentsIcon
+
+        dotsImage.isHidden = !viewModel.isNeedToShowDotsView
     }
 
-    func configurePublicationCell(post: Post) {
-        image.image = UIImage(named: post.image)
-        authorNameLabel.text = post.author.nickname
-        descriptionLabel.text = post.description
-        likesLabel.text = String(post.likes)
-        commentsLabel.text = String(post.comments.count)
-        authorPhoto.image = UIImage(named: post.author.avatar)
-        setUp()
-        //        setUp doesn't work from here
+    @objc func onDotsTapped() {
+        print("dotsTapped gesture worked")
+        viewModel?.dotsImageTapped()
+    }
+    @objc func onPostImageTapped() {
+        viewModel?.postImageTapped()
     }
 
-    @objc func tapDotsAction() {
-        print("tapDotsAction gesture worked")
-        guard let model = self.viewModel else {
-            return
-        }
-        if model.isMyPost {
-            dotsFromProfileGestureAction()
-        } else  if !model.isMyPost, model.author.nickname == model.postCell.author.nickname{
-            dotsFromFeedGestureAction()
-        }
-    }
-    @objc func openCurrentPost() {
-        guard let model = self.viewModel else {
-            return
-        }
-        print("openPost From FeedCell gesture worked")
-        delegate?.openCurrentPost(post: model.postCell)
-    }
-
-    private func dotsFromFeedGestureAction() {
-        print("dotsFromFeedGestureAction gesture worked")
-        delegate?.showMenuViewController()
-        profileControllerDelegate?.showMenuViewController()
-    }
-
-    private func dotsFromProfileGestureAction() {
-        print("dotsFromProfileGestureAction gesture worked")
-        guard let model = self.viewModel else {
-            return
-        }
-        guard let index = model.indexPath else {
-            return
-        }
-        profileControllerDelegate?.openPostMenuFromProfile(post: model.postCell, indexPath: index)
-    }
-
-    @objc private func openProfileGestureAction() {
-        guard let model = self.viewModel else {
-            return
-        }
-        delegate?.openFriendProfile(friendProfile: model.author)
+    @objc private func onHeaderTapped() {
+        viewModel?.headerTapped()
     }
 }

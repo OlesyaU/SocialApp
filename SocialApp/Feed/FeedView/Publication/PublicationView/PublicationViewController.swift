@@ -21,7 +21,6 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
     private let leaveCommentView = LeaveCommentView()
     private let containerView = UIView()
     private let tableView = UITableView()
-    var delegate: FeedCellProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,19 +83,22 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
 
     @objc private func dotsAction(){
         print(#file, #line)
-        containerView.isHidden = false
-        let height = tableView.frame.height / 2
-        let point = tableView.convert(tableView.frame.origin, to: view)
-        tableDotsMenu.layout(frame: CGRect(x: point.x + 50, y: point.y, width: height, height: height))
-        addChildViewController(tableDotsMenu)
-        view.contentMode = .center
-        let tap = UITapGestureRecognizer(target: self, action: #selector(clearMenuTap))
-        view.addGestureRecognizer(tap)
+        let menuViewController = MenuViewController()
+
+        let floatingPanelController = FloatingPanelController()
+        floatingPanelController.delegate = self
+        floatingPanelController.surfaceView.layer.cornerRadius = 12
+        floatingPanelController.surfaceView.clipsToBounds = true
+        floatingPanelController.set(contentViewController: menuViewController)
+
+        floatingPanelController.isRemovalInteractionEnabled = true
+        present(floatingPanelController, animated: true)
+        floatingPanel = floatingPanelController
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
     @objc private func backAction(){
         navigationController?.popViewController(animated: true)
-        delegate?.showMenuViewController()
     }
 }
 
@@ -124,8 +126,15 @@ extension PublicationViewController: UITableViewDelegate, UITableViewDataSource 
         switch indexPath.section {
             case 0:
                 let postCell = FeedCell()
-                postCell.publicationDelegate = self
-                postCell.configurePublicationCell(post: post)
+                let viewModel = FeedCellViewModel(
+                    post: post,
+                    indexPath: indexPath,
+                    isNeedToShowDotsView: false,
+                    isFromFeed: true,
+                    delegate: self
+                )
+//                postCell.configurePublicationCell(post: POST)
+                postCell.configure(with: viewModel)
                 return postCell
             case 1:
                 let cell = FindMyPostsCell()
@@ -149,54 +158,11 @@ extension PublicationViewController: UITableViewDelegate, UITableViewDataSource 
 
 }
 
-extension PublicationViewController: PublicationControllerProtocol {
-
-    func openPostMenuFromProfile(post: Post, indexPath: IndexPath) {
-        containerView.isHidden = false
-        tableDotsMenu.view.isUserInteractionEnabled = false
-        guard let cell = tableView.cellForRow(at: indexPath) as? FeedCell else { return }
-        cell.dotsImage.frame(forAlignmentRect: view.frame)
-        let dotsHeight = cell.dotsImage.frame.height
-        let frame = calculateFrame(cellFrame: cell.frame, dotsFrame: cell.dotsImage.frame)
-        let point = cell.convert(cell.dotsImage.frame.origin, to: view)
-        let newOriginX = point.x - 300
-        let newFrame = CGRect(origin: .init(x: newOriginX, y: point.y + dotsHeight / 2), size: .init(width: 300, height: 300))
-        tableDotsMenu.layout(frame: newFrame)
-
-        addChildViewController(tableDotsMenu)
-        view.contentMode = .center
-        let tap = UITapGestureRecognizer(target: self, action: #selector(clearMenuTap))
-        view.addGestureRecognizer(tap)
+extension PublicationViewController: FeedCellDelegate {
+    func headerTapped(with postAuthor: Profile) {
+        let viewModel = ProfileViewModel(profile: postAuthor)
+        let profileVC = ProfileViewController(viewModel: viewModel)
+        profileVC.configure(profile: postAuthor)
+        navigationController?.pushViewController(profileVC, animated: true)
     }
-
-    private func calculateFrame(cellFrame: CGRect, dotsFrame: CGRect) -> CGRect {
-        let originX = cellFrame.origin.x + dotsFrame.origin.x - 300
-        let originY = cellFrame.origin.y + dotsFrame.origin.y + dotsFrame.height / 2
-        let width = dotsFrame.width
-        let height = dotsFrame.height
-        return .init(x: originX, y: originY, width: width, height: height)
-    }
-
-    func showMenuViewController() {
-        let menuViewController = MenuViewController()
-
-        let floatingPanelController = FloatingPanelController()
-        floatingPanelController.delegate = self
-        floatingPanelController.surfaceView.layer.cornerRadius = 12
-        floatingPanelController.surfaceView.clipsToBounds = true
-        floatingPanelController.set(contentViewController: menuViewController)
-
-        floatingPanelController.isRemovalInteractionEnabled = true
-        present(floatingPanelController, animated: true)
-        floatingPanel = floatingPanelController
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    }
-
-
-    @objc private func clearMenuTap() {
-        containerView.isHidden = true
-        tableView.isScrollEnabled = true
-        tableDotsMenu.prepareForRemove()
-    }
-
 }

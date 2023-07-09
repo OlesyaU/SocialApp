@@ -39,7 +39,11 @@ class PersonalDataViewModel {
     }
 
     func moreInfoButtonSelected() {
-        delegate?.showRedactProfileModule()
+        if isMyProfile {
+            delegate?.showRedactProfileModule()
+        } else {
+            delegate?.pushDetailsController(type: .information)
+        }
     }
 }
 

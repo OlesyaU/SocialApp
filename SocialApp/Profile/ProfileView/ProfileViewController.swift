@@ -9,8 +9,6 @@ import FloatingPanel
 import UIKit
 
 protocol ProfileViewDelegate: AnyObject {
-    func openPostMenuFromProfile(post: Post, indexPath: IndexPath)
-    func showMenuViewController()
     func showRedactProfileModule()
     func pushDetailsController(type: DetailedInformationViewType)
 }
@@ -21,8 +19,6 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
     private let tableDotsMenu = ProfileDotsController()
     private let tableView = UITableView()
     private let containerView = UIView()
-    var delegate: FeedCellProtocol?
-
 
     init(viewModel: ProfileViewModel) {
         self.profileViewModel = viewModel
@@ -107,22 +103,13 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
         tableView.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
     }
 
-    func pushDetailsController(type: DetailedInformationViewType) {
-        let viewModel = DetailInformationViewModel(profile: profileViewModel.profile, type: type)
-        let detailedViewController = DetailedInformationController(viewModel: viewModel)
-
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        navigationController?.pushViewController(detailedViewController, animated: true)
-    }
-
     @objc private func dotsAction(){
         print(#file, #line)
-        //        TODO: - set action (push view with profile information more something like this) go to moreInfoVC
+        pushDetailsController(type: .information)
     }
 
     @objc private func backAction(){
         navigationController?.popViewController(animated: true)
-        delegate?.showMenuViewController()
     }
 }
 
@@ -185,7 +172,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             guard let postDataCell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UITableViewCell() }
             var post: Post
-            postDataCell.profileControllerDelegate = self
             if profileViewModel.personalDataViewModel.isMyProfile {
 
                 post = profileViewModel.profile.posts[indexPath.row]
@@ -196,8 +182,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
                 post = profileViewModel.posts.filter({$0.author.nickname == profileViewModel.personalDataViewModel.nickname})[indexPath.row]
             }
-
-            postDataCell.configureCell(post: post, indexPath: indexPath)
+                let viewModel = FeedCellViewModel(
+                    post: post,
+                    indexPath: indexPath,
+                    isNeedToShowDotsView: true,
+                    isFromFeed: false,
+                    delegate: self
+                )
+            postDataCell.configure(with: viewModel)
             return postDataCell
         }
     }
@@ -207,45 +199,37 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ProfileViewController: ProfileViewDelegate {
-    func openPostMenuFromProfile(post: Post, indexPath: IndexPath) {
-        containerView.isHidden = false
-        tableDotsMenu.view.isUserInteractionEnabled = false
-        guard let cell = tableView.cellForRow(at: indexPath) as? FeedCell else { return }
-        cell.dotsImage.frame(forAlignmentRect: view.frame)
-        let dotsHeight = cell.dotsImage.frame.height
-        let point = cell.convert(cell.dotsImage.frame.origin, to: view)
-        let newOriginX = point.x - 300
-        let newFrame = CGRect(origin: .init(x: newOriginX, y: point.y + dotsHeight / 2), size: .init(width: 300, height: 300))
-        tableDotsMenu.layout(frame: newFrame)
+extension ProfileViewController: FeedCellDelegate {
+    func dotsImageTapped(post: Post, indexPath: IndexPath, isMyPost: Bool) {
+        if isMyPost {
+            containerView.isHidden = false
+            tableDotsMenu.view.isUserInteractionEnabled = false
+            guard let cell = tableView.cellForRow(at: indexPath) as? FeedCell else { return }
+            cell.dotsImage.frame(forAlignmentRect: view.frame)
+            let dotsHeight = cell.dotsImage.frame.height
+            let point = cell.convert(cell.dotsImage.frame.origin, to: view)
+            let newOriginX = point.x - 300
+            let newFrame = CGRect(origin: .init(x: newOriginX, y: point.y + dotsHeight / 2), size: .init(width: 300, height: 300))
+            tableDotsMenu.layout(frame: newFrame)
 
-        addChildViewController(tableDotsMenu)
-        view.contentMode = .center
-        let tap = UITapGestureRecognizer(target: self, action: #selector(clearMenuTap))
-        view.addGestureRecognizer(tap)
-    }
+            addChildViewController(tableDotsMenu)
+            view.contentMode = .center
+            let tap = UITapGestureRecognizer(target: self, action: #selector(clearMenuTap))
+            view.addGestureRecognizer(tap)
+        } else {
+            let menuViewController = MenuViewController()
 
-    func showRedactProfileModule() {
-        // TODO: - Взять профиль из viewModel
-        let profileViewModel = ProfileInformationViewModel(profile: DataBase.shared.testProfile)
-        let viewController = ProfileInformationViewController(viewModel: profileViewModel)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationController?.pushViewController(viewController, animated: true)
-    }
+            let floatingPanelController = FloatingPanelController()
+            floatingPanelController.delegate = self
+            floatingPanelController.surfaceView.layer.cornerRadius = 12
+            floatingPanelController.surfaceView.clipsToBounds = true
+            floatingPanelController.set(contentViewController: menuViewController)
 
-    func showMenuViewController() {
-        let menuViewController = MenuViewController()
-
-        let floatingPanelController = FloatingPanelController()
-        floatingPanelController.delegate = self
-        floatingPanelController.surfaceView.layer.cornerRadius = 12
-        floatingPanelController.surfaceView.clipsToBounds = true
-        floatingPanelController.set(contentViewController: menuViewController)
-
-        floatingPanelController.isRemovalInteractionEnabled = true
-        present(floatingPanelController, animated: true)
-        floatingPanel = floatingPanelController
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+            floatingPanelController.isRemovalInteractionEnabled = true
+            present(floatingPanelController, animated: true)
+            floatingPanel = floatingPanelController
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        }
     }
 
     private func calculateFrame(cellFrame: CGRect, dotsFrame: CGRect) -> CGRect {
@@ -260,5 +244,24 @@ extension ProfileViewController: ProfileViewDelegate {
         containerView.isHidden = true
         tableView.isScrollEnabled = true
         tableDotsMenu.prepareForRemove()
+    }
+}
+
+extension ProfileViewController: ProfileViewDelegate {
+
+    func pushDetailsController(type: DetailedInformationViewType) {
+        let viewModel = DetailInformationViewModel(profile: profileViewModel.profile, type: type)
+        let detailedViewController = DetailedInformationController(viewModel: viewModel)
+
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.pushViewController(detailedViewController, animated: true)
+    }
+
+    func showRedactProfileModule() {
+        // TODO: - Взять профиль из viewModel
+        let profileViewModel = ProfileInformationViewModel(profile: DataBase.shared.testProfile)
+        let viewController = ProfileInformationViewController(viewModel: profileViewModel)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

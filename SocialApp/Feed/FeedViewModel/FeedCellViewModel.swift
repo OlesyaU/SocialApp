@@ -7,56 +7,103 @@
 
 import UIKit
 
+protocol FeedCellDelegate: AnyObject {
+    func dotsImageTapped(post: Post, indexPath: IndexPath, isMyPost: Bool)
+    func postImageTapped(post: Post)
+    func headerTapped(with postAuthor: Profile)
+}
+
+extension FeedCellDelegate {
+    func postImageTapped(post: Post) {}
+    func headerTapped(with postAuthor: Profile) {}
+    func dotsImageTapped(post: Post, indexPath: IndexPath, isMyPost: Bool) {}
+}
+
 final class FeedCellViewModel {
+    private let postImageString: String
+    private let avatarImageString: String
 
-    let testProfile: Profile
-    let colorForContentHeaderCellView = AppColors.white
-    let fontForAuthorLabels = UIFont.textBold
-    let colorFontForAuthorNameLabel = AppColors.black
-    let fontForDescriptionLabel = UIFont.textRegular
-    let colorFontForDescriptionAndIcons = AppColors.gray
-    let colorForIcons = AppColors.darkGray
-    let colorForDotsImage = AppColors.orange
-    let cellBacgroundColor = AppColors.biege
-    let colorForProfessionLabel = AppColors.lightGray
-    let likesIconName =  IconsName.likes.nameIcon
-    let commentsIconName =  IconsName.comments.nameIcon
-    let dotsIconName = IconsName.dots.nameIcon
-    let bookmarkIconName = IconsName.bookmark.nameIcon
-    let isMyPost: Bool
+    private let isSaved: Bool
 
-    let author: Profile
-    let profession: String
-    let image: String
-    let description: String
-    let likes: Int
-    let comments: Int
-    var isSaved: Bool
+    private let isMyPost: Bool
+    private let isFromFeed: Bool
 
-    let nickname: String
-    let burgerIcon = IconsName.burger.nameIcon
-    let avatarImageString: String
-    let professionLabelTitle: String
-    let moreInfoButtonIcon = IconsName.moreInfo.nameIcon
-    var postCell: Post
+    private let indexPath: IndexPath
 
-    var indexPath: IndexPath?
+    private let post: Post
 
-    init(post: Post, indexPath: IndexPath ) {
-        author = post.author
-        profession = post.author.profession
-        image = post.image
-        description = post.description
-        likes = post.likes
-        comments = post.comments.count
+    private weak var delegate: FeedCellDelegate?
+
+    let authorNameText: String
+    let postText: String
+    let likesCountString: String
+    let commentsCountString: String
+    let professionText: String
+
+    let backgroundColor = AppColors.biege
+    let headerViewColor = AppColors.white
+    let professionLabelTextColor = AppColors.lightGray
+
+    var postImage: UIImage? {
+        UIImage(named: postImageString)
+    }
+    var dotsImage: UIImage? {
+        isNeedToShowDotsView ? UIImage(named: IconsName.dots.nameIcon)?.imageWithColor(color: AppColors.orange) : nil
+    }
+
+    var avatarImage: UIImage? {
+        UIImage(named: avatarImageString)
+    }
+
+    var likesIconImage: UIImage? {
+        UIImage(systemName: IconsName.likes.nameIcon)?.imageWithColor(color: AppColors.darkGray)
+    }
+
+    var bookmarkIcon: UIImage? {
+        let color = isSaved ? AppColors.orange : AppColors.darkGray
+        return UIImage(systemName: IconsName.bookmark.nameIcon)?.imageWithColor(color: color)
+    }
+
+    var commentsIcon: UIImage? {
+        UIImage(systemName: IconsName.comments.nameIcon)?.imageWithColor(color: AppColors.darkGray)
+    }
+
+    let isNeedToShowDotsView: Bool
+
+    init(
+        post: Post,
+        indexPath: IndexPath,
+        isNeedToShowDotsView: Bool,
+        isFromFeed: Bool,
+        delegate: FeedCellDelegate?
+    )  {
+        postImageString = post.image
+        authorNameText = post.author.name + " " + post.author.surname
+        postText = post.description
+        likesCountString = String(post.likes)
+        commentsCountString = String(post.comments.count)
+        avatarImageString = post.author.avatar
+        professionText = post.author.profession
         isSaved = post.isSaved
-        testProfile = DataBase.shared.testProfile
-        nickname = post.author.nickname
-        avatarImageString = post.image
-        professionLabelTitle = post.author.profession
-        isSaved = post.isSaved
-        isMyPost = testProfile.posts.contains(post)
-        postCell = post
+        isMyPost = post.author == DataBase.shared.testProfile
+
+        self.isFromFeed = isFromFeed
         self.indexPath = indexPath
+        self.isNeedToShowDotsView = isNeedToShowDotsView
+        self.post = post
+        self.delegate = delegate
+    }
+
+    func dotsImageTapped() {
+        delegate?.dotsImageTapped(post: post, indexPath: indexPath, isMyPost: isMyPost)
+    }
+
+    func postImageTapped() {
+        delegate?.postImageTapped(post: post)
+    }
+
+    func headerTapped() {
+        guard isFromFeed, !isMyPost else { return }
+        delegate?.headerTapped(with: post.author)
     }
 }
