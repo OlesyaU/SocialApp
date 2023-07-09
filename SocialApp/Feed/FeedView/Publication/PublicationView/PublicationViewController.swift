@@ -14,13 +14,14 @@ protocol PublicationControllerProtocol {
 
 
 class PublicationViewController: UIViewController, FloatingPanelControllerDelegate {
-   
+
     private var viewModel: PublicationViewModel?
     private var floatingPanel: FloatingPanelController?
     private let tableDotsMenu = ProfileDotsController()
+    private let leaveCommentView = LeaveCommentView()
     private let tableView = UITableView()
     private let containerView = UIView()
-    private let leaveCommentView = LeaveCommentView()
+    var delegate: FeedCellProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,6 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
         viewModel = PublicationViewModel(post: post)
         guard let viewModel = viewModel else {return}
         leaveCommentView.configure(viewModel: viewModel)
-
         navigationItem.title = viewModel.titleController
 
         navigationItem.rightBarButtonItem = UIBarButtonItem.menuButton(
@@ -58,6 +58,7 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
 
         containerView.backgroundColor = .clear
 
+
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -74,8 +75,7 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
 
             leaveCommentView.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor),
             leaveCommentView.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor),
-            leaveCommentView.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
+            leaveCommentView.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor)        ])
         containerView.isHidden = true
     }
 
@@ -92,6 +92,7 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
 
     @objc private func backAction(){
         navigationController?.popViewController(animated: true)
+        delegate?.showMenuViewController()
     }
 }
 
@@ -110,7 +111,7 @@ extension PublicationViewController: UITableViewDelegate, UITableViewDataSource 
             case 2:
                 return viewModel?.post.comments.count ?? 0
             default:
-                    return .zero
+                return .zero
         }
     }
 

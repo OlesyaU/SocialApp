@@ -21,12 +21,14 @@ final class FeedTableViewController: UITableViewController {
     private var viewModel = FeedViewModel()
     private var publicationViewModel: PublicationViewModel?
     private var floatingPanel: FloatingPanelController?
+    var delegate: PublicationControllerProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
         tableView.register(FirstFeedCell.self, forCellReuseIdentifier: FirstFeedCell.identifier)
     }
-    
+
+
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.posts.count + 1
@@ -56,13 +58,16 @@ extension FeedTableViewController: FeedCellProtocol {
     func openCurrentPost(post:Post) {
         let publicationVC = PublicationViewController()
         publicationVC.configure(post: post)
+        publicationVC.delegate = self
         navigationController?.pushViewController(publicationVC, animated: true)
+        delegate?.showMenuViewController()
     }
 
     func openFriendProfile(friendProfile: Profile) {
         let viewModel = ProfileViewModel(profile: friendProfile)
         let profileVC = ProfileViewController(viewModel: viewModel)
         profileVC.configure(profile: friendProfile)
+        profileVC.delegate = self
         navigationController?.pushViewController(profileVC, animated: true)
     }
 

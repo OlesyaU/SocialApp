@@ -21,6 +21,8 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
     private let tableDotsMenu = ProfileDotsController()
     private let tableView = UITableView()
     private let containerView = UIView()
+    var delegate: FeedCellProtocol?
+
 
     init(viewModel: ProfileViewModel) {
         self.profileViewModel = viewModel
@@ -122,6 +124,7 @@ class ProfileViewController: UIViewController, FloatingPanelControllerDelegate {
 
     @objc private func backAction(){
         navigationController?.popViewController(animated: true)
+        delegate?.showMenuViewController()
     }
 }
 
