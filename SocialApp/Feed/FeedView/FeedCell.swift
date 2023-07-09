@@ -233,13 +233,14 @@ final class FeedCell: UITableViewCell {
     }
 
     func configurePublicationCell(post: Post) {
+        setUp()
         image.image = UIImage(named: post.image)
         authorNameLabel.text = post.author.nickname
         descriptionLabel.text = post.description
         likesLabel.text = String(post.likes)
+
         commentsLabel.text = String(post.comments.count)
         authorPhoto.image = UIImage(named: post.author.avatar)
-        setUp()
     }
     //TODO: - if from Feed did tap - dotsFromFeedGestureAction else dotsFromProfileGestureAction
 

@@ -19,8 +19,8 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
     private var floatingPanel: FloatingPanelController?
     private let tableDotsMenu = ProfileDotsController()
     private let leaveCommentView = LeaveCommentView()
-    private let tableView = UITableView()
     private let containerView = UIView()
+    private let tableView = UITableView()
     var delegate: FeedCellProtocol?
 
     override func viewDidLoad() {
@@ -48,16 +48,13 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
             target: self,
             action: #selector(backAction)
         )
-
         navigationItem.leftBarButtonItem?.tintColor = viewModel.colorNickname
-
     }
     private func layout() {
         [tableView, containerView, leaveCommentView].forEach({$0.forAutolayout()})
         [tableView, containerView, leaveCommentView].forEach({view.addSubview($0)})
 
         containerView.backgroundColor = .clear
-
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -87,7 +84,14 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
 
     @objc private func dotsAction(){
         print(#file, #line)
-        //        TODO: - set action (push view with profile information more something like this) go to moreInfoVC
+        containerView.isHidden = false
+        let height = tableView.frame.height / 2
+        let point = tableView.convert(tableView.frame.origin, to: view)
+        tableDotsMenu.layout(frame: CGRect(x: point.x + 50, y: point.y, width: height, height: height))
+        addChildViewController(tableDotsMenu)
+        view.contentMode = .center
+        let tap = UITapGestureRecognizer(target: self, action: #selector(clearMenuTap))
+        view.addGestureRecognizer(tap)
     }
 
     @objc private func backAction(){
