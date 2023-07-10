@@ -9,6 +9,8 @@ import UIKit
 extension UIFont {
     static let textBold = UIFont(name: "AvenirNextCondensed-Bold", size: 18)
     static let textRegular = UIFont(name: "AvenirNextCondensed-Regular", size: 16)
+    static let lightFont = UIFont(name: "AvenirNextCondensed-Light", size: 14)
+    static let badgeFont = UIFont(name: "AvenirNextCondensed-UltraLight", size: 12)
 }
 
 enum IconsName {

@@ -5,6 +5,7 @@
 //  Created by Олеся on 19.06.2023.
 //
 import UIKit
+
 struct Post: Codable, Equatable {
     let author: Profile
     let image: String

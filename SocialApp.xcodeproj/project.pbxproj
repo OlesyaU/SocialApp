@@ -90,6 +90,7 @@
 		76D06E0C2A5941E20024E8F4 /* PhotoGalleryHeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D06E0B2A5941E20024E8F4 /* PhotoGalleryHeaderCellViewModel.swift */; };
 		76D06E0E2A59424A0024E8F4 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D06E0D2A59424A0024E8F4 /* PhotoGalleryViewController.swift */; };
 		76D06E102A59516E0024E8F4 /* PhotoCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D06E0F2A59516E0024E8F4 /* PhotoCollectionViewCellViewModel.swift */; };
+		76D06E122A5BA65A0024E8F4 /* ConfirmControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D06E112A5BA65A0024E8F4 /* ConfirmControllerViewModel.swift */; };
 		76D0AA502A542DAF00646F43 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D0AA4F2A542DAF00646F43 /* UIImage+Extension.swift */; };
 		76EFE9F52A39BB3A0083DE09 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9F42A39BB3A0083DE09 /* Themes.swift */; };
 		76EFE9FB2A39C1290083DE09 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */; };
@@ -183,6 +184,7 @@
 		76D06E0B2A5941E20024E8F4 /* PhotoGalleryHeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryHeaderCellViewModel.swift; sourceTree = "<group>"; };
 		76D06E0D2A59424A0024E8F4 /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
 		76D06E0F2A59516E0024E8F4 /* PhotoCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		76D06E112A5BA65A0024E8F4 /* ConfirmControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfirmControllerViewModel.swift; path = SocialApp/Profile/ProfileView/PhotoCell/PhotoCellView/PhotoCellViewModel/ConfirmControllerViewModel.swift; sourceTree = SOURCE_ROOT; };
 		76D0AA4F2A542DAF00646F43 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		76EFE9F42A39BB3A0083DE09 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		76EFE9FA2A39C1290083DE09 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
@@ -765,6 +767,7 @@
 		76EFE9F02A39B9E70083DE09 /* ConfirmViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				76D06E112A5BA65A0024E8F4 /* ConfirmControllerViewModel.swift */,
 			);
 			path = ConfirmViewModel;
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 				7614A4402A49C758004D7466 /* ProfileIconButton.swift in Sources */,
 				7614A4422A49C76B004D7466 /* ProfileIconButtonType.swift in Sources */,
 				76CB11892A541F42009B29F4 /* ProfileInformationSelectGenderCell.swift in Sources */,
+				76D06E122A5BA65A0024E8F4 /* ConfirmControllerViewModel.swift in Sources */,
 				764CBD592A56D7FB007F2788 /* DetailedInformationController.swift in Sources */,
 				7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */,
 				76D06E002A58458E0024E8F4 /* MainTabBarViewModel.swift in Sources */,
