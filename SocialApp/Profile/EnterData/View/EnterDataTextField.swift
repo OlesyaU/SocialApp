@@ -9,12 +9,6 @@ import UIKit
 
 final class EnterDataTextField: UIView {
 
-    private enum Constants {
-        static let sideInset: CGFloat = 8
-        static let intrinsicInset: CGFloat = 4
-        static let verticalInset: CGFloat = 4
-    }
-
     private var viewModel: EnterDataTextFieldViewModel?
 
     private lazy var typeTitleLabel = UILabel()
@@ -43,19 +37,19 @@ final class EnterDataTextField: UIView {
         }
 
         enterDataTextFieldConstraints.append(contentsOf: [
-            typeTitleLabel.pinTop(to: self, inset: Constants.sideInset),
-            typeTitleLabel.pinLeading(to: self, inset: Constants.sideInset),
+            typeTitleLabel.pinTop(to: self, inset: Constants.inset8),
+            typeTitleLabel.pinLeading(to: self, inset: Constants.inset8),
 
-            textFieldContainer.pinTop(to: typeTitleLabel.bottomAnchor, inset: Constants.verticalInset),
+            textFieldContainer.pinTop(to: typeTitleLabel.bottomAnchor, inset: Constants.inset4),
             textFieldContainer.pinLeading(to: typeTitleLabel),
-            textFieldContainer.pinTrailing(to: self, inset: Constants.sideInset),
+            textFieldContainer.pinTrailing(to: self, inset: Constants.inset8),
             textFieldContainer.pinHeight(equalTo: 40),
-            textFieldContainer.pinBottom(to: self, inset: Constants.sideInset),
+            textFieldContainer.pinBottom(to: self, inset: Constants.inset8),
 
-            dataTextField.pinTop(to: textFieldContainer, inset: Constants.intrinsicInset),
-            dataTextField.pinBottom(to: textFieldContainer, inset: Constants.intrinsicInset),
+            dataTextField.pinTop(to: textFieldContainer, inset: Constants.inset4),
+            dataTextField.pinBottom(to: textFieldContainer, inset: Constants.inset4),
             dataTextField.pinLeading(to: textFieldContainer, inset: 16),
-            dataTextField.pinTrailing(to: textFieldContainer, inset: Constants.intrinsicInset)
+            dataTextField.pinTrailing(to: textFieldContainer, inset: Constants.inset4)
         ])
         NSLayoutConstraint.activate(enterDataTextFieldConstraints)
     }

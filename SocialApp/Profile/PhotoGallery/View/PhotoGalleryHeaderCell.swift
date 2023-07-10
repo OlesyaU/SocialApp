@@ -8,9 +8,7 @@
 import UIKit
 
 final class PhotoGalleryHeaderCell: UICollectionViewCell {
-    private enum Constants {
-        static let sideInset: CGFloat = 16
-    }
+    
     private var viewModel: PhotoGalleryHeaderCellViewModel?
 
     private let titleLabel = UILabel()
@@ -40,7 +38,7 @@ final class PhotoGalleryHeaderCell: UICollectionViewCell {
             titleLabel.pinLeading(to: contentView),
 
             countLabel.pinCenterY(to: contentView),
-            countLabel.pinLeading(to: titleLabel.trailingAnchor, inset: Constants.sideInset / 2),
+            countLabel.pinLeading(to: titleLabel.trailingAnchor, inset: Constants.inset8),
 
             showAllButton.pinCenterY(to: contentView),
             showAllButton.pinTrailing(to: contentView)

@@ -8,9 +8,7 @@
 import UIKit
 
 class ConfirmViewController: UIViewController {
-    private enum Constants {
-        static let sideInset: CGFloat = 16
-    }
+   
     private let viewModel = ConfirmControllerViewModel()
 
     private let confirmLabel: UILabel = {
@@ -18,7 +16,7 @@ class ConfirmViewController: UIViewController {
         return label
     }()
 
-    private let sentCodeLabel: UILabel = {
+    private let sentInfoLabel: UILabel = {
         let label = UILabel()
         return label
     }()
@@ -75,25 +73,24 @@ class ConfirmViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = .black
-        navigationItem.leftBarButtonItem?.image = UIImage(systemName: "arrow.left")
         navigationItem.setLeftBarButton(UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backItemAction)), animated: true)
     }
 
     // MARK: - Helpers
 
     private func addSubviews() {
-        [confirmLabel, sentCodeLabel, numberLabel, badge, phoneNumberField, registrationButton, readyImage].forEach({$0.forAutolayout()})
-        [confirmLabel, sentCodeLabel, numberLabel, badge, phoneNumberField, registrationButton, readyImage].forEach({$0.placed(on: view)})
+        [confirmLabel, sentInfoLabel, numberLabel, badge, phoneNumberField, registrationButton, readyImage].forEach({$0.forAutolayout()})
+        [confirmLabel, sentInfoLabel, numberLabel, badge, phoneNumberField, registrationButton, readyImage].forEach({$0.placed(on: view)})
     }
 
     private func configureView(with viewModel: ConfirmControllerViewModel){
-        [confirmLabel, sentCodeLabel, numberLabel].forEach({$0.textAlignment = viewModel.centerText})
+        [confirmLabel, sentInfoLabel, numberLabel].forEach({$0.textAlignment = viewModel.centerText})
         [confirmLabel, numberLabel].forEach({$0.font = viewModel.boldFont})
         confirmLabel.text = viewModel.confirmLabelTitle
         confirmLabel.textColor = viewModel.orangeColor
-        sentCodeLabel.text = viewModel.pushNumberUserTitle
-        sentCodeLabel.font = viewModel.regularFont
-        sentCodeLabel.textColor = viewModel.grayColor
+        sentInfoLabel.text = viewModel.pushNumberUserTitle
+        sentInfoLabel.font = viewModel.regularFont
+        sentInfoLabel.textColor = viewModel.grayColor
         numberLabel.text = viewModel.numberLabelTitle
         numberLabel.textColor = .darkGray
         badge.text = viewModel.badgeText
@@ -137,12 +134,12 @@ extension ConfirmViewController {
     private func setupConstraints() {
         commonConstraints.append(
             contentsOf: [
-                numberLabel.pinTop(to: sentCodeLabel.bottomAnchor),
+                numberLabel.pinTop(to: sentInfoLabel.bottomAnchor),
 
                 badge.pinLeading(to: phoneNumberField.leadingAnchor),
                 badge.pinBottom(to: phoneNumberField.topAnchor),
 
-                phoneNumberField.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
+                phoneNumberField.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.inset16),
 
                 registrationButton.pinHeight(equalTo: 44),
                 registrationButton.pinLeading(to: phoneNumberField.leadingAnchor),
@@ -152,26 +149,26 @@ extension ConfirmViewController {
 
         landscapeConstraints.append(
             contentsOf: [
-                confirmLabel.pinTop(to: view, inset: Constants.sideInset * 2),
+                confirmLabel.pinTop(to: view, inset: Constants.inset16 * 2),
                 confirmLabel.pinLeading(to: phoneNumberField.leadingAnchor),
-                confirmLabel.pinTrailing(to: view.trailingAnchor, inset: Constants.sideInset),
+                confirmLabel.pinTrailing(to: view.trailingAnchor, inset: Constants.inset16),
 
-                sentCodeLabel.pinTop(to: confirmLabel.bottomAnchor, inset: Constants.sideInset * 2),
-                sentCodeLabel.pinLeading(to: phoneNumberField.leadingAnchor),
-                sentCodeLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
+                sentInfoLabel.pinTop(to: confirmLabel.bottomAnchor, inset: Constants.inset16 * 2),
+                sentInfoLabel.pinLeading(to: phoneNumberField.leadingAnchor),
+                sentInfoLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.inset16),
 
                 phoneNumberField.pinHeight(equalTo: 44),
                 phoneNumberField.pinTop(to: numberLabel.bottomAnchor, inset: 24),
-                phoneNumberField.pinLeading(to: readyImage.trailingAnchor, inset: Constants.sideInset),
+                phoneNumberField.pinLeading(to: readyImage.trailingAnchor, inset: Constants.inset16),
 
-                numberLabel.pinLeading(to: readyImage.trailingAnchor, inset: Constants.sideInset),
-                numberLabel.pinTrailing(to: phoneNumberField.trailingAnchor, inset: Constants.sideInset),
+                numberLabel.pinLeading(to: readyImage.trailingAnchor, inset: Constants.inset16),
+                numberLabel.pinTrailing(to: phoneNumberField.trailingAnchor, inset: Constants.inset16),
 
                 registrationButton.pinTop(to: phoneNumberField.bottomAnchor, inset: 56),
 
-                readyImage.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor,inset: Constants.sideInset),
+                readyImage.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor,inset: Constants.inset16),
                 readyImage.pinTop(to: confirmLabel.topAnchor),
-                readyImage.pinBottom(to: view.bottomAnchor, inset: Constants.sideInset),
+                readyImage.pinBottom(to: view.bottomAnchor, inset: Constants.inset16),
                 readyImage.pinWidth(equalTo: UIScreen.main.bounds.width / 2)
             ]
         )
@@ -179,20 +176,20 @@ extension ConfirmViewController {
         portraitConstraints.append(
             contentsOf: [
                 confirmLabel.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 80),
-                confirmLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
-                confirmLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
+                confirmLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.inset16),
+                confirmLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.inset16),
 
-                sentCodeLabel.pinTop(to: confirmLabel.bottomAnchor, inset: Constants.sideInset),
-                sentCodeLabel.pinLeading(to: confirmLabel.leadingAnchor),
-                sentCodeLabel.pinTrailing(to: confirmLabel.trailingAnchor),
+                sentInfoLabel.pinTop(to: confirmLabel.bottomAnchor, inset: Constants.inset16),
+                sentInfoLabel.pinLeading(to: confirmLabel.leadingAnchor),
+                sentInfoLabel.pinTrailing(to: confirmLabel.trailingAnchor),
 
-                numberLabel.pinTop(to: sentCodeLabel.bottomAnchor),
-                numberLabel.pinLeading(to: sentCodeLabel.leadingAnchor),
+                numberLabel.pinTop(to: sentInfoLabel.bottomAnchor),
+                numberLabel.pinLeading(to: sentInfoLabel.leadingAnchor),
 
                 phoneNumberField.pinHeight(equalTo: 56),
                 phoneNumberField.pinTop(to: numberLabel.bottomAnchor, inset: 56),
-                phoneNumberField.pinLeading(to: numberLabel.leadingAnchor, inset: Constants.sideInset),
-                phoneNumberField.pinTrailing(to: numberLabel.trailingAnchor, inset: Constants.sideInset),
+                phoneNumberField.pinLeading(to: numberLabel.leadingAnchor, inset: Constants.inset16),
+                phoneNumberField.pinTrailing(to: numberLabel.trailingAnchor, inset: Constants.inset16),
 
                 registrationButton.pinTop(to: phoneNumberField.bottomAnchor, inset: 100),
                 registrationButton.pinLeading(to: phoneNumberField.leadingAnchor),

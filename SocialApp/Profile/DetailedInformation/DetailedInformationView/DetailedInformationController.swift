@@ -8,9 +8,7 @@
 import UIKit
 
 final class DetailedInformationController: UIViewController {
-    private enum Constants {
-        static let inset: CGFloat = 16
-    }
+
     private let viewModel: DetailInformationViewModel
 
     private lazy var tableView = UITableView()

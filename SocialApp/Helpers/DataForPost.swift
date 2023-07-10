@@ -50,9 +50,7 @@ func getProfession() -> [String] {
     profession.append(contentsOf: ["Дизайнер", "Учитель", "Художник", "Директор", "Стоматолог"])
     return profession
 }
-//func getSubscribersToProfile() -> [Profile] {
-//     Profile.mock(count: 6)
-//}
+
 func getCity() -> [String] {
     var cities: [String] = []
     cities.append(contentsOf: ["Лондон", "Пекин", "Амстердам", "Берлин", "Нью-Йорк"])

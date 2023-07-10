@@ -10,10 +10,6 @@ import UIKit
 final class DetailedInformationHeaderView: UIView {
     private var viewModel: DetailedInformationHeaderViewModel?
     private var viewConstraints: [NSLayoutConstraint] = []
-    private enum Constants {
-        static let inset: CGFloat = 16
-        static let iconHeight: CGFloat = 24
-    }
 
     private lazy var iconImage: UIImageView = {
         let image = UIImageView()
@@ -44,14 +40,14 @@ final class DetailedInformationHeaderView: UIView {
         [iconImage, titleLabel].forEach({addSubview($0)})
         viewConstraints.append(contentsOf: [
 
-            iconImage.pinTop(to: safeAreaLayoutGuide.topAnchor, inset: Constants.inset),
-            iconImage.pinHeight(equalTo: Constants.iconHeight),
-            iconImage.pinWidth(equalTo: Constants.iconHeight),
-            iconImage.pinLeading(to: safeAreaLayoutGuide.leadingAnchor, inset: Constants.inset),
+            iconImage.pinTop(to: safeAreaLayoutGuide.topAnchor, inset: Constants.inset16),
+            iconImage.pinHeight(equalTo: Constants.iconHeight24),
+            iconImage.pinWidth(equalTo: Constants.iconHeight24),
+            iconImage.pinLeading(to: safeAreaLayoutGuide.leadingAnchor, inset: Constants.inset16),
 
-            titleLabel.pinTop(to: iconImage.bottomAnchor, inset: Constants.inset),
+            titleLabel.pinTop(to: iconImage.bottomAnchor, inset: Constants.inset16),
             titleLabel.pinLeading(to: iconImage.leadingAnchor),
-            titleLabel.pinBottom(to: bottomAnchor, inset: Constants.inset)
+            titleLabel.pinBottom(to: bottomAnchor, inset: Constants.inset16)
         ])
         NSLayoutConstraint.activate(viewConstraints)
     }

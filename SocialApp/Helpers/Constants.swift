@@ -6,6 +6,9 @@
 //
 
 import Foundation
-//enum Constants {
-//    static let inset: CGFloat = 8
-//}
+enum Constants {
+    static let inset4: CGFloat = 4
+    static let inset8: CGFloat = 8
+    static let inset16: CGFloat = 16
+    static let iconHeight24: CGFloat = 24
+}
