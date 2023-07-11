@@ -141,12 +141,12 @@ extension PublicationViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.configureForComments(for: post)
                 return cell
             case 2:
-                guard let oneCommentCell = tableView.dequeueReusableCell(withIdentifier: CommentCell.identifier, for: indexPath) as? CommentCell,
+                guard let singleCommentCell = tableView.dequeueReusableCell(withIdentifier: CommentCell.identifier, for: indexPath) as? CommentCell,
                       post.comments.count > indexPath.row
                 else {return UITableViewCell()}
-                let vm = CommentViewModel(comment: post.comments[indexPath.row])
-                oneCommentCell.configure(viewModel: vm)
-                return oneCommentCell
+                let viewModel = CommentViewModel(comment: post.comments[indexPath.row])
+                singleCommentCell.configure(viewModel: viewModel)
+                return singleCommentCell
             default:
                 return UITableViewCell()
         }

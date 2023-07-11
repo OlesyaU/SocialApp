@@ -11,7 +11,7 @@ final class ConfirmControllerViewModel {
     let pushNumberUserTitle = "Мы отправили SMS с кодом на номер"
     let numberLabelTitle = "+7 999 999 99 99"
     let badgeText = "Введите код из SMS"
-    let placeholderString = "  _ _ _ - _ _ _ - _ _ "
+    let placeholderString = "_ _ _ _ _ _"
     let buttonTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
     let readyImage = UIImage(named: "Ready")
     let boldFont = UIFont.textBold

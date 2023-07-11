@@ -72,6 +72,11 @@ extension UIView {
     }
 
     @discardableResult
+    func pinTopLessThanOrEqualTo(to anchor: NSLayoutYAxisAnchor, inset: CGFloat = .zero) -> NSLayoutConstraint {
+        topAnchor.constraint(lessThanOrEqualTo: anchor, constant: inset)
+    }
+
+    @discardableResult
     func pinBottom(to view: UIView, inset: CGFloat = .zero) -> NSLayoutConstraint {
         bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -inset)
     }
@@ -147,19 +152,19 @@ extension UIView {
             constant: constant
         )
     }
-    
+
     @discardableResult
     func pinWidth(constant: CGFloat, multiplier: CGFloat) -> NSLayoutConstraint {
         widthAnchor.constraint(equalToConstant: constant)
     }
-    
+
     @discardableResult
     func cornerRadius(cornerRadius: CGFloat = 16) -> Self {
         layer.cornerRadius = cornerRadius
         layer.masksToBounds = true
         return self
     }
-   
+
     @discardableResult
     func forAutolayout() -> Self {
         translatesAutoresizingMaskIntoConstraints = false

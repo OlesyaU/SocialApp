@@ -11,12 +11,15 @@ protocol FeedCellDelegate: AnyObject {
     func dotsImageTapped(post: Post, indexPath: IndexPath, isMyPost: Bool)
     func postImageTapped(post: Post)
     func headerTapped(with postAuthor: Profile)
+    func bookmarkTapped(post: Post?)
 }
 
 extension FeedCellDelegate {
     func postImageTapped(post: Post) {}
     func headerTapped(with postAuthor: Profile) {}
     func dotsImageTapped(post: Post, indexPath: IndexPath, isMyPost: Bool) {}
+    func bookmarkTapped(post: Post?) {}
+
 }
 
 final class FeedCellViewModel {
@@ -105,5 +108,8 @@ final class FeedCellViewModel {
     func headerTapped() {
         guard isFromFeed, !isMyPost else { return }
         delegate?.headerTapped(with: post.author)
+    }
+    func bookmarkTapped() {
+        delegate?.bookmarkTapped(post: post)
     }
 }

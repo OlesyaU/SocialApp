@@ -25,7 +25,6 @@ final class PhotoGalleryViewController: UIViewController {
     init(viewModel: PhotoGalleryViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-
         layout()
     }
 
@@ -35,7 +34,6 @@ final class PhotoGalleryViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         configureNavigation()
     }
 

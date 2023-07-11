@@ -13,6 +13,7 @@ extension UIFont {
     static let badgeFont = UIFont(name: "AvenirNextCondensed-UltraLight", size: 12)
 }
 
+// TODO: - Refactor to prepared icons
 enum IconsName {
     case dots
     case leftArrow
@@ -32,6 +33,14 @@ enum IconsName {
     case starFill
     case house
     case person
+
+    var icon: UIImage? {
+        if let image = UIImage(named: nameIcon) {
+            return image
+        } else {
+            return UIImage(systemName: nameIcon)
+        }
+    }
 
     var nameIcon: String {
         switch self {

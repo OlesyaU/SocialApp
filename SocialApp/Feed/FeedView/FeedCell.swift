@@ -9,10 +9,6 @@ import UIKit
 
 
 final class FeedCell: UITableViewCell {
-    private enum Constants {
-        static let sideInset: CGFloat = 16
-        static let heightAvatar: CGFloat = 56
-    }
 
     private var viewModel: FeedCellViewModel?
 
@@ -29,6 +25,7 @@ final class FeedCell: UITableViewCell {
         image.isUserInteractionEnabled = true
         let tapToImage = UITapGestureRecognizer(target: self, action: #selector(onPostImageTapped))
         image.addGestureRecognizer(tapToImage)
+
         return image
     }()
 
@@ -36,7 +33,7 @@ final class FeedCell: UITableViewCell {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.isUserInteractionEnabled = false
-        image.cornerRadius(cornerRadius: Constants.sideInset)
+        image.cornerRadius(cornerRadius: Constants.inset16)
         image.clipsToBounds = true
         return image
     }()
@@ -71,6 +68,7 @@ final class FeedCell: UITableViewCell {
     private lazy var likesIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
+        image.image = UIImage(systemName: IconsName.likes.nameIcon)?.imageWithColor(color: AppColors.darkGray)
         return image
     }()
 
@@ -84,6 +82,7 @@ final class FeedCell: UITableViewCell {
     private lazy var commentsIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
+        image.image = UIImage(systemName: IconsName.comments.nameIcon)?.imageWithColor(color: AppColors.darkGray)
         return image
     }()
 
@@ -98,7 +97,11 @@ final class FeedCell: UITableViewCell {
 
     private lazy var bookmarkIcon: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
+        image.isUserInteractionEnabled = true
+        image.image = UIImage(systemName: IconsName.bookmark.nameIcon)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(bookmarkTapped))
+        image.addGestureRecognizer(tap)
         return image
     }()
 
@@ -124,83 +127,76 @@ final class FeedCell: UITableViewCell {
                 contentHeaderCellView.pinTrailing(to: contentView.trailingAnchor),
                 contentHeaderCellView.pinBottom(to: descriptionLabel.topAnchor),
 
-                authorPhoto.pinHeight(equalTo: Constants.heightAvatar),
-                authorPhoto.pinWidth(equalTo: Constants.heightAvatar),
-                authorPhoto.pinTop(to: contentView.topAnchor,inset: Constants.sideInset),
-                authorPhoto.pinLeading(to: contentView.leadingAnchor, inset:  Constants.sideInset),
-                authorPhoto.pinBottom(to: descriptionLabel.topAnchor, inset: Constants.sideInset),
+                authorPhoto.pinHeight(equalTo: Constants.inset56),
+                authorPhoto.pinWidth(equalTo: Constants.inset56),
+                authorPhoto.pinTop(to: contentView.topAnchor,inset: Constants.inset16),
+                authorPhoto.pinLeading(to: contentView.leadingAnchor, inset:  Constants.inset16),
+                authorPhoto.pinBottom(to: descriptionLabel.topAnchor, inset: Constants.inset16),
 
-                authorNameLabel.pinTop(to: contentView.topAnchor, inset: Constants.sideInset),
-                authorNameLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
-                authorNameLabel.pinLeading(to: authorPhoto.trailingAnchor, inset: Constants.sideInset),
+                authorNameLabel.pinTop(to: contentView.topAnchor, inset: Constants.inset16),
+                authorNameLabel.pinHeight(equalTo: Constants.inset56 / 2),
+                authorNameLabel.pinLeading(to: authorPhoto.trailingAnchor, inset: Constants.inset16),
                 authorNameLabel.pinTrailing(to: contentView.trailingAnchor),
                 authorNameLabel.pinBottom(to: professionLabel.topAnchor),
 
                 professionLabel.pinTop(to: authorNameLabel.bottomAnchor),
                 professionLabel.pinLeading(to: authorNameLabel.leadingAnchor),
-                professionLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
-                professionLabel.pinTrailing(to: dotsImage.leadingAnchor, inset: Constants.sideInset),
+                professionLabel.pinHeight(equalTo: Constants.inset56 / 2),
+                professionLabel.pinTrailing(to: dotsImage.leadingAnchor, inset: Constants.inset16),
                 professionLabel.pinBottom(to: authorPhoto.bottomAnchor),
 
-                dotsImage.pinTop(to:contentView.topAnchor,inset: Constants.sideInset),
+                dotsImage.pinTop(to:contentView.topAnchor,inset: Constants.inset16),
                 dotsImage.pinBottom(to: authorPhoto.bottomAnchor),
                 dotsImage.pinWidth(equalTo: 20),
-                dotsImage.pinTrailing(to: contentView.trailingAnchor, inset: Constants.sideInset),
+                dotsImage.pinTrailing(to: contentView.trailingAnchor, inset: Constants.inset16),
                 dotsImage.pinLeading(to: professionLabel.trailingAnchor),
 
 
-                descriptionLabel.pinTop(to: authorPhoto.bottomAnchor, inset: Constants.sideInset),
+                descriptionLabel.pinTop(to: authorPhoto.bottomAnchor, inset: Constants.inset16),
                 descriptionLabel.pinLeading(to: contentView.leadingAnchor),
                 descriptionLabel.pinTrailing(to: contentView.trailingAnchor),
                 descriptionLabel.pinHeight(equalTo: 100),
                 descriptionLabel.pinBottom(to: image.topAnchor),
 
 
-                image.pinTop(to: descriptionLabel.bottomAnchor, inset: Constants.sideInset),
+                image.pinTop(to: descriptionLabel.bottomAnchor, inset: Constants.inset16),
                 image.pinLeading(to: contentView.leadingAnchor),
                 image.pinTrailing(to: contentView.trailingAnchor),
                 image.pinHeight(equalTo: UIScreen.main.bounds.width),
 
 
-                likesIcon.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
-                likesIcon.pinLeading(to: contentView.leadingAnchor, inset: Constants.sideInset),
-                likesIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
-                likesIcon.pinWidth(equalTo: Constants.heightAvatar / 2),
-                likesIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
+                likesIcon.pinTop(to: image.bottomAnchor, inset: Constants.inset16),
+                likesIcon.pinLeading(to: contentView.leadingAnchor, inset: Constants.inset16),
+                likesIcon.pinHeight(equalTo: Constants.inset56 / 2),
+                likesIcon.pinWidth(equalTo: Constants.inset56 / 2),
+                likesIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.inset16),
 
 
-                likesLabel.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
-                likesLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
-                likesLabel.pinWidth(equalTo: Constants.heightAvatar),
-                likesLabel.pinLeading(to: likesIcon.trailingAnchor, inset: Constants.sideInset / 2),
-                likesLabel.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
+                likesLabel.pinTop(to: image.bottomAnchor, inset: Constants.inset16),
+                likesLabel.pinHeight(equalTo: Constants.inset56 / 2),
+                likesLabel.pinWidth(equalTo: Constants.inset56),
+                likesLabel.pinLeading(to: likesIcon.trailingAnchor, inset: Constants.inset8),
+                likesLabel.pinBottom(to: contentView.bottomAnchor, inset: Constants.inset16),
 
-                commentsIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
-                commentsIcon.pinWidth(equalTo: Constants.heightAvatar / 2),
-                commentsIcon.pinLeading(to: likesLabel.trailingAnchor, inset: Constants.sideInset),
-                commentsIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
+                commentsIcon.pinHeight(equalTo: Constants.inset56 / 2),
+                commentsIcon.pinWidth(equalTo: Constants.inset56 / 2),
+                commentsIcon.pinLeading(to: likesLabel.trailingAnchor, inset: Constants.inset16),
+                commentsIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.inset16),
 
-                commentsLabel.pinHeight(equalTo: Constants.heightAvatar / 2),
-                commentsLabel.pinWidth(equalTo: Constants.heightAvatar),
-                commentsLabel.pinLeading(to: commentsIcon.trailingAnchor, inset: Constants.sideInset / 2),
-                commentsLabel.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset),
+                commentsLabel.pinHeight(equalTo: Constants.inset56 / 2),
+                commentsLabel.pinWidth(equalTo: Constants.inset56),
+                commentsLabel.pinLeading(to: commentsIcon.trailingAnchor, inset: Constants.inset8),
+                commentsLabel.pinBottom(to: contentView.bottomAnchor, inset: Constants.inset16),
 
 
-                bookmarkIcon.pinTop(to: image.bottomAnchor, inset: Constants.sideInset),
-                bookmarkIcon.pinHeight(equalTo: Constants.heightAvatar / 2),
-                bookmarkIcon.pinWidth(equalTo: Constants.heightAvatar / 2),
-                bookmarkIcon.pinTrailing(to: contentView.trailingAnchor, inset: Constants.sideInset),
-                bookmarkIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset)
+                bookmarkIcon.pinTop(to: image.bottomAnchor, inset: Constants.inset16),
+                bookmarkIcon.pinHeight(equalTo: Constants.inset56 / 2),
+                bookmarkIcon.pinWidth(equalTo: Constants.inset56 / 2),
+                bookmarkIcon.pinTrailing(to: contentView.trailingAnchor, inset: Constants.inset16),
+                bookmarkIcon.pinBottom(to: contentView.bottomAnchor, inset: Constants.inset16)
             ]
         )
         NSLayoutConstraint.activate(commonConstraints)
-    }
-
-    private func setUp() {
-        guard let model = self.viewModel else {
-            return
-        }
-
     }
 
     func configure(with viewModel: FeedCellViewModel) {
@@ -219,9 +215,6 @@ final class FeedCell: UITableViewCell {
         image.image = viewModel.postImage
         authorPhoto.image = viewModel.avatarImage
         dotsImage.image = viewModel.dotsImage
-        likesIcon.image = viewModel.likesIconImage
-        bookmarkIcon.image = viewModel.bookmarkIcon
-        commentsIcon.image = viewModel.commentsIcon
 
         dotsImage.isHidden = !viewModel.isNeedToShowDotsView
     }
@@ -236,5 +229,22 @@ final class FeedCell: UITableViewCell {
 
     @objc private func onHeaderTapped() {
         viewModel?.headerTapped()
+    }
+    @objc private func bookmarkTapped() {
+        print("bookmarkTapped gesture worked")
+        viewModel?.bookmarkTapped()
+//        TODO: - implement isSaved maybe later
+    }
+
+    func configureFavorite(favoritePost: FavoritePost) {
+        guard let postImage = favoritePost.postImage else { return }
+        guard let authorAvatar = favoritePost.authorAvatar else { return }
+        image.image = UIImage(data: postImage)
+        authorNameLabel.text = favoritePost.authorNickname
+        descriptionLabel.text = favoritePost.descriptionPost
+        commentsLabel.text = String(favoritePost.commentsCount)
+        likesLabel.text = String(favoritePost.likesCount)
+        authorPhoto.image = UIImage(data: authorAvatar)
+
     }
 }

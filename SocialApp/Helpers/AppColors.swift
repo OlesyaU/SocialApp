@@ -15,5 +15,4 @@ struct AppColors {
     static  let darkGray: UIColor = .darkGray
     static let biege = UIColor(red: 0.97, green: 0.94, blue: 0.92, alpha: 1)
     static let white: UIColor = .white
-
     }

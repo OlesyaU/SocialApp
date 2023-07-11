@@ -19,7 +19,7 @@ extension Post {
     static func mock(count: Int, profile: Profile) -> [Post] {
         var result: [Post] = []
         for _ in 0...count {
-            var post = Post(author: profile,
+            let post = Post(author: profile,
                             image: avatars().randomElement() ?? "",
                             description: lorem,
                             likes: (0...290).randomElement() ?? 0,

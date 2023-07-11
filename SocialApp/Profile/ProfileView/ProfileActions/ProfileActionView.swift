@@ -31,17 +31,17 @@ final class ProfileActionView: UIView {
     private lazy var countLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.font = UIFont.lightFont
         label.numberOfLines = 1
-        label.textAlignment = .center
+        label.textAlignment = TextAttribute.centerText
         return label
     }()
 
     private lazy var typeTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.font = UIFont.lightFont
         label.textColor = .gray
-        label.textAlignment = .center
+        label.textAlignment = TextAttribute.centerText
         label.numberOfLines = 1
         return label
     }()

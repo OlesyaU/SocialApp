@@ -17,7 +17,7 @@ final class PhotoGalleryViewModel: NSObject {
     private typealias SectionItems = [[PhotoGalleryItem]]
     private var items: SectionItems = []
 
-    var rightBarItemImage: UIImage = UIImage(systemName: "person.circle") ?? UIImage()
+    var rightBarItemImage: UIImage = UIImage(systemName: IconsName.person.nameIcon) ?? UIImage()
 
     var layout: UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()

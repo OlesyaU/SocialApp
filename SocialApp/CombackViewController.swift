@@ -12,39 +12,20 @@ protocol ComebackViewModelProtocol {
 }
 
 final class CombackViewController: UIViewController {
-    private var viewModel = CombackViewModel()
-    private enum Constants {
-        static let welcomeLabelTitle = "С возвращением"
-        static let welcomeNewUserTitle = "Добро пожаловать !"
-        static let secondLabelTitle = "Введите номер телефона \n для входа в приложение"
-        static let placeholderString = " +7 _ _ _  _ _ _  _ _  _ _"
-        static let buttonTitle = "ПОДТВЕРДИТЬ"
-        static let sideInset: CGFloat = 16
-    }
+
+    private var viewModel: CombackViewModel?
 
     private let welcomeLabel: UILabel = {
-        let label = UILabel().forAutolayout()
-        label.text = Constants.welcomeLabelTitle
-        label.font = UIFont(name: "AvenirNextCondensed-Bold", size: 18)
+        let label = UILabel()
+        label.font = UIFont.textBold
+        label.textColor = AppColors.orange
         label.textAlignment = .center
         label.cornerRadius()
         return label
     }()
 
     private let secondLabel: UILabel = {
-        let label = UILabel().forAutolayout()
-        let text = Constants.secondLabelTitle
-        let shadow = NSShadow()
-        shadow.shadowColor = UIColor.gray
-        shadow.shadowBlurRadius = 5
-        shadow.shadowOffset = CGSize(width: 3, height: 3)
-        let attrs: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 16),
-            .foregroundColor: UIColor.gray,
-            .shadow: shadow
-        ]
-        let attributedText = NSAttributedString(string: text, attributes: attrs)
-        label.attributedText = attributedText
+        let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 2
         label.cornerRadius()
@@ -58,12 +39,6 @@ final class CombackViewController: UIViewController {
         field.layer.borderColor = AppColors.black.cgColor
         field.keyboardType = .phonePad
         field.textAlignment = TextAttribute.centerText
-//        let centeredParagraphStyle = NSMutableParagraphStyle()
-//        centeredParagraphStyle.alignment = .center
-//        field.attributedPlaceholder = NSAttributedString(
-//            string: Constants.placeholderString,
-//            attributes: [.paragraphStyle: centeredParagraphStyle]
-//        )
         field.delegate = self
         field.clearButtonMode = .always
         return field
@@ -72,10 +47,9 @@ final class CombackViewController: UIViewController {
     private lazy var confirmButton: UIButton = {
         let button = UIButton(
             primaryAction: UIAction { [unowned self] _ in
-                self.buttonTapped()
+                self.confirmButtonTapped()
             }
-        ).forAutolayout()
-        button.setTitle(Constants .buttonTitle, for: .normal)
+        )
         button.cornerRadius()
         button.setBackgroundImage(.buttonBackgroundImageSelected, for: .normal)
         button.setBackgroundImage(.buttonBackgroundImageNormal, for: .highlighted)
@@ -86,6 +60,16 @@ final class CombackViewController: UIViewController {
     private var landscapeConstraints: [NSLayoutConstraint] = []
     private var portraitConstraints: [NSLayoutConstraint] = []
     private var commonConstraints: [NSLayoutConstraint] = []
+
+    init(with viewModel: CombackViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        configure()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,15 +86,31 @@ final class CombackViewController: UIViewController {
     // MARK: - Helpers
 
     private func addSubviews() {
-        welcomeLabel.placed(on: view)
-        secondLabel.placed(on: view)
-        phoneNumberField.placed(on: view)
-        confirmButton.placed(on: view)
+        [welcomeLabel, secondLabel, phoneNumberField, confirmButton].forEach({$0.forAutolayout()})
+        [welcomeLabel, secondLabel, phoneNumberField, confirmButton].forEach({$0.placed(on: view)})
     }
 
-    private func buttonTapped() {
+    private func configure() {
+     welcomeLabel.text = viewModel?.welcomeLabelTitle
+        let text = viewModel?.secondLabelTitle ?? ""
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.gray
+        shadow.shadowBlurRadius = 5
+        shadow.shadowOffset = CGSize(width: 3, height: 3)
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 16),
+            .foregroundColor: UIColor.gray,
+            .shadow: shadow
+        ]
+        let attributedText = NSAttributedString(string: text, attributes: attrs)
+        secondLabel.attributedText = attributedText
+        phoneNumberField.placeholder = viewModel?.placeholderString
+        confirmButton.setTitle(viewModel?.buttonTitle, for: .normal)
+    }
+
+    private func confirmButtonTapped() {
         guard let numberFromTextField = phoneNumberField.text else { return }
-        if viewModel.checkUser(by: numberFromTextField) != nil {
+        if viewModel?.checkUser(by: numberFromTextField) != nil {
             let feedViewController = FeedTableViewController()
             navigationController?.pushViewController(feedViewController, animated: true)
         } else {
@@ -125,44 +125,41 @@ extension CombackViewController {
     private func setupConstraints() {
         commonConstraints.append(
             contentsOf: [
-                welcomeLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
-                welcomeLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
+                welcomeLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.inset16),
+                welcomeLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.inset16),
 
-                phoneNumberField.pinWidth(equalTo: view.frame.width / 2),
+                phoneNumberField.pinLeading(to: secondLabel.leadingAnchor, inset: Constants.inset16),
+                phoneNumberField.pinTrailing(to: secondLabel.trailingAnchor, inset: Constants.inset16),
 
-                secondLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.sideInset),
-                secondLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.sideInset),
+                secondLabel.pinLeading(to: view.safeAreaLayoutGuide.leadingAnchor, inset: Constants.inset16),
+                secondLabel.pinTrailing(to: view.safeAreaLayoutGuide.trailingAnchor, inset: Constants.inset16),
 
                 confirmButton.pinHeight(equalTo: 44),
-                confirmButton.pinWidth(equalTo: view.frame.width / 2)
+                confirmButton.pinTopLessThanOrEqualTo(to: phoneNumberField.bottomAnchor, inset: 100),
+                confirmButton.pinLeading(to: phoneNumberField.leadingAnchor, inset: Constants.inset16),
+                confirmButton.pinTrailing(to: phoneNumberField.trailingAnchor, inset: Constants.inset16)
             ]
         )
 
         landscapeConstraints.append(
             contentsOf: [
-                welcomeLabel.pinTop(to: view, inset: 32),
-                secondLabel.pinTop(to: welcomeLabel.bottomAnchor, inset: 8),
+                welcomeLabel.pinTopLessThanOrEqualTo(to: view.topAnchor, inset: 100),
+
+                secondLabel.pinTop(to: welcomeLabel.bottomAnchor, inset: Constants.inset8),
+
                 phoneNumberField.pinHeight(equalTo: 44),
-                phoneNumberField.pinTop(to: secondLabel.bottomAnchor, inset: 16),
-                phoneNumberField.pinCenterX(to: view),
-                phoneNumberField.pinWidth(constant: view.frame.width / 2, multiplier: 1),
-                confirmButton.pinTop(to: phoneNumberField.bottomAnchor, inset: 80),
-                confirmButton.pinWidth(constant: view.frame.width / 2, multiplier: 1),
-                confirmButton.pinCenterX(to: view)
+                phoneNumberField.pinTop(to: secondLabel.bottomAnchor, inset: Constants.inset16),
+
+                confirmButton.pinBottom(to: view.bottomAnchor, inset: Constants.iconHeight24)
             ]
         )
 
         portraitConstraints.append(
             contentsOf: [
                 welcomeLabel.pinTop(to: view.safeAreaLayoutGuide.topAnchor, inset: 100),
-                secondLabel.pinTop(to: welcomeLabel.bottomAnchor, inset: 8),
-                phoneNumberField.pinHeight(equalTo: 56),
-                phoneNumberField.pinTop(to: secondLabel.bottomAnchor, inset: 24),
-                phoneNumberField.pinLeading(to: secondLabel.leadingAnchor, inset: Constants.sideInset),
-                phoneNumberField.pinTrailing(to: secondLabel.trailingAnchor, inset: Constants.sideInset),
-                confirmButton.pinTop(to: phoneNumberField.bottomAnchor, inset: 100),
-                confirmButton.pinLeading(to: phoneNumberField.leadingAnchor, inset: Constants.sideInset),
-                confirmButton.pinTrailing(to: phoneNumberField.trailingAnchor, inset: Constants.sideInset)
+                secondLabel.pinTop(to: welcomeLabel.bottomAnchor, inset: Constants.inset8),
+                phoneNumberField.pinHeight(equalTo: Constants.inset56),
+                phoneNumberField.pinTop(to: secondLabel.bottomAnchor, inset: Constants.iconHeight24)
             ]
         )
 

@@ -12,7 +12,9 @@ final class FeedTableViewController: UITableViewController {
     private var viewModel = FeedViewModel()
     private var publicationViewModel: PublicationViewModel?
     private var floatingPanel: FloatingPanelController?
+    private let coreDataManager = CoreDataManager.shared
     var delegate: PublicationControllerProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
@@ -78,6 +80,10 @@ extension FeedTableViewController: FeedCellDelegate {
         let profileVC = ProfileViewController(viewModel: viewModel)
         profileVC.configure(profile: postAuthor)
         navigationController?.pushViewController(profileVC, animated: false)
+    }
+    func bookmarkTapped(post: Post?) {
+        coreDataManager.addFavoritePost(post: post, completion: {
+        })
     }
 }
 

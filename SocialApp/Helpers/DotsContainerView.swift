@@ -8,7 +8,6 @@
 import UIKit
 final class DotsContainerView: UIView {
 
-
     private var constraintsView: [NSLayoutConstraint] = []
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,7 +21,6 @@ final class DotsContainerView: UIView {
     }
 
     func layout(to view: UIView) {
-
         constraintsView.append(contentsOf: [
             self.pinTop(to: view.topAnchor),
             self.pinBottom(to: view.bottomAnchor),
@@ -31,5 +29,4 @@ final class DotsContainerView: UIView {
         ])
         NSLayoutConstraint.activate(constraintsView)
     }
-
 }

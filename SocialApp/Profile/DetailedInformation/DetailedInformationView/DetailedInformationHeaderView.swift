@@ -51,7 +51,7 @@ final class DetailedInformationHeaderView: UIView {
         ])
         NSLayoutConstraint.activate(viewConstraints)
     }
-    
+
     func configure(viewModel: DetailedInformationHeaderViewModel) {
         self.viewModel = viewModel
         backgroundColor = viewModel.backgroundColor
