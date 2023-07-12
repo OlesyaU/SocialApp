@@ -57,7 +57,7 @@ class EnterPhoneNumberViewController: UIViewController {
     private lazy var confirmButton: UIButton = {
         let button = UIButton(
             primaryAction: UIAction { [unowned self] _ in
-                self.buttonTapped()
+                self.registrationButtonTapped()
             }
         )
         button.cornerRadius()
@@ -140,10 +140,10 @@ class EnterPhoneNumberViewController: UIViewController {
     }
 
     // MARK: - Navigation
-    private func buttonTapped() {
+    private func registrationButtonTapped() {
         // TODO: - Add phone check
         guard let phoneNumber = phoneNumberField.text else { return }
-//        viewModel?.authorize(phoneNumber: phoneNumber)
+        viewModel?.testing(string: phoneNumber)
         pushConfirmController()
     }
 

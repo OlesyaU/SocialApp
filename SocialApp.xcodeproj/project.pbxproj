@@ -1114,6 +1114,7 @@
 				DEVELOPMENT_TEAM = VD9W7NWT69;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SocialApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
@@ -1140,6 +1141,7 @@
 				DEVELOPMENT_TEAM = VD9W7NWT69;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SocialApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";

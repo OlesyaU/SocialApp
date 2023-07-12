@@ -27,37 +27,14 @@ class EnterPhoneNumberViewModel {
 
     var viewModelChanged: (() -> Void)?
 
-    func authorize(phoneNumber: String) {
-        PhoneAuthProvider.provider()
-            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                self.verificationId = verificationID
-                self.verificationCode = "000000"
-                guard let verificationCode = self.verificationCode,
-                      let verificationID = self.verificationId else {
-                    return
-                }
-
-                let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID,
-                                                                         verificationCode: verificationCode)
-                self.signInAndRetrieveData(with: credential)
-            }
-    }
-
-    func signInAndRetrieveData(with credential: PhoneAuthCredential) {
-        Auth.auth().signIn(with: credential) { (authData: AuthDataResult?, error: Error?) in
-            if let error = error {
-                return
-            }
-            guard let phoneNumber = authData?.user.phoneNumber else {
-                return
-            }
+    func testing(string: String){
+        let number = Int.random(in: 0...99)
+        Auth.auth().createUser(withEmail: "\(number)@mail.ru", password: string) { authResult, error in
         }
+        state = .correct
     }
 }
+
 
 /*
  Нужно доделать регистрацию: ограничив возможно сть для захода только номером с девятками

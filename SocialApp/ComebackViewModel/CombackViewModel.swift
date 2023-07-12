@@ -5,7 +5,7 @@
 //  Created by Олеся on 23.06.2023.
 //
 
-import Foundation
+import FirebaseAuth
 
 final class CombackViewModel: ComebackViewModelProtocol {
     private let model = DataBase.shared
@@ -20,7 +20,7 @@ final class CombackViewModel: ComebackViewModelProtocol {
             print("CHECK1 not succeed validation ")
             return nil
         }
-        print("CHECK1 succeed validation ")
+        checkUserPhone(phone: phone)
         return model.getProfile(by: phone) ? model.testProfile : nil
     }
 
@@ -30,8 +30,18 @@ final class CombackViewModel: ComebackViewModelProtocol {
         let result = phoneTest.evaluate(with: phone)
         return result
     }
-}
 
+    private func checkUserPhone(phone: String) {
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) {
+            verificationID, error in
+            if let error = error {
+                print("ERRROOORRRR\(error)")
+                return
+            }
+        }
+    }
+}
 
 
 

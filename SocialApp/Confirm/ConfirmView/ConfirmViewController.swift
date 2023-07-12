@@ -10,7 +10,6 @@ import UIKit
 class ConfirmViewController: UIViewController {
 
     private let viewModel: ConfirmControllerViewModel?
-//    private let nc = NotificationCenter.default
     private let confirmLabel: UILabel = {
         let label = UILabel()
         label.textColor = AppColors.orange
@@ -48,7 +47,7 @@ class ConfirmViewController: UIViewController {
     private lazy var registrationButton: UIButton = {
         let button = UIButton(
             primaryAction: UIAction { [unowned self] _ in
-                self.buttonTapped()
+                self.checkButtonTapped()
             }
         )
         button.cornerRadius()
@@ -133,7 +132,7 @@ class ConfirmViewController: UIViewController {
         phoneNumberField.clearButtonMode = .whileEditing
     }
 
-    private func buttonTapped() {
+    private func checkButtonTapped() {
         let confirmViewController = MainTabBarController()
         navigationController?.setNavigationBarHidden(true, animated: true)
         navigationController?.setViewControllers([confirmViewController], animated: false)
