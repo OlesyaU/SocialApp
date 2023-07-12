@@ -90,6 +90,7 @@ class ConfirmViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = .black
         navigationItem.setLeftBarButton(UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backItemAction)), animated: true)
+        phoneNumberField.text = ""
     }
 
     // MARK: - Helpers
