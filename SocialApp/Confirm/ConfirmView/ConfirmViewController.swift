@@ -10,7 +10,7 @@ import UIKit
 class ConfirmViewController: UIViewController {
 
     private let viewModel: ConfirmControllerViewModel?
-
+//    private let nc = NotificationCenter.default
     private let confirmLabel: UILabel = {
         let label = UILabel()
         label.textColor = AppColors.orange
@@ -41,6 +41,7 @@ class ConfirmViewController: UIViewController {
     private lazy var phoneNumberField: UITextField = {
         let field = UITextField()
         field.textAlignment = .center
+        field.delegate = self
         return field
     }()
 
@@ -83,6 +84,7 @@ class ConfirmViewController: UIViewController {
         setupConstraints()
         setColor()
         setUpTextField()
+
     }
 
     override func viewWillAppear(_ animated: Bool){
@@ -92,6 +94,11 @@ class ConfirmViewController: UIViewController {
     }
 
     // MARK: - Helpers
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches,
+                           with: event)
+        self.view.endEditing(true)
+    }
 
     private func addSubviews() {
         [confirmLabel, sentInfoLabel, numberLabel, badge, phoneNumberField, registrationButton, readyImage].forEach({$0.forAutolayout()})
