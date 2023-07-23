@@ -134,9 +134,17 @@ class ConfirmViewController: UIViewController {
     }
 
     private func checkButtonTapped() {
-        let confirmViewController = MainTabBarController()
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationController?.setViewControllers([confirmViewController], animated: false)
+        print(phoneNumberField.text)
+                if !((phoneNumberField.text?.isEmpty) != nil), phoneNumberField.text == "0 0 0 0 0 0" {
+            let confirmViewController = MainTabBarController()
+            navigationController?.setNavigationBarHidden(true, animated: true)
+            navigationController?.setViewControllers([confirmViewController], animated: false)
+                } else {
+                    let aleart = UIAlertController(title: "ERROR", message: "Please, put correct code", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .cancel)
+                    aleart.addAction(action)
+                    present(aleart, animated: true)
+                }
     }
 
     @objc private func backItemAction(){
