@@ -61,6 +61,7 @@
 		767074132A39955A007FC469 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074122A39955A007FC469 /* StartAppViewController.swift */; };
 		767074182A39955D007FC469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 767074172A39955D007FC469 /* Assets.xcassets */; };
 		7670741B2A39955D007FC469 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767074192A39955D007FC469 /* LaunchScreen.storyboard */; };
+		768D6D372A6E889D007E5EB5 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D6D362A6E889D007E5EB5 /* Alert.swift */; };
 		76CB113C2A50F14D009B29F4 /* ProfileDotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB113B2A50F14D009B29F4 /* ProfileDotsController.swift */; };
 		76CB113E2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB113D2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift */; };
 		76CB11642A5190F1009B29F4 /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11632A5190F1009B29F4 /* ExtensionViewController.swift */; };
@@ -158,6 +159,7 @@
 		767074172A39955D007FC469 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7670741A2A39955D007FC469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7670741C2A39955D007FC469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		768D6D362A6E889D007E5EB5 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		76CB113B2A50F14D009B29F4 /* ProfileDotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDotsController.swift; sourceTree = "<group>"; };
 		76CB113D2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDotsControllerViewModel.swift; sourceTree = "<group>"; };
 		76CB11632A5190F1009B29F4 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
@@ -777,6 +779,7 @@
 				76D0AA4F2A542DAF00646F43 /* UIImage+Extension.swift */,
 				764CBD5E2A56DDFB007F2788 /* Draft.swift */,
 				764CBD602A56FF15007F2788 /* Constants.swift */,
+				768D6D362A6E889D007E5EB5 /* Alert.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -930,6 +933,7 @@
 				76CB118D2A541FEB009B29F4 /* ProfileInformationViewModel.swift in Sources */,
 				7614A3BD2A4207A2004D7466 /* DataForPost.swift in Sources */,
 				7614A4402A49C758004D7466 /* ProfileIconButton.swift in Sources */,
+				768D6D372A6E889D007E5EB5 /* Alert.swift in Sources */,
 				7614A4422A49C76B004D7466 /* ProfileIconButtonType.swift in Sources */,
 				76CB11892A541F42009B29F4 /* ProfileInformationSelectGenderCell.swift in Sources */,
 				76D06E122A5BA65A0024E8F4 /* ConfirmControllerViewModel.swift in Sources */,
