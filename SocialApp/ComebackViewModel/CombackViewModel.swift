@@ -34,15 +34,15 @@ final class CombackViewModel: ComebackViewModelProtocol {
 
     private func checkUserPhone(phone: String) {
         Auth.auth().settings?.isAppVerificationDisabledForTesting = true
-        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { [weak self]
+        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) {
             verificationID, error in
             if let error = error {
                 print("ERRROOORRRR\(error)")
-                print("Current user UID \(Auth.auth().currentUser?.uid)")
+                print("Current user UID \(String(describing: Auth.auth().currentUser?.uid))")
                 return
             }
         }
-        print("Current user UID \(Auth.auth().currentUser?.uid)")
+        print("Current user UID \(String(describing: Auth.auth().currentUser?.uid))")
     }
 }
 
