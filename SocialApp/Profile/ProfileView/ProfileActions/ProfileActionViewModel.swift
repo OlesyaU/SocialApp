@@ -30,7 +30,7 @@ class ProfileActionViewModel {
             onModelChanged?()
         }
     }
-    
+
     var onModelSelected: (() -> Void)?
     var onModelChanged: (() -> Void)?
     let itemsColor = AppColors.black

@@ -8,7 +8,7 @@
 import UIKit
 
 final class PhotoGalleryHeaderCell: UICollectionViewCell {
-    
+
     private var viewModel: PhotoGalleryHeaderCellViewModel?
 
     private let titleLabel = UILabel()
@@ -19,6 +19,7 @@ final class PhotoGalleryHeaderCell: UICollectionViewCell {
         super.init(frame: frame)
         setupConstraints()
     }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

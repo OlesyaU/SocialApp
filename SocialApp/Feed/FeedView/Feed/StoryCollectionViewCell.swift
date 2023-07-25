@@ -20,24 +20,24 @@ final class StoryCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layout()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func layout() {
+    private func setupConstraints() {
         contentView.addSubview(friendAvatar)
         let cornerRadius: CGFloat = 40
         friendAvatar.layer.cornerRadius = cornerRadius
         friendAvatar.clipsToBounds = true
-        
+
         constraintsForCell.append(contentsOf: [
             friendAvatar.pinTop(to: contentView.topAnchor),
             friendAvatar.pinLeading(to: contentView.leadingAnchor),
             friendAvatar.pinBottom(to: contentView.bottomAnchor),
-            friendAvatar.pinTrailing(to: contentView.trailingAnchor)
+            friendAvatar.pinTrailing(to: contentView.trailingAnchor),
         ]
         )
         NSLayoutConstraint.activate(constraintsForCell)

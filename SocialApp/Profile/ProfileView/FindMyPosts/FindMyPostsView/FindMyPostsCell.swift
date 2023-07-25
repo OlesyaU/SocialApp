@@ -11,28 +11,28 @@ final class FindMyPostsCell: UITableViewCell {
     private var cellConstraints: [NSLayoutConstraint] = []
     private var viewModel: FindMyPostsViewModel?
     private let constraintCell: CGFloat = 16
-    
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
                 return label
     }()
-    
+
     private let magnifyingglass: UIImageView = {
         let image = UIImageView()
         image.contentMode = .center
         return image
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupConstraints() {
         titleLabel.forAutolayout()
         contentView.addSubview(titleLabel)
@@ -45,7 +45,7 @@ final class FindMyPostsCell: UITableViewCell {
         ])
         NSLayoutConstraint.activate(cellConstraints)
     }
-    
+
     func configure(viewModel: FindMyPostsViewModel) {
         magnifyingglass.forAutolayout()
         self.contentView.addSubview(magnifyingglass)
@@ -65,16 +65,16 @@ final class FindMyPostsCell: UITableViewCell {
         ])
         NSLayoutConstraint.activate(cellConstraints)
     }
-    
+
     func configureFriend(for friend: FindMyPostsViewModel) {
         titleLabel.text = friend.titleForFriendProfile
         contentView.backgroundColor = viewModel?.backgroundCellColor
         //        DOESNT WORK!!!
-        
+
     }
     func configureForComments(for post: Post) {
         titleLabel.text = "\(post.comments.count) комментариев"
-        
+
     }
-    
+
 }

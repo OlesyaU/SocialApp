@@ -77,19 +77,19 @@ class PublicationViewController: UIViewController, FloatingPanelControllerDelega
 
     private func configureTableView() {
         tableView.allowsSelection = false
-//        tableView.register(CommentCell.self, forCellReuseIdentifier: CommentCell.identifier)
+        tableView.register(CommentCell.self, forCellReuseIdentifier: CommentCell.identifier)
         tableView.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
     }
 
     @objc private func dotsAction(){
         print(#file, #line)
-//        let menuViewController = MenuViewController()
+        let menuViewController = MenuViewController()
 
         let floatingPanelController = FloatingPanelController()
         floatingPanelController.delegate = self
         floatingPanelController.surfaceView.layer.cornerRadius = 12
         floatingPanelController.surfaceView.clipsToBounds = true
-//        floatingPanelController.set(contentViewController: menuViewController)
+        floatingPanelController.set(contentViewController: menuViewController)
 
         floatingPanelController.isRemovalInteractionEnabled = true
         present(floatingPanelController, animated: true)
@@ -141,14 +141,12 @@ extension PublicationViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.configureForComments(for: post)
                 return cell
             case 2:
-//                guard let singleCommentCell = tableView.dequeueReusableCell(withIdentifier: CommentCell.identifier, for: indexPath) as? CommentCell,
-//                      post.comments.count > indexPath.row
-//                else {return UITableViewCell()}
+                guard let singleCommentCell = tableView.dequeueReusableCell(withIdentifier: CommentCell.identifier, for: indexPath) as? CommentCell,
+                      post.comments.count > indexPath.row
+                else {return UITableViewCell()}
                 let viewModel = CommentViewModel(comment: post.comments[indexPath.row])
-//                singleCommentCell.configure(viewModel: viewModel)
-//                return singleCommentCell
-                //                TODO: - delete below return
-                return  UITableViewCell()
+                singleCommentCell.configure(viewModel: viewModel)
+                return singleCommentCell
             default:
                 return UITableViewCell()
         }

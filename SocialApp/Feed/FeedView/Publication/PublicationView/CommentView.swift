@@ -43,7 +43,7 @@ final class CommentView: UIView {
         label.numberOfLines = 1
         return label
     }()
-    
+
     private let likesCountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -67,18 +67,14 @@ final class CommentView: UIView {
 
     init() {
         super.init(frame: .zero)
-
         setupConstraints()
-
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-
     private func setupConstraints() {
-
         [authorPhoto,  authorNickLabel, commentLabel, dateLabel, likesCountLabel, likesIcon, answerLabel].forEach {$0.forAutolayout()}
         [authorPhoto,  authorNickLabel, commentLabel, dateLabel, likesCountLabel, likesIcon, answerLabel].forEach {addSubview($0)}
         cellConstraints.append(contentsOf: [
@@ -112,7 +108,7 @@ final class CommentView: UIView {
         ])
         NSLayoutConstraint.activate(cellConstraints)
         let iconTap = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
-    
+
         likesIcon.addGestureRecognizer(iconTap)
     }
 

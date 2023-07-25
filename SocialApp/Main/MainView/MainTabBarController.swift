@@ -33,7 +33,7 @@ class MainTabBarController: UITabBarController {
         profile.tabBarItem = UITabBarItem(title: mainTabBarViewModel.profileTitle, image: UIImage(systemName: mainTabBarViewModel.profileIcon), tag: 1)
         return  UINavigationController(rootViewController: profile)
     }
-    
+
     func createSavedViewController() -> UINavigationController {
         let saved = SavedViewController()
         saved.title = mainTabBarViewModel.savedTitle

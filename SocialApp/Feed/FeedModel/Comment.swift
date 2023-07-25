@@ -42,7 +42,7 @@ extension Comment {
                 date: Date(),
                 likedBy: randomProfiles
             )
-            
+
             result.append(comment)
         }
         return result

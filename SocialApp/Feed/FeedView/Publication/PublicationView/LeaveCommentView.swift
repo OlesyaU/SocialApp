@@ -27,7 +27,7 @@ final class LeaveCommentView: UIView {
         label.numberOfLines = 1
         return label
     }()
-    
+
     init() {
         super.init(frame: .zero)
         setupConstraints()

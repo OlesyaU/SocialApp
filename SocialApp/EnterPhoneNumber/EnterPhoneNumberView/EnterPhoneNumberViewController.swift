@@ -145,6 +145,7 @@ class EnterPhoneNumberViewController: UIViewController {
             viewModel?.phoneNumber = phoneNumber
             viewModel?.changeState(.buttonTapped)
             stateViewModel(state: .success)
+
         } else {
             viewModel?.changeState(.error)
             stateViewModel(state: .error)

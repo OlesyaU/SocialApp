@@ -1,115 +1,67 @@
 //
-//  FeedCellViewModel.swift
+//  PhotoGalleryHeaderCell.swift
 //  SocialApp
 //
-//  Created by Олеся on 02.07.2023.
+//  Created by Олеся on 08.07.2023.
 //
 
 import UIKit
 
-protocol FeedCellDelegate: AnyObject {
-    func dotsImageTapped(post: Post, indexPath: IndexPath, isMyPost: Bool)
-    func postImageTapped(post: Post)
-    func headerTapped(with postAuthor: Profile)
-    func bookmarkTapped(post: Post?)
-}
+final class PhotoGalleryHeaderCell: UICollectionViewCell {
 
-extension FeedCellDelegate {
-    func postImageTapped(post: Post) {}
-    func headerTapped(with postAuthor: Profile) {}
-    func dotsImageTapped(post: Post, indexPath: IndexPath, isMyPost: Bool) {}
-    func bookmarkTapped(post: Post?) {}
+    private var viewModel: PhotoGalleryHeaderCellViewModel?
 
-}
+    private let titleLabel = UILabel()
+    private let countLabel = UILabel()
+    private let showAllButton = UIButton()
 
-final class FeedCellViewModel {
-    private let postImageString: String
-    private let avatarImageString: String
-
-    private let isSaved: Bool
-
-    private let isMyPost: Bool
-    private let isFromFeed: Bool
-
-    private let indexPath: IndexPath
-
-    private let post: Post
-
-    private weak var delegate: FeedCellDelegate?
-
-    let authorNameText: String
-    let postText: String
-    let likesCountString: String
-    let commentsCountString: String
-    let professionText: String
-
-    let backgroundColor = AppColors.biege
-    let headerViewColor = AppColors.white
-    let professionLabelTextColor = AppColors.lightGray
-
-    var postImage: UIImage? {
-        UIImage(named: postImageString)
-    }
-    var dotsImage: UIImage? {
-        isNeedToShowDotsView ? UIImage(named: IconsName.dots.nameIcon)?.imageWithColor(color: AppColors.orange) : nil
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupConstraints()
     }
 
-    var avatarImage: UIImage? {
-        UIImage(named: avatarImageString)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    var likesIconImage: UIImage? {
-        UIImage(systemName: IconsName.likes.nameIcon)?.imageWithColor(color: AppColors.darkGray)
+    func configure(viewModel: PhotoGalleryHeaderCellViewModel) {
+        self.viewModel = viewModel
+        setupUI()
     }
 
-    var bookmarkIcon: UIImage? {
-        let color = isSaved ? AppColors.orange : AppColors.darkGray
-        return UIImage(systemName: IconsName.bookmark.nameIcon)?.imageWithColor(color: color)
+    private func setupConstraints() {
+        let views = [titleLabel, countLabel, showAllButton]
+        views.forEach { $0.forAutolayout() }
+        views.forEach { contentView.addSubview($0) }
+
+        let constraints = [
+            titleLabel.pinCenterY(to: contentView),
+            titleLabel.pinLeading(to: contentView),
+
+            countLabel.pinCenterY(to: contentView),
+            countLabel.pinLeading(to: titleLabel.trailingAnchor, inset: Constants.inset8),
+
+            showAllButton.pinCenterY(to: contentView),
+            showAllButton.pinTrailing(to: contentView)
+        ]
+        NSLayoutConstraint.activate(constraints)
+
+        countLabel.textColor = AppColors.gray
+        showAllButton.setTitleColor(AppColors.orange, for: .normal)
+        showAllButton.addTarget(self, action: #selector(showAllButtonTapped), for: .touchUpInside)
     }
 
-    var commentsIcon: UIImage? {
-        UIImage(systemName: IconsName.comments.nameIcon)?.imageWithColor(color: AppColors.darkGray)
+    private func setupUI() {
+        guard let viewModel else { return }
+        titleLabel.text = viewModel.title
+        countLabel.text = viewModel.count
+        showAllButton.isHidden = !viewModel.isNeedToShowButton
+        showAllButton.setTitle(viewModel.buttonTitle, for: .normal)
     }
 
-    let isNeedToShowDotsView: Bool
-
-    init(
-        post: Post,
-        indexPath: IndexPath,
-        isNeedToShowDotsView: Bool,
-        isFromFeed: Bool,
-        delegate: FeedCellDelegate?
-    )  {
-        postImageString = post.image
-        authorNameText = post.author.name + " " + post.author.surname
-        postText = post.description
-        likesCountString = String(post.likes)
-        commentsCountString = String(post.comments.count)
-        avatarImageString = post.author.avatar
-        professionText = post.author.profession
-        isSaved = post.isSaved
-        isMyPost = post.author == DataBase.shared.testProfile
-
-        self.isFromFeed = isFromFeed
-        self.indexPath = indexPath
-        self.isNeedToShowDotsView = isNeedToShowDotsView
-        self.post = post
-        self.delegate = delegate
-    }
-
-    func dotsImageTapped() {
-        delegate?.dotsImageTapped(post: post, indexPath: indexPath, isMyPost: isMyPost)
-    }
-
-    func postImageTapped() {
-        delegate?.postImageTapped(post: post)
-    }
-
-    func headerTapped() {
-        guard isFromFeed, !isMyPost else { return }
-        delegate?.headerTapped(with: post.author)
-    }
-    func bookmarkTapped() {
-        delegate?.bookmarkTapped(post: post)
+    @objc
+    private func showAllButtonTapped() {
+        viewModel?.showAll()
     }
 }
+

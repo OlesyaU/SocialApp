@@ -18,7 +18,7 @@ class ProfileViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layout()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -28,12 +28,12 @@ class ProfileViewCell: UITableViewCell {
     func configure(with viewModel: PersonalDataViewModel) {
         personalView.configure(with: viewModel)
     }
-    
+
     func configureFriendProfile(with friendProifile: PersonalDataViewModel) {
         personalView.configureFriendProfile()
     }
-    
-    private func layout() {
+
+    private func setupConstraints() {
         [personalView].forEach({$0.forAutolayout()})
         [personalView].forEach({contentView.addSubview($0)})
 
