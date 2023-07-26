@@ -16,7 +16,7 @@ final class PhotosCellViewModel {
 
     let titleCell = "Фотографии"
     let photoCountString: String
-    let arrowIcon = "chevron.right"
+    let arrowIcon = IconsName.rightArrow.icon
     let photoNameString: [String]
 
     init(profile: Profile) {

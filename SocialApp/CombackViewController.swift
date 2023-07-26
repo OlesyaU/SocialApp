@@ -117,7 +117,8 @@ final class CombackViewController: UIViewController {
     private func confirmButtonTapped() {
         guard let phoneNumber = phoneNumberField.text else { return }
         if !phoneNumber.isEmpty, phoneNumber.count == 16, viewModel?.checkUser(by: phoneNumber) != nil {
-            pushFeedViewController()
+//            pushFeedViewController()
+            pushMainController()
         } else {
             showAleart()
         }
@@ -228,8 +229,13 @@ extension CombackViewController {
         present(aleart, animated: true)
     }
 
-    private func pushFeedViewController() {
-        let feedViewController = FeedTableViewController()
-        navigationController?.pushViewController(feedViewController, animated: true)
+//    private func pushFeedViewController() {
+//        let feedViewController = FeedTableViewController()
+//        navigationController?.pushViewController(feedViewController, animated: true)
+//    }
+    private func pushMainController() {
+        let confirmViewController = MainTabBarController()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setViewControllers([confirmViewController], animated: false)
     }
 }

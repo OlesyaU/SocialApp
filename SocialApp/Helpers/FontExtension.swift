@@ -34,6 +34,9 @@ enum IconsName {
     case starFill
     case house
     case person
+    case checkmark
+    case bell
+    case magnifyingglass
 
     var icon: UIImage? {
         if let image = UIImage(named: nameIcon) {
@@ -66,7 +69,7 @@ enum IconsName {
             case .likesFill:
                 return "heart.fill"
             case .close:
-                return "xmark"
+                return "cancelItem"
             case .star:
                 return "star"
             case .files:
@@ -81,6 +84,12 @@ enum IconsName {
                 return "house"
             case .person:
                 return  "person.circle"
+            case .checkmark:
+                return "checkMark"
+            case .bell:
+                return "bellIcon"
+            case .magnifyingglass:
+              return "magnifyingglass"
         }
     }
 }

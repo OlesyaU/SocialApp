@@ -108,7 +108,7 @@ class PhotosCell: UITableViewCell {
         self.viewModel = viewModel
         photoLabel.text = viewModel.titleCell
         photoCountLabel.text = viewModel.photoCountString
-        arrowImage.image = UIImage(systemName: viewModel.arrowIcon)
+        arrowImage.image = viewModel.arrowIcon
         collection.reloadData()
     }
 

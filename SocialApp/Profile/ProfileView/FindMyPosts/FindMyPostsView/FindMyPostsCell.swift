@@ -20,7 +20,8 @@ final class FindMyPostsCell: UITableViewCell {
 
     private let magnifyingglass: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .center
+        image.contentMode = .scaleAspectFit
+        image.image = IconsName.magnifyingglass.icon?.imageWithColor(color: AppColors.orange)
         return image
     }()
 
@@ -54,8 +55,6 @@ final class FindMyPostsCell: UITableViewCell {
         titleLabel.font = viewModel.titleFont
         contentView.backgroundColor = viewModel.backgroundCellColor
 
-        magnifyingglass.image = UIImage(systemName: viewModel.icon)
-        magnifyingglass.tintColor = viewModel.iconColor
         cellConstraints.append(contentsOf: [
             magnifyingglass.pinTop(to: contentView.topAnchor, inset: constraintCell),
             magnifyingglass.pinTrailing(to: contentView.trailingAnchor, inset: constraintCell),

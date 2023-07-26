@@ -64,8 +64,8 @@ final class ProfileInformationViewModel {
                 case .city:
                     city = enteredData
                 }
-            case let .genderPicker(vm):
-                gender = vm.selectedGender
+            case let .genderPicker(viewModel):
+                gender = viewModel.selectedGender
             }
         }
         let profile = Profile(

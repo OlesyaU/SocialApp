@@ -8,7 +8,7 @@
 import UIKit
 struct FindMyPostsViewModel {
     let title = "Мои записи"
-    let icon = "magnifyingglass"
+    let icon = IconsName.magnifyingglass.icon
     let titleForFriendProfile = "Посты TODO: - add name in correct form"
     let iconColor = AppColors.black
     let titleColor = AppColors.orange
