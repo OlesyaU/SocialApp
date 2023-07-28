@@ -427,16 +427,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "670F2300-143B-4CC7-96FA-B3E3B3E3631A"
-            shouldBeEnabled = "Yes"
+            uuid = "9DF2F2DA-20D8-432C-861A-DF4703EE05BA"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SocialApp/EnterPhoneNumber/EnterPhoneNumberViewModel.swift"
+            filePath = "SocialApp/Feed/FeedViewModel/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "enterNumberPhone(phone:)"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "init(isNewUser:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

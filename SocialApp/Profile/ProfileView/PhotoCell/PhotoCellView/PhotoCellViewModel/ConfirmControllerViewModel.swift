@@ -12,12 +12,10 @@ final class ConfirmControllerViewModel {
         var code: String
         var phone: String
     }
+
     private static var newUser: NewUser?
-    private (set) var state: State = .viewIsReady {
-        didSet{
-            viewModelChanged?(state)
-        }
-    }
+    private var state: State = .viewIsReady
+
     private let enterPhoneNumberViewModel: EnterPhoneNumberViewModel
     let confirmLabelTitle = "Подтверждение регистрации"
     let pushNumberUserTitle = "Мы отправили SMS с кодом на номер"
@@ -41,7 +39,7 @@ final class ConfirmControllerViewModel {
     let blackColor = AppColors.black
     var result: Bool?
     var codeFromConfirmPhoneNumberViewModel: String?
-    var viewModelChanged: ((_ state: State)-> Void)?
+   private var viewModelChanged: ((_ state: State)-> Void)?
 
     init(viewModel: EnterPhoneNumberViewModel) {
         enterPhoneNumberViewModel = viewModel
@@ -76,7 +74,7 @@ final class ConfirmControllerViewModel {
         return regexResult == codeResult
     }
 
-    func changeState(_ state: State) {
+    func viewModelChanged(_ state: State) {
         switch state {
             case .viewIsReady:
                 print("view model state \(state)")

@@ -79,11 +79,8 @@ class ConfirmViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubviews()
-        setupConstraints()
-        setColor()
-        setUpTextField()
-        viewModel?.changeState(.viewIsReady)
+        viewModel?.viewModelChanged(.viewIsReady)
+        stateViewModel(state: .viewIsReady)
     }
 
     override func viewWillAppear(_ animated: Bool){
@@ -138,22 +135,22 @@ class ConfirmViewController: UIViewController {
         let codeNext = code.applyPatternOnNumbers(pattern: "# # # # # #", replacementCharacter: "#")
         if !codeNext.isEmpty, codeNext.count == 11 {
             viewModel?.codeFromConfirmPhoneNumberViewModel = codeNext
-            viewModel?.changeState(.buttonTapped)
+            viewModel?.viewModelChanged(.buttonTapped)
             stateViewModel(state: .buttonTapped)
             checkResult()
         } else {
             stateViewModel(state: .error)
-            viewModel?.changeState(.error)
+            viewModel?.viewModelChanged(.error)
         }
     }
 
     private func checkResult(){
         if viewModel?.result == true  {
             stateViewModel(state: .success)
-            viewModel?.changeState(.success)
+            viewModel?.viewModelChanged(.success)
         } else {
             stateViewModel(state: .error)
-            viewModel?.changeState(.error)
+            viewModel?.viewModelChanged(.error)
         }
     }
 
@@ -162,9 +159,11 @@ class ConfirmViewController: UIViewController {
     }
 
     private func pushMainController() {
-        let confirmViewController = MainTabBarController()
+        let mainViewModel = MainTabBarViewModel(isNewUser: true)
+        let mainViewController = MainTabBarController(mainTabBarViewModel: mainViewModel)
+     
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.setViewControllers([confirmViewController], animated: false)
+        self.navigationController?.setViewControllers([mainViewController], animated: false)
     }
 }
 
@@ -287,6 +286,10 @@ extension ConfirmViewController {
     private func stateViewModel(state: State) {
         switch state {
             case .viewIsReady:
+                addSubviews()
+                setupConstraints()
+                setColor()
+                setUpTextField()
                 print("ConfirmViewController stateViewModel(state: \(state)")
             case .buttonTapped:
                 ()

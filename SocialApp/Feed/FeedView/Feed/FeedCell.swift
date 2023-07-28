@@ -40,7 +40,6 @@ final class FeedCell: UITableViewCell {
 
     private let authorNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.textRegular
         label.numberOfLines = 1
         return label
     }()
@@ -68,7 +67,6 @@ final class FeedCell: UITableViewCell {
     private lazy var likesIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(systemName: IconsName.likes.nameIcon)?.imageWithColor(color: AppColors.darkGray)
         return image
     }()
 
@@ -82,7 +80,6 @@ final class FeedCell: UITableViewCell {
     private lazy var commentsIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(systemName: IconsName.comments.nameIcon)?.imageWithColor(color: AppColors.darkGray)
         return image
     }()
 
@@ -99,7 +96,6 @@ final class FeedCell: UITableViewCell {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.isUserInteractionEnabled = true
-        image.image = UIImage(systemName: IconsName.bookmark.nameIcon)
         let tap = UITapGestureRecognizer(target: self, action: #selector(bookmarkTapped))
         image.addGestureRecognizer(tap)
         return image
@@ -220,7 +216,7 @@ final class FeedCell: UITableViewCell {
         likesLabel.text = viewModel.likesCountString
         commentsLabel.text = viewModel.commentsCountString
         professionLabel.text = viewModel.professionText
-
+        authorNameLabel.font = viewModel.auhtorNameLabelFont
         contentView.backgroundColor = viewModel.backgroundColor
         contentHeaderCellView.backgroundColor = viewModel.headerViewColor
         professionLabel.textColor = viewModel.professionLabelTextColor
@@ -228,14 +224,17 @@ final class FeedCell: UITableViewCell {
         image.image = viewModel.postImage
         authorPhoto.image = viewModel.avatarImage
         dotsImage.image = viewModel.dotsImage
-
+        bookmarkIcon.image = viewModel.bookmarkIcon
+        commentsIcon.image = viewModel.commentsIcon
+        likesIcon.image = viewModel.likesIconImage
         dotsImage.isHidden = !viewModel.isNeedToShowDotsView
+
     }
 
     @objc func onDotsTapped() {
-        print("dotsTapped gesture worked")
         viewModel?.dotsImageTapped()
     }
+
     @objc func onPostImageTapped() {
         viewModel?.postImageTapped()
     }
@@ -243,8 +242,8 @@ final class FeedCell: UITableViewCell {
     @objc private func onHeaderTapped() {
         viewModel?.headerTapped()
     }
+
     @objc private func bookmarkTapped() {
-        print("bookmarkTapped gesture worked")
         viewModel?.bookmarkTapped()
     }
 
@@ -257,6 +256,5 @@ final class FeedCell: UITableViewCell {
         commentsLabel.text = String(favoritePost.commentsCount)
         likesLabel.text = String(favoritePost.likesCount)
         authorPhoto.image = UIImage(data: authorAvatar)
-
     }
 }

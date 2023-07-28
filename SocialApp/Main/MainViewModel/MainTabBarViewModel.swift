@@ -6,14 +6,19 @@
 //
 
 import UIKit
-struct MainTabBarViewModel {
+final class  MainTabBarViewModel {
     let tintColorChosenItem = AppColors.orange
     let generalTitle =  Title.general.titleString
     let profileTitle = Title.profile.titleString
     let savedTitle = Title.saved.titleString
-    let generalIcon = IconsName.house.nameIcon
-    let profileIcon = IconsName.person.nameIcon
-    let savedIcon = IconsName.likes.nameIcon
+    let generalIcon = IconsName.house.icon
+    let profileIcon = IconsName.person.icon
+    let savedIcon = IconsName.likes.icon
+    var isNewUser: Bool
+    
+    init(isNewUser: Bool) {
+        self.isNewUser = isNewUser
+    }
 
     enum Title {
         case general

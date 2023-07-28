@@ -121,67 +121,67 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return 1
-        case 1:
-            return 1
-        case 2:
-            return profileViewModel.personalDataViewModel.isMyProfile ? 1 : 0
-        case 3:
-            return 1
-        case 4:
-            return 1
-        default:
-            return profileViewModel.posts.filter({$0.author.nickname == profileViewModel.personalDataViewModel.nickname}).count
+            case 0:
+                return 1
+            case 1:
+                return 1
+            case 2:
+                return profileViewModel.personalDataViewModel.isMyProfile ? 1 : 0
+            case 3:
+                return 1
+            case 4:
+                return 1
+            default:
+                return profileViewModel.posts.filter({$0.author.nickname == profileViewModel.personalDataViewModel.nickname}).count
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case 0:
-            guard let personalDataCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewCell.identifier, for: indexPath) as? ProfileViewCell else { return UITableViewCell() }
+            case 0:
+                guard let personalDataCell = tableView.dequeueReusableCell(withIdentifier: ProfileViewCell.identifier, for: indexPath) as? ProfileViewCell else { return UITableViewCell() }
 
                 personalDataCell.configure(with: profileViewModel.personalDataViewModel)
-            return personalDataCell
+                return personalDataCell
 
-        case 1:
-            let profileActionsCell = ProfileActionsCell()
-            profileActionsCell.configure(viewModels: profileViewModel.actionsViewModels)
-            return profileActionsCell
+            case 1:
+                let profileActionsCell = ProfileActionsCell()
+                profileActionsCell.configure(viewModels: profileViewModel.actionsViewModels)
+                return profileActionsCell
 
-        case 2:
-            if profileViewModel.personalDataViewModel.isMyProfile != true {
-                fallthrough
-            }
+            case 2:
+                if profileViewModel.personalDataViewModel.isMyProfile != true {
+                    fallthrough
+                }
 
-            let buttonsIconCell = ProfileIconButtonsCell()
-            buttonsIconCell.configure(viewModels: profileViewModel.buttonViewModels)
-            return buttonsIconCell
-        case 3:
-            guard let photosCell = tableView.dequeueReusableCell(withIdentifier: PhotosCell.identifier, for: indexPath) as? PhotosCell else {return UITableViewCell()}
-            photosCell.configure(viewModel: profileViewModel.photosCellViewModel)
-            return photosCell
-        case 4:
-            guard let findCell = tableView.dequeueReusableCell(withIdentifier: FindMyPostsCell.identifier, for: indexPath) as? FindMyPostsCell else {return UITableViewCell()}
-            if profileViewModel.personalDataViewModel.isMyProfile {
-                findCell.configure(viewModel: profileViewModel.findMyPostsViewModel)
-            } else {
-                findCell.configureFriend(for: profileViewModel.findMyPostsViewModel)
-            }
-            return findCell
-        default:
-            guard let postDataCell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UITableViewCell() }
-            var post: Post
-            if profileViewModel.personalDataViewModel.isMyProfile {
+                let buttonsIconCell = ProfileIconButtonsCell()
+                buttonsIconCell.configure(viewModels: profileViewModel.buttonViewModels)
+                return buttonsIconCell
+            case 3:
+                guard let photosCell = tableView.dequeueReusableCell(withIdentifier: PhotosCell.identifier, for: indexPath) as? PhotosCell else {return UITableViewCell()}
+                photosCell.configure(viewModel: profileViewModel.photosCellViewModel)
+                return photosCell
+            case 4:
+                guard let findCell = tableView.dequeueReusableCell(withIdentifier: FindMyPostsCell.identifier, for: indexPath) as? FindMyPostsCell else {return UITableViewCell()}
+                if profileViewModel.personalDataViewModel.isMyProfile {
+                    findCell.configure(viewModel: profileViewModel.findMyPostsViewModel)
+                } else {
+                    findCell.configureFriend(for: profileViewModel.findMyPostsViewModel)
+                }
+                return findCell
+            default:
+                guard let postDataCell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UITableViewCell() }
+                var post: Post
+                if profileViewModel.personalDataViewModel.isMyProfile {
 
-                post = profileViewModel.profile.posts[indexPath.row]
-            } else {
+                    post = profileViewModel.profile.posts[indexPath.row]
+                } else {
 
-                //   post = viewModel.posts[indexPath.row]
-                /// -  show posts this friend
+                    //   post = viewModel.posts[indexPath.row]
+                    /// -  show posts this friend
 
-                post = profileViewModel.posts.filter({$0.author.nickname == profileViewModel.personalDataViewModel.nickname})[indexPath.row]
-            }
+                    post = profileViewModel.posts.filter({$0.author.nickname == profileViewModel.personalDataViewModel.nickname})[indexPath.row]
+                }
                 let viewModel = FeedCellViewModel(
                     post: post,
                     indexPath: indexPath,
@@ -189,8 +189,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                     isFromFeed: false,
                     delegate: self
                 )
-            postDataCell.configure(with: viewModel)
-            return postDataCell
+                postDataCell.configure(with: viewModel)
+                return postDataCell
         }
     }
 

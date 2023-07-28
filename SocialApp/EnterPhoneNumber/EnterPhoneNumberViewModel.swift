@@ -5,11 +5,7 @@ import Foundation
 class EnterPhoneNumberViewModel {
 
     private var confirmControllerViewModel: ConfirmControllerViewModel?
-    private (set) var state: State = .viewIsReady {
-        didSet{
-            viewModelChanged?(state)
-        }
-    }
+    private var state: State = .viewIsReady
 
     let welcomeLabelTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
     let pushNumberUserTitle = "Введите номер"
@@ -22,7 +18,7 @@ class EnterPhoneNumberViewModel {
     let actionTitle = "OMG! SURE THING"
     var passNewUserData: ((_ phoneNumber: String, _ code : String) -> Void)?
     var phoneNumber: String?
-    var viewModelChanged: ((_ state: State)-> Void)?
+   
 
     private func enterNumberPhone(phone: String) {
         if  validate(phone: phone) {

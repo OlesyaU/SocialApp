@@ -65,6 +65,8 @@
 		767074112A39955A007FC469 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767074102A39955A007FC469 /* SceneDelegate.swift */; };
 		767074182A39955D007FC469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 767074172A39955D007FC469 /* Assets.xcassets */; };
 		7670741B2A39955D007FC469 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767074192A39955D007FC469 /* LaunchScreen.storyboard */; };
+		76B2415D2A70CBDF00C1A62C /* RegisteredUserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2415C2A70CBDF00C1A62C /* RegisteredUserCellViewModel.swift */; };
+		76B2415F2A70D90D00C1A62C /* RegisteredUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2415E2A70D90D00C1A62C /* RegisteredUserCell.swift */; };
 		76CB113C2A50F14D009B29F4 /* ProfileDotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB113B2A50F14D009B29F4 /* ProfileDotsController.swift */; };
 		76CB113E2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB113D2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift */; };
 		76CB11642A5190F1009B29F4 /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB11632A5190F1009B29F4 /* ExtensionViewController.swift */; };
@@ -164,6 +166,8 @@
 		767074172A39955D007FC469 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7670741A2A39955D007FC469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7670741C2A39955D007FC469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76B2415C2A70CBDF00C1A62C /* RegisteredUserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredUserCellViewModel.swift; sourceTree = "<group>"; };
+		76B2415E2A70D90D00C1A62C /* RegisteredUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredUserCell.swift; sourceTree = "<group>"; };
 		76CB113B2A50F14D009B29F4 /* ProfileDotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDotsController.swift; sourceTree = "<group>"; };
 		76CB113D2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDotsControllerViewModel.swift; sourceTree = "<group>"; };
 		76CB11632A5190F1009B29F4 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 			children = (
 				7614A3BA2A41A6D4004D7466 /* FeedViewModel.swift */,
 				76CB11672A51A7E1009B29F4 /* FeedCellViewModel.swift */,
+				76B2415C2A70CBDF00C1A62C /* RegisteredUserCellViewModel.swift */,
 			);
 			path = FeedViewModel;
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 				7614A3BE2A42CDD3004D7466 /* FirstFeedCell.swift */,
 				7614A3FD2A432E4D004D7466 /* StoryCollectionViewCell.swift */,
 				7614A4072A44362A004D7466 /* FloatingPanelViewController.swift */,
+				76B2415E2A70D90D00C1A62C /* RegisteredUserCell.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -966,10 +972,12 @@
 				764CBD592A56D7FB007F2788 /* DetailedInformationController.swift in Sources */,
 				7670740F2A39955A007FC469 /* AppDelegate.swift in Sources */,
 				76D06E002A58458E0024E8F4 /* MainTabBarViewModel.swift in Sources */,
+				76B2415D2A70CBDF00C1A62C /* RegisteredUserCellViewModel.swift in Sources */,
 				76CB11912A54218E009B29F4 /* ProfileInformationSelectGenderViewModel.swift in Sources */,
 				76F042E42A4DE2AE00631896 /* FindMyPostsCell.swift in Sources */,
 				764CBD5D2A56D963007F2788 /* DetailInformationViewModel.swift in Sources */,
 				76D06E562A5D90880024E8F4 /* CoreDataManager.swift in Sources */,
+				76B2415F2A70D90D00C1A62C /* RegisteredUserCell.swift in Sources */,
 				7614A4082A44362A004D7466 /* FloatingPanelViewController.swift in Sources */,
 				764CBD632A5756A4007F2788 /* DetailedInformationHeaderViewModel.swift in Sources */,
 				761E26562A54435E00CA2B4E /* Comment.swift in Sources */,
