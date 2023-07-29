@@ -9,7 +9,6 @@ import UIKit
 
 class RegisteredUserCell: UITableViewCell {
 
-    private var viewModel: RegisteredUserCellViewModel?
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.textRegular
@@ -35,6 +34,7 @@ class RegisteredUserCell: UITableViewCell {
     private lazy var newsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
+        label.isUserInteractionEnabled = true
         let tapToLabel = UITapGestureRecognizer(target: self, action: #selector(onNewsLabelTapped))
         label.addGestureRecognizer(tapToLabel)
         return label
@@ -43,10 +43,14 @@ class RegisteredUserCell: UITableViewCell {
     private lazy var pickingLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
+        label.isUserInteractionEnabled = true
         let tapToLabel = UITapGestureRecognizer(target: self, action: #selector(onPickingLabelTapped))
         label.addGestureRecognizer(tapToLabel)
         return label
     }()
+
+    var viewModel: RegisteredUserCellViewModel?
+    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

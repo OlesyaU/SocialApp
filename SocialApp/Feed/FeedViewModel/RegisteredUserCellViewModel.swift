@@ -14,7 +14,7 @@ protocol RegisteredUserCellDelegate: AnyObject {
 
 final class RegisteredUserCellViewModel {
 
-    private weak var delegate: RegisteredUserCellDelegate?
+    weak var delegate: RegisteredUserCellDelegate?
     let title = "Главная"
     let newsTitleLabel = "Новости"
     let pickingTitleLabel = "Для вас"

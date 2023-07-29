@@ -14,10 +14,12 @@ final class FeedTableViewController: UITableViewController {
     private var floatingPanel: FloatingPanelController?
     private let coreDataManager = CoreDataManager.shared
     var delegate: PublicationControllerProtocol?
+    var ifRegisteredUserDelegate: RegisteredUserCellDelegate?
 
     init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+
     }
 
     required init?(coder: NSCoder) {
@@ -55,6 +57,7 @@ final class FeedTableViewController: UITableViewController {
                     fallthrough
                 }
                 let cell = RegisteredUserCell()
+                cell.viewModel?.delegate = self
                 return cell
             case 1:
                 guard let firstCell = tableView.dequeueReusableCell(withIdentifier: FirstFeedCell.identifier, for: indexPath) as? FirstFeedCell else { return UITableViewCell()}
@@ -116,3 +119,15 @@ extension FeedTableViewController: FeedCellDelegate {
 }
 
 extension FeedTableViewController: FloatingPanelControllerDelegate {}
+
+extension FeedTableViewController: RegisteredUserCellDelegate {
+    func onPickingLabelTapped() {
+        print("onPickingLabelTapped()")
+    }
+
+    func onNewsLabelTapped() {
+        print("onNewsLabelTapped()")
+    }
+
+
+}
