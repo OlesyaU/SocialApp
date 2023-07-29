@@ -1,0 +1,2 @@
+# H1 SocialApp - project like social network for communication people who want to show something interesting and discuss for their friends and other one users.\ For start you have to create an account and post with photo or image and description for it. Other users will see and will comment the one. You can write directly for person or call him/her. Social media is the most widespread and demanded media today.
+
