@@ -84,7 +84,7 @@ class EnterPhoneNumberViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         configure()
-}
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -92,9 +92,7 @@ class EnterPhoneNumberViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubviews()
-        setupConstraints()
-        setColor()
+        stateViewModel(state: .viewIsReady)
     }
 
     override func viewWillAppear(_ animated: Bool){
@@ -110,6 +108,7 @@ class EnterPhoneNumberViewController: UIViewController {
             ),
             animated: true
         )
+        phoneNumberField.text = ""
     }
 
     // MARK: - Helpers
@@ -132,7 +131,7 @@ class EnterPhoneNumberViewController: UIViewController {
         confirmButton.setTitle(viewModel?.buttonTitle, for: .normal)
         privacyLabel.text = viewModel?.privacyLabelTitle
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches,
                            with: event)
@@ -141,16 +140,49 @@ class EnterPhoneNumberViewController: UIViewController {
 
     // MARK: - Navigation
     private func registrationButtonTapped() {
-        // TODO: - Add phone check
         guard let phoneNumber = phoneNumberField.text else { return }
-        viewModel?.testing(string: phoneNumber)
-        pushConfirmController()
+        if !phoneNumber.isEmpty, phoneNumber.count == 16 {
+            viewModel?.phoneNumber = phoneNumber
+            viewModel?.changeState(.buttonTapped)
+            stateViewModel(state: .success)
+
+        } else {
+            viewModel?.changeState(.error)
+            stateViewModel(state: .error)
+        }
+    }
+
+    private func stateViewModel(state: State) {
+        switch state {
+            case .viewIsReady:
+                addSubviews()
+                setupConstraints()
+                setColor()
+            case .buttonTapped:
+                ()
+            case .success:
+                pushConfirmController()
+            case .error:
+                showErrorAlert()
+        }
     }
 
     private func pushConfirmController() {
-        let model = ConfirmControllerViewModel()
+        guard let viewModel = viewModel else {return}
+        let model = ConfirmControllerViewModel(viewModel: viewModel)
         let confirmViewController = ConfirmViewController(with: model)
         navigationController?.pushViewController(confirmViewController, animated: true)
+    }
+
+    private func showErrorAlert() {
+        guard let viewModel else {return}
+        let alertTitle = viewModel.alertTitle
+        let alertMessage = viewModel.alertMessage
+        let actionTitle = viewModel.actionTitle
+        Alert.showAleart(for: self, with: alertTitle, aleartMessage: alertMessage,
+                         action1Title: actionTitle, handler: { [weak self] _ in
+            self?.phoneNumberField.text = ""
+        }, action2Title: nil)
     }
 
     @objc private func backItemAction(){
@@ -235,7 +267,6 @@ extension EnterPhoneNumberViewController {
 extension EnterPhoneNumberViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-
         coordinator.animate { _ in
             self.activateOrientationConstraints()
         }
@@ -243,7 +274,7 @@ extension EnterPhoneNumberViewController {
 }
 
 extension EnterPhoneNumberViewController: SetThemeColorProtocol {
-   func setColor() {
+    func setColor() {
         view.backgroundColor = .backgroundPrimary
         phoneNumberField.backgroundColor = .textFieldColor
         confirmButton.tintColor = .contentColor
@@ -256,9 +287,7 @@ extension EnterPhoneNumberViewController: UITextFieldDelegate {
             return false
         }
         let newText = text.applyPatternOnNumbers(pattern: "### ### ## ##", replacementCharacter: "#")
-
         textField.text = "+7 \(newText)"
-
         let newLength = text.count - 3
         return newLength <= 10 || string.isEmpty
     }
@@ -267,3 +296,5 @@ extension EnterPhoneNumberViewController: UITextFieldDelegate {
         return true
     }
 }
+
+
