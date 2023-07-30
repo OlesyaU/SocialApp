@@ -103,22 +103,21 @@ final class CombackViewController: UIViewController {
         shadow.shadowColor = UIColor.gray
         shadow.shadowBlurRadius = 5
         shadow.shadowOffset = CGSize(width: 3, height: 3)
-        let attrs: [NSAttributedString.Key: Any] = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 16),
             .foregroundColor: UIColor.gray,
             .shadow: shadow
         ]
-        let attributedText = NSAttributedString(string: text, attributes: attrs)
+        let attributedText = NSAttributedString(string: text, attributes: attributes)
         secondLabel.attributedText = attributedText
         phoneNumberField.placeholder = viewModel?.placeholderString
         confirmButton.setTitle(viewModel?.buttonTitle, for: .normal)
     }
 
     private func confirmButtonTapped() {
-        guard let numberFromTextField = phoneNumberField.text else { return }
-        if viewModel?.checkUser(by: numberFromTextField) != nil {
-            let feedViewController = FeedTableViewController()
-            navigationController?.pushViewController(feedViewController, animated: true)
+        guard let phoneNumber = phoneNumberField.text else { return }
+        if !phoneNumber.isEmpty, phoneNumber.count == 16, viewModel?.checkUser(by: phoneNumber) != nil {
+            pushMainController()
         } else {
             showAleart()
         }
@@ -212,7 +211,6 @@ extension CombackViewController: UITextFieldDelegate {
             return false
         }
         let newText = text.applyPatternOnNumbers(pattern: "### ### ## ##", replacementCharacter: "#")
-
         textField.text = "+7 \(newText)"
 
         let newLength = text.count - 3
@@ -222,11 +220,18 @@ extension CombackViewController: UITextFieldDelegate {
 
 extension CombackViewController {
     private func showAleart () {
-        let aleart = UIAlertController(title: "OOPPPSS", message: "The pass is wrong", preferredStyle: .alert)
-        let action = UIAlertAction(title:  "OMG", style: .destructive, handler: { [weak self ] _ in
+        let aleart = UIAlertController(title: "OOPPPSS", message: "The phone number is incorrect. Please write correctly", preferredStyle: .alert)
+        let action = UIAlertAction(title:  "OMG! SURE THING", style: .destructive, handler: { [weak self ] _ in
             self?.navigationController?.popViewController(animated: true)
         })
         aleart.addAction(action)
         present(aleart, animated: true)
+    }
+
+    private func pushMainController() {
+        let mainViewModel = MainTabBarViewModel(isNewUser: false)
+        let mainViewController = MainTabBarController(mainTabBarViewModel: mainViewModel)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setViewControllers([mainViewController], animated: false)
     }
 }
