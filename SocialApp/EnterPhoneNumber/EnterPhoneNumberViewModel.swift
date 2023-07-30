@@ -1,17 +1,11 @@
-import FirebaseAuth
+//import FirebaseAuth
+
+import Foundation
 
 class EnterPhoneNumberViewModel {
 
-    // TODO: - Обработка ошибок ввода
-    enum State {
-        case input
-        case error
-        case correct
-    }
-
-    private var verificationId: String?
-    private var verificationCode: String?
-    private var user: User?
+    private var confirmControllerViewModel: ConfirmControllerViewModel?
+    private var state: State = .viewIsReady
 
     let welcomeLabelTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
     let pushNumberUserTitle = "Введите номер"
@@ -19,31 +13,45 @@ class EnterPhoneNumberViewModel {
     let placeholderString = "+7 _ _ _  _ _ _  _ _  _ _"
     let buttonTitle = "ДАЛЕЕ"
     let privacyLabelTitle = "Нажимая кнопку \"Далее\"  Вы принимаете \n пользовательское Соглашение и политику конфиденциальности"
-    private var state: State = .input {
-        didSet {
-            viewModelChanged?()
+    let alertTitle = "OOPPPSS"
+    let alertMessage = "The phone number is incorrect. Please write correctly"
+    let actionTitle = "OMG! SURE THING"
+    var passNewUserData: ((_ phoneNumber: String, _ code : String) -> Void)?
+    var phoneNumber: String?
+
+
+    private func enterNumberPhone(phone: String) {
+        if  validate(phone: phone) {
+            let code = String(describing: Array(repeating: Int.random(in: 0...9), count: 6)).applyPatternOnNumbers(pattern: "# # # # # #", replacementCharacter: "#")
+            confirmControllerViewModel = ConfirmControllerViewModel(viewModel: self)
+            passNewUserData?(phone,code)
+            print("NewUser data phone: \(phone), code: \(code)")
+        } else {
+            state = .error
         }
     }
 
-    var viewModelChanged: (() -> Void)?
+    private func validate(phone: String) -> Bool {
+        let PHONE_REGEX = "[+][7][ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{2}[ ][0-9]{2}"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result = phoneTest.evaluate(with: phone)
+        return result
+    }
 
-    func testing(string: String){
-        let number = Int.random(in: 0...99)
-        Auth.auth().createUser(withEmail: "\(number)@mail.ru", password: string) { authResult, error in
+    func changeState(_ state: State) {
+        guard let phoneNumber = phoneNumber else { return }
+        switch state {
+            case .viewIsReady:
+                print("view model state \(state)")
+            case .buttonTapped:
+                enterNumberPhone(phone: phoneNumber)
+                print("view model state \(state)")
+            case .error:
+                print("view model state \(state)")
+            case .success:
+                print("view model state \(state)")
         }
-        state = .correct
     }
 }
 
 
-/*
- Нужно доделать регистрацию: ограничив возможно сть для захода только номером с девятками
- Для этого - сделать error state на экране ввода телефона,
- Далее - корректно передавать данные из экрана в экран:
- на экране ввода номера - получаем из authorise - verification id -  передаем его в след экран ( с вводом 6 символов) -
- во вью модель
- В след экране - делаем проверку на введенный код: отправлчяем запрос в фиребас - и парсим ответ
- поправь маску на жкране ввода кода
-
- обработку паролей, номеров - делать во вьюмоделях!
- */
