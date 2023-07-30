@@ -1,8 +1,8 @@
 //import FirebaseAuth
 
-import Foundation
+import UIKit
 
-class EnterPhoneNumberViewModel {
+final class EnterPhoneNumberViewModel {
 
     private var confirmControllerViewModel: ConfirmControllerViewModel?
     private var state: State = .viewIsReady
@@ -18,6 +18,12 @@ class EnterPhoneNumberViewModel {
     let actionTitle = "OMG! SURE THING"
     var passNewUserData: ((_ phoneNumber: String, _ code : String) -> Void)?
     var phoneNumber: String?
+    let privacyLabelFont = UIFont.badgeFont
+    let lightFont = UIFont.lightFont
+    let boldFont = UIFont.textBold
+    let lightGrayColor = AppColors.lightGray
+    let grayColor = AppColors.gray
+    let centerText = TextAttribute.centerText
 
 
     private func enterNumberPhone(phone: String) {
