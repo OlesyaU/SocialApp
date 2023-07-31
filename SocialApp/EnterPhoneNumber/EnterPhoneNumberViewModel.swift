@@ -17,13 +17,13 @@ final class EnterPhoneNumberViewModel {
     let alertMessage = "The phone number is incorrect. Please write correctly"
     let actionTitle = "OMG! SURE THING"
     var passNewUserData: ((_ phoneNumber: String, _ code : String) -> Void)?
-    var phoneNumber: String?
     let privacyLabelFont = UIFont.badgeFont
     let lightFont = UIFont.lightFont
     let boldFont = UIFont.textBold
     let lightGrayColor = AppColors.lightGray
     let grayColor = AppColors.gray
     let centerText = TextAttribute.centerText
+    var phoneNumber: String?
 
 
     private func enterNumberPhone(phone: String) {

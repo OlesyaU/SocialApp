@@ -7,7 +7,8 @@
 
 import UIKit
 
-class EnterPhoneNumberViewController: UIViewController {
+final class EnterPhoneNumberViewController: UIViewController {
+
     private var viewModel: EnterPhoneNumberViewModel?
 
     private let welcomeLabel: UILabel = {
@@ -142,7 +143,6 @@ class EnterPhoneNumberViewController: UIViewController {
             viewModel?.phoneNumber = phoneNumber
             viewModel?.changeState(.buttonTapped)
             stateViewModel(state: .success)
-
         } else {
             viewModel?.changeState(.error)
             stateViewModel(state: .error)

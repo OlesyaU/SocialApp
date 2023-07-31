@@ -119,7 +119,7 @@ final class CombackViewController: UIViewController {
         if !phoneNumber.isEmpty, phoneNumber.count == 16, viewModel?.checkUser(by: phoneNumber) != nil {
             pushMainController()
         } else {
-            showAleart()
+        showErrorAlert()
         }
     }
 }
@@ -219,13 +219,16 @@ extension CombackViewController: UITextFieldDelegate {
 }
 
 extension CombackViewController {
-    private func showAleart () {
-        let aleart = UIAlertController(title: "OOPPPSS", message: "The phone number is incorrect. Please write correctly", preferredStyle: .alert)
-        let action = UIAlertAction(title:  "OMG! SURE THING", style: .destructive, handler: { [weak self ] _ in
+    private func showErrorAlert() {
+        guard let viewModel else { return }
+        let alertTitle = viewModel.alertTitle
+        let alertMessage = viewModel.alertMessage
+        let actionTitle = viewModel.actionTitle
+        Alert.showAleart(for: self, with: alertTitle, aleartMessage: alertMessage,
+                         action1Title: actionTitle, handler: { [weak self] _ in
             self?.navigationController?.popViewController(animated: true)
-        })
-        aleart.addAction(action)
-        present(aleart, animated: true)
+            self?.phoneNumberField.text = ""
+        }, action2Title: nil)
     }
 
     private func pushMainController() {

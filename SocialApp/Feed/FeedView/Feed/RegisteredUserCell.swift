@@ -19,15 +19,12 @@ class RegisteredUserCell: UITableViewCell {
     private lazy var magnifyingglassIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.clipsToBounds = true
-        image.image = IconsName.magnifyingglass.icon
         return image
     }()
 
     private lazy var bellIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = IconsName.bell.icon
         return image
     }()
 
@@ -67,6 +64,7 @@ class RegisteredUserCell: UITableViewCell {
     private func configure(){
         bellIcon.image = viewModel?.bellIcon
         magnifyingglassIcon.image = viewModel?.magnifyingglassIcon
+        magnifyingglassIcon.tintColor = viewModel?.chosenItemColor
         titleLabel.text = viewModel?.title
         titleLabel.font = viewModel?.boldFont
         newsLabel.text = viewModel?.newsTitleLabel

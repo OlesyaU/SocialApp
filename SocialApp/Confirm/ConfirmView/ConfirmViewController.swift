@@ -292,16 +292,18 @@ extension ConfirmViewController {
                 setUpTextField()
                 print("ConfirmViewController stateViewModel(state: \(state)")
             case .buttonTapped:
-                ()
+               print("ConfirmViewController stateViewModel(state: \(state)")
             case .success:
                 pushMainController()
+                print("ConfirmViewController stateViewModel(state: \(state)")
             case .error:
                 showErrorAlert()
+                print("ConfirmViewController stateViewModel(state: \(state)")
         }
     }
 
     private func showErrorAlert() {
-        guard let viewModel else {return}
+        guard let viewModel else { return }
         let alertTitle = viewModel.alertTitle
         let alertMessage = viewModel.alertMessage
         let actionTitle = viewModel.actionTitle

@@ -8,18 +8,20 @@ import UIKit
 import FirebaseAuth
 
 final class ConfirmControllerViewModel {
+
     private struct NewUser {
         var code: String
         var phone: String
     }
 
+    private let enterPhoneNumberViewModel: EnterPhoneNumberViewModel
     private static var newUser: NewUser?
     private var state: State = .viewIsReady
+    private var viewModelChanged: ((_ state: State)-> Void)?
 
-    private let enterPhoneNumberViewModel: EnterPhoneNumberViewModel
     let confirmLabelTitle = "Подтверждение регистрации"
     let pushNumberUserTitle = "Мы отправили SMS с кодом на номер"
-    let numberLabelTitle = "+7 999 999 99 99"
+    var numberLabelTitle = newUser?.phone
     let badgeText = "Введите код из SMS"
     let placeholderString = "_ _ _ _ _ _"
     let buttonTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
@@ -39,7 +41,6 @@ final class ConfirmControllerViewModel {
     let blackColor = AppColors.black
     var result: Bool?
     var codeFromConfirmPhoneNumberViewModel: String?
-   private var viewModelChanged: ((_ state: State)-> Void)?
 
     init(viewModel: EnterPhoneNumberViewModel) {
         enterPhoneNumberViewModel = viewModel
@@ -47,7 +48,7 @@ final class ConfirmControllerViewModel {
     }
 
     private func getCodeNewUserData() {
-        enterPhoneNumberViewModel.passNewUserData = { phone, code in
+        enterPhoneNumberViewModel.passNewUserData = {  phone, code in
             ConfirmControllerViewModel.newUser = NewUser(code: code, phone: phone)
         }
     }
@@ -77,17 +78,17 @@ final class ConfirmControllerViewModel {
     func viewModelChanged(_ state: State) {
         switch state {
             case .viewIsReady:
-                print("view model state \(state)")
+                print("ConfirmControllerViewModel view model state \(state)")
             case .buttonTapped:
                 guard let code = codeFromConfirmPhoneNumberViewModel else { return }
                 result =  validate(code: code)
-                print("view model state \(state)")
+                print("ConfirmControllerViewModel view model state \(state)")
             case .error:
-                print("view model state \(state)")
+                print("ConfirmControllerViewModel view model state \(state)")
             case .success:
                 guard let phoneForRegister = ConfirmControllerViewModel.newUser?.phone else { return }
                 registerNewUser(phone: phoneForRegister)
-                print("view model state \(state)")
+                print("ConfirmControllerViewModel view model state \(state)")
         }
     }
 }

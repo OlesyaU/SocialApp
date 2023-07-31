@@ -6,7 +6,9 @@
 //
 
 import UIKit
+
 final class StartAppControllerViewModel {
+    
     let registerButtonTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
     let alreadyButtonTitle = "Уже есть аккаунт"
     let startAppImage = UIImage(named: "WelcomeLogo")

@@ -8,12 +8,19 @@
 import FirebaseAuth
 
 final class CombackViewModel: ComebackViewModelProtocol {
+
     private let model = DataBase.shared
+    private var state: State = .viewIsReady
+    private var viewModelChanged: ((_ state: State)-> Void)?
+    
     let welcomeLabelTitle = "С возвращением"
     let welcomeNewUserTitle = "Добро пожаловать !"
     let secondLabelTitle = "Введите номер телефона \n для входа в приложение"
     let placeholderString = " +7 _ _ _  _ _ _  _ _  _ _"
     let buttonTitle = "ПОДТВЕРДИТЬ"
+    let alertTitle = "OOPPPSS"
+    let alertMessage = "The code is incorrect. Please write correctly"
+    let actionTitle = "OMG! SURE THING"
 
     func checkUser(by phone: String) -> Profile? {
         guard validate(phone: phone) else {
