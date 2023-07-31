@@ -7,30 +7,23 @@
 
 import UIKit
 
-class EnterPhoneNumberViewController: UIViewController {
+final class EnterPhoneNumberViewController: UIViewController {
+
     private var viewModel: EnterPhoneNumberViewModel?
 
     private let welcomeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.textBold
-        label.textAlignment = .center
         label.cornerRadius()
         return label
     }()
 
     private let pushNumberLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.lightFont
-        label.textColor = .lightGray
-        label.textAlignment = .center
         return label
     }()
 
     private let secondLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.lightFont
-        label.textColor = .gray
-        label.textAlignment = .center
         label.numberOfLines = 2
         label.cornerRadius()
         return label
@@ -69,8 +62,6 @@ class EnterPhoneNumberViewController: UIViewController {
 
     private let privacyLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.badgeFont
-        label.textColor = .lightGray
         label.textAlignment = .center
         label.numberOfLines = 3
         return label
@@ -130,6 +121,13 @@ class EnterPhoneNumberViewController: UIViewController {
         secondLabel.text = viewModel?.secondLabelTitle
         confirmButton.setTitle(viewModel?.buttonTitle, for: .normal)
         privacyLabel.text = viewModel?.privacyLabelTitle
+        privacyLabel.font = viewModel?.privacyLabelFont
+        privacyLabel.textColor = viewModel?.lightGrayColor
+        welcomeLabel.font = viewModel?.boldFont
+        secondLabel.textColor = viewModel?.lightGrayColor
+        pushNumberLabel.textColor = viewModel?.grayColor
+        [pushNumberLabel, secondLabel].forEach { $0.font = viewModel?.lightFont }
+        [welcomeLabel, pushNumberLabel, secondLabel].forEach { $0.textAlignment = viewModel?.centerText ?? .center}
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -145,7 +143,6 @@ class EnterPhoneNumberViewController: UIViewController {
             viewModel?.phoneNumber = phoneNumber
             viewModel?.changeState(.buttonTapped)
             stateViewModel(state: .success)
-
         } else {
             viewModel?.changeState(.error)
             stateViewModel(state: .error)
