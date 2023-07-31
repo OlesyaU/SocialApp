@@ -14,12 +14,12 @@ protocol DetailedInformationHeaderViewModelDelegate: AnyObject {
 final class DetailedInformationHeaderViewModel {
     private let type: DetailedInformationViewType
 
-    private var iconString: String {
+    private var backIconImage: UIImage? {
         switch type {
             case .information:
-                return IconsName.close.nameIcon
+                return IconsName.close.icon
             case .settings:
-                return IconsName.leftArrow.nameIcon
+                return IconsName.leftArrow.icon
         }
     }
     weak var delegate: DetailedInformationHeaderViewModelDelegate?
@@ -28,7 +28,7 @@ final class DetailedInformationHeaderViewModel {
     let backgroundColor = AppColors.biege
     let titleFont = UIFont.textBold
     var backIcon: UIImage? {
-        UIImage(systemName: iconString)?.imageWithColor(color: AppColors.orange)
+        backIconImage?.imageWithColor(color: AppColors.orange)
     }
 
     init(
