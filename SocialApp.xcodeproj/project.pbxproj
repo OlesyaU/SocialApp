@@ -161,7 +161,6 @@
 		767074172A39955D007FC469 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7670741A2A39955D007FC469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7670741C2A39955D007FC469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76B241612A750D4500C1A62C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		76CB113B2A50F14D009B29F4 /* ProfileDotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDotsController.swift; sourceTree = "<group>"; };
 		76CB113D2A50F197009B29F4 /* ProfileDotsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDotsControllerViewModel.swift; sourceTree = "<group>"; };
 		76CB11632A5190F1009B29F4 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
@@ -532,7 +531,6 @@
 				767074192A39955D007FC469 /* LaunchScreen.storyboard */,
 				7670741C2A39955D007FC469 /* Info.plist */,
 				76CD099A2A3C97AA001A1B31 /* GoogleService-Info.plist */,
-				76B241612A750D4500C1A62C /* README.md */,
 			);
 			path = SocialApp;
 			sourceTree = "<group>";

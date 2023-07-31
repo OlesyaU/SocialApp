@@ -17,17 +17,17 @@ class DataBase {
     init() {
         testProfile =  Profile(
             avatar: "Avatar2",
-            name: "Name",
-            surname: "Surname",
-            profession: "Profession",
+            name: "Олеся",
+            surname: "Украинская",
+            profession: "Студентка",
             photos: getPhoto().shuffled(),
             posts: [],
             subscribers: [],
             subscriptions: [],
-            city: "",
+            city: "Москва",
             dateOfBirth: Date(),
-            education: "",
-            career: "",
+            education: "Высшее",
+            career: "Медиа-холдинг",
             contacts: [.mobilePhone("+7 999 999 99 99")],
             gender: .female
         )
