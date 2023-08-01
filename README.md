@@ -21,7 +21,7 @@
 * [Вариант дизайна](https://www.figma.com/file/s1N2cHHSmLScPf5dhDX8Oc/мобильные-приложения?type=design&node-id=724-2347&mode=design&t=CrsAB7JXQvzqCgW4-0) 
 * [Прототип приложения](https://www.figma.com/proto/s1N2cHHSmLScPf5dhDX8Oc/мобильные-приложения?node-id=724-2348&scaling=scale-down&page-id=724%3A2347&starting-point-node-id=724%3A2348&show-proto-sidebar=1) 
 
-![Стартовый экран приложения](https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png =100x200)
+![Стартовый экран приложения](https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png){:height="200px" width="100px"}
 
 
 ## 🔴 Функции, реализованные в проекте
