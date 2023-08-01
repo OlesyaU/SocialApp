@@ -22,13 +22,15 @@
 * [Прототип приложения](https://www.figma.com/proto/s1N2cHHSmLScPf5dhDX8Oc/мобильные-приложения?node-id=724-2348&scaling=scale-down&page-id=724%3A2347&starting-point-node-id=724%3A2348&show-proto-sidebar=1)
 
 <p float="left">
- <br>
- <em>Стратовый экран приложения</em> 
- <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png" width="20%" height="30%" title="Стратовый экран приложения"> 
-  <br>
-     <em>Экран регистрации</em>  |
-     <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Экран%20регистрации.png" width="20%" height="30%" title="Экран регистрации">
-     
+ <figure>
+    <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png" width="20%" height="30%" alt="Пустой плейсхолдер">
+    <figcaption>Стратовый экран приложения</figcaption>
+</figure>
+  <figure>
+    <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Экран%20регистрации.png" width="20%" height="30%">
+    <figcaption>Экран регистрации</figcaption>
+</figure>
+ 
 </p>
 
 
