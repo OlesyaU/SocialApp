@@ -21,6 +21,9 @@
 * [Вариант дизайна](https://www.figma.com/file/s1N2cHHSmLScPf5dhDX8Oc/мобильные-приложения?type=design&node-id=724-2347&mode=design&t=CrsAB7JXQvzqCgW4-0) 
 * [Прототип приложения](https://www.figma.com/proto/s1N2cHHSmLScPf5dhDX8Oc/мобильные-приложения?node-id=724-2348&scaling=scale-down&page-id=724%3A2347&starting-point-node-id=724%3A2348&show-proto-sidebar=1) 
 
+![Стфртовый экран приложения](https://github.com/OlesyaU/SocialApp/commit/a2603212c926ed503a37045a8b9c82b6bd939eea#diff-023ab44f52fb43f24616b6572dd7b58b5c2817af5ecd10d710384600b18bb466
+)
+
 
 ## 🔴 Функции, реализованные в проекте
 
@@ -51,7 +54,7 @@
 
 ## 🤓 Author
 
-** Олеся Украинская
+** Олеся Украинская **
 [GitHub](https://github.com/OlesyaU?tab=repositories)
 [Telegram](https://t.me/@OlesyaUkrainskaya)
 
