@@ -22,13 +22,17 @@
 * [Прототип приложения](https://www.figma.com/proto/s1N2cHHSmLScPf5dhDX8Oc/мобильные-приложения?node-id=724-2348&scaling=scale-down&page-id=724%3A2347&starting-point-node-id=724%3A2348&show-proto-sidebar=1)
 
 <p float="left">
-  <img src="/img1.png" width="100" />
-  <img src="/img2.png" width="100" /> 
-  <img src="/img3.png" width="100" />
+ <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png" alt="Стратовый экран приложения" width="20%" height="30%">
+ <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Экран%20регистрации.png" alt="Экран регистрации" width="20%" height="30%">
+<img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Переход%20на%20экран%20подтверждения.png" alt="Переход на экран подтверждения" width="20%" height="30%">
+<img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Подтверждение%20кодом.png" alt="Подтверждение кодом" width="20%" height="30%">
+<img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Ввод%20проверочного%20кода.png" alt="Ввод проверочного кода" width="20%" height="30%">
+<img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Лента%20нового%20пользователя.png" alt="Лента нового пользователя" width="20%" height="30%">
+<img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Пост.png" alt="Пост" width="20%" height="30%">
 </p>
 
- Стратовый экран приложения
-<img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png" width="20%" height="30%">
+ 
+<img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png" alt="Стратовый экран приложения" width="20%" height="30%">
 
 
 ## 🔴 Функции, реализованные в проекте
