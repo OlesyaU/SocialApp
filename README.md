@@ -21,17 +21,34 @@
 * [Вариант дизайна](https://www.figma.com/file/s1N2cHHSmLScPf5dhDX8Oc/мобильные-приложения?type=design&node-id=724-2347&mode=design&t=CrsAB7JXQvzqCgW4-0) 
 * [Прототип приложения](https://www.figma.com/proto/s1N2cHHSmLScPf5dhDX8Oc/мобильные-приложения?node-id=724-2348&scaling=scale-down&page-id=724%3A2347&starting-point-node-id=724%3A2348&show-proto-sidebar=1)
 
-<p float="left">
- <figure>
-    <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png" width="20%" height="30%" alt="Пустой плейсхолдер">
-    <figcaption>Стратовый экран приложения</figcaption>
-</figure>
-  <figure>
-    <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Экран%20регистрации.png" width="20%" height="30%">
-    <figcaption>Экран регистрации</figcaption>
-</figure>
+<table>
+  <tr>
+    <td>Стартовый экран</td>
+     <td>Экран регистрации</td>
+     <td>Переход на экран подтверждения</td>
+     <td>Подтверждение кодом</td>
+  </tr>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png"width="250" height="500"></td>
+    <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Экран%20регистрации.png" width="250" height="500"></td>
+    <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Переход%20на%20экран%20подтверждения.png" width="250" height="500"></td>
+     <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Подтверждение%20кодом.png" width="250" height="500"></td>
+  </tr>
+ </table>
  
-</p>
+ <table>
+  <tr>
+    <td>Ввод проверочного кода</td>
+     <td>Лента нового пользователя</td>
+     <td>Пост.png</td>
+  </tr>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Ввод%20проверочного%20кода.png" width="250" height="500"></td>
+    <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Лента%20нового%20пользователя.png" width="250" height="500"></td>
+    <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Пост.png" width="250" height="500"></td>
+  </tr>
+ </table>
+
 
 
 ## 🔴 Функции, реализованные в проекте
