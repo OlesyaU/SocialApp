@@ -26,26 +26,24 @@
     <td>Стартовый экран</td>
      <td>Экран регистрации</td>
      <td>Переход на экран подтверждения</td>
-     <td>Подтверждение кодом</td>
   </tr>
   <tr>
     <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png"width="250" height="500"></td>
     <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Экран%20регистрации.png" width="250" height="500"></td>
     <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Переход%20на%20экран%20подтверждения.png" width="250" height="500"></td>
-     <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Подтверждение%20кодом.png" width="250" height="500"></td>
   </tr>
  </table>
  
  <table>
   <tr>
+     <td>Подтверждение кодом</td>
     <td>Ввод проверочного кода</td>
      <td>Лента нового пользователя</td>
-     <td>Пост.png</td>
   </tr>
   <tr>
+     <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Подтверждение%20кодом.png" width="250" height="500"></td>
     <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Ввод%20проверочного%20кода.png" width="250" height="500"></td>
     <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Лента%20нового%20пользователя.png" width="250" height="500"></td>
-    <td><img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Пост.png" width="250" height="500"></td>
   </tr>
  </table>
 
