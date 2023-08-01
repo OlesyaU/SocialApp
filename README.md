@@ -23,11 +23,10 @@
 
 <p float="left">
  <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Стартовый%20экран.png" width="20%" height="30%" title="Стратовый экран приложения">
-  <figcaption>Стартовый экран</figcaption>
- 
+  <br>
+    <em>Стратовый экран приложения</em>
  <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Экран%20регистрации.png" width="20%" height="30%" title="Экран регистрации">
- *Экран регистрации*
- 
+     <em>Экран регистрации</em>
 <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Переход%20на%20экран%20подтверждения.png" alt="Переход на экран подтверждения" width="20%" height="30%">
 
 <img src="https://raw.githubusercontent.com/OlesyaU/SocialApp/feature-1-add-readme/Подтверждение%20кодом.png" alt="Подтверждение кодом" width="20%" height="30%">
