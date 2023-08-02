@@ -37,7 +37,7 @@ class SavedViewController: UIViewController {
     }
 
     func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+        let action = UIContextualAction(style: .destructive, title: "Delete".localized) { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
             let post = self.coreDataManager.favoritesPosts[indexPath.row]
             self.coreDataManager.deleteFavoritePost(favoritePost: post)
             self.tableView.deleteRows(at: [indexPath], with: .left)

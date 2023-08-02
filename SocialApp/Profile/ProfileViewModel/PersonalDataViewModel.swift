@@ -32,6 +32,7 @@ class PersonalDataViewModel {
         fullName = profile.name + " " + profile.surname
         professionLabelTitle = profile.profession
         isMyProfile = DataBase.shared.testProfile == profile
+        localizationButtons()
     }
 
     func burgerButtonSelected() {
@@ -48,6 +49,9 @@ class PersonalDataViewModel {
         } else {
             delegate?.pushDetailsController(type: .information)
         }
+    }
+    private func localizationButtons(){
+        [moreInfoButtonTitle, editButtonTitle, titleCallButton, titleMessagwButton].forEach({$0.localized})
     }
 }
 

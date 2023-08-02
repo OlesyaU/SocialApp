@@ -14,7 +14,6 @@ extension UIFont {
     static let badgeFont = UIFont(name: "AvenirNextCondensed-UltraLight", size: 12)
 }
 
-// TODO: - Refactor to prepared icons
 enum IconsName {
     case dots
     case leftArrow
@@ -93,7 +92,6 @@ enum IconsName {
         }
     }
 }
-
 
 extension UIBarButtonItem {
 

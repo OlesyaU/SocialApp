@@ -15,7 +15,7 @@ final class ProfileViewModel {
     var personalDataViewModel: PersonalDataViewModel
 
     let leftArrowIconString = IconsName.leftArrow.nameIcon
-    let titleFrienCell = "Мои записи"
+    let titleFrienCell = "Мои записи".localized
     let dotsIcon = IconsName.dots.nameIcon
     let iconsColor = AppColors.orange
     let titleColor: UIColor = .black

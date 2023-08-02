@@ -1,32 +1,14 @@
 /* 
-  Localizable.strings
-  SocialApp
+ Localizable.strings
+ SocialApp
 
-  Created by Олеся on 02.08.2023.
-  
-*/
+ Created by Олеся on 02.08.2023.
+
+ */
 
 "OOPPPSS" = "УУПППССС";
 "The phone number is incorrect. Please write correctly" = "Номер телефона указан неверно. Пожалуйста, введите номер правильно";
 "OMG! SURE THING" = "ТОЧНО!";
 "The code is incorrect. Please write correctly" = "Вы ввели неверный код. Пожалуйста, введите правильный код";
+"Delete" = "Удалить";
 
-
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;

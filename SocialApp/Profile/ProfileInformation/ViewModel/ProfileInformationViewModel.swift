@@ -11,8 +11,10 @@ final class ProfileInformationViewModel {
 
     var title = "Основная информация".localized
     var items: [ProfileInformationItem] = []
-    var rightBarItemImage: UIImage = IconsName.checkmark.icon ?? UIImage()
+    let checkmarkIcon = IconsName.checkmark.icon
+    let closeIcon = IconsName.close.icon
     let backgroundColor: UIColor = .white
+    let orangeColor = AppColors.orange
 
     init(profile: Profile) {
         initialProfile = profile

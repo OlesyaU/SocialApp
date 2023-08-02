@@ -110,7 +110,7 @@
 /* Begin PBXFileReference section */
 		76066F722A7A623A00CBF53E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76066F742A7A629800CBF53E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76066F762A7A761A00CBF53E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		76066F782A7ACB6A00CBF53E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7614A3922A3F0DF3004D7466 /* EnterPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		7614A3942A3F2FA9004D7466 /* EnterPhoneNumberViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		7614A39B2A3F426D004D7466 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
@@ -1015,7 +1015,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7670741A2A39955D007FC469 /* Base */,
-				76066F762A7A761A00CBF53E /* ru */,
+				76066F782A7ACB6A00CBF53E /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

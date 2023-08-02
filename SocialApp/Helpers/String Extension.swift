@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 infix operator ?=
 
 extension String {
@@ -14,6 +15,7 @@ extension String {
         return left == word
     }
 }
+
 extension String {
     var localized: String {
         NSLocalizedString(self, comment: self)

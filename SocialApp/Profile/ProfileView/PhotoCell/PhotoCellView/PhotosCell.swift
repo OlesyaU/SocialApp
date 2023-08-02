@@ -103,7 +103,7 @@ class PhotosCell: UITableViewCell {
         self.viewModel = viewModel
         photoLabel.text = viewModel.titleCell
         photoCountLabel.text = viewModel.photoCountString
-        arrowImage.image = UIImage(systemName: viewModel.arrowIcon)
+        arrowImage.image = viewModel.arrowIcon
         collection.reloadData()
     }
 
@@ -128,6 +128,6 @@ extension PhotosCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        8
+        Constants.inset8
     }
 }

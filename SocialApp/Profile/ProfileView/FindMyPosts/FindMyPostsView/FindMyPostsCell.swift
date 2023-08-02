@@ -26,14 +26,14 @@ final class FindMyPostsCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layout()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func layout() {
+    private func setupConstraints() {
         titleLabel.forAutolayout()
         contentView.addSubview(titleLabel)
         titleLabel.textColor = viewModel?.titleColor
@@ -54,7 +54,7 @@ final class FindMyPostsCell: UITableViewCell {
         titleLabel.font = viewModel.titleFont
         contentView.backgroundColor = viewModel.backgroundCellColor
 
-        magnifyingglass.image = UIImage(systemName: viewModel.icon)
+        magnifyingglass.image =  viewModel.icon
         magnifyingglass.tintColor = viewModel.iconColor
         cellConstraints.append(contentsOf: [
             magnifyingglass.pinTop(to: contentView.topAnchor, inset: constraintCell),
@@ -69,12 +69,10 @@ final class FindMyPostsCell: UITableViewCell {
     func configureFriend(for friend: FindMyPostsViewModel) {
         titleLabel.text = friend.titleForFriendProfile
         contentView.backgroundColor = viewModel?.backgroundCellColor
-        //        DOESNT WORK!!!
-        
     }
+
     func configureForComments(for post: Post) {
-        titleLabel.text = "\(post.comments.count) комментариев"
-        
+        titleLabel.text = String(post.comments.count) + "комментариев".localized
     }
     
 }

@@ -1,10 +1,11 @@
 /* 
-  Localizable.strings
-  SocialApp
+ Localizable.strings
+ SocialApp
 
-  Created by Олеся on 02.08.2023.
-  
-*/
+ Created by Олеся on 02.08.2023.
+
+ */
+
 "ЗАРЕГИСТРИРОВАТЬСЯ" = "REGISTER";
 "Уже есть аккаунт" = "Already registered";
 "Подтверждение регистрации" = "Confirmation of registration";
@@ -50,23 +51,21 @@
 "Готово" = "Ready";
 "Мужской" = "Male";
 "Женский" = "Female";
-"Выберите пол" = "Select gender"
+"Выберите пол" = "Select gender";
 "Закрепить" = "Pin";
 "Выключить комментарии" = "Turn off comments";
 "Архивировать запись" = "Archive post";
 "Удалить" = "Delete";
-return "публикаций"
-case .subscriptions:
-return "подписок"
-case .subscribers:
-return "подписчиков"
-}  return "Запись"
-case .history:
-    return "История"
-case .photo:
-    return "Фото"
-}
-;
-;
-;
-
+"публикаций" = "publications";
+"подписок" = "subscriptions";
+"подписчиков" = "subscribers";
+"Запись" = "Post";
+"История" = "History";
+"Фото" = "Photos";
+"Все посты" = "All posts";
+"Мои записи" = "My posts";
+"комментариев" = "comments";
+"Подробная информация" = "Detailed information";
+"Редактировать" = "Edit";
+"Позвонить" = "Call";
+"Сообщение" = "Message";
