@@ -3,10 +3,13 @@
     <entity name="FavoritePost" representedClassName="FavoritePost" syncable="YES" codeGenerationType="class">
         <attribute name="authorAvatar" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="authorNickname" optional="YES" attributeType="String"/>
+        <attribute name="authorProfession" optional="YES" attributeType="String"/>
+        <attribute name="commentIcon" optional="YES" attributeType="Binary"/>
         <attribute name="commentsCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="descriptionPost" optional="YES" attributeType="String"/>
         <attribute name="isSaved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="likesCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="likesIcon" optional="YES" attributeType="Binary"/>
         <attribute name="postImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
     </entity>
 </model>

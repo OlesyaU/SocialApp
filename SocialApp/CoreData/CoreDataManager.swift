@@ -69,6 +69,9 @@ class CoreDataManager {
             favoritePost.commentsCount = Int32(post.comments.count)
             favoritePost.isSaved = post.isSaved
             favoritePost.authorAvatar = UIImage(named:post.author.avatar)?.pngData()
+            favoritePost.likesIcon = IconsName.likes.icon?.pngData()
+            favoritePost.commentIcon = IconsName.comments.icon?.pngData()
+            favoritePost.authorProfession = post.author.profession
             self.isSaved?(post.isSaved)
             do {
                 try backgroundContext.save()
@@ -86,7 +89,5 @@ class CoreDataManager {
         saveContext()
         reloadPosts()
     }
-
-
 }
 

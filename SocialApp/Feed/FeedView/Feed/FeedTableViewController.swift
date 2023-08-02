@@ -14,7 +14,7 @@ final class FeedTableViewController: UITableViewController {
     private var floatingPanel: FloatingPanelController?
     private let coreDataManager = CoreDataManager.shared
     var delegate: PublicationControllerProtocol?
-    var ifRegisteredUserDelegate: RegisteredUserCellDelegate?
+    var registeredUserDelegate: RegisteredUserCellDelegate?
 
     init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
@@ -39,7 +39,6 @@ final class FeedTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         switch section {
             case 0:
                 return   viewModel.isNewUser ? 0 : 1
