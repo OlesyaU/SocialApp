@@ -25,6 +25,10 @@ final class EnterPhoneNumberViewModel {
     let centerText = TextAttribute.centerText
     var phoneNumber: String?
 
+    init() {
+        localizationStrings()
+    }
+
 
     private func enterNumberPhone(phone: String) {
         if  validate(phone: phone) {
@@ -56,6 +60,12 @@ final class EnterPhoneNumberViewModel {
                 print("view model state \(state)")
             case .success:
                 print("view model state \(state)")
+        }
+    }
+
+    private func localizationStrings() {
+        [welcomeLabelTitle, pushNumberUserTitle, secondLabelTitle, buttonTitle, privacyLabelTitle,alertTitle, actionTitle, alertMessage].forEach{
+            $0.localized
         }
     }
 }

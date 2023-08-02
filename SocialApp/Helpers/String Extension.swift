@@ -14,3 +14,8 @@ extension String {
         return left == word
     }
 }
+extension String {
+    var localized: String {
+        NSLocalizedString(self, comment: self)
+    }
+}

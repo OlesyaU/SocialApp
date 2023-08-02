@@ -18,6 +18,10 @@ class PersonalDataViewModel {
     let editButtonTitle = "Редактировать"
     let titleCallButton = "Позвонить"
     let titleMessagwButton = "Сообщение"
+    let boldFont = UIFont.textBold
+    let regularFont = UIFont.textRegular
+    let black = AppColors.black
+    let gray = AppColors.gray
     var isMyProfile: Bool
 
     weak var delegate: ProfileViewDelegate?

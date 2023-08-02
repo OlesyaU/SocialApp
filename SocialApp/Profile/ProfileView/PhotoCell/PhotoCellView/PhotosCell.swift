@@ -9,11 +9,6 @@ import UIKit
 
 class PhotosCell: UITableViewCell {
 
- private enum Constants {
-        static let sideInset: CGFloat = 16
-        static let sidePhoto: CGFloat = 80
-    }
-
     private var viewModel: PhotosCellViewModel?
     private var cellConstraints: [NSLayoutConstraint] = []
 
@@ -55,14 +50,14 @@ class PhotosCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layout()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func layout() {
+    private func setupConstraints() {
 
         contentView.addSubview(containerView)
         contentView.addSubview(collection)
@@ -75,23 +70,23 @@ class PhotosCell: UITableViewCell {
             containerView.pinLeading(to: contentView.leadingAnchor),
             containerView.pinTrailing(to: contentView.trailingAnchor),
 
-            photoLabel.pinTop(to: containerView.topAnchor, inset: Constants.sideInset),
-            photoLabel.pinLeading(to: containerView.leadingAnchor, inset: Constants.sideInset),
+            photoLabel.pinTop(to: containerView.topAnchor, inset: Constants.inset16),
+            photoLabel.pinLeading(to: containerView.leadingAnchor, inset: Constants.inset16),
 
-            photoCountLabel.pinTop(to: containerView.topAnchor, inset: Constants.sideInset),
-            photoCountLabel.pinLeading(to: photoLabel.trailingAnchor, inset: Constants.sideInset),
+            photoCountLabel.pinTop(to: containerView.topAnchor, inset: Constants.inset16),
+            photoCountLabel.pinLeading(to: photoLabel.trailingAnchor, inset: Constants.inset16),
 
-            arrowImage.pinTop(to: containerView.topAnchor, inset: Constants.sideInset),
-            arrowImage.pinTrailing(to: containerView.trailingAnchor, inset: Constants.sideInset),
+            arrowImage.pinTop(to: containerView.topAnchor, inset: Constants.inset16),
+            arrowImage.pinTrailing(to: containerView.trailingAnchor, inset: Constants.inset16),
             arrowImage.pinBottom(to: containerView.bottomAnchor),
             arrowImage.pinHeight(equalTo: 24),
             arrowImage.pinWidth(equalTo: 24),
 
-            collection.pinTop(to: containerView.bottomAnchor, inset: Constants.sideInset),
-            collection.pinLeading(to: contentView.leadingAnchor, inset: Constants.sideInset),
+            collection.pinTop(to: containerView.bottomAnchor, inset: Constants.inset16),
+            collection.pinLeading(to: contentView.leadingAnchor, inset: Constants.inset16),
             collection.pinTrailing(to: contentView.trailingAnchor),
-            collection.pinHeight(equalTo: Constants.sidePhoto),
-            collection.pinBottom(to: contentView.bottomAnchor, inset: Constants.sideInset)
+            collection.pinHeight(equalTo: Constants.inset8 * 10),
+            collection.pinBottom(to: contentView.bottomAnchor, inset: Constants.inset16)
         ])
         NSLayoutConstraint.activate(cellConstraints)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
@@ -119,7 +114,7 @@ extension PhotosCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: Constants.sidePhoto, height: Constants.sidePhoto)
+        CGSize(width: Constants.inset8 * 10, height: Constants.inset8 * 10)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

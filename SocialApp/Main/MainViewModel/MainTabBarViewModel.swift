@@ -28,11 +28,11 @@ final class  MainTabBarViewModel {
         var titleString: String {
             switch self {
                 case .general:
-                return "Главная"
+                    return "Главная".localized
                 case .profile:
-                return "Профиль"
+                    return "Профиль".localized
                 case .saved:
-                return "Сохранённые"
+                    return "Сохранённые".localized
             }
         }
     }

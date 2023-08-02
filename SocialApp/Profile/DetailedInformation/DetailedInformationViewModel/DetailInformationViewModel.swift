@@ -22,9 +22,9 @@ final class DetailInformationViewModel {
     let backgroundColor = AppColors.biege
     let closeIconString = IconsName.close.nameIcon
     let arrowIconString = IconsName.leftArrow.nameIcon
-    let titleHeaderView = "Профиль"
-    let titlesButtonInformationState = ["Основная информация", "Контакты","Интересы", "Образование", "Карьера"]
-    let titlesButtonSettingsState = ["Закладки", "Понравилось", "Файлы","Архивы", "Настройки"]
+    let titleHeaderView = "Профиль".localized
+    let titlesButtonInformationState: [String] = ["Основная информация", "Контакты","Интересы", "Образование", "Карьера"].map({$0.localized})
+    let titlesButtonSettingsState = ["Закладки", "Сохранённые", "Файлы","Архивы", "Настройки"].map({$0.localized})
     let iconNamesSettingsState = [IconsName.star.nameIcon, IconsName.likes.nameIcon,IconsName.files.nameIcon,IconsName.archive.nameIcon,IconsName.settings.nameIcon]
     var type: DetailedInformationViewType = .information
 
@@ -34,6 +34,7 @@ final class DetailInformationViewModel {
             headerViewModel.delegate = delegate
         }
     }
+    
     init(
         profile: Profile,
         type: DetailedInformationViewType

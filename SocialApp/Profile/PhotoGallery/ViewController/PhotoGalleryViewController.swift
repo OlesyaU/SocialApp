@@ -17,7 +17,7 @@ final class PhotoGalleryViewController: UIViewController {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Фотографии"
+        label.text = "Фотографии".localized
         label.textAlignment = .left
         return label
     }()
@@ -25,7 +25,7 @@ final class PhotoGalleryViewController: UIViewController {
     init(viewModel: PhotoGalleryViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        layout()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -37,7 +37,7 @@ final class PhotoGalleryViewController: UIViewController {
         configureNavigation()
     }
 
-    private func layout() {
+    private func setupConstraints() {
         view.addSubview(collection)
         collection.forAutolayout()
 
@@ -55,7 +55,7 @@ final class PhotoGalleryViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .systemOrange
 
         let leftBackItem = UIBarButtonItem(
-            image: UIImage(systemName: "arrow.left"),
+            image: viewModel.leftArrow,
             style: .done,
             target: self,
             action: #selector(backButtonTapped)

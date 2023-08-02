@@ -16,11 +16,11 @@ class ProfileActionViewModel {
         var title: String {
             switch self {
                 case .publications:
-                    return "публикаций"
+                    return "публикаций".localized
                 case .subscriptions:
-                    return "подписок"
+                    return "подписок".localized
                 case .subscribers:
-                    return "подписчиков"
+                    return "подписчиков".localized
             }
         }
     }

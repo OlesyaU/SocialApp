@@ -14,7 +14,7 @@ final class CommentViewModel {
     let commentTextColor = AppColors.gray
     let likesIconColor = AppColors.darkGray
     let answerColor = AppColors.black
-    let answerText = "Ответить"
+    let answerText = "Ответить".localized
     let likesIconName = IconsName.likes.nameIcon
     let likesIconFill = IconsName.likesFill.nameIcon
     let authorName: String
@@ -85,6 +85,6 @@ final class CommentViewModel {
         dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat = "dd MMMM"
         let stringDate = dateFormatter.string(from: Date())
-        return stringDate
+        return stringDate.localized
     }
 }

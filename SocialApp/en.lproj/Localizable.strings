@@ -1,0 +1,72 @@
+/* 
+  Localizable.strings
+  SocialApp
+
+  Created by Олеся on 02.08.2023.
+  
+*/
+"ЗАРЕГИСТРИРОВАТЬСЯ" = "REGISTER";
+"Уже есть аккаунт" = "Already registered";
+"Подтверждение регистрации" = "Confirmation of registration";
+"Мы отправили СМС с кодом на номер" = "We sent an SMS with a code to the number";
+"Введите код из СМС" = "Enter code from SMS";
+"С возвращением" = "Welcome back";
+"Добро пожаловать !" = "Welcome";
+"Введите номер телефона \n для входа в приложение" = "Enter your phone number \n to enter the application";
+"ПОДТВЕРДИТЬ" = "CONFIRM";
+"Публикации" = "Publications";
+"оставить комментарий" = "leave comment";
+"Ответить" = "Reply";
+"Сохранить в закладках" = "Save to bookmarks";
+"Включить уведомления" = "Enable notifications";
+"Скопировать ссылку" = "Copy link";
+"Поделиться в ..." = "Share on ...";
+"Отменить подписку" = "Unsubscribe";
+"Пожаловаться" = "Complain";
+"Главная" = "Home";
+"Новости" = "News";
+"Для вас" = "For you";
+"Профиль" = "Profile";
+"Сохранённые" = "Saved";
+"Альбомы" = "Albums";
+"Все фотографии" = "All photos";
+"Показать всё" = "Show all";
+"Фотографии" = "Photos";
+"Основная информация" = "Basic information";
+"Контакты" = "Contacts";
+"Интересы" = "Interests";
+"Образование" = "Education";
+"Карьера" = "Career";
+"Закладки" = "Bookmarks";
+"Файлы" = "Files";
+"Архивы" = "Archives";
+"Настройки" = "Settings";
+"Имя" = "Name";
+"Фамилия" = "Surname";
+"Укажите город" = "Enter the city";
+"Укажите дату рождения" = "Enter date of birth";
+"Город" = "City";
+"Дата рождения" = "Date of Birth";
+"Готово" = "Ready";
+"Мужской" = "Male";
+"Женский" = "Female";
+"Выберите пол" = "Select gender"
+"Закрепить" = "Pin";
+"Выключить комментарии" = "Turn off comments";
+"Архивировать запись" = "Archive post";
+"Удалить" = "Delete";
+return "публикаций"
+case .subscriptions:
+return "подписок"
+case .subscribers:
+return "подписчиков"
+}  return "Запись"
+case .history:
+    return "История"
+case .photo:
+    return "Фото"
+}
+;
+;
+;
+

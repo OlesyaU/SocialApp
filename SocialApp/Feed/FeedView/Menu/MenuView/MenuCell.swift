@@ -19,7 +19,7 @@ class MenuCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layout()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -30,7 +30,7 @@ class MenuCell: UITableViewCell {
         print("buttonTapped")
     }
 
-    private func layout() {
+    private func setupConstraints() {
         button.forAutolayout()
         contentView.addSubview(button)
         constraintsForButton.append(contentsOf: [

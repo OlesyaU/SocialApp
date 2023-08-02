@@ -34,11 +34,11 @@ extension ProfileIconButtonType {
     var title: String {
         switch self {
             case .write:
-                return "Запись"
+                return "Запись".localized
             case .history:
-                return "История"
+                return "История".localized
             case .photo:
-                return "Фото"
+                return "Фото".localized
         }
     }
 }

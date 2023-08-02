@@ -8,7 +8,7 @@
 import UIKit
 final class PublicationViewModel {
     var post: Post
-    let titleController = "Публикации"
+    let titleController = "Публикации".localized
     let arrowIcon = IconsName.leftArrow.nameIcon
     let dotsIconName = IconsName.dots.nameIcon
     let colorNickname = AppColors.orange
@@ -19,7 +19,7 @@ final class PublicationViewModel {
     let iconForComment = IconsName.moreInfo.nameIcon
     let leaveCommentViewColor = AppColors.biege
     let leaveCommentIcon = IconsName.paperclip.nameIcon
-    let leaveCommentString = "оставить комментарий"
+    let leaveCommentString = "оставить комментарий".localized
 
     init(post: Post) {
         self.post = post

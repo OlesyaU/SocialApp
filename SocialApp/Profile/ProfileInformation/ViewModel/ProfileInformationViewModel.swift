@@ -9,9 +9,9 @@ import UIKit
 final class ProfileInformationViewModel {
     private let initialProfile: Profile
 
-    var title = "Основная информация"
+    var title = "Основная информация".localized
     var items: [ProfileInformationItem] = []
-    var rightBarItemImage: UIImage = UIImage(systemName: "person.circle") ?? UIImage()
+    var rightBarItemImage: UIImage = IconsName.checkmark.icon ?? UIImage()
     let backgroundColor: UIColor = .white
 
     init(profile: Profile) {

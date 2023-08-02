@@ -307,7 +307,7 @@ extension ConfirmViewController {
         let alertTitle = viewModel.alertTitle
         let alertMessage = viewModel.alertMessage
         let actionTitle = viewModel.actionTitle
-        Alert.showAleart(for: self, with: alertTitle, aleartMessage: alertMessage,
+        Alert.showAlert(for: self, with: alertTitle, alertMessage: alertMessage,
                          action1Title: actionTitle, handler: { [weak self] _ in
             self?.codeTextField.text = ""
         }, action2Title: nil)

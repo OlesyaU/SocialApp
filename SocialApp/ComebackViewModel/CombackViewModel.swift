@@ -22,6 +22,10 @@ final class CombackViewModel: ComebackViewModelProtocol {
     let alertMessage = "The code is incorrect. Please write correctly"
     let actionTitle = "OMG! SURE THING"
 
+    init() {
+        localizationStrings()
+    }
+
     func checkUser(by phone: String) -> Profile? {
         guard validate(phone: phone) else {
             print("CHECK1 not succeed validation ")
@@ -46,6 +50,11 @@ final class CombackViewModel: ComebackViewModelProtocol {
                 print("ERRROOORRRR\(error)")
                 return
             }
+        }
+    }
+    private func localizationStrings() {
+        [welcomeLabelTitle, welcomeNewUserTitle, secondLabelTitle, buttonTitle,alertTitle, actionTitle, alertMessage].forEach{
+            $0.localized
         }
     }
 }

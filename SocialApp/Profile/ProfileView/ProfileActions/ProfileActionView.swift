@@ -10,13 +10,7 @@ import UIKit
 final class ProfileActionView: UIView {
 
     private var viewModel: ProfileActionViewModel?
-
     private var typesStackConstraints: [NSLayoutConstraint] = []
-
-    private enum Constants {
-        static let sideInset: CGFloat = 16
-        static let heightIcon: CGFloat = 56
-    }
 
     private lazy var typeContainerStack: UIStackView = {
         let stackView = UIStackView()
@@ -48,7 +42,7 @@ final class ProfileActionView: UIView {
     
     init(){
         super.init(frame: .zero)
-        layout()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -63,15 +57,15 @@ final class ProfileActionView: UIView {
         }
     }
 
-    private func layout() {
+    private func setupConstraints() {
         addSubview(typeContainerStack)
         [countLabel, typeTitleLabel, typeContainerStack].forEach({$0.forAutolayout()})
         [countLabel,typeTitleLabel].forEach { typeContainerStack.addArrangedSubview($0)}
 
         typesStackConstraints.append(contentsOf:[
-            typeContainerStack.pinTop(to: topAnchor, inset: Constants.sideInset),
+            typeContainerStack.pinTop(to: topAnchor, inset: Constants.inset16),
             typeContainerStack.pinLeading(to: leadingAnchor),
-            typeContainerStack.pinBottom(to: bottomAnchor, inset: Constants.sideInset),
+            typeContainerStack.pinBottom(to: bottomAnchor, inset: Constants.inset16),
             typeContainerStack.pinTrailing(to: trailingAnchor),
 
             countLabel.pinTop(to: typeContainerStack.topAnchor),

@@ -28,14 +28,14 @@ final class DetailedInformationHeaderView: UIView {
 
     init() {
         super.init(frame: .zero)
-        layout()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func layout() {
+    private func setupConstraints() {
         [iconImage, titleLabel].forEach({$0.forAutolayout()})
         [iconImage, titleLabel].forEach({addSubview($0)})
         viewConstraints.append(contentsOf: [

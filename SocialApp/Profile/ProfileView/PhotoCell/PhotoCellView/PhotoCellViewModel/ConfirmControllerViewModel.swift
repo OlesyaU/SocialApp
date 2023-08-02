@@ -20,9 +20,9 @@ final class ConfirmControllerViewModel {
     private var viewModelChanged: ((_ state: State)-> Void)?
 
     let confirmLabelTitle = "Подтверждение регистрации"
-    let pushNumberUserTitle = "Мы отправили SMS с кодом на номер"
+    let pushNumberUserTitle = "Мы отправили СМС с кодом на номер"
     var numberLabelTitle = newUser?.phone
-    let badgeText = "Введите код из SMS"
+    let badgeText = "Введите код из СМС"
     let placeholderString = "_ _ _ _ _ _"
     let buttonTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
     let alertTitle = "OOPPPSS"
@@ -45,6 +45,7 @@ final class ConfirmControllerViewModel {
     init(viewModel: EnterPhoneNumberViewModel) {
         enterPhoneNumberViewModel = viewModel
         getCodeNewUserData()
+        localizationStrings()
     }
 
     private func getCodeNewUserData() {
@@ -89,6 +90,11 @@ final class ConfirmControllerViewModel {
                 guard let phoneForRegister = ConfirmControllerViewModel.newUser?.phone else { return }
                 registerNewUser(phone: phoneForRegister)
                 print("ConfirmControllerViewModel view model state \(state)")
+        }
+    }
+    private func localizationStrings() {
+        [confirmLabelTitle, pushNumberUserTitle, badgeText, buttonTitle, alertTitle, actionTitle, alertMessage].forEach{
+            $0.localized
         }
     }
 }
