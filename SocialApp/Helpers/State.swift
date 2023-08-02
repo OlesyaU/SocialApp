@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 enum State {
     case viewIsReady
     case buttonTapped

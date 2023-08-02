@@ -14,9 +14,9 @@ protocol PhotosCellViewModelDelegate: AnyObject {
 final class PhotosCellViewModel {
     weak var delegate: PhotosCellViewModelDelegate?
 
-    let titleCell = "Фотографии"
+    let titleCell = "Фотографии".localized
     let photoCountString: String
-    let arrowIcon = "chevron.right"
+    let arrowIcon = IconsName.rightArrow.icon
     let photoNameString: [String]
 
     init(profile: Profile) {

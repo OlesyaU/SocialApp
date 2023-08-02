@@ -6,11 +6,18 @@
 //
 
 import Foundation
+
 infix operator ?=
 
 extension String {
     static func ?= (left: String?, right: String) -> Bool {
         let word = left != nil ? left : right
         return left == word
+    }
+}
+
+extension String {
+    var localized: String {
+        NSLocalizedString(self, comment: self)
     }
 }

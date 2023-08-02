@@ -16,15 +16,16 @@ enum PhotoGalleryItem {
 final class PhotoGalleryViewModel: NSObject {
     private typealias SectionItems = [[PhotoGalleryItem]]
     private var items: SectionItems = []
+    let leftArrow = IconsName.leftArrow.icon
 
     var rightBarItemImage: UIImage = UIImage(systemName: IconsName.person.nameIcon) ?? UIImage()
 
     var layout: UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 8
-        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = Constants.inset8
+        layout.minimumLineSpacing = Constants.inset8
         layout.scrollDirection = .vertical
-        layout.sectionInset = .init(top: 8, left: 16, bottom: 8, right: 16)
+        layout.sectionInset = .init(top: Constants.inset8, left: Constants.inset16, bottom: Constants.inset8, right: Constants.inset16)
         return layout
     }
 
@@ -36,12 +37,12 @@ final class PhotoGalleryViewModel: NSObject {
     private func createItems(photosTitles: [String]) -> SectionItems {
         guard photosTitles.count > 0 else { return [[]]}
         let albumsSectionHeaderVm = PhotoGalleryHeaderCellViewModel(
-            title: "Альбомы",
+            title: "Альбомы".localized,
             count: 1,
             isNeedToShowButton: true
         )
         let albumsSectionItemVm = PhotoCollectionViewCellViewModel(imageString: photosTitles.first ?? "")
-        let photosSectionHeaderVm = PhotoGalleryHeaderCellViewModel(title: "Все фотографии", count: photosTitles.count, isNeedToShowButton: false)
+        let photosSectionHeaderVm = PhotoGalleryHeaderCellViewModel(title: "Все фотографии".localized, count: photosTitles.count, isNeedToShowButton: false)
         let photosSectionItemsVms = photosTitles.map { PhotoCollectionViewCellViewModel(imageString: $0) }
         let firstSection: [PhotoGalleryItem] = [
             .separator,

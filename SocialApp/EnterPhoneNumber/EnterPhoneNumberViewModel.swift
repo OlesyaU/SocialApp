@@ -14,8 +14,8 @@ final class EnterPhoneNumberViewModel {
     let buttonTitle = "ДАЛЕЕ"
     let privacyLabelTitle = "Нажимая кнопку \"Далее\"  Вы принимаете \n пользовательское Соглашение и политику конфиденциальности"
     let alertTitle = "OOPPPSS"
-    let alertMessage = "The phone number is incorrect. Please write correctly"
-    let actionTitle = "OMG! SURE THING"
+    let alertMessage = "The phone number is incorrect. Please write correctly".localized
+    let actionTitle = "OMG! SURE THING".localized
     var passNewUserData: ((_ phoneNumber: String, _ code : String) -> Void)?
     let privacyLabelFont = UIFont.badgeFont
     let lightFont = UIFont.lightFont
@@ -24,7 +24,6 @@ final class EnterPhoneNumberViewModel {
     let grayColor = AppColors.gray
     let centerText = TextAttribute.centerText
     var phoneNumber: String?
-
 
     private func enterNumberPhone(phone: String) {
         if  validate(phone: phone) {

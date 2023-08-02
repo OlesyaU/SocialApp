@@ -9,12 +9,7 @@ import UIKit
 
 final class ProfileIconButton: UIView {
     private var iconButtonConstraint: [NSLayoutConstraint] = []
-    
-    private enum Constants {
-        static let sideInset: CGFloat = 16
-        static let heightIcon: CGFloat = 44
-    }
-    
+
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -79,8 +74,8 @@ final class ProfileIconButton: UIView {
         addSubview(stackView)
         iconButtonConstraint.append(contentsOf: [
             iconImage.pinTop(to: stackView.topAnchor),
-            iconImage.pinHeight(equalTo: Constants.heightIcon),
-            iconImage.pinWidth(equalTo: Constants.heightIcon),
+            iconImage.pinHeight(equalTo: Constants.inset44),
+            iconImage.pinWidth(equalTo: Constants.inset44),
             iconImage.pinLeading(to: iconlabel.leadingAnchor),
             iconImage.pinTrailing(to: iconlabel.trailingAnchor),
             
@@ -93,7 +88,7 @@ final class ProfileIconButton: UIView {
             stackView.pinTop(to: topAnchor),
             stackView.pinLeading(to: leadingAnchor),
             stackView.pinTrailing(to: trailingAnchor),
-            stackView.pinBottom(to: bottomAnchor, inset: Constants.sideInset)
+            stackView.pinBottom(to: bottomAnchor, inset: Constants.inset16)
         ])
         NSLayoutConstraint.activate(iconButtonConstraint)
     }

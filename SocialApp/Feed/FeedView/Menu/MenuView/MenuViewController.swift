@@ -22,10 +22,10 @@ class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        layout()
+        setupConstraints()
     }
 
-    private func layout() {
+    private func setupConstraints() {
         view.addSubview(tableView)
         constraintsForTableView.append(contentsOf: [
             tableView.pinTop(to: view.topAnchor, inset: 32),

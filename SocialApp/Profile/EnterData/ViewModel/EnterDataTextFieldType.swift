@@ -20,26 +20,26 @@ final class EnterDataTextFieldViewModel {
     var typePlaceholder: String {
         switch type {
         case .name:
-            return "Имя"
+                return "Имя".localized
         case .surname:
-            return "Фамилия"
+                return "Фамилия".localized
         case .city:
-            return "Укажите город"
+                return "Укажите город".localized
         case .birthDate:
-             return "Укажите дату рождения"
+                return "Укажите дату рождения".localized
         }
     }
 
     var typeName: String {
         switch type {
         case .name:
-            return "Имя"
+                return "Имя".localized
         case .surname:
-            return "Фамилия"
+                return "Фамилия".localized
         case .city:
-            return "Город"
+                return "Город".localized
         case .birthDate:
-            return "Дата рождения"
+                return "Дата рождения".localized
         }
     }
 

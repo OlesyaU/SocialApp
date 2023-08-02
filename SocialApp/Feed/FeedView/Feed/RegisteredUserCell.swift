@@ -65,10 +65,10 @@ class RegisteredUserCell: UITableViewCell {
         bellIcon.image = viewModel?.bellIcon
         magnifyingglassIcon.image = viewModel?.magnifyingglassIcon
         magnifyingglassIcon.tintColor = viewModel?.chosenItemColor
-        titleLabel.text = viewModel?.title
+        titleLabel.text = viewModel?.title.localized
         titleLabel.font = viewModel?.boldFont
-        newsLabel.text = viewModel?.newsTitleLabel
-        pickingLabel.text = viewModel?.pickingTitleLabel
+        newsLabel.text = viewModel?.newsTitleLabel.localized
+        pickingLabel.text = viewModel?.pickingTitleLabel.localized
         newsLabel.textColor = viewModel?.chosenItemColor
         pickingLabel.textColor = viewModel?.itemsColor
         [newsLabel, pickingLabel].forEach{$0.font = viewModel?.itemsFont

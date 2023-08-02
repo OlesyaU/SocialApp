@@ -12,7 +12,7 @@ final class PhotoGalleryHeaderCellViewModel {
     var isNeedToShowButton: Bool
 
     var buttonTitle: String? {
-        isNeedToShowButton ? "Показать всё" : nil
+        isNeedToShowButton ? "Показать всё".localized : nil
     }
 
     init(title: String, count: Int, isNeedToShowButton: Bool) {

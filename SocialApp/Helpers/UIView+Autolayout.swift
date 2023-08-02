@@ -203,6 +203,7 @@ extension String {
         return pureNumber
     }
 }
+
 extension UIButton {
     func applyIcon(name: String, tintColor: UIColor?, imageEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)) {
         var image = UIImage(named: name)
@@ -214,6 +215,7 @@ extension UIButton {
 //        self.imageEdgeInsets = imageEdgeInsets
 
     }
+
     func applyIcon(systemName: String, tintColor: UIColor?, imageEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)) {
         var image = UIImage(systemName: systemName)
         if let tintColor = tintColor {
@@ -222,6 +224,5 @@ extension UIButton {
         }
         setImage(image, for: .normal)
 //        self.imageEdgeInsets = imageEdgeInsets
-
     }
 }

@@ -17,7 +17,7 @@ class SavedViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
-        layout()
+        setupConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -25,7 +25,7 @@ class SavedViewController: UIViewController {
         tableView.reloadData()
     }
 
-    private func layout() {
+    private func setupConstraints() {
         tableView.forAutolayout()
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -37,7 +37,7 @@ class SavedViewController: UIViewController {
     }
 
     func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+        let action = UIContextualAction(style: .destructive, title: "Delete".localized) { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
             let post = self.coreDataManager.favoritesPosts[indexPath.row]
             self.coreDataManager.deleteFavoritePost(favoritePost: post)
             self.tableView.deleteRows(at: [indexPath], with: .left)

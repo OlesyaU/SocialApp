@@ -38,17 +38,21 @@ final class ProfileInformationViewController: UITableViewController {
 
     private func configureNavigation() {
         navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.navigationBar.tintColor = .systemOrange
+        navigationController?.navigationBar.tintColor = viewModel.orangeColor
 
-        let rightBarButtonItem = UIBarButtonItem(
-            image: viewModel.rightBarItemImage,
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: viewModel.checkmarkIcon,
             style: .plain,
-            target: viewModel,
-            action: #selector(viewModel.donePressed)
+            target: self,
+            action: #selector(actionForNavigationItem)
         )
-        rightBarButtonItem.tintColor = .systemOrange
-        rightBarButtonItem.width = 30
-        self.navigationItem.rightBarButtonItems = [rightBarButtonItem]
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: viewModel.closeIcon,
+            style: .plain,
+            target: self,
+            action: #selector(actionForNavigationItem)
+        )
     }
 
     private func registerCells() {
@@ -66,19 +70,25 @@ final class ProfileInformationViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard indexPath.row < viewModel.items.count else { return UITableViewCell()}
         switch viewModel.items[indexPath.row] {
-        case let .textField(vm):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: EnterDataTextFieldCell.identifier) as? EnterDataTextFieldCell else { return UITableViewCell()
-            }
-            cell.configure(with: vm)
-            return cell
-        case let .genderPicker(vm):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileInformationSelectGenderCell.identifier) as? ProfileInformationSelectGenderCell else { return UITableViewCell() }
-            cell.configure(with: vm)
-            return cell
+            case let .textField(vm):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: EnterDataTextFieldCell.identifier) as? EnterDataTextFieldCell else { return UITableViewCell()
+                }
+                cell.configure(with: vm)
+                return cell
+            case let .genderPicker(vm):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileInformationSelectGenderCell.identifier) as? ProfileInformationSelectGenderCell else { return UITableViewCell() }
+                cell.configure(with: vm)
+                return cell
         }
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
+    }
+
+    @objc func actionForNavigationItem() {
+        navigationController?.popViewController(animated: true)
+        viewModel.donePressed()
+        print("Items ProfileInformation nav bar tapped")
     }
 }

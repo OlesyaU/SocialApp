@@ -40,7 +40,6 @@ final class FeedCell: UITableViewCell {
 
     private let authorNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.textRegular
         label.numberOfLines = 1
         return label
     }()
@@ -68,7 +67,6 @@ final class FeedCell: UITableViewCell {
     private lazy var likesIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(systemName: IconsName.likes.nameIcon)?.imageWithColor(color: AppColors.darkGray)
         return image
     }()
 
@@ -82,7 +80,6 @@ final class FeedCell: UITableViewCell {
     private lazy var commentsIcon: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(systemName: IconsName.comments.nameIcon)?.imageWithColor(color: AppColors.darkGray)
         return image
     }()
 
@@ -99,7 +96,6 @@ final class FeedCell: UITableViewCell {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.isUserInteractionEnabled = true
-        image.image = UIImage(systemName: IconsName.bookmark.nameIcon)
         let tap = UITapGestureRecognizer(target: self, action: #selector(bookmarkTapped))
         image.addGestureRecognizer(tap)
         return image
@@ -109,14 +105,14 @@ final class FeedCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layout()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func layout() {
+    private func setupConstraints() {
         [contentHeaderCellView, authorPhoto,authorNameLabel, professionLabel, image, descriptionLabel, commentsLabel, likesLabel,   likesIcon, commentsIcon, dotsImage, bookmarkIcon].forEach {$0.forAutolayout()}
         [contentHeaderCellView, image, descriptionLabel, commentsLabel, likesLabel, authorNameLabel, professionLabel, authorPhoto, likesIcon, commentsIcon, dotsImage, bookmarkIcon].forEach {contentView.addSubview($0)}
 
@@ -206,12 +202,15 @@ final class FeedCell: UITableViewCell {
         descriptionLabel.text = viewModel.postText
         likesLabel.text = viewModel.likesCountString
         commentsLabel.text = viewModel.commentsCountString
-        professionLabel.text = viewModel.professionText
-
+        professionLabel.text = viewModel.professionText.localized
+        authorNameLabel.font = viewModel.boldFont
         contentView.backgroundColor = viewModel.backgroundColor
         contentHeaderCellView.backgroundColor = viewModel.headerViewColor
         professionLabel.textColor = viewModel.professionLabelTextColor
 
+        bookmarkIcon.image = viewModel.bookmarkIcon
+        likesIcon.image = viewModel.likesIconImage
+        commentsIcon.image = viewModel.commentsIcon
         image.image = viewModel.postImage
         authorPhoto.image = viewModel.avatarImage
         dotsImage.image = viewModel.dotsImage
@@ -232,19 +231,24 @@ final class FeedCell: UITableViewCell {
     }
     @objc private func bookmarkTapped() {
         print("bookmarkTapped gesture worked")
-        viewModel?.bookmarkTapped()
-//        TODO: - implement isSaved maybe later
+            viewModel?.bookmarkTapped()
     }
 
     func configureFavorite(favoritePost: FavoritePost) {
         guard let postImage = favoritePost.postImage else { return }
         guard let authorAvatar = favoritePost.authorAvatar else { return }
+        guard let likeIcon = favoritePost.likesIcon else { return }
+        guard let commentIcon = favoritePost.commentIcon else { return }
         image.image = UIImage(data: postImage)
         authorNameLabel.text = favoritePost.authorNickname
         descriptionLabel.text = favoritePost.descriptionPost
         commentsLabel.text = String(favoritePost.commentsCount)
         likesLabel.text = String(favoritePost.likesCount)
         authorPhoto.image = UIImage(data: authorAvatar)
-
+        likesIcon.image = UIImage(data: likeIcon)
+        commentsIcon.image = UIImage(data: commentIcon)
+        professionLabel.text = favoritePost.authorProfession?.localized
+        authorNameLabel.font = UIFont.textBold
+        professionLabel.font = UIFont.textRegular
     }
 }

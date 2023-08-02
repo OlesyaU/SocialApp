@@ -14,10 +14,14 @@ class PersonalDataViewModel {
     let fullName: String
     let professionLabelTitle: String
     let moreInfoButtonIcon = IconsName.moreInfo.nameIcon
-    let moreInfoButtonTitle = "Подробная информация"
-    let editButtonTitle = "Редактировать"
-    let titleCallButton = "Позвонить"
-    let titleMessagwButton = "Сообщение"
+    let moreInfoButtonTitle = "Подробная информация".localized
+    let editButtonTitle = "Редактировать".localized
+    let titleCallButton = "Позвонить".localized
+    let titleMessagwButton = "Сообщение".localized
+    let boldFont = UIFont.textBold
+    let regularFont = UIFont.textRegular
+    let black = AppColors.black
+    let gray = AppColors.gray
     var isMyProfile: Bool
 
     weak var delegate: ProfileViewDelegate?
@@ -26,7 +30,7 @@ class PersonalDataViewModel {
         nickname = profile.nickname
         avatarImageString = profile.avatar
         fullName = profile.name + " " + profile.surname
-        professionLabelTitle = profile.profession
+        professionLabelTitle = profile.profession.localized
         isMyProfile = DataBase.shared.testProfile == profile
     }
 

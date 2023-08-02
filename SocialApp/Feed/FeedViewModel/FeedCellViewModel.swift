@@ -42,7 +42,7 @@ final class FeedCellViewModel {
     let likesCountString: String
     let commentsCountString: String
     let professionText: String
-
+    let boldFont = UIFont.textBold
     let backgroundColor = AppColors.biege
     let headerViewColor = AppColors.white
     let professionLabelTextColor = AppColors.lightGray

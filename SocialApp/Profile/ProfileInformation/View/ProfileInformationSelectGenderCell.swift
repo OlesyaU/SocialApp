@@ -7,9 +7,6 @@
 import UIKit
 
 final class ProfileInformationSelectGenderCell: UITableViewCell {
-    private enum Constants {
-        static let inset: CGFloat = 8
-    }
 
     private let selectGenderLabel = UILabel()
     private let selectMaleButton = UIButton()
@@ -19,7 +16,7 @@ final class ProfileInformationSelectGenderCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layout()
+        setupConstraints()
     }
 
     @available(*, unavailable)
@@ -27,7 +24,7 @@ final class ProfileInformationSelectGenderCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func layout() {
+    private func setupConstraints() {
         let views = [
             selectGenderLabel,
             selectMaleButton,
@@ -37,15 +34,15 @@ final class ProfileInformationSelectGenderCell: UITableViewCell {
         views.forEach { $0.forAutolayout() }
 
         let constraints: [NSLayoutConstraint] = [
-            selectGenderLabel.pinTop(to: contentView, inset: Constants.inset),
-            selectGenderLabel.pinLeading(to: contentView, inset: Constants.inset),
+            selectGenderLabel.pinTop(to: contentView, inset: Constants.inset8),
+            selectGenderLabel.pinLeading(to: contentView, inset: Constants.inset8),
 
-            selectMaleButton.pinTop(to: selectGenderLabel.bottomAnchor, inset: Constants.inset),
-            selectMaleButton.pinLeading(to: contentView, inset: Constants.inset),
+            selectMaleButton.pinTop(to: selectGenderLabel.bottomAnchor, inset: Constants.inset8),
+            selectMaleButton.pinLeading(to: contentView, inset: Constants.inset8),
 
-            selectFemaleButton.pinTop(to: selectMaleButton.bottomAnchor, inset: Constants.inset),
-            selectFemaleButton.pinLeading(to: contentView, inset: Constants.inset),
-            selectFemaleButton.pinBottom(to: contentView, inset: Constants.inset)
+            selectFemaleButton.pinTop(to: selectMaleButton.bottomAnchor, inset: Constants.inset8),
+            selectFemaleButton.pinLeading(to: contentView, inset: Constants.inset8),
+            selectFemaleButton.pinBottom(to: contentView, inset: Constants.inset8)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -65,8 +62,8 @@ final class ProfileInformationSelectGenderCell: UITableViewCell {
     }
 
     private func configureLabel() {
-        selectGenderLabel.font = UIFont.systemFont(ofSize: 14)
-        selectGenderLabel.textColor = .black
+        selectGenderLabel.font = viewModel?.font
+        selectGenderLabel.textColor = viewModel?.blackColor
         selectGenderLabel.numberOfLines = 1
     }
 

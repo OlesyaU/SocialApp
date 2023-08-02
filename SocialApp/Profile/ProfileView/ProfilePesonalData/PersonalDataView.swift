@@ -16,8 +16,6 @@ final class PersonalDataView: UIView {
     private lazy var nikNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .black
         return label
     }()
 
@@ -42,17 +40,11 @@ final class PersonalDataView: UIView {
 
     private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Full name label here"
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .black
         return label
     }()
 
     private lazy var professionLabel: UILabel = {
         let label = UILabel()
-        label.text = "profession  label text"
-        label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
     }()
 
@@ -104,7 +96,7 @@ final class PersonalDataView: UIView {
 
     init() {
         super.init(frame: .zero)
-        layout()
+        setupConstraints()
 }
 
     required init?(coder: NSCoder) {
@@ -172,9 +164,13 @@ messageButton.pinTop(to: moreInfoButton.bottomAnchor, inset: Constants.inset16),
         professionLabel.text = viewModel?.professionLabelTitle
         moreInfoButton.setTitle(viewModel?.moreInfoButtonTitle, for: .normal)
         moreInfoButton.applyIcon(systemName: viewModel?.moreInfoButtonIcon ?? "", tintColor: .systemOrange)
+        [nikNameLabel, professionLabel].forEach({$0.font = viewModel?.regularFont})
+        fullNameLabel.font = viewModel?.boldFont
+        [nikNameLabel, fullNameLabel].forEach({$0.textColor = viewModel?.black})
+        professionLabel.textColor = viewModel?.gray
     }
 
-    private func layout() {
+    private func setupConstraints() {
         [nikNameLabel, fullNameLabel, avatarImage,  professionLabel, moreInfoButton].forEach({
             $0.forAutolayout()
         })

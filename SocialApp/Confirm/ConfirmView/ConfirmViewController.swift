@@ -105,13 +105,13 @@ class ConfirmViewController: UIViewController {
     private func configure(){
         [confirmLabel, sentInfoLabel, numberLabel].forEach({$0.textAlignment = viewModel?.centerText ?? .center})
         [confirmLabel, numberLabel].forEach({$0.font = viewModel?.boldFont})
-        confirmLabel.text = viewModel?.confirmLabelTitle
-        sentInfoLabel.text = viewModel?.pushNumberUserTitle
-        numberLabel.text = viewModel?.numberLabelTitle
-        badge.text = viewModel?.badgeText
+        confirmLabel.text = viewModel?.confirmLabelTitle.localized
+        sentInfoLabel.text = viewModel?.pushNumberUserTitle.localized
+        numberLabel.text = viewModel?.numberLabelTitle?.localized
+        badge.text = viewModel?.badgeText.localized
         badge.font = viewModel?.badgeFont
         badge.textColor = viewModel?.lightGray
-        registrationButton.setTitle(viewModel?.buttonTitle, for: .normal)
+        registrationButton.setTitle(viewModel?.buttonTitle.localized, for: .normal)
         readyImage.image = viewModel?.readyImage
     }
 
@@ -307,7 +307,7 @@ extension ConfirmViewController {
         let alertTitle = viewModel.alertTitle
         let alertMessage = viewModel.alertMessage
         let actionTitle = viewModel.actionTitle
-        Alert.showAleart(for: self, with: alertTitle, aleartMessage: alertMessage,
+        Alert.showAlert(for: self, with: alertTitle, alertMessage: alertMessage,
                          action1Title: actionTitle, handler: { [weak self] _ in
             self?.codeTextField.text = ""
         }, action2Title: nil)

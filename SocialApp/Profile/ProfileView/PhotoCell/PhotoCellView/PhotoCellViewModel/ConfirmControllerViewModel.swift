@@ -20,9 +20,9 @@ final class ConfirmControllerViewModel {
     private var viewModelChanged: ((_ state: State)-> Void)?
 
     let confirmLabelTitle = "Подтверждение регистрации"
-    let pushNumberUserTitle = "Мы отправили SMS с кодом на номер"
+    let pushNumberUserTitle = "Мы отправили СМС с кодом на номер"
     var numberLabelTitle = newUser?.phone
-    let badgeText = "Введите код из SMS"
+    let badgeText = "Введите код из СМС"
     let placeholderString = "_ _ _ _ _ _"
     let buttonTitle = "ЗАРЕГИСТРИРОВАТЬСЯ"
     let alertTitle = "OOPPPSS"
