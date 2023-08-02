@@ -202,7 +202,7 @@ final class FeedCell: UITableViewCell {
         descriptionLabel.text = viewModel.postText
         likesLabel.text = viewModel.likesCountString
         commentsLabel.text = viewModel.commentsCountString
-        professionLabel.text = viewModel.professionText
+        professionLabel.text = viewModel.professionText.localized
         authorNameLabel.font = viewModel.boldFont
         contentView.backgroundColor = viewModel.backgroundColor
         contentHeaderCellView.backgroundColor = viewModel.headerViewColor
@@ -247,7 +247,7 @@ final class FeedCell: UITableViewCell {
         authorPhoto.image = UIImage(data: authorAvatar)
         likesIcon.image = UIImage(data: likeIcon)
         commentsIcon.image = UIImage(data: commentIcon)
-        professionLabel.text = favoritePost.authorProfession
+        professionLabel.text = favoritePost.authorProfession?.localized
         authorNameLabel.font = UIFont.textBold
         professionLabel.font = UIFont.textRegular
     }

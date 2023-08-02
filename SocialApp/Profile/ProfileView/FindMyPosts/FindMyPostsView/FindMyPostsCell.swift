@@ -72,7 +72,7 @@ final class FindMyPostsCell: UITableViewCell {
     }
 
     func configureForComments(for post: Post) {
-        titleLabel.text = String(post.comments.count) + "комментариев".localized
+        titleLabel.text = String(post.comments.count) + " комментариев".localized
     }
     
 }

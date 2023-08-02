@@ -45,7 +45,6 @@ final class ConfirmControllerViewModel {
     init(viewModel: EnterPhoneNumberViewModel) {
         enterPhoneNumberViewModel = viewModel
         getCodeNewUserData()
-        localizationStrings()
     }
 
     private func getCodeNewUserData() {
@@ -90,11 +89,6 @@ final class ConfirmControllerViewModel {
                 guard let phoneForRegister = ConfirmControllerViewModel.newUser?.phone else { return }
                 registerNewUser(phone: phoneForRegister)
                 print("ConfirmControllerViewModel view model state \(state)")
-        }
-    }
-    private func localizationStrings() {
-        [confirmLabelTitle, pushNumberUserTitle, badgeText, buttonTitle, alertTitle, actionTitle, alertMessage].forEach{
-            $0.localized
         }
     }
 }

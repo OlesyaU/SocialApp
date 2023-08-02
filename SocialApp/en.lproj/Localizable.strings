@@ -11,8 +11,11 @@
 "Подтверждение регистрации" = "Confirmation of registration";
 "Мы отправили СМС с кодом на номер" = "We sent an SMS with a code to the number";
 "Введите код из СМС" = "Enter code from SMS";
-"С возвращением" = "Welcome back";
+"С возвращением" = "Welcome Back";
 "Добро пожаловать !" = "Welcome";
+"Ваш номер телефона будет использоваться для входа в приложение" = "Your phone number will be used to sign into the app";
+"Нажимая кнопку \"Далее\"  Вы принимаете \n пользовательское Соглашение и политику конфиденциальности" = "By clocking the button \"NEXT\" you accept the user agreement and privacy policy";
+"Введите номер" = "Enter your phone number";
 "Введите номер телефона \n для входа в приложение" = "Enter your phone number \n to enter the application";
 "ПОДТВЕРДИТЬ" = "CONFIRM";
 "Публикации" = "Publications";
@@ -64,8 +67,16 @@
 "Фото" = "Photos";
 "Все посты" = "All posts";
 "Мои записи" = "My posts";
-"комментариев" = "comments";
+"комментариев" = " comments";
 "Подробная информация" = "Detailed information";
 "Редактировать" = "Edit";
 "Позвонить" = "Call";
 "Сообщение" = "Message";
+"ДАЛЕЕ" = "NEXT";
+"Дизайнер" = "Designer";
+"Учитель" = "Teacher";
+"Художник" = "Artist";
+"Директор" = "Director";
+"Стоматолог" = "Dantist";
+"Студентка" = "Student";
+

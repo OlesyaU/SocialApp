@@ -97,8 +97,8 @@ final class CombackViewController: UIViewController {
     }
 
     private func configure() {
-     welcomeLabel.text = viewModel?.welcomeLabelTitle
-        let text = viewModel?.secondLabelTitle ?? ""
+        welcomeLabel.text = viewModel?.welcomeLabelTitle.localized
+        let text = viewModel?.secondLabelTitle.localized ?? ""
         let shadow = NSShadow()
         shadow.shadowColor = UIColor.gray
         shadow.shadowBlurRadius = 5
@@ -111,7 +111,7 @@ final class CombackViewController: UIViewController {
         let attributedText = NSAttributedString(string: text, attributes: attributes)
         secondLabel.attributedText = attributedText
         phoneNumberField.placeholder = viewModel?.placeholderString
-        confirmButton.setTitle(viewModel?.buttonTitle, for: .normal)
+        confirmButton.setTitle(viewModel?.buttonTitle.localized, for: .normal)
     }
 
     private func confirmButtonTapped() {

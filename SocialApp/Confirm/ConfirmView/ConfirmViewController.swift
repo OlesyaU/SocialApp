@@ -105,13 +105,13 @@ class ConfirmViewController: UIViewController {
     private func configure(){
         [confirmLabel, sentInfoLabel, numberLabel].forEach({$0.textAlignment = viewModel?.centerText ?? .center})
         [confirmLabel, numberLabel].forEach({$0.font = viewModel?.boldFont})
-        confirmLabel.text = viewModel?.confirmLabelTitle
-        sentInfoLabel.text = viewModel?.pushNumberUserTitle
-        numberLabel.text = viewModel?.numberLabelTitle
-        badge.text = viewModel?.badgeText
+        confirmLabel.text = viewModel?.confirmLabelTitle.localized
+        sentInfoLabel.text = viewModel?.pushNumberUserTitle.localized
+        numberLabel.text = viewModel?.numberLabelTitle?.localized
+        badge.text = viewModel?.badgeText.localized
         badge.font = viewModel?.badgeFont
         badge.textColor = viewModel?.lightGray
-        registrationButton.setTitle(viewModel?.buttonTitle, for: .normal)
+        registrationButton.setTitle(viewModel?.buttonTitle.localized, for: .normal)
         readyImage.image = viewModel?.readyImage
     }
 

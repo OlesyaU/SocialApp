@@ -116,11 +116,11 @@ final class EnterPhoneNumberViewController: UIViewController {
     }
 
     private func configure() {
-        welcomeLabel.text = viewModel?.welcomeLabelTitle
-        pushNumberLabel.text = viewModel?.pushNumberUserTitle
-        secondLabel.text = viewModel?.secondLabelTitle
-        confirmButton.setTitle(viewModel?.buttonTitle, for: .normal)
-        privacyLabel.text = viewModel?.privacyLabelTitle
+        welcomeLabel.text = viewModel?.welcomeLabelTitle.localized
+        pushNumberLabel.text = viewModel?.pushNumberUserTitle.localized
+        secondLabel.text = viewModel?.secondLabelTitle.localized
+        confirmButton.setTitle(viewModel?.buttonTitle.localized, for: .normal)
+        privacyLabel.text = viewModel?.privacyLabelTitle.localized
         privacyLabel.font = viewModel?.privacyLabelFont
         privacyLabel.textColor = viewModel?.lightGrayColor
         welcomeLabel.font = viewModel?.boldFont
