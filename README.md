@@ -47,6 +47,14 @@
   </tr>
  </table>
 
+## 👨🏻‍💻 Взять себе копию проекта просто
+* проходим по [ссылке](https://github.com/OlesyaU/SocialApp)
+* ищем кнопку <img width="80" alt="кнопка код" src="https://github.com/OlesyaU/SocialApp/assets/53311515/6ecf32b4-4adb-4865-adf2-ba5a69086968"> , не сдерживаем себя, тапаем
+* выбираем любой понравившийся вариант из этого списка
+            <p float="left">
+            <img width="250" alt="меню кнопки код" src="https://github.com/OlesyaU/SocialApp/assets/53311515/61cd7033-b0db-4e19-a4c1-3e64809723ff">
+            <figure>
+* готово ✔️
 
 
 ## 🔴 Функции, реализованные в проекте
@@ -74,11 +82,14 @@
 
 ## 💬 Примечание
 
-  - Я буду ждать комментарии по этому проекту. 
+  - Я буду ждать замечания, правки и комментарии по этому проекту. 
 
 ## 🤓 Author
-
-** Олеся Украинская **
-[GitHub](https://github.com/OlesyaU?tab=repositories)
-[Telegram](https://t.me/@OlesyaUkrainskaya)
-
+**Олеся Украинская**
+* [GitHub](https://github.com/OlesyaU?tab=repositories)    
+* [Telegram](https://t.me/@OlesyaUkrainskaya)
+  <p align="center">
+  <img width="50" src="https://github.com/OlesyaU/SocialApp/assets/53311515/d5de75f3-0aaf-4ffc-a466-b177cddcc2da">   
+  </p>
+           
+                                                                                      
