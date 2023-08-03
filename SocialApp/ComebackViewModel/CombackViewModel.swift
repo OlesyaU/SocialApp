@@ -19,7 +19,7 @@ final class CombackViewModel: ComebackViewModelProtocol {
     let placeholderString = " +7 _ _ _  _ _ _  _ _  _ _"
     let buttonTitle = "ПОДТВЕРДИТЬ"
     let alertTitle = "OOPPPSS"
-    let alertMessage = "The code is incorrect. Please write correctly"
+    let alertMessage = "The phone number is incorrect. Please write correctly"
     let actionTitle = "OMG! SURE THING"
 
     func checkUser(by phone: String) -> Profile? {
